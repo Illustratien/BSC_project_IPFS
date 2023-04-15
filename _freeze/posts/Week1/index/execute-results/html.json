@@ -1,0 +1,14 @@
+{
+  "hash": "1b17fe430a1b7ba04e494f4f7442900b",
+  "result": {
+    "markdown": "---\ntitle: \"Week1: The growth of spike\"\nauthor: \"Tien-Cheng\"\ndate: \"2023-04-17\"\ncategories: [R-basic]\nimage: \"growth.png\"\n---\n\n\nWelcome to the course!.\n\nPlease make sure you have installed `R` \\[R\\](https://www.r-project.org) and `Rstudio`.\n\nDownload the data from \\[HU-box\\](https://box.hu-berlin.de/smart-link/891660cb-750c-4312-bd34-e5748a76705a/).\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

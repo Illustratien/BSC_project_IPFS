@@ -7,10 +7,8 @@ website:
   navbar:
     right:
       - about.qmd
-      - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+      - text: Moodle
+        href: https://moodle.hu-berlin.de/course/view.php?id=110830
 format:
   html:
     theme: cosmo

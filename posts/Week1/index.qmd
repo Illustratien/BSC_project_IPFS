@@ -1,0 +1,17 @@
+---
+title: "Week1: The growth of spike"
+author: "Tien-Cheng"
+date: "2023-04-17"
+categories: [R-basic]
+image: "growth.png"
+---
+
+Welcome to the course!.
+
+Please make sure you have installed `R` \[R\](https://www.r-project.org) and `Rstudio`.
+
+Download the data from \[HU-box\](https://box.hu-berlin.de/smart-link/891660cb-750c-4312-bd34-e5748a76705a/).
+
+```{r}
+1 + 1
+```

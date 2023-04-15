@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "BSC_project_IPFS2023",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nApr 15, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nApr 12, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Week1: The growth of spike\n\n\n\n\n\n\n\nR-basic\n\n\n\n\n\n\n\n\n\n\n\nApr 17, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nApr 12, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this blog"
+    "text": "About this blog\nThis blog was build for the IPFS BSC project course 2023 SoSe.\nMaintained by M.Sc. [Tien-Cheng Wang](wangtien@student.hu-berlin.de).\n<wangtien@student.hu-berlin.de>"
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -26,5 +26,12 @@
     "title": "Welcome To My Blog",
     "section": "",
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/Week1/index.html",
+    "href": "posts/Week1/index.html",
+    "title": "Week1: The growth of spike",
+    "section": "",
+    "text": "Welcome to the course!.\nPlease make sure you have installed R [R](https://www.r-project.org) and Rstudio.\nDownload the data from [HU-box](https://box.hu-berlin.de/smart-link/891660cb-750c-4312-bd34-e5748a76705a/).\n\n1 + 1\n\n[1] 2"
   }
 ]
