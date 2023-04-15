@@ -1,17 +1,170 @@
 ---
-title: "Week1: The growth of spike"
+title: "Week1: The growth of spike in winter wheat"
 author: "Tien-Cheng"
 date: "2023-04-17"
 categories: [R-basic]
 image: "growth.png"
+toc: true
+number-sections: true
+format:
+  html: 
+    html-math-method: katex
 ---
 
-Welcome to the course!.
+Welcome to the first course! During the following 2 hrs, you will learn:
 
-Please make sure you have installed `R` \[R\](https://www.r-project.org) and `Rstudio`.
+::: callout-note
+1.  install and use r libraries
+2.  relative path
+3.  data type
+4.  functions
+:::
 
-Download the data from \[HU-box\](https://box.hu-berlin.de/smart-link/891660cb-750c-4312-bd34-e5748a76705a/).
+Please make sure you have installed [`R & Rstudio`](https://posit.co/download/rstudio-desktop/).
 
-```{r}
-1 + 1
+Then download the data from [HU-box](https://box.hu-berlin.de/smart-link/891660cb-750c-4312-bd34-e5748a76705a/).
+
+Open `Ear_development_BSC_project.Rproj`, go to `file`, open `Week1.R`
+
+## Working directory
+
+```{r,eval=FALSE}
+getwd()
+# read.csv()# try to read one file
+
+```
+
+## Concept of datatype & case sensitive
+
+```{r,error=TRUE,eval=FALSE}
+variable
+# assignment str"v" to name "variable"
+## "" and unquote str and variable 
+
+variable <- "v"
+Variable <- 1
+variable +1
+Variable +1 
+```
+
+## Check data type
+
+```{r,error=TRUE,eval=FALSE}
+# str??
+str
+?str
+str(variable)
+str(Variable)
+# data type coersion
+str(NA)
+str(c(NA,1))
+str(c(NA,"a"))
+str(c(NA,TRUE))
+str(c(1,"a"))
+```
+
+## Function: something with `()`
+format: `function_name`(`argument1`, `argument2`) {`code`}
+
+```{r,error=TRUE,eval=FALSE}
+# how many ways of creating sequence?
+c(1,2,3)
+seq(1,3,1)
+
+# embeded function fun2(fun1())
+length(c(1,2,3))
+# use pipe, . is the result of previous step
+c(1,2,3) %>% length(.)
+
+# what is the data type?
+str(c(1,2,3))
+
+# replicate
+rep(1,3)
+rep(1,3) %>% unique()
+rep(1,3) %>% cumsum()
+
+paste(c("a","1"),collapse = "")
+paste0(c("a","1"))
+```
+
+::: callout-challenge
+how to use `paste`and `rep`to create sequence of `char` vector c("a1","b1","a2","b2")? 
+:::
+```{r,echo=FALSE}
+paste0(rep(c("a","b"),each=2),rep(c(1,2),times=2))
+paste0(rep(c("a","b"),times=2),rep(c(1,2),each=2))
+```
+## Date
+```{r,echo=FALSE,error=TRUE,eval=FALSE}
+as.Date("2023-04-17")
+as.Date("2023-04-17",format="%Y-%m-%d")
+as.Date("20230417")
+as.Date("17042023")
+as.Date("2023-04-17")-7
+```
+::: callout-challenge
+if `Date` is additive, how to create successive `Date` vector? Date start with "2023-04-17"
+:::
+```{r,echo=FALSE}
+as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,5,1)
+```
+
+
+
+## write your first function
+
+```{r,error=TRUE,eval=FALSE}
+plusone <- function(x){x+1}
+# is function data type sensitive?
+plusone(variable)
+plusone(Variable)
+```
+
+::: callout-challenge
+write a average function and check whether input is numeric if not return with warning \*first write your function in text
+:::
+
+## pattern matching: logical vector and its position 
+```{r,error=TRUE,eval=FALSE}
+3%in%c(1,3) 
+2%in%c(1,3) 
+1==2 
+!1==2 
+1!=2 
+
+which(c(1,3)==3) 
+# what will be the difference
+order(c(3,1,2)) 
+c(3,1,2) %>% .[order(.)]
+
+# what will be the data type?
+c(1,2,NA) %>% is.na() 
+c(1,2,NA) %>% is.na() %>% which() 
+c(1,2,NA) %>% is.na() %>% !.
+c(1,2,NA) %>% !is.na() 
+!is.na(c(1,2,NA))
+```
+
+## Indexing something with `[]` or `$`
+```{r,error=TRUE,eval=FALSE}
+# why this will not work?
+data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1),
+           temp=c(20,15,13), 
+           thermal_time=cumsum(temp))
+df
+```
+::: callout-challenge
+create data frame to calculate thermal time 
+::: 
+```{r,echo=FALSE,eval=TRUE}
+data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1),
+                 temp=c(20,15,13), thermal_time=cumsum(c(20,15,13)))
+```
+```{r,error=TRUE,eval=FALSE}
+# which is of type dataframe?
+df$temp %>% str()
+df["temp"] %>% str()
+df[,"temp"] %>% str()
+df[["temp"]] %>% str()
 ```

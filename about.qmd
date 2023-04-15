@@ -1,6 +1,6 @@
 ---
 title: "About"
-image: profile.jpg
+image: profile.png
 about:
   template: jolla
   links:
@@ -10,8 +10,6 @@ about:
 
 About this blog
 
-This blog was build for the IPFS BSC project course 2023 SoSe.
+This blog was build for the IPFS BSC project course 2023 summer sumester.
 
-Maintained by M.Sc. \[**Tien-Cheng Wang**\](wangtien\@student.hu-berlin.de).
-
-\<wangtien\@student.hu-berlin.de\>
+Question? plese contact [Tien-Cheng Wang](wangtien@student.hu-berlin.de).

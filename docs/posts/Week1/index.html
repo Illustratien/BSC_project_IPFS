@@ -9,7 +9,7 @@
 <meta name="author" content="Tien-Cheng">
 <meta name="dcterms.date" content="2023-04-17">
 
-<title>BSC_project_IPFS2023 - Week1: The growth of spike</title>
+<title>BSC_project_IPFS2023 - Week1: The growth of spike in winter wheat</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -162,7 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Week1: The growth of spike</h1>
+      <h1 class="title">Week1: The growth of spike in winter wheat</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">R-basic</div>
               </div>
@@ -193,24 +193,240 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#working-directory" id="toc-working-directory" class="nav-link active" data-scroll-target="#working-directory"><span class="toc-section-number">1</span>  Working directory</a></li>
+  <li><a href="#concept-of-datatype-case-sensitive" id="toc-concept-of-datatype-case-sensitive" class="nav-link" data-scroll-target="#concept-of-datatype-case-sensitive"><span class="toc-section-number">2</span>  Concept of datatype &amp; case sensitive</a></li>
+  <li><a href="#check-data-type" id="toc-check-data-type" class="nav-link" data-scroll-target="#check-data-type"><span class="toc-section-number">3</span>  Check data type</a></li>
+  <li><a href="#function-something-with" id="toc-function-something-with" class="nav-link" data-scroll-target="#function-something-with"><span class="toc-section-number">4</span>  Function: something with <code>()</code></a></li>
+  <li><a href="#date" id="toc-date" class="nav-link" data-scroll-target="#date"><span class="toc-section-number">5</span>  Date</a></li>
+  <li><a href="#write-your-first-function" id="toc-write-your-first-function" class="nav-link" data-scroll-target="#write-your-first-function"><span class="toc-section-number">6</span>  write your first function</a></li>
+  <li><a href="#pattern-matching-logical-vector-and-its-position" id="toc-pattern-matching-logical-vector-and-its-position" class="nav-link" data-scroll-target="#pattern-matching-logical-vector-and-its-position"><span class="toc-section-number">7</span>  pattern matching: logical vector and its position</a></li>
+  <li><a href="#indexing-something-with-or" id="toc-indexing-something-with-or" class="nav-link" data-scroll-target="#indexing-something-with-or"><span class="toc-section-number">8</span>  Indexing something with <code>[]</code> or <code>$</code></a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<p>Welcome to the course!.</p>
-<p>Please make sure you have installed <code>R</code> [R](https://www.r-project.org) and <code>Rstudio</code>.</p>
-<p>Download the data from [HU-box](https://box.hu-berlin.de/smart-link/891660cb-750c-4312-bd34-e5748a76705a/).</p>
+<p>Welcome to the first course! During the following 2 hrs, you will learn:</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>install and use r libraries</li>
+<li>relative path</li>
+<li>data type</li>
+<li>functions</li>
+</ol>
+</div>
+</div>
+<p>Please make sure you have installed <a href="https://posit.co/download/rstudio-desktop/"><code>R &amp; Rstudio</code></a>.</p>
+<p>Then download the data from <a href="https://box.hu-berlin.de/smart-link/891660cb-750c-4312-bd34-e5748a76705a/">HU-box</a>.</p>
+<p>Open <code>Ear_development_BSC_project.Rproj</code>, go to <code>file</code>, open <code>Week1.R</code></p>
+<section id="working-directory" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="working-directory"><span class="header-section-number">1</span> Working directory</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv()# try to read one file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="concept-of-datatype-case-sensitive" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="concept-of-datatype-case-sensitive"><span class="header-section-number">2</span> Concept of datatype &amp; case sensitive</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>variable</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># assignment str"v" to name "variable"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="do">## "" and unquote str and variable </span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>variable <span class="ot">&lt;-</span> <span class="st">"v"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>Variable <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>variable <span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Variable <span class="sc">+</span><span class="dv">1</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="check-data-type" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="check-data-type"><span class="header-section-number">3</span> Check data type</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># str??</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>str</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>?str</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(variable)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Variable)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># data type coersion</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="cn">NA</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="dv">1</span>))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="st">"a"</span>))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">TRUE</span>))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="st">"a"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="function-something-with" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="function-something-with"><span class="header-section-number">4</span> Function: something with <code>()</code></h2>
+<p>format: <code>function_name</code>(<code>argument1</code>, <code>argument2</code>) {<code>code</code>}</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how many ways of creating sequence?</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># embeded function fun2(fun1())</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># use pipe, . is the result of previous step</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="fu">length</span>(.)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the data type?</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># replicate</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="fu">cumsum</span>()</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">"a"</span>,<span class="st">"1"</span>),<span class="at">collapse =</span> <span class="st">""</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="fu">c</span>(<span class="st">"a"</span>,<span class="st">"1"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>how to use <code>paste</code>and <code>rep</code>to create sequence of <code>char</code> vector c(“a1”,“b1”,“a2”,“b2”)?</p>
+</div>
+</div>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] "a1" "a2" "b1" "b2"</code></pre>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "a1" "b1" "a2" "b2"</code></pre>
+</div>
+</div>
+</section>
+<section id="date" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="date"><span class="header-section-number">5</span> Date</h2>
+<div class="cell">
+
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>if <code>Date</code> is additive, how to create successive <code>Date</code> vector? Date start with “2023-04-17”</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2023-04-17" "2023-04-18" "2023-04-19" "2023-04-20" "2023-04-21"</code></pre>
+</div>
+</div>
+</section>
+<section id="write-your-first-function" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="write-your-first-function"><span class="header-section-number">6</span> write your first function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plusone <span class="ot">&lt;-</span> <span class="cf">function</span>(x){x<span class="sc">+</span><span class="dv">1</span>}</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># is function data type sensitive?</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plusone</span>(variable)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plusone</span>(Variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>write a average function and check whether input is numeric if not return with warning *first write your function in text</p>
+</div>
+</div>
+</section>
+<section id="pattern-matching-logical-vector-and-its-position" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="pattern-matching-logical-vector-and-its-position"><span class="header-section-number">7</span> pattern matching: logical vector and its position</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>) </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>) </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">==</span><span class="dv">2</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="dv">1</span><span class="sc">==</span><span class="dv">2</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">!=</span><span class="dv">2</span> </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)<span class="sc">==</span><span class="dv">3</span>) </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># what will be the difference</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">order</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)) </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>) <span class="sc">%&gt;%</span> .[<span class="fu">order</span>(.)]</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># what will be the data type?</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>) <span class="sc">%&gt;%</span> <span class="fu">is.na</span>() </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>) <span class="sc">%&gt;%</span> <span class="fu">is.na</span>() <span class="sc">%&gt;%</span> <span class="fu">which</span>() </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>) <span class="sc">%&gt;%</span> <span class="fu">is.na</span>() <span class="sc">%&gt;%</span> <span class="sc">!</span>.</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>) <span class="sc">%&gt;%</span> <span class="sc">!</span><span class="fu">is.na</span>() </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="indexing-something-with-or" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="indexing-something-with-or"><span class="header-section-number">8</span> Indexing something with <code>[]</code> or <code>$</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># why this will not work?</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">time=</span><span class="fu">as.Date</span>(<span class="st">"2023-04-16"</span>,<span class="at">format=</span><span class="st">"%Y-%m-%d"</span>)<span class="sc">+</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">temp=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">13</span>), </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">thermal_time=</span><span class="fu">cumsum</span>(temp))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>create data frame to calculate thermal time</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>        time temp thermal_time
+1 2023-04-17   20           20
+2 2023-04-18   15           35
+3 2023-04-19   13           48</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># which is of type dataframe?</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>temp <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"temp"</span>] <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>df[,<span class="st">"temp"</span>] <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">"temp"</span>]] <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
