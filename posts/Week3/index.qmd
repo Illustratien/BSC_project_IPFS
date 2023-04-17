@@ -37,7 +37,7 @@ relative path for reproducibility
 ```{r }
 # path <- getwd() %>% sub("posts.*","data",.)
 # dat <-read.csv(paste0(path,'/kernel_combine.csv'))
-dat <-read.csv('../data/kernel_combine.csv',
+dat <-read.csv('../data/ear_combine.csv',
                 header = T,stringsAsFactors = F) %>%
   dplyr::filter(tiller=="M")
 glimpse(dat)

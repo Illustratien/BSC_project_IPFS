@@ -1,41 +1,58 @@
 ---
 title: "Week1: The growth of spike in winter wheat"
 author: "Tien-Cheng"
-date: "2023-04-17"
+date: "2023-04-18"
 categories: [R-basic]
 image: "growth.png"
 toc: true
-number-sections: true
+website: 
+  sidebar:
+    search: true
+
 format:
   html: 
     html-math-method: katex
 ---
 
+# Phenology and the growth of spike
+
 Welcome to the first course! During the following 2 hrs, you will learn:
 
 ::: callout-note
-1.  install and use r libraries
-2.  relative path
-3.  data type
-4.  functions
+
+1.  data type
+2.  functions
+3.  install and use r libraries
+4.  relative path
 :::
 
 Please make sure you have installed [`R & Rstudio`](https://posit.co/download/rstudio-desktop/).
 
-Then download the data from [HU-box](https://box.hu-berlin.de/smart-link/891660cb-750c-4312-bd34-e5748a76705a/).
+Download the folder from [HU-box](https://box.hu-berlin.de/smart-link/891660cb-750c-4312-bd34-e5748a76705a/).
 
-Open `Ear_development_BSC_project.Rproj`, go to `file`, open `Week1.R`
+Open `Ear_development_BSC_project.Rproj`
 
-## Working directory
+## R basic
+Press `Ctrl+ Shift +N`to open new script.Save it as `Week1_practice.R`
+Copy code from this website to your script and press `run`.
 
-```{r,eval=FALSE}
-getwd()
-# read.csv()# try to read one file
+Save 
+### Concept of datatype & case sensitive
+Rules:
 
+1. Don't compete your `variable names` with system. (eg., `var`,`mean`,`aov`)
+
+*something that will show in the drop down menu of auto-completion.*
+
+2. Don't start with number.
+3. Separate long name with `_`.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(magrittr);suppressWarnings(library(dplyr));
+suppressWarnings(library(ggplot2));library(tidyr);
+library(kableExtra);library(knitr);library(purrr)
+options(dplyr.summarise.inform = FALSE)
 ```
-
-## Concept of datatype & case sensitive
-
 ```{r,error=TRUE,eval=FALSE}
 variable
 # assignment str"v" to name "variable"
@@ -47,7 +64,7 @@ variable +1
 Variable +1 
 ```
 
-## Check data type
+### Check data type
 
 ```{r,error=TRUE,eval=FALSE}
 # str??
@@ -62,40 +79,102 @@ str(c(NA,"a"))
 str(c(NA,TRUE))
 str(c(1,"a"))
 ```
-
-## Function: something with `()`
-format: `function_name`(`argument1`, `argument2`) {`code`}
+### r packages
+Check this great package [tidyverse](https://dplyr.tidyverse.org/)!
 
 ```{r,error=TRUE,eval=FALSE}
-# how many ways of creating sequence?
+install.packages(tidyrverse)
+install.packages("tidyrverse")
+library(dplyr)
+```
+### Function: something with `()`
+
+Please use `%>%` (pipe) to avoid embedded functions.
+`.`stands for the result from the left side of the pipe.
+
+For long line code, press `enter` after each `%>%`, sort them by `ctrl A`+ `ctrl I`.
+Pipe is available in r-package either `dplyr` or `magrittr`.
+```{r,error=TRUE,eval=FALSE}
+# syntax of using pipe
+
+fun1(object)
+
+object %>% fun1(.)
+object %>% fun1()
+object %>% fun1() %>% .
+object %>% fun1(.) %>% .
+
+#embedded functions
+fun2(fun1(object))
+# pipe
+object %>% 
+  fun1() %>% 
+  fun2()
+
+```
+
+```{r,error=TRUE,eval=FALSE}
+# how many ways of creating a sequence?
 c(1,2,3)
 seq(1,3,1)
 
-# embeded function fun2(fun1())
+# embedded function : fun2(fun1())
 length(c(1,2,3))
-# use pipe, . is the result of previous step
+# use pipe, "." is the result of previous step
 c(1,2,3) %>% length(.)
 
-# what is the data type?
-str(c(1,2,3))
-
-# replicate
+# replicate element as vector
 rep(1,3)
+# remove duplicates
 rep(1,3) %>% unique()
+# cumulative sum 
 rep(1,3) %>% cumsum()
 
+# is there any difference?
 paste(c("a","1"),collapse = "")
 paste0(c("a","1"))
 ```
 
 ::: callout-challenge
-how to use `paste`and `rep`to create sequence of `char` vector c("a1","b1","a2","b2")? 
+Use `str()` to check the data type of above line.
+
+How to use `paste`and `rep`to create sequence of `char` vector c("a1","b1","a2","b2")?
+Try to use `%>%` in this task.
 :::
+
 ```{r,echo=FALSE}
 paste0(rep(c("a","b"),each=2),rep(c(1,2),times=2))
 paste0(rep(c("a","b"),times=2),rep(c(1,2),each=2))
 ```
-## Date
+### write your first function
+format: `function_name`(`argument1`, `argument2`) {`code`}
+example:
+```{r,error=TRUE,eval=FALSE}
+plusone <- function(x){x+1}
+# is function data type sensitive?
+plusone(variable)
+plusone(Variable) 
+```
+function with documentation example:
+```{r,error=TRUE,eval=FALSE}
+function_name  <-function(input){
+  input: datatype, length, meaning.
+  output: datatype, length, meaning.
+  action1: intermediate_variable <- input %>% fun1()
+  action2: output <-intermediate_variable%>% fun2()
+  ...
+  return(output)
+}
+```
+::: callout-challenge
+write a function with documentation:
+input `vec` is a numeric vector with length 3, 
+return `str` of average value of `vec` ± standard deviation of `vec`.
+\*first write your function in text
+:::
+
+### Date
+
 ```{r,echo=FALSE,error=TRUE,eval=FALSE}
 as.Date("2023-04-17")
 as.Date("2023-04-17",format="%Y-%m-%d")
@@ -103,68 +182,165 @@ as.Date("20230417")
 as.Date("17042023")
 as.Date("2023-04-17")-7
 ```
+
 ::: callout-challenge
-if `Date` is additive, how to create successive `Date` vector? Date start with "2023-04-17"
+if `Date` is additive, how to create successive `date` vector of length 5? 
+Vector `date` start with "2023-04-17"
+Could you do the average of this vector?
 :::
+
 ```{r,echo=FALSE}
 as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,5,1)
 ```
 
 
-
-## write your first function
+### Pattern matching: logical vector and its position
 
 ```{r,error=TRUE,eval=FALSE}
-plusone <- function(x){x+1}
-# is function data type sensitive?
-plusone(variable)
-plusone(Variable)
-```
-
-::: callout-challenge
-write a average function and check whether input is numeric if not return with warning \*first write your function in text
-:::
-
-## pattern matching: logical vector and its position 
-```{r,error=TRUE,eval=FALSE}
+# check if pattern exist in vector
 3%in%c(1,3) 
 2%in%c(1,3) 
+
 1==2 
 !1==2 
 1!=2 
+c(1,3)==2
 
 which(c(1,3)==3) 
-# what will be the difference
+
+# what will be the difference?
 order(c(3,1,2)) 
 c(3,1,2) %>% .[order(.)]
 
-# what will be the data type?
+# what will be the data type? check with str()
 c(1,2,NA) %>% is.na() 
 c(1,2,NA) %>% is.na() %>% which() 
 c(1,2,NA) %>% is.na() %>% !.
 c(1,2,NA) %>% !is.na() 
 !is.na(c(1,2,NA))
+
+# check if data type match
+arg <- ""
+is.character(arg)
+if(is.character(arg)){
+  print("character")
+}
+
+if(is.character(arg)){
+  print("character")
+}else{
+  error("type other than character")
+}
+
+if(is.character(arg)){
+  warning("wrong")
+}
+
+if(is.character(arg)){
+  stop("wrong")
+}
+
 ```
 
-## Indexing something with `[]` or `$`
+::: callout-challenge
+write a average function and check whether input is numeric if not return with `warning()` \*first write your function in text
+:::
+
+### Indexing something with `[]` or `$`
+
 ```{r,error=TRUE,eval=FALSE}
-# why this will not work?
+# why these will not work?
 data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1),
            temp=c(20,15,13), 
            thermal_time=cumsum(temp))
 df
 ```
-::: callout-challenge
-create data frame to calculate thermal time 
-::: 
+
+Why these work?
 ```{r,echo=FALSE,eval=TRUE}
-data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1),
-                 temp=c(20,15,13), thermal_time=cumsum(c(20,15,13)))
+thermaltime_df <- data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1),
+                             temp=c(20,15,13), thermal_time=cumsum(c(20,15,13)))
+thermaltime_df
 ```
+
 ```{r,error=TRUE,eval=FALSE}
 # which is of type dataframe?
-df$temp %>% str()
-df["temp"] %>% str()
-df[,"temp"] %>% str()
-df[["temp"]] %>% str()
+thermaltime_df$temp %>% str()
+thermaltime_df["temp"] %>% str()
+thermaltime_df[,"temp"] %>% str()
+thermaltime_df[["temp"]] %>% str()
+```
+::: callout-challenge
+use `thermaltime_df`,
+1. Access column `thermal_time` as `vector`
+2. Extract `temp` when `time` is `2023-04-17`
+:::
+
+
+##Plot
+go to `file`, `src`, then open Week1.R
+
+###Working directory
+relative path terminology:
+
+`"."` means the same directory as script.
+
+`".."` means the parent directory of `"."`.
+
+```{r}
+getwd()
+data <- read.csv("../data/ear_summarized.csv")
+data %>% glimpse()
+```
+
+### GGplot2
+
+Requirements of scientific plot.
+1. `axis title` with unit if there is any.
+
+2. `legend title` full name instead of default abbreviation.
+
+Figure title.
+
+[ggplot 2](https://ggplot2.tidyverse.org)
+[ggplot gallery](https://r-graph-gallery.com)
+
+```{r,eval=FALSE}
+library(ggplot)
+library(ggplot2)
+```
+
+```{r}
+#| label: fig-growth
+#| fig-cap: "Growth of ear weight over time."
+#| fig-width: 12
+#| fig-height: 3.5
+
+data %>% 
+ggplot(aes(x=date,y=weight,color=var))+
+geom_point()+
+geom_line(aes(group=group))+ # link the point by group.
+xlab("date of harvest")+ #x axis title
+ylab("ear weight(g)")+   #y axis title
+guides(color=guide_legend(title="Cultivar")) #change legend title 
+```
+
+::: callout-challenge
+use `theme_xx()` function series to change background of the plot.
+Find your favorite one.
+:::
+
+```{r,echo=FALSE}
+#| fig-cap: "dark theme example."
+#| fig-width: 12
+#| fig-height: 3.5
+
+data %>% 
+ggplot(aes(x=date,y=weight,color=var))+
+geom_point()+
+geom_line(aes(group=group))+ # link the point by group.
+xlab("date of harvest")+ #x axis title
+ylab("ear weight(g)")+   #y axis title
+guides(color=guide_legend(title="Cultivar"))+ #change legend title +
+theme_dark()
 ```
