@@ -28,7 +28,7 @@ Welcome to the first course! During the following 2 hrs, you will learn:
 
 Please make sure you have installed [`R & Rstudio`](https://posit.co/download/rstudio-desktop/).
 
-Download the folder from [HU-box](https://box.hu-berlin.de/smart-link/891660cb-750c-4312-bd34-e5748a76705a/).
+Download the folder from [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/).
 
 Open `Ear_development_BSC_project.Rproj`
 
