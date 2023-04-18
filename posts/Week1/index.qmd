@@ -133,13 +133,20 @@ rep(1,3) %>% cumsum()
 # is there any difference?
 paste(c("a","1"),collapse = "")
 paste0(c("a","1"))
+paste0("a","1")
 ```
 
 ::: callout-challenge
 Use `str()` to check the data type of above line.
 
-How to use `paste`and `rep`to create sequence of `char` vector c("a1","b1","a2","b2")?
+You have two vectors, `c("a","b")` and `c("1","2")`
+How to use `paste`and `rep`to create sequence of `char` vector shown below?
 Try to use `%>%` in this task.
+
+check the arguments of `rep` to get more hints.
+e.g., 
+rep(c("a","b"),each=2)
+rep(c("a","b"),times=2)
 :::
 
 ```{r,echo=FALSE}
@@ -175,7 +182,7 @@ return `str` of average value of `vec` ± standard deviation of `vec`.
 
 ### Date
 
-```{r,echo=FALSE,error=TRUE,eval=FALSE}
+```{r,echo=TRUE,error=TRUE,eval=FALSE}
 as.Date("2023-04-17")
 as.Date("2023-04-17",format="%Y-%m-%d")
 as.Date("20230417")
@@ -243,8 +250,10 @@ if(is.character(arg)){
 ```
 
 ::: callout-challenge
-write a average function and check whether input is numeric if not return with `warning()` \*first write your function in text
+write a average function and check whether input is numeric if not return with `stop()` \*first write your function in text
 :::
+
+The end of week1.
 
 ### Indexing something with `[]` or `$`
 
