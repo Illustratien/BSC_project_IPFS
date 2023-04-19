@@ -208,9 +208,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#write-your-first-function" id="toc-write-your-first-function" class="nav-link" data-scroll-target="#write-your-first-function">write your first function</a></li>
   <li><a href="#date" id="toc-date" class="nav-link" data-scroll-target="#date">Date</a></li>
   <li><a href="#pattern-matching-logical-vector-and-its-position" id="toc-pattern-matching-logical-vector-and-its-position" class="nav-link" data-scroll-target="#pattern-matching-logical-vector-and-its-position">Pattern matching: logical vector and its position</a></li>
-  <li><a href="#indexing-something-with-or" id="toc-indexing-something-with-or" class="nav-link" data-scroll-target="#indexing-something-with-or">Indexing something with <code>[]</code> or <code>$</code></a></li>
-  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2">GGplot2</a></li>
   </ul></li>
+  <li><a href="#discussion-goes-here" id="toc-discussion-goes-here" class="nav-link" data-scroll-target="#discussion-goes-here">Discussion goes here</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -358,8 +357,6 @@ Challenge
 <pre><code>[1] "a1" "b1" "a2" "b2"</code></pre>
 </div>
 </div>
-<script src="https://giscus.app/client.js" data-repo="Illustratien/BSC_project_IPFS2023" data-repo-id="R_kgDOJXRJ5Q" data-category="Q&amp;A" data-category-id="DIC_kwDOJXRJ5c4CV5K2" data-mapping="og:title" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="en" crossorigin="anonymous" async="">
-</script>
 </section>
 <section id="write-your-first-function" class="level3">
 <h3 class="anchored" data-anchor-id="write-your-first-function">write your first function</h3>
@@ -482,127 +479,12 @@ Challenge
 <p>write a average function and check whether input is numeric if not return with <code>stop()</code> *first write your function in text</p>
 </div>
 </div>
-<p>The end of week1.</p>
 </section>
-<section id="indexing-something-with-or" class="level3">
-<h3 class="anchored" data-anchor-id="indexing-something-with-or">Indexing something with <code>[]</code> or <code>$</code></h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># why these will not work?</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">time=</span><span class="fu">as.Date</span>(<span class="st">"2023-04-16"</span>,<span class="at">format=</span><span class="st">"%Y-%m-%d"</span>)<span class="sc">+</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>),</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">temp=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">13</span>), </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">thermal_time=</span><span class="fu">cumsum</span>(temp))</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Why these work?</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>        time temp thermal_time
-1 2023-04-17   20           20
-2 2023-04-18   15           35
-3 2023-04-19   13           48</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># which is of type dataframe?</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>thermaltime_df<span class="sc">$</span>temp <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>thermaltime_df[<span class="st">"temp"</span>] <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>thermaltime_df[,<span class="st">"temp"</span>] <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>thermaltime_df[[<span class="st">"temp"</span>]] <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Challenge
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>use <code>thermaltime_df</code>, 1. Access column <code>thermal_time</code> as <code>vector</code> 2. Extract <code>temp</code> when <code>time</code> is <code>2023-04-17</code></p>
-</div>
-</div>
-<p>##Plot go to <code>file</code>, <code>src</code>, then open Week1.R</p>
-<p>###Working directory relative path terminology:</p>
-<p><code>"."</code> means the same directory as script.</p>
-<p><code>".."</code> means the parent directory of <code>"."</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "C:/Users/marse/seadrive_root/Tien-Che/My Libraries/PhD_Tien/Project/Postdoc_teaching/BSC_project_IPFS2023/posts/Week1"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/ear_summarized.csv"</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 2,112
-Columns: 9
-$ date     &lt;chr&gt; "2021-06-14", "2021-06-14", "2021-06-14", "2021-06-14", "2021~
-$ var      &lt;chr&gt; "Alves", "Alves", "Alves", "Alves", "Alves", "Alves", "Alves"~
-$ nitrogen &lt;int&gt; 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 2~
-$ appl     &lt;chr&gt; "Combined", "Combined", "Combined", "Combined", "Combined", "~
-$ timeid   &lt;chr&gt; "Early", "Early", "Early", "Late", "Late", "Late", "Early", "~
-$ weight   &lt;dbl&gt; 0.4766667, 0.4766667, 0.4766667, 0.4816667, 0.4816667, 0.4816~
-$ TT       &lt;dbl&gt; 1679.354, 1679.354, 1679.354, 1506.496, 1506.496, 1506.496, 1~
-$ BBCH     &lt;dbl&gt; 63.77313, 63.77313, 63.77313, 62.72181, 62.72181, 62.72181, 6~
-$ group    &lt;chr&gt; "Alves.Combined.Early.176", "Alves.Combined.Early.176", "Alve~</code></pre>
-</div>
-</div>
 </section>
-<section id="ggplot2" class="level3">
-<h3 class="anchored" data-anchor-id="ggplot2">GGplot2</h3>
-<p>Requirements of scientific plot. 1. <code>axis title</code> with unit if there is any.</p>
-<ol start="2" type="1">
-<li><code>legend title</code> full name instead of default abbreviation.</li>
-</ol>
-<p>Figure title.</p>
-<p><a href="https://ggplot2.tidyverse.org">ggplot 2</a> <a href="https://r-graph-gallery.com">ggplot gallery</a></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>weight,<span class="at">color=</span>var))<span class="sc">+</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>group))<span class="sc">+</span> <span class="co"># link the point by group.</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">"date of harvest"</span>)<span class="sc">+</span> <span class="co">#x axis title</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ylab</span>(<span class="st">"ear weight(g)"</span>)<span class="sc">+</span>   <span class="co">#y axis title</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">color=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Cultivar"</span>)) <span class="co">#change legend title </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="fig-growth" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="index_files/figure-html/fig-growth-1.png" class="img-fluid figure-img" width="1152"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Growth of ear weight over time.</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Challenge
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>use <code>theme_xx()</code> function series to change background of the plot. Find your favorite one.</p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="1152"></p>
-<p></p><figcaption class="figure-caption">dark theme example.</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="discussion-goes-here" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-goes-here">Discussion goes here</h2>
 
 
-</section>
 </section>
 </section>
 
