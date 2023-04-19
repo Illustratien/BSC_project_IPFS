@@ -13,7 +13,13 @@ format:
   html: 
     html-math-method: katex
 ---
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(magrittr);suppressWarnings(library(dplyr));
+suppressWarnings(library(ggplot2));library(tidyr);
+library(kableExtra);library(knitr);library(purrr)
+options(dplyr.summarise.inform = FALSE)
+```
 # Phenology and the growth of spike
 
 Welcome to the first course! During the following 2 hrs, you will learn:
@@ -39,10 +45,10 @@ df
 ```
 
 Why these work?
-  
-  ```{r,echo=FALSE,eval=TRUE}
+
+```{r,echo=FALSE,eval=TRUE}
 thermaltime_df <- data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1),
-                             temp=c(20,15,13), thermal_time=cumsum(c(20,15,13)))
+temp=c(20,15,13), thermal_time=cumsum(c(20,15,13)))
 thermaltime_df
 ```
 
@@ -57,12 +63,12 @@ thermaltime_df[["temp"]] %>% str()
 ::: callout-challenge
 use `thermaltime_df`, 1. Access column `thermal_time` as `vector` 2. Extract `temp` when `time` is `2023-04-17`
 :::
-  
-  ##Plot go to `file`, `src`, then open Week1.R
-  
-  ###Working directory relative path terminology:
-  
-  `"."` means the same directory as script.
+
+##Plot go to `file`, `src`, then open Week1.R
+
+###Working directory relative path terminology:
+
+`"."` means the same directory as script.
 
 `".."` means the parent directory of `"."`.
 
@@ -105,19 +111,19 @@ data %>%
 ::: callout-challenge
 use `theme_xx()` function series to change background of the plot. Find your favorite one.
 :::
-  
-  ```{r,echo=FALSE}
+
+```{r,echo=FALSE}
 #| fig-cap: "dark theme example."
 #| fig-width: 12
 #| fig-height: 3.5
 
 data %>% 
-  ggplot(aes(x=date,y=weight,color=var))+
-  geom_point()+
-  geom_line(aes(group=group))+ # link the point by group.
-  xlab("date of harvest")+ #x axis title
-  ylab("ear weight(g)")+   #y axis title
-  guides(color=guide_legend(title="Cultivar"))+ #change legend title +
-  theme_dark()
+ggplot(aes(x=date,y=weight,color=var))+
+geom_point()+
+geom_line(aes(group=group))+ # link the point by group.
+xlab("date of harvest")+ #x axis title
+ylab("ear weight(g)")+   #y axis title
+guides(color=guide_legend(title="Cultivar"))+ #change legend title +
+theme_dark()
 ```
 ## Discussion goes here
