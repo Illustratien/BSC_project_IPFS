@@ -25,7 +25,8 @@ options(dplyr.summarise.inform = FALSE)
 Welcome to the third course! During the following 2 hrs, you will learn:
 
 ::: callout-note
-1.  aa
+1.  ggplot2 advance
+2.  
 :::
 
 ## Read data and Rproject
