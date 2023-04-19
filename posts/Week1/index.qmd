@@ -1,5 +1,5 @@
 ---
-title: "Week1: The growth of spike in winter wheat"
+title: "Week1: Phenology and the growth of spike"
 author: "Tien-Cheng"
 date: "2023-04-18"
 categories: [R-basic]
@@ -19,10 +19,10 @@ format:
 Welcome to the first course! During the following 2 hrs, you will learn:
 
 ::: callout-note
-1.  data type
-2.  functions
-3.  install and use r libraries
-4.  relative path
+1.  4 basic data types: ("chr","numeric","logical","Date") 
+2.  functions, documentation and data type check
+3.  meaning of `%>%` and `.`  
+3.  indexing with pattern matching
 :::
 
 Please make sure you have installed [`R & Rstudio`](https://posit.co/download/rstudio-desktop/).
@@ -83,17 +83,28 @@ str(c(1,"a"))
 
 Check this great package [tidyverse](https://dplyr.tidyverse.org/)!
 
+* Note that windows user may need to first download the [Rtools](https://cran.r-project.org/bin/windows/Rtools/) that match your R version.
+
+You can check your R version by typing `version()` in your R console.
+
 ```{r,error=TRUE,eval=FALSE}
 install.packages(tidyrverse)
 install.packages("tidyrverse")
 library(dplyr)
 ```
 
-### Function: something with `()`
+### Function: something ends with `()`
+Pipe (`%>%`) is available in r-package either `dplyr` or `magrittr`.
 
-Please use `%>%` (pipe) to avoid embedded functions. `.`stands for the result from the left side of the pipe.
+Please use `%>%`  to avoid embedded functions.
 
-For long line code, press `enter` after each `%>%`, sort them by `ctrl A`+ `ctrl I`. Pipe is available in r-package either `dplyr` or `magrittr`.
+`.`stands for the result from the left side of the pipe.
+
+For long line code, press `enter` after each `%>%`.
+
+Select all the codes by `ctrl A`.
+
+Indent the selected codes by `ctrl I`. 
 
 ```{r,error=TRUE,eval=FALSE}
 # syntax of using pipe
@@ -140,9 +151,17 @@ paste0("a","1")
 ::: callout-challenge
 Use `str()` to check the data type of above line.
 
-You have two vectors, `c("a","b")` and `c("1","2")` How to use `paste`and `rep`to create sequence of `char` vector shown below? Try to use `%>%` in this task.
+You have two vectors, 
+`c("a","b")` and `c("1","2")` 
 
-check the arguments of `rep` to get more hints. e.g., rep(c("a","b"),each=2) rep(c("a","b"),times=2)
+How to use `paste` and `rep`to create sequence of `char` vector shown below? 
+
+Check the arguments of `rep` to get more hints. 
+e.g.,
+
+`rep(c("a","b"),each=2)`
+
+`rep(c("a","b"),times=2)`
 :::
 
 ```{r,echo=FALSE}
@@ -155,27 +174,31 @@ paste0(rep(c("a","b"),times=2),rep(c(1,2),each=2))
 format: `function_name`(`argument1`, `argument2`) {`code`} example:
 
 ```{r,error=TRUE,eval=FALSE}
-plusone <- function(x){x+1}
+plusone <- function(x){
+  x+1
+}
 # is function data type sensitive?
 plusone(variable)
 plusone(Variable) 
 ```
 
-function with documentation example:
+function with good documentation example:
 
 ```{r,error=TRUE,eval=FALSE}
 function_name  <-function(input){
-  input: datatype, length, meaning.
-  output: datatype, length, meaning.
-  action1: intermediate_variable <- input %>% fun1()
-  action2: output <-intermediate_variable%>% fun2()
+  # input: datatype, length, meaning.
+  # output: datatype, length, meaning.
+  # action1: intermediate_variable <- input %>% fun1()
+  # action2: output <-intermediate_variable%>% fun2()
   ...
   return(output)
 }
 ```
 
 ::: callout-challenge
-write a function with documentation: input `vec` is a numeric vector with length 3, return `str` of average value of `vec` ± standard deviation of `vec`. \*first write your function in text
+write a function with documentation: input `vec` is a numeric vector with length 3, return `str` of average value of `vec` ± standard deviation of `vec`. 
+
+Visualize the step in your function by first writing your the possible steps in text!
 :::
 
 ### Date
@@ -183,13 +206,18 @@ write a function with documentation: input `vec` is a numeric vector with length
 ```{r,echo=TRUE,error=TRUE,eval=FALSE}
 as.Date("2023-04-17")
 as.Date("2023-04-17",format="%Y-%m-%d")
+# is ther any error?
 as.Date("20230417")
 as.Date("17042023")
+# additive properties of Date 
 as.Date("2023-04-17")-7
+as.Date("2023-04-17")+2
 ```
 
 ::: callout-challenge
-if `Date` is additive, how to create successive `date` vector of length 5? Vector `date` start with "2023-04-17" Could you do the average of this vector?
+Since type `Date` is additive, how to create successive `date` vector of length 5? Vector `date` start with "2023-04-17"
+
+Could you do the average of this vector?
 :::
 
 ```{r,echo=FALSE}
@@ -245,8 +273,11 @@ if(is.character(arg)){
 ```
 
 ::: callout-challenge
-write a average function and check whether input is numeric if not return with `stop()` \*first write your function in text
-:::
+Inside your `plusone` function,
+please check first whether input `x` is numeric, then proceed the process.
 
+if not, return with message "wrong input type" using `stop()` 
+
+:::
 
 ## Discussion goes here

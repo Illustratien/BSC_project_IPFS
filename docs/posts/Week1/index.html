@@ -9,7 +9,7 @@
 <meta name="author" content="Tien-Cheng">
 <meta name="dcterms.date" content="2023-04-18">
 
-<title>BSC_project_IPFS2023 - Week1: The growth of spike in winter wheat</title>
+<title>BSC_project_IPFS2023 - Week1: Phenology and the growth of spike</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -162,7 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Week1: The growth of spike in winter wheat</h1>
+      <h1 class="title">Week1: Phenology and the growth of spike</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">R-basic</div>
               </div>
@@ -204,7 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#check-data-type" id="toc-check-data-type" class="nav-link" data-scroll-target="#check-data-type">Check data type</a></li>
   <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages">r packages</a></li>
-  <li><a href="#function-something-with" id="toc-function-something-with" class="nav-link" data-scroll-target="#function-something-with">Function: something with <code>()</code></a></li>
+  <li><a href="#function-something-ends-with" id="toc-function-something-ends-with" class="nav-link" data-scroll-target="#function-something-ends-with">Function: something ends with <code>()</code></a></li>
   <li><a href="#write-your-first-function" id="toc-write-your-first-function" class="nav-link" data-scroll-target="#write-your-first-function">write your first function</a></li>
   <li><a href="#date" id="toc-date" class="nav-link" data-scroll-target="#date">Date</a></li>
   <li><a href="#pattern-matching-logical-vector-and-its-position" id="toc-pattern-matching-logical-vector-and-its-position" class="nav-link" data-scroll-target="#pattern-matching-logical-vector-and-its-position">Pattern matching: logical vector and its position</a></li>
@@ -234,10 +234,11 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>data type</li>
-<li>functions</li>
-<li>install and use r libraries</li>
-<li>relative path</li>
+<li>4 basic data types: (“chr”,“numeric”,“logical”,“Date”)</li>
+<li>functions, documentation and data type check</li>
+<li>meaning of <code>%&gt;%</code> and <code>.</code><br>
+</li>
+<li>indexing with pattern matching</li>
 </ol>
 </div>
 </div>
@@ -285,16 +286,24 @@ Note
 <section id="r-packages" class="level3">
 <h3 class="anchored" data-anchor-id="r-packages">r packages</h3>
 <p>Check this great package <a href="https://dplyr.tidyverse.org/">tidyverse</a>!</p>
+<ul>
+<li>Note that windows user may need to first download the <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a> that match your R version.</li>
+</ul>
+<p>You can check your R version by typing <code>version()</code> in your R console.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(tidyrverse)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyrverse"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="function-something-with" class="level3">
-<h3 class="anchored" data-anchor-id="function-something-with">Function: something with <code>()</code></h3>
-<p>Please use <code>%&gt;%</code> (pipe) to avoid embedded functions. <code>.</code>stands for the result from the left side of the pipe.</p>
-<p>For long line code, press <code>enter</code> after each <code>%&gt;%</code>, sort them by <code>ctrl A</code>+ <code>ctrl I</code>. Pipe is available in r-package either <code>dplyr</code> or <code>magrittr</code>.</p>
+<section id="function-something-ends-with" class="level3">
+<h3 class="anchored" data-anchor-id="function-something-ends-with">Function: something ends with <code>()</code></h3>
+<p>Pipe (<code>%&gt;%</code>) is available in r-package either <code>dplyr</code> or <code>magrittr</code>.</p>
+<p>Please use <code>%&gt;%</code> to avoid embedded functions.</p>
+<p><code>.</code>stands for the result from the left side of the pipe.</p>
+<p>For long line code, press <code>enter</code> after each <code>%&gt;%</code>.</p>
+<p>Select all the codes by <code>ctrl A</code>.</p>
+<p>Indent the selected codes by <code>ctrl I</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># syntax of using pipe</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -345,8 +354,11 @@ Challenge
 </div>
 <div class="callout-body-container callout-body">
 <p>Use <code>str()</code> to check the data type of above line.</p>
-<p>You have two vectors, <code>c("a","b")</code> and <code>c("1","2")</code> How to use <code>paste</code>and <code>rep</code>to create sequence of <code>char</code> vector shown below? Try to use <code>%&gt;%</code> in this task.</p>
-<p>check the arguments of <code>rep</code> to get more hints. e.g., rep(c(“a”,“b”),each=2) rep(c(“a”,“b”),times=2)</p>
+<p>You have two vectors, <code>c("a","b")</code> and <code>c("1","2")</code></p>
+<p>How to use <code>paste</code> and <code>rep</code>to create sequence of <code>char</code> vector shown below?</p>
+<p>Check the arguments of <code>rep</code> to get more hints. e.g.,</p>
+<p><code>rep(c("a","b"),each=2)</code></p>
+<p><code>rep(c("a","b"),times=2)</code></p>
 </div>
 </div>
 <div class="cell">
@@ -362,18 +374,20 @@ Challenge
 <h3 class="anchored" data-anchor-id="write-your-first-function">write your first function</h3>
 <p>format: <code>function_name</code>(<code>argument1</code>, <code>argument2</code>) {<code>code</code>} example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plusone <span class="ot">&lt;-</span> <span class="cf">function</span>(x){x<span class="sc">+</span><span class="dv">1</span>}</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># is function data type sensitive?</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plusone</span>(variable)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plusone</span>(Variable) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plusone <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># is function data type sensitive?</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plusone</span>(variable)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plusone</span>(Variable) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>function with documentation example:</p>
+<p>function with good documentation example:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>function_name  <span class="ot">&lt;-</span><span class="cf">function</span>(input){</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  input<span class="sc">:</span> datatype, length, meaning.</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">:</span> datatype, length, meaning.</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  action1<span class="sc">:</span> intermediate_variable <span class="ot">&lt;-</span> input <span class="sc">%&gt;%</span> <span class="fu">fun1</span>()</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  action2<span class="sc">:</span> output <span class="ot">&lt;-</span>intermediate_variable<span class="sc">%&gt;%</span> <span class="fu">fun2</span>()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># input: datatype, length, meaning.</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># output: datatype, length, meaning.</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># action1: intermediate_variable &lt;- input %&gt;% fun1()</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># action2: output &lt;-intermediate_variable%&gt;% fun2()</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  ...</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -388,7 +402,8 @@ Challenge
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>write a function with documentation: input <code>vec</code> is a numeric vector with length 3, return <code>str</code> of average value of <code>vec</code> ± standard deviation of <code>vec</code>. *first write your function in text</p>
+<p>write a function with documentation: input <code>vec</code> is a numeric vector with length 3, return <code>str</code> of average value of <code>vec</code> ± standard deviation of <code>vec</code>.</p>
+<p>Visualize the step in your function by first writing your the possible steps in text!</p>
 </div>
 </div>
 </section>
@@ -397,9 +412,12 @@ Challenge
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2023-04-17"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2023-04-17"</span>,<span class="at">format=</span><span class="st">"%Y-%m-%d"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"20230417"</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"17042023"</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2023-04-17"</span>)<span class="sc">-</span><span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># is ther any error?</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"20230417"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"17042023"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># additive properties of Date </span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2023-04-17"</span>)<span class="sc">-</span><span class="dv">7</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2023-04-17"</span>)<span class="sc">+</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout-challenge callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -411,7 +429,8 @@ Challenge
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>if <code>Date</code> is additive, how to create successive <code>date</code> vector of length 5? Vector <code>date</code> start with “2023-04-17” Could you do the average of this vector?</p>
+<p>Since type <code>Date</code> is additive, how to create successive <code>date</code> vector of length 5? Vector <code>date</code> start with “2023-04-17”</p>
+<p>Could you do the average of this vector?</p>
 </div>
 </div>
 <div class="cell">
@@ -476,7 +495,8 @@ Challenge
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>write a average function and check whether input is numeric if not return with <code>stop()</code> *first write your function in text</p>
+<p>Inside your <code>plusone</code> function, please check first whether input <code>x</code> is numeric, then proceed the process.</p>
+<p>if not, return with message “wrong input type” using <code>stop()</code></p>
 </div>
 </div>
 </section>
