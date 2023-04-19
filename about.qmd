@@ -8,8 +8,6 @@ about:
       href: https://moodle.hu-berlin.de/course/view.php?id=110830
 ---
 
-About this blog
-
 This blog was build for the IPFS BSC project course 2023 summer sumester.
 
 Question? plese contact [Tien-Cheng Wang](wangtien@student.hu-berlin.de).

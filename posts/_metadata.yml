@@ -6,3 +6,6 @@ freeze: true
 
 # Enable banner style title blocks
 title-block-banner: true
+comments: 
+  utterances: 
+    repo:  Illustratien/BSC_project_IPFS2023
