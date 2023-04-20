@@ -13,6 +13,7 @@ format:
   html: 
     html-math-method: katex
 ---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(magrittr);suppressWarnings(library(dplyr));
@@ -20,6 +21,7 @@ suppressWarnings(library(ggplot2));library(tidyr);
 library(kableExtra);library(knitr);library(purrr)
 options(dplyr.summarise.inform = FALSE)
 ```
+
 # Phenology and the growth of spike
 
 Welcome to the first course! During the following 2 hrs, you will learn:
@@ -27,7 +29,7 @@ Welcome to the first course! During the following 2 hrs, you will learn:
 ::: callout-note
 1.  relative path
 2.  data frame
-2.  ggplot
+3.  ggplot
 :::
 
 Download the folder from [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/).
@@ -63,7 +65,21 @@ thermaltime_df[["temp"]] %>% str()
 ::: callout-challenge
 use `thermaltime_df`, 1. Access column `thermal_time` as `vector` 2. Extract `temp` when `time` is `2023-04-17`
 :::
+```{r,echo=FALSE}
+# Giscus comment box for Session 1
+giscus_repo <- "Illustratien/BSC_project_IPFS2023"
+giscus_issue_id <- "Q1"
+giscus_theme <- "dark_dimmed"
+giscus_metadata <- list("category" = "Session 1")
+giscus_script <- sprintf("https://giscus.app/client.js?t=dark_dimmed&repo=%s&issue_id=%s&metadata=%s", giscus_repo, giscus_issue_id, jsonlite::toJSON(giscus_metadata))
+htmltools::tags$script(type = "text/javascript", src = giscus_script)
 
+giscus_issue_id <- "Q2"
+giscus_theme <- "light"
+giscus_metadata <- list("category" = "Session 2")
+giscus_script <- sprintf("https://giscus.app/client.js?t=light&repo=%s&issue_id=%s&metadata=%s", giscus_repo, giscus_issue_id, jsonlite::toJSON(giscus_metadata))
+htmltools::tags$script(type = "text/javascript", src = giscus_script)
+```
 ##Plot go to `file`, `src`, then open Week1.R
 
 ###Working directory relative path terminology:
@@ -126,4 +142,5 @@ ylab("ear weight(g)")+   #y axis title
 guides(color=guide_legend(title="Cultivar"))+ #change legend title +
 theme_dark()
 ```
+
 ## Discussion goes here
