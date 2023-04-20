@@ -273,14 +273,6 @@ Challenge
 <p>use <code>thermaltime_df</code>, 1. Access column <code>thermal_time</code> as <code>vector</code> 2. Extract <code>temp</code> when <code>time</code> is <code>2023-04-17</code></p>
 </div>
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<p><script type="text/javascript" src="https://giscus.app/client.js?t=dark_dimmed&amp;repo=Illustratien/BSC_project_IPFS2023&amp;issue_id=Week2: The growth of spike in winter wheat_1&amp;metadata={&quot;category&quot;:[&quot;Session 1&quot;]}"></script></p>
-</div>
-<div class="cell-output-display">
-<p><script type="text/javascript" src="https://giscus.app/client.js?t=light&amp;repo=Illustratien/BSC_project_IPFS2023&amp;issue_id=Week2: The growth of spike in winter wheat_2&amp;metadata={&quot;category&quot;:[&quot;Session 2&quot;]}"></script></p>
-</div>
-</div>
 <p>##Plot go to <code>file</code>, <code>src</code>, then open Week1.R</p>
 <p>###Working directory relative path terminology:</p>
 <p><code>"."</code> means the same directory as script.</p>
@@ -306,6 +298,13 @@ $ BBCH     &lt;dbl&gt; 63.77313, 63.77313, 63.77313, 62.72181, 62.72181, 62.7218
 $ group    &lt;chr&gt; "Alves.Combined.Early.176", "Alves.Combined.Early.176", "Alve~</code></pre>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add_giscus_comment</span>(<span class="st">"What is your answer? "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Response status code: 404"
+NULL</code></pre>
+</div>
+</div>
 </section>
 <section id="ggplot2" class="level3">
 <h3 class="anchored" data-anchor-id="ggplot2">GGplot2</h3>
@@ -316,17 +315,17 @@ $ group    &lt;chr&gt; "Alves.Combined.Early.176", "Alves.Combined.Early.176", "
 <p>Figure title.</p>
 <p><a href="https://ggplot2.tidyverse.org">ggplot 2</a> <a href="https://r-graph-gallery.com">ggplot gallery</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>weight,<span class="at">color=</span>var))<span class="sc">+</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>group))<span class="sc">+</span> <span class="co"># link the point by group.</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"date of harvest"</span>)<span class="sc">+</span> <span class="co">#x axis title</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"ear weight(g)"</span>)<span class="sc">+</span>   <span class="co">#y axis title</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Cultivar"</span>)) <span class="co">#change legend title </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>weight,<span class="at">color=</span>var))<span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>group))<span class="sc">+</span> <span class="co"># link the point by group.</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"date of harvest"</span>)<span class="sc">+</span> <span class="co">#x axis title</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"ear weight(g)"</span>)<span class="sc">+</span>   <span class="co">#y axis title</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Cultivar"</span>)) <span class="co">#change legend title </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-growth" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -350,10 +349,19 @@ Challenge
 </div>
 </div>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>page_title <span class="ot">&lt;-</span>  <span class="st">"Week2: The growth of spike in winter wheat"</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">add_giscus_comment</span>(<span class="st">"What is your favourite theme? "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Response status code: 404"
+NULL</code></pre>
+</div>
+</div>
+<div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="1152"></p>
 <p></p><figcaption class="figure-caption">dark theme example.</figcaption><p></p>
 </figure>
 </div>

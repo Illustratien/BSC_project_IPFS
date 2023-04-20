@@ -20,6 +20,12 @@ library(magrittr);suppressWarnings(library(dplyr));
 suppressWarnings(library(ggplot2));library(tidyr);
 library(kableExtra);library(knitr);library(purrr)
 options(dplyr.summarise.inform = FALSE)
+source('../fun/comments_fun.R')
+library(httr)
+library(jsonlite)
+library(xml2)
+library(XML)
+library(htmltools)
 ```
 
 # Phenology and the growth of spike
@@ -50,7 +56,7 @@ Why these work?
 
 ```{r,echo=FALSE,eval=TRUE}
 thermaltime_df <- data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1),
-temp=c(20,15,13), thermal_time=cumsum(c(20,15,13)))
+                             temp=c(20,15,13), thermal_time=cumsum(c(20,15,13)))
 thermaltime_df
 ```
 
@@ -65,21 +71,8 @@ thermaltime_df[["temp"]] %>% str()
 ::: callout-challenge
 use `thermaltime_df`, 1. Access column `thermal_time` as `vector` 2. Extract `temp` when `time` is `2023-04-17`
 :::
-```{r,echo=FALSE}
-# Giscus comment box for Session 1
-giscus_repo <- "Illustratien/BSC_project_IPFS2023"
-giscus_issue_id <- "Week2: The growth of spike in winter wheat_1"
-giscus_theme <- "dark_dimmed"
-giscus_metadata <- list("category" = "Session 1")
-giscus_script <- sprintf("https://giscus.app/client.js?t=dark_dimmed&repo=%s&issue_id=%s&metadata=%s", giscus_repo, giscus_issue_id, jsonlite::toJSON(giscus_metadata))
-htmltools::tags$script(type = "text/javascript", src = giscus_script)
 
-giscus_issue_id <- "Week2: The growth of spike in winter wheat_2"
-giscus_theme <- "light"
-giscus_metadata <- list("category" = "Session 2")
-giscus_script <- sprintf("https://giscus.app/client.js?t=light&repo=%s&issue_id=%s&metadata=%s", giscus_repo, giscus_issue_id, jsonlite::toJSON(giscus_metadata))
-htmltools::tags$script(type = "text/javascript", src = giscus_script)
-```
+
 ##Plot go to `file`, `src`, then open Week1.R
 
 ###Working directory relative path terminology:
@@ -92,6 +85,11 @@ htmltools::tags$script(type = "text/javascript", src = giscus_script)
 getwd()
 data <- read.csv("../data/ear_summarized.csv")
 data %>% glimpse()
+```
+```{r}
+
+add_giscus_comment("What is your answer? ")
+
 ```
 
 ### GGplot2
@@ -127,20 +125,25 @@ data %>%
 ::: callout-challenge
 use `theme_xx()` function series to change background of the plot. Find your favorite one.
 :::
+```{r}
+page_title <-  "Week2: The growth of spike in winter wheat"
 
+add_giscus_comment("What is your favourite theme? ")
+
+```
 ```{r,echo=FALSE}
 #| fig-cap: "dark theme example."
 #| fig-width: 12
 #| fig-height: 3.5
 
 data %>% 
-ggplot(aes(x=date,y=weight,color=var))+
-geom_point()+
-geom_line(aes(group=group))+ # link the point by group.
-xlab("date of harvest")+ #x axis title
-ylab("ear weight(g)")+   #y axis title
-guides(color=guide_legend(title="Cultivar"))+ #change legend title +
-theme_dark()
+  ggplot(aes(x=date,y=weight,color=var))+
+  geom_point()+
+  geom_line(aes(group=group))+ # link the point by group.
+  xlab("date of harvest")+ #x axis title
+  ylab("ear weight(g)")+   #y axis title
+  guides(color=guide_legend(title="Cultivar"))+ #change legend title +
+  theme_dark()
 ```
 
 ## Discussion goes here
