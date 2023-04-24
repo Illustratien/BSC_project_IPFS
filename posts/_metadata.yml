@@ -8,6 +8,6 @@ freeze: true
 title-block-banner: true
 
 # 
-# comments: 
-#   giscus: 
-#     repo:  Illustratien/BSC_project_IPFS2023
+comments:
+  giscus:
+    repo:  Illustratien/BSC_project_IPFS2023

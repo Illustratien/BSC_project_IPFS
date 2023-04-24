@@ -20,81 +20,349 @@ library(magrittr);suppressWarnings(library(dplyr));
 suppressWarnings(library(ggplot2));library(tidyr);
 library(kableExtra);library(knitr);library(purrr)
 options(dplyr.summarise.inform = FALSE)
-source('../fun/comments_fun.R')
-library(httr)
-library(jsonlite)
-library(xml2)
-library(XML)
-library(htmltools)
+data <- read.csv("../data/ear_summarized.csv")
 ```
 
 # Phenology and the growth of spike
 
-Welcome to the first course! During the following 2 hrs, you will learn:
+Welcome to the second course! Last week, we have learned the data type of [`vectors`](https://towardsdatascience.com/learning-r-data-types-e698d23f8179#:~:text=First%2C%20R%20doesn%27t%20have,in%20R%20language%20is%20vector.), `function` and `%>%`.
+
+During the following 2 hrs, you will learn:
 
 ::: callout-note
-1.  relative path
-2.  data frame
-3.  ggplot
+1.  What is working directory (wd)?
+2.  How to subset elements from `vector`, `list` and `dataframe`
+3.  Plot with `ggplot`
 :::
 
-Download the folder from [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/).
+If you haven't download the data, please go to [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/).
 
 Open `Ear_development_BSC_project.Rproj`
 
-### Indexing something with `[]` or `$`
+create Week2.R and save it in folder `src`.
+
+## What is working directory (wd)?
+
+### abbreviation path: "." for wd and ".." for parent of wd
+
+
+`"."` means the working directory (wd) where this R script exists.
+
+`".."` means the parent (one level higher) directory of `"."`.
 
 ```{r,error=TRUE,eval=FALSE}
-# why these will not work?
-data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1),
-           temp=c(20,15,13), 
-           thermal_time=cumsum(temp))
-df
-```
+library(dplyr)
 
-Why these work?
+# working directory, abbreviated as "."
+getwd()
+# parent directory, abbreviated as ".."
+dirname(getwd())
+# assign current path to variable
+current_path <- getwd()
+# check the type 
+current_path %>% str()
 
-```{r,echo=FALSE,eval=TRUE}
-thermaltime_df <- data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1),
-                             temp=c(20,15,13), thermal_time=cumsum(c(20,15,13)))
-thermaltime_df
-```
 
-```{r,error=TRUE,eval=FALSE}
-# which is of type dataframe?
-thermaltime_df$temp %>% str()
-thermaltime_df["temp"] %>% str()
-thermaltime_df[,"temp"] %>% str()
-thermaltime_df[["temp"]] %>% str()
+# check files in the directory
+
+# are they different?
+"." %>% list.files(path=.)
+getwd() %>% list.files(path=.)
+
+# are they different?
+".." %>% list.files(path=.)
+getwd() %>% dirname() %>% list.files(path=.)
+
 ```
 
 ::: callout-challenge
-use `thermaltime_df`, 1. Access column `thermal_time` as `vector` 2. Extract `temp` when `time` is `2023-04-17`
+Although the meaning of `.` is the same as `getwd()`,
+the content is depending on the environment you are working with.
+
+Right click R studio logo, open a new R studio window,
+compare the result of `getwd()` in R project and R
+:::
+
+### accessing files and folder inside a R project 
+Which one do you prefer? Why do we prefer relative path?
+```{r,error=TRUE,eval=FALSE}
+# absolute path, did you get error?
+"C:/Users/marse/seadrive_root/Tien-Che/My Libraries/PhD_Tien/Project/Postdoc_teaching/BSC_project_IPFS2023/data" %>% list.files(path=.)
+# relative path in R base
+parent_path <- getwd() 
+paste0(parent_path,"/data") %>% list.files(path=.)
+
+# R project relative path, are they different? 
+".\data" %>% list.files(path=.)
+"data" %>% list.files(path=.)
+
+```
+::: callout-challenge
+read from relative path, which one is correct?
+Assume working directory `current_path` is `"C/users/BSC_project/src"`
+
+`Absolute_path = current_path +"/"+relative_path`
+Below are four relative paths.
+Please rewrite them in absolute (full) path form. What should `.` be replace? 
+Which two are the same?
+
+1. `"ear_summarized.csv"`
+
+2. `"data/ear_summarized.csv"`
+
+3. `"./data/ear_summarized.csv"`
+
+4. `"../data/ear_summarized.csv"`
+
+:::
+::: callout-challenge
+go to folder data,
+use relative path and try to read file `phenology.csv`,
+use pipe,
+and assign the result to variable named `phenology`
+
+:::
+## subsetting element from vetor with `accessors []`
+
+vector indexing start from 1 to the length of the vector.
+
+```{r,eval=FALSE,error=TRUE}
+
+empty_vec <- c()
+length(empty_vec)
+# what is the type of the empty vec?
+empty_vec %>% str()
+
+# NULL: empty 
+empty_vec[1]
+empty_vec[0]
+
+
+vec <- c(1,3,5)
+vec[1]
+#reorder the vector 
+vec[c(2,1,3)]
+# removing the indexed elements
+vec[-1]
+vec[-2]
+
+# indexing start from 1, not 0
+# therefore you get, numeric(0)
+vec[0]
+# when access exceeding the range of a vector, what datatype do you get? 
+vec[4]
+vec %>% .[length(.)+1]
+vec[1:4]
+vec[4:1]
+
+# find specific element or position
+vec[c(F,T,F)]
+vec[vec==5]
+# when codition not match at all, it will return? 
+vec[vec==2]
+vec[c(F,F,F)]
+vec %>% .[c(F)]
+vec[vec=="a"]
+
+
+# default str vector
+letters
+LETTERS
+# when the query does not match, guess what will be the datatype? 
+letters %>% .[.==2]
+letters %>% .[c(F)]
+# vector over write
+vec
+vec <- c(2,1,3)
+vec
+```
+
+::: callout-challenge
+```{r,eval=TRUE}
+vec <- c(1, 2, 3, 4, 5)
+logical_vec <- c(TRUE, FALSE)
+subset_vec <- vec[logical_vec]
+subset_vec
+```
+what did you observe? Is there any [vector recycling](https://rpubs.com/vipero7/vector-recycling-in-r)?
+
+What happen when you enter `vec[TRUE]`?
+
+:::
+Supplementary information of special datatypes:
+
+Empty : [`NULL`](https://www.r-bloggers.com/2018/07/r-null-values-null-na-nan-inf/) 
+
+Indexing at zero position:[`numeric(0)`](https://www.programmingr.com/r-error-messages/numeric0-error/)
+
+### list: keep the diversity of data type
+
+list_object\<- list(`element_name`=`value`)
+
+There are 3 common accessors for `list`:
+
+`[]` access the list element 
+
+`[[]]` access the content of a list element by position or name
+
+`$` access the content of a list element by name
+list_object`$element_name` or list_object`[[element_name]]`
+
+More about the [accessors](https://www.r-bloggers.com/2009/10/r-accessors-explained/)
+
+```{r,eval=FALSE}
+# create a simple list
+list(1)
+# create a simple list with name "x" for first element
+list(x=1)
+list(x=1)["x"]
+# extract content
+list(x=1)$"x"
+list(x=1)[[1]]
+list(x=1)[["x"]]
+
+# extract with pipe
+list(x=1) %>% .[[1]]
+list(x=1) %>% .$"x"
+
+# long list
+long_list_example <- list(1,c(1,2),
+                          T,c(T,T),
+                          "str",c("a","b"),
+                          list(1),
+                          mean,data.frame())
+# check structure of this list 
+# list_complex_example %>% str()
+# list_complex_example %>% glimpse()
+# list_complex_example
+# first list 
+long_list_example[1]
+# content of first list
+long_list_example[[1]]
+# first element of content of first list
+long_list_example[[1]][1]
+
+```
+::: callout-challenge
+can you guess what data type are these?
+  
+```{r,eval=FALSE}
+long_list_example[[1]][2]
+long_list_example[1][1]
+long_list_example[1][2]
+long_list_example[2][2]
+long_list_example[[2]][2]
+```
+:::
+
+### lapply: return as a list
+lapply(vector, function)
+?lapply
+
+```{r,eval=FALSE}
+# input is vector
+c(1,4) %>% 
+  lapply(.,FUN=function(x){x+3})
+# input is list
+list(2,4,c(1,4)) %>% 
+  lapply(.,FUN=function(x){x+3})
+# input has differnt type
+list(2,4,c(1,4),"8") %>% 
+  lapply(.,FUN=function(x){x+3})
+
+```
+::: callout-challenge
+Why you get error in the last line?
 :::
 
 
-##Plot go to `file`, `src`, then open Week1.R
+### dataframe is a special type of list
+each column has one data type
 
-###Working directory relative path terminology:
+```{r,error=TRUE,eval=FALSE}
+# create a dataframe 
+df <- data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1),                 temp=c(20,15,13), 
+                 thermal_time=cumsum(c(20,15,13)))
+# another way
+df <- data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1)) 
+df$temp=c(20,15,13)
+df$thermal_time=cumsum(df$temp)
 
-`"."` means the same directory as script.
+# third method
+library(dplyr)
+df <- data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1)) %>% 
+  mutate(temp=c(20,15,13), 
+         thermal_time=cumsum(temp))
+df
 
-`".."` means the parent directory of `"."`.
+```
+::: callout-challenge
+Is it possible to create data frame with vectors of different length?
+```{r,eval=FALSE}
+data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1),                 temp=c(20,13))
+```
+:::
 
-```{r}
-getwd()
-data <- read.csv("../data/ear_summarized.csv")
+### extract columns from data frame
+You can subset `dataframe` by indexing [`row`,`column`]
+
+`dataframe`[,`column`] select the whole role for selected columnn
+
+`dataframe`[`row`,] select the whole column of selected rows
+
+Select multiple row or column by puting logical or numeric vector in the square bracket.
+
+```{r,echo=FALSE,eval=FALSE}
+df[1,]
+df[,]
+df[,1]
+df[1,1]
+df[1:2,1]
+# which is of type dataframe?
+df$temp %>% str()
+df["temp"] %>% str()
+df[,"temp"] %>% str()
+df[["temp"]] %>% str()
+df[,1] %>% str()
+```
+
+::: callout-challenge
+use `df`, 1. Access column `thermal_time` as `vector` 2. Extract `temp` when `time` is `2023-04-17`
+:::
+
+::: callout-challenge
+if you want to turn a data frame (`df`) by 90 degree ("transpose"),
+which function can you use? 
+Could you find the answer on google or chatGPT?
+
+:::
+
+### practice dataframe with real data
+```{r,eval=FALSE}
+data <- read.csv("data/ear_summarized.csv")
+# data %>% str()
 data %>% glimpse()
-```
-```{r}
+names(data)
+# extract column from dataframe
+data$BBCH
+data %>% unique()
 
-add_giscus_comment("What is your answer? ")
+# summarize dataframe
+lapply(data, range)
+# turn as data frame
+lapply(data, range) %>% data.frame()
+
+summary(data)
 
 ```
+
+## Plot
 
 ### GGplot2
 
-Requirements of scientific plot. 1. `axis title` with unit if there is any.
+Requirements of scientific plot. 
+
+1. `axis title` with unit if there is any.
 
 2.  `legend title` full name instead of default abbreviation.
 
@@ -125,12 +393,7 @@ data %>%
 ::: callout-challenge
 use `theme_xx()` function series to change background of the plot. Find your favorite one.
 :::
-```{r}
-page_title <-  "Week2: The growth of spike in winter wheat"
 
-add_giscus_comment("What is your favourite theme? ")
-
-```
 ```{r,echo=FALSE}
 #| fig-cap: "dark theme example."
 #| fig-width: 12
