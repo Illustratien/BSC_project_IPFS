@@ -1,7 +1,7 @@
 ---
 title: "Week3: Spikelet development"
 author: "Tien-Cheng"
-date: "2023-04-17"
+date: "2023-05-02"
 categories: [R-basic]
 toc: true
 number-sections: true
@@ -10,7 +10,7 @@ website:
     search: true
 format:
   html: 
-    code-fold: true
+    # code-fold: true
     html-math-method: katex
 ---
 
@@ -20,9 +20,13 @@ library(magrittr);suppressWarnings(library(dplyr));
 suppressWarnings(library(ggplot2));library(tidyr);
 library(kableExtra);library(knitr);library(purrr)
 options(dplyr.summarise.inform = FALSE)
+data <- read.csv("../data/ear_summarized.csv")
+dat <-read.csv('../data/kernel_combine.csv',
+                header = T,stringsAsFactors = F) %>%
+  dplyr::filter(tiller=="M")
 ```
 
-Welcome to the third course! During the following 2 hrs, you will learn:
+Welcome to the third course! During the following 2 hrs, you will learn `ggplot` and `dataframe` wrangling:
 
 ::: callout-note
 1.  ggplot2 advance
@@ -31,14 +35,85 @@ Welcome to the third course! During the following 2 hrs, you will learn:
 
 ## Read data and Rproject
 
-relative path for reproducibility
+### practice dataframe with real data
+
+```{r,eval=FALSE}
+data <- read.csv("data/ear_summarized.csv")
+# data %>% str()
+data %>% glimpse()
+names(data)
+# extract column from dataframe
+data$BBCH
+data %>% unique()
+
+# summarize dataframe
+lapply(data, range)
+# turn as data frame
+lapply(data, range) %>% data.frame()
+
+summary(data)
+
+```
+
+## Plot
+
+### GGplot2
+
+Requirements of scientific plot.
+
+1.  `axis title` with unit if there is any.
+
+2.  `legend title` full name instead of default abbreviation.
+
+Figure title.
+
+[ggplot 2](https://ggplot2.tidyverse.org) [ggplot gallery](https://r-graph-gallery.com)
+
+```{r,eval=FALSE}
+library(ggplot)
+library(ggplot2)
+```
+
+```{r}
+#| label: fig-growth
+#| fig-cap: "Growth of ear weight over time."
+#| fig-width: 12
+#| fig-height: 3.5
+
+data %>% 
+  ggplot(aes(x=date,y=weight,color=var))+
+  geom_point()+
+  geom_line(aes(group=group))+ # link the point by group.
+  xlab("date of harvest")+ #x axis title
+  ylab("ear weight(g)")+   #y axis title
+  guides(color=guide_legend(title="Cultivar")) #change legend title 
+```
+
+::: callout-challenge
+use `theme_xx()` function series to change background of the plot. Find your favorite one.
+:::
+
+```{r,echo=FALSE}
+#| fig-cap: "dark theme example."
+#| fig-width: 12
+#| fig-height: 3.5
+
+data %>% 
+  ggplot(aes(x=date,y=weight,color=var))+
+  geom_point()+
+  geom_line(aes(group=group))+ # link the point by group.
+  xlab("date of harvest")+ #x axis title
+  ylab("ear weight(g)")+   #y axis title
+  guides(color=guide_legend(title="Cultivar"))+ #change legend title +
+  theme_dark()
+```
 
 ## Data format overview
 
-```{r }
+```{r,eval=FALSE}
 # path <- getwd() %>% sub("posts.*","data",.)
 # dat <-read.csv(paste0(path,'/kernel_combine.csv'))
-dat <-read.csv('../data/ear_combine.csv',
+dat <-read.csv('./data/kernel_combine.csv',
                 header = T,stringsAsFactors = F) %>%
   dplyr::filter(tiller=="M")
 glimpse(dat)
@@ -79,15 +154,17 @@ glimpse(dat)
 
 ## basic summary of kernel development summ for single spike
 
-    Sp: total spikelet
-    Fl: maximum floret 
-    sfl: total floret
-    kf: total full kernel
-    kh: total half kernel
-    ks: total small kernel
-    kp: potential kernel number 
-    fr: filling rate 
-    fc: potential filling rate
+```         
+Sp: total spikelet
+Fl: maximum floret 
+sfl: total floret
+kf: total full kernel
+kh: total half kernel
+ks: total small kernel
+kp: potential kernel number 
+fr: filling rate 
+fc: potential filling rate
+```
 
 ```{r }
 sum.dat <- dat %>% 

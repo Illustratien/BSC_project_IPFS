@@ -16,13 +16,13 @@ format:
 
 # Phenology and the growth of spike
 
-Welcome to the first course! During the following 2 hrs, you will learn:
+Welcome to the first course! During the following 2 hrs, you will learn data type of [`vectors`](https://towardsdatascience.com/learning-r-data-types-e698d23f8179#:~:text=First%2C%20R%20doesn%27t%20have,in%20R%20language%20is%20vector.), `function` and `%>%`.
 
 ::: callout-note
-1.  4 basic data types: ("chr","numeric","logical","Date") 
+1.  4 basic data types: ("chr","numeric","logical","Date")
 2.  functions, documentation and data type check
-3.  meaning of `%>%` and `.`  
-3.  indexing with pattern matching
+3.  meaning of `%>%` and `.`\
+4.  indexing with pattern matching
 :::
 
 Please make sure you have installed [`R & Rstudio`](https://posit.co/download/rstudio-desktop/).
@@ -83,7 +83,7 @@ str(c(1,"a"))
 
 Check this great package [tidyverse](https://dplyr.tidyverse.org/)!
 
-* Note that windows user may need to first download the [Rtools](https://cran.r-project.org/bin/windows/Rtools/) that match your R version.
+-   Note that windows user may need to first download the [Rtools](https://cran.r-project.org/bin/windows/Rtools/) that match your R version.
 
 You can check your R version by typing `version()` in your R console.
 
@@ -94,9 +94,10 @@ library(dplyr)
 ```
 
 ### Function: something ends with `()`
+
 Pipe (`%>%`) is available in r-package either `dplyr` or `magrittr`.
 
-Please use `%>%`  to avoid embedded functions.
+Please use `%>%` to avoid embedded functions.
 
 `.`stands for the result from the left side of the pipe.
 
@@ -104,7 +105,7 @@ For long line code, press `enter` after each `%>%`.
 
 Select all the codes by `ctrl A`.
 
-Indent the selected codes by `ctrl I`. 
+Indent the selected codes by `ctrl I`.
 
 ```{r,error=TRUE,eval=FALSE}
 # syntax of using pipe
@@ -151,13 +152,11 @@ paste0("a","1")
 ::: callout-challenge
 Use `str()` to check the data type of above line.
 
-You have two vectors, 
-`c("a","b")` and `c("1","2")` 
+You have two vectors, `c("a","b")` and `c("1","2")`
 
-How to use `paste` and `rep`to create sequence of `char` vector shown below? 
+How to use `paste` and `rep`to create sequence of `char` vector shown below?
 
-Check the arguments of `rep` to get more hints. 
-e.g.,
+Check the arguments of `rep` to get more hints. e.g.,
 
 `rep(c("a","b"),each=2)`
 
@@ -196,7 +195,7 @@ function_name  <-function(input){
 ```
 
 ::: callout-challenge
-write a function with documentation: input `vec` is a numeric vector with length 3, return `str` of average value of `vec` ± standard deviation of `vec`. 
+write a function with documentation: input `vec` is a numeric vector with length 3, return `str` of average value of `vec` ± standard deviation of `vec`.
 
 Visualize the step in your function by first writing your the possible steps in text!
 :::
@@ -273,11 +272,9 @@ if(is.character(arg)){
 ```
 
 ::: callout-challenge
-Inside your `plusone` function,
-please check first whether input `x` is numeric, then proceed the process.
+Inside your `plusone` function, please check first whether input `x` is numeric, then proceed the process.
 
-if not, return with message "wrong input type" using `stop()` 
-
+if not, return with message "wrong input type" using `stop()`
 :::
 
 ## Discussion goes here

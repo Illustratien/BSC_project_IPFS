@@ -25,14 +25,11 @@ data <- read.csv("../data/ear_summarized.csv")
 
 # Phenology and the growth of spike
 
-Welcome to the second course! Last week, we have learned the data type of [`vectors`](https://towardsdatascience.com/learning-r-data-types-e698d23f8179#:~:text=First%2C%20R%20doesn%27t%20have,in%20R%20language%20is%20vector.), `function` and `%>%`.
-
-During the following 2 hrs, you will learn:
+Welcome to the second course! You will learn `working directory`, subset elements from `vector`, `list` and `dataframe`.
 
 ::: callout-note
 1.  What is working directory (wd)?
 2.  How to subset elements from `vector`, `list` and `dataframe`
-3.  Plot with `ggplot`
 :::
 
 If you haven't download the data, please go to [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/).
@@ -44,7 +41,6 @@ create Week2.R and save it in folder `src`.
 ## What is working directory (wd)?
 
 ### abbreviation path: "." for wd and ".." for parent of wd
-
 
 `"."` means the working directory (wd) where this R script exists.
 
@@ -76,15 +72,15 @@ getwd() %>% dirname() %>% list.files(path=.)
 ```
 
 ::: callout-challenge
-Although the meaning of `.` is the same as `getwd()`,
-the content is depending on the environment you are working with.
+Although the meaning of `.` is the same as `getwd()`, the content is depending on the environment you are working with.
 
-Right click R studio logo, open a new R studio window,
-compare the result of `getwd()` in R project and R
+Right click R studio logo, open a new R studio window, compare the result of `getwd()` in R project and R
 :::
 
-### accessing files and folder inside a R project 
+### accessing files and folder inside a R project
+
 Which one do you prefer? Why do we prefer relative path?
+
 ```{r,error=TRUE,eval=FALSE}
 # absolute path, did you get error?
 "C:/Users/marse/seadrive_root/Tien-Che/My Libraries/PhD_Tien/Project/Postdoc_teaching/BSC_project_IPFS2023/data" %>% list.files(path=.)
@@ -97,31 +93,23 @@ paste0(parent_path,"/data") %>% list.files(path=.)
 "data" %>% list.files(path=.)
 
 ```
+
 ::: callout-challenge
-read from relative path, which one is correct?
-Assume working directory `current_path` is `"C/users/BSC_project/src"`
+read from relative path, which one is correct? Assume working directory `current_path` is `"C/users/BSC_project/src"`
 
-`Absolute_path = current_path +"/"+relative_path`
-Below are four relative paths.
-Please rewrite them in absolute (full) path form. What should `.` be replace? 
-Which two are the same?
+`Absolute_path = current_path +"/"+relative_path` Below are four relative paths. Please rewrite them in absolute (full) path form. What should `.` be replace? Which two are the same? Based on the figure illustated below, path 1-4 should be A,B,C or D?
 
-1. `"ear_summarized.csv"`
+1.  `"ear_summarized.csv"`
 
-2. `"data/ear_summarized.csv"`
+2.  `"data/ear_summarized.csv"`
 
-3. `"./data/ear_summarized.csv"`
+3.  `"./data/ear_summarized.csv"`
 
-4. `"../data/ear_summarized.csv"`
+4.  `"../data/ear_summarized.csv"`
 
+![](wd.png){width=800,height}
 :::
-::: callout-challenge
-go to folder data,
-use relative path and try to read file `phenology.csv`,
-use pipe,
-and assign the result to variable named `phenology`
 
-:::
 ## subsetting element from vetor with `accessors []`
 
 vector indexing start from 1 to the length of the vector.
@@ -164,7 +152,6 @@ vec[c(F,F,F)]
 vec %>% .[c(F)]
 vec[vec=="a"]
 
-
 # default str vector
 letters
 LETTERS
@@ -184,30 +171,35 @@ logical_vec <- c(TRUE, FALSE)
 subset_vec <- vec[logical_vec]
 subset_vec
 ```
+
 what did you observe? Is there any [vector recycling](https://rpubs.com/vipero7/vector-recycling-in-r)?
 
 What happen when you enter `vec[TRUE]`?
-
 :::
+
 Supplementary information of special datatypes:
 
-Empty : [`NULL`](https://www.r-bloggers.com/2018/07/r-null-values-null-na-nan-inf/) 
+Empty : [`NULL`](https://www.r-bloggers.com/2018/07/r-null-values-null-na-nan-inf/)
 
 Indexing at zero position:[`numeric(0)`](https://www.programmingr.com/r-error-messages/numeric0-error/)
 
 ### list: keep the diversity of data type
 
-list_object\<- list(`element_name`=`value`)
+list_object\<- list(`element_name`=`value`) Make a list is like put a `cookie`(content of list element) in the `cookie jar`(list element).
 
-There are 3 common accessors for `list`:
+There are 3 common accessors for `list`: 1. access the list element (`cookie jar`)
 
-`[]` access the list element 
+`[]` access the list position
+
+2.  acess the content of list element (`cookie`)
 
 `[[]]` access the content of a list element by position or name
 
 `$` access the content of a list element by name
-list_object`$element_name` or list_object`[[element_name]]`
 
+list_object`$element_name` or list_object`[[element_name]]`
+![list without name](list_example.png){width=800,height}
+![`list with name`](list_example2.png){width=800,height}
 More about the [accessors](https://www.r-bloggers.com/2009/10/r-accessors-explained/)
 
 ```{r,eval=FALSE}
@@ -243,21 +235,24 @@ long_list_example[[1]]
 long_list_example[[1]][1]
 
 ```
+
 ::: callout-challenge
 can you guess what data type are these?
-  
+
 ```{r,eval=FALSE}
+# non-sense
 long_list_example[[1]][2]
 long_list_example[1][1]
 long_list_example[1][2]
 long_list_example[2][2]
+# meaningful
 long_list_example[[2]][2]
 ```
 :::
 
 ### lapply: return as a list
-lapply(vector, function)
-?lapply
+
+lapply(vector, function) ?lapply
 
 ```{r,eval=FALSE}
 # input is vector
@@ -271,12 +266,13 @@ list(2,4,c(1,4),"8") %>%
   lapply(.,FUN=function(x){x+3})
 
 ```
+
 ::: callout-challenge
 Why you get error in the last line?
 :::
 
-
 ### dataframe is a special type of list
+
 each column has one data type
 
 ```{r,error=TRUE,eval=FALSE}
@@ -296,19 +292,22 @@ df <- data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1)) %>%
 df
 
 ```
+
 ::: callout-challenge
 Is it possible to create data frame with vectors of different length?
+
 ```{r,eval=FALSE}
 data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1),                 temp=c(20,13))
 ```
 :::
 
 ### extract columns from data frame
-You can subset `dataframe` by indexing [`row`,`column`]
 
-`dataframe`[,`column`] select the whole role for selected columnn
+You can subset `dataframe` by indexing \[`row`,`column`\]
 
-`dataframe`[`row`,] select the whole column of selected rows
+`dataframe`\[,`column`\] select the whole role for selected columnn
+
+`dataframe`\[`row`,\] select the whole column of selected rows
 
 Select multiple row or column by puting logical or numeric vector in the square bracket.
 
@@ -327,86 +326,15 @@ df[,1] %>% str()
 ```
 
 ::: callout-challenge
-use `df`, 1. Access column `thermal_time` as `vector` 2. Extract `temp` when `time` is `2023-04-17`
+use `df`, 1. Access column `thermal_time` as `vector`
+
+2.  Extract `temp` when `time` is `2023-04-17`
+
+3.  Extract first row and first column with `[1,]`and `[,1]` 
 :::
 
 ::: callout-challenge
-if you want to turn a data frame (`df`) by 90 degree ("transpose"),
-which function can you use? 
-Could you find the answer on google or chatGPT?
-
+if you want to turn a data frame (`df`) by 90 degree ("transpose"), which function can you use? Could you find the answer on google or chatGPT?
 :::
-
-### practice dataframe with real data
-```{r,eval=FALSE}
-data <- read.csv("data/ear_summarized.csv")
-# data %>% str()
-data %>% glimpse()
-names(data)
-# extract column from dataframe
-data$BBCH
-data %>% unique()
-
-# summarize dataframe
-lapply(data, range)
-# turn as data frame
-lapply(data, range) %>% data.frame()
-
-summary(data)
-
-```
-
-## Plot
-
-### GGplot2
-
-Requirements of scientific plot. 
-
-1. `axis title` with unit if there is any.
-
-2.  `legend title` full name instead of default abbreviation.
-
-Figure title.
-
-[ggplot 2](https://ggplot2.tidyverse.org) [ggplot gallery](https://r-graph-gallery.com)
-
-```{r,eval=FALSE}
-library(ggplot)
-library(ggplot2)
-```
-
-```{r}
-#| label: fig-growth
-#| fig-cap: "Growth of ear weight over time."
-#| fig-width: 12
-#| fig-height: 3.5
-
-data %>% 
-  ggplot(aes(x=date,y=weight,color=var))+
-  geom_point()+
-  geom_line(aes(group=group))+ # link the point by group.
-  xlab("date of harvest")+ #x axis title
-  ylab("ear weight(g)")+   #y axis title
-  guides(color=guide_legend(title="Cultivar")) #change legend title 
-```
-
-::: callout-challenge
-use `theme_xx()` function series to change background of the plot. Find your favorite one.
-:::
-
-```{r,echo=FALSE}
-#| fig-cap: "dark theme example."
-#| fig-width: 12
-#| fig-height: 3.5
-
-data %>% 
-  ggplot(aes(x=date,y=weight,color=var))+
-  geom_point()+
-  geom_line(aes(group=group))+ # link the point by group.
-  xlab("date of harvest")+ #x axis title
-  ylab("ear weight(g)")+   #y axis title
-  guides(color=guide_legend(title="Cultivar"))+ #change legend title +
-  theme_dark()
-```
 
 ## Discussion goes here
