@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "BSC_project_IPFS2023",
     "section": "",
-    "text": "Week3: Spikelet development\n\n\n\n\n\n\n\nR-basic\n\n\n\n\n\n\n\n\n\n\n\nMay 2, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n  \n\n\n\n\nWeek2: The growth of spike in winter wheat\n\n\n\n\n\n\n\nR-basic\n\n\n\n\n\n\n\n\n\n\n\nApr 25, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n  \n\n\n\n\nWeek1: Phenology and the growth of spike\n\n\n\n\n\n\n\nR-basic\n\n\n\n\n\n\n\n\n\n\n\nApr 18, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek3: Spikelet development\n\n\n\n\n\n\n\n\n\n\n\n\nMay 2, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n  \n\n\n\n\nWeek2: The growth of spike in winter wheat\n\n\n\n\n\n\n\n\n\n\n\n\nApr 25, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n  \n\n\n\n\nWeek1: Phenology and the growth of spike\n\n\n\n\n\n\n\n\n\n\n\n\nApr 18, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -52,8 +52,8 @@
     "objectID": "posts/Week3/index.html#data-format-overview",
     "href": "posts/Week3/index.html#data-format-overview",
     "title": "Week3: Spikelet development",
-    "section": "0.3 Data format overview",
-    "text": "0.3 Data format overview\n\n# path <- getwd() %>% sub(\"posts.*\",\"data\",.)\n# dat <-read.csv(paste0(path,'/kernel_combine.csv'))\ndat <-read.csv('./data/kernel_combine.csv',\n                header = T,stringsAsFactors = F) %>%\n  dplyr::filter(tiller==\"M\")\nglimpse(dat)"
+    "section": "0.2 Data format overview",
+    "text": "0.2 Data format overview\n\n# path <- getwd() %>% sub(\"posts.*\",\"data\",.)\n# dat <-read.csv(paste0(path,'/kernel_combine.csv'))\ndat <-read.csv('./data/kernel_combine.csv',\n                header = T,stringsAsFactors = F) %>%\n  dplyr::filter(tiller==\"M\")\nglimpse(dat)"
   },
   {
     "objectID": "posts/Week3/index.html#classify-spikelet-based-on-position",
@@ -213,7 +213,7 @@
     "objectID": "posts/Week3/index.html#plot",
     "href": "posts/Week3/index.html#plot",
     "title": "Week3: Spikelet development",
-    "section": "0.2 Plot",
-    "text": "0.2 Plot\n\n0.2.1 GGplot2\nRequirements of scientific plot.\n\naxis title with unit if there is any.\nlegend title full name instead of default abbreviation.\n\nFigure title.\nggplot 2 ggplot gallery\n\nlibrary(ggplot)\nlibrary(ggplot2)\n\n\ndata %>% \n  ggplot(aes(x=date,y=weight,color=var))+\n  geom_point()+\n  geom_line(aes(group=group))+ # link the point by group.\n  xlab(\"date of harvest\")+ #x axis title\n  ylab(\"ear weight(g)\")+   #y axis title\n  guides(color=guide_legend(title=\"Cultivar\")) #change legend title \n\n\n\n\nFigure 1: Growth of ear weight over time.\n\n\n\n\n\n\n\n\n\n\nChallenge\n\n\n\nuse theme_xx() function series to change background of the plot. Find your favorite one.\n\n\n\n\n\n\n\ndark theme example."
+    "section": "0.1 Plot",
+    "text": "0.1 Plot\n\n0.1.1 GGplot2\nRequirements of scientific plot.\n\naxis title with unit if there is any.\nlegend title full name instead of default abbreviation.\n\nFigure title.\nggplot 2 ggplot gallery\n\nlibrary(ggplot)\nlibrary(ggplot2)\n\n\ndata %>% \n  ggplot(aes(x=date,y=weight,color=var))+\n  geom_point()+\n  geom_line(aes(group=group))+ # link the point by group.\n  xlab(\"date of harvest\")+ #x axis title\n  ylab(\"ear weight(g)\")+   #y axis title\n  guides(color=guide_legend(title=\"Cultivar\")) #change legend title \n\n\n\n\nFigure 1: Growth of ear weight over time.\n\n\n\n\n\n\n\n\n\n\nChallenge\n\n\n\nuse theme_xx() function series to change background of the plot. Find your favorite one.\n\n\n\n\n\n\n\ndark theme example."
   }
 ]

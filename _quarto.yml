@@ -7,12 +7,14 @@ website:
   navbar:
     right:
       - about.qmd
+      - sylabus.qmd
       - text: Moodle
         href: https://moodle.hu-berlin.de/course/view.php?id=110830
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: minty
+    css: morph.scss
+    # css: styles.css
 
 editor: visual
 

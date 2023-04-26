@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3PR0QMTD37"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-3PR0QMTD37');
+</script>
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -125,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../morph.scss">
 </head>
 
 <body class="nav-fixed">
@@ -149,6 +157,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../../sylabus.html">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=110830">
  <span class="menu-text">Moodle</span></a>
   </li>  
@@ -159,38 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Week3: Spikelet development</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">R-basic</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Tien-Cheng </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">May 2, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -198,15 +179,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#read-data-and-rproject" id="toc-read-data-and-rproject" class="nav-link active" data-scroll-target="#read-data-and-rproject"><span class="toc-section-number">0.1</span>  Read data and Rproject</a>
+  <li><a href="#practice-dataframe-with-real-data" id="toc-practice-dataframe-with-real-data" class="nav-link active" data-scroll-target="#practice-dataframe-with-real-data"><span class="toc-section-number">0.0.1</span>  practice dataframe with real data</a></li>
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot"><span class="toc-section-number">0.1</span>  Plot</a>
   <ul class="collapse">
-  <li><a href="#practice-dataframe-with-real-data" id="toc-practice-dataframe-with-real-data" class="nav-link" data-scroll-target="#practice-dataframe-with-real-data"><span class="toc-section-number">0.1.1</span>  practice dataframe with real data</a></li>
+  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><span class="toc-section-number">0.1.1</span>  GGplot2</a></li>
   </ul></li>
-  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot"><span class="toc-section-number">0.2</span>  Plot</a>
-  <ul class="collapse">
-  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><span class="toc-section-number">0.2.1</span>  GGplot2</a></li>
-  </ul></li>
-  <li><a href="#data-format-overview" id="toc-data-format-overview" class="nav-link" data-scroll-target="#data-format-overview"><span class="toc-section-number">0.3</span>  Data format overview</a></li>
+  <li><a href="#data-format-overview" id="toc-data-format-overview" class="nav-link" data-scroll-target="#data-format-overview"><span class="toc-section-number">0.2</span>  Data format overview</a></li>
   <li><a href="#check-the-combination-of-the-experimental-design" id="toc-check-the-combination-of-the-experimental-design" class="nav-link" data-scroll-target="#check-the-combination-of-the-experimental-design"><span class="toc-section-number">1</span>  check the combination of the experimental design</a>
   <ul class="collapse">
   <li><a href="#classify-spikelet-based-on-position" id="toc-classify-spikelet-based-on-position" class="nav-link" data-scroll-target="#classify-spikelet-based-on-position"><span class="toc-section-number">1.1</span>  classify spikelet based on position</a></li>
@@ -218,10 +196,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week3: Spikelet development</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R-basic</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Tien-Cheng </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 2, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
 
 <p>Welcome to the third course! During the following 2 hrs, you will learn <code>ggplot</code> and <code>dataframe</code> wrangling:</p>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -240,10 +247,9 @@ Note
 </ol>
 </div>
 </div>
-<section id="read-data-and-rproject" class="level2" data-number="0.1">
-<h2 data-number="0.1" class="anchored" data-anchor-id="read-data-and-rproject"><span class="header-section-number">0.1</span> Read data and Rproject</h2>
-<section id="practice-dataframe-with-real-data" class="level3" data-number="0.1.1">
-<h3 data-number="0.1.1" class="anchored" data-anchor-id="practice-dataframe-with-real-data"><span class="header-section-number">0.1.1</span> practice dataframe with real data</h3>
+<div class="page-columns page-full"><p><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> ## Read data and Rproject</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;This is a sidenote that was entered using a footnote.</p></li></div></div>
+<section id="practice-dataframe-with-real-data" class="level3" data-number="0.0.1">
+<h3 data-number="0.0.1" class="anchored" data-anchor-id="practice-dataframe-with-real-data"><span class="header-section-number">0.0.1</span> practice dataframe with real data</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/ear_summarized.csv"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data %&gt;% str()</span></span>
@@ -261,11 +267,10 @@ Note
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-</section>
-<section id="plot" class="level2" data-number="0.2">
-<h2 data-number="0.2" class="anchored" data-anchor-id="plot"><span class="header-section-number">0.2</span> Plot</h2>
-<section id="ggplot2" class="level3" data-number="0.2.1">
-<h3 data-number="0.2.1" class="anchored" data-anchor-id="ggplot2"><span class="header-section-number">0.2.1</span> GGplot2</h3>
+<section id="plot" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="plot"><span class="header-section-number">0.1</span> Plot</h2>
+<section id="ggplot2" class="level3" data-number="0.1.1">
+<h3 data-number="0.1.1" class="anchored" data-anchor-id="ggplot2"><span class="header-section-number">0.1.1</span> GGplot2</h3>
 <p>Requirements of scientific plot.</p>
 <ol type="1">
 <li><p><code>axis title</code> with unit if there is any.</p></li>
@@ -311,7 +316,7 @@ Challenge
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="1152"></p>
 <p></p><figcaption class="figure-caption">dark theme example.</figcaption><p></p>
 </figure>
 </div>
@@ -319,8 +324,8 @@ Challenge
 </div>
 </section>
 </section>
-<section id="data-format-overview" class="level2" data-number="0.3">
-<h2 data-number="0.3" class="anchored" data-anchor-id="data-format-overview"><span class="header-section-number">0.3</span> Data format overview</h2>
+<section id="data-format-overview" class="level2" data-number="0.2">
+<h2 data-number="0.2" class="anchored" data-anchor-id="data-format-overview"><span class="header-section-number">0.2</span> Data format overview</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># path &lt;- getwd() %&gt;% sub("posts.*","data",.)</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dat &lt;-read.csv(paste0(path,'/kernel_combine.csv'))</span></span>
@@ -462,13 +467,14 @@ $ fc       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>),<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
 
 </section>
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

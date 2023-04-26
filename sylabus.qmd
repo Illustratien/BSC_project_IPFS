@@ -1,0 +1,13 @@
+---
+title: "Syllabus"
+favicon: calendar3
+
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(magrittr);suppressWarnings(library(dplyr));
+suppressWarnings(library(ggplot2));library(tidyr);
+library(kableExtra);library(knitr);library(purrr)
+options(dplyr.summarise.inform = FALSE)
+# data <- xlsx::read.xlsx("../data/ear_summarized.csv")
+```

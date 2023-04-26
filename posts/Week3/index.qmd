@@ -12,6 +12,7 @@ format:
   html: 
     # code-fold: true
     html-math-method: katex
+reference-location: margin
 ---
 
 ```{r setup, include=FALSE}
@@ -29,10 +30,10 @@ dat <-read.csv('../data/kernel_combine.csv',
 Welcome to the third course! During the following 2 hrs, you will learn `ggplot` and `dataframe` wrangling:
 
 ::: callout-note
-1.  ggplot2 advance
+1.  ggplot2
 2.  
 :::
-
+^[footnote.] 
 ## Read data and Rproject
 
 ### practice dataframe with real data
@@ -154,17 +155,15 @@ glimpse(dat)
 
 ## basic summary of kernel development summ for single spike
 
-```         
-Sp: total spikelet
-Fl: maximum floret 
-sfl: total floret
-kf: total full kernel
-kh: total half kernel
-ks: total small kernel
-kp: potential kernel number 
-fr: filling rate 
-fc: potential filling rate
-```
+    Sp: total spikelet
+    Fl: maximum floret 
+    sfl: total floret
+    kf: total full kernel
+    kh: total half kernel
+    ks: total small kernel
+    kp: potential kernel number 
+    fr: filling rate 
+    fc: potential filling rate
 
 ```{r }
 sum.dat <- dat %>% 
