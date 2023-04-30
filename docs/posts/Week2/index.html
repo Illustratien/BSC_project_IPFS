@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3PR0QMTD37"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-3PR0QMTD37');
-</script>
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.2.269">
 
@@ -133,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../morph.scss">
 </head>
 
 <body class="nav-fixed">
@@ -157,6 +149,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../../sylabus.html">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="https://moodle.hu-berlin.de/course/view.php?id=110830">
  <span class="menu-text">Moodle</span></a>
   </li>  
@@ -167,38 +163,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Week2: The growth of spike in winter wheat</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">R-basic</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Tien-Cheng </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">April 25, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -226,14 +191,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week2: The growth of spike in winter wheat</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R-basic</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Tien-Cheng </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 25, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
 
 <section id="phenology-and-the-growth-of-spike" class="level1">
 <h1>Phenology and the growth of spike</h1>
-<p>Welcome to the second course! You will learn <code>working directory</code>, subset elements from <code>vector</code>, <code>list</code> and <code>dataframe</code></p>
+<p>Welcome to the second course! You will learn <code>working directory</code>, subset elements from <code>vector</code>, <code>list</code> and <code>dataframe</code>.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -421,7 +415,20 @@ Challenge
 </ol>
 <p><code>[[]]</code> access the content of a list element by position or name</p>
 <p><code>$</code> access the content of a list element by name</p>
-<p>list_object<code>$element_name</code> or list_object<code>[[element_name]]</code> <img src="list_example.png" class="img-fluid" alt="list without name"> <img src="list_example2.png" class="img-fluid" alt="list with name"> More about the <a href="https://www.r-bloggers.com/2009/10/r-accessors-explained/">accessors</a></p>
+<p>list_object<code>$element_name</code> or list_object<code>[[element_name]]</code></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="list_example.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">list without name</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="list_example2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">list with name</figcaption><p></p>
+</figure>
+</div>
+<p>More about the <a href="https://www.r-bloggers.com/2009/10/r-accessors-explained/">accessors</a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a simple list</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="dv">1</span>)</span>
@@ -560,8 +567,9 @@ Challenge
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>use <code>df</code>, 1. Access column <code>thermal_time</code> as <code>vector</code></p>
-<ol start="2" type="1">
+<p>use <code>df</code>,</p>
+<ol type="1">
+<li><p>Access column <code>thermal_time</code> as <code>vector</code></p></li>
 <li><p>Extract <code>temp</code> when <code>time</code> is <code>2023-04-17</code></p></li>
 <li><p>Extract first row and first column with <code>[1,]</code>and <code>[,1]</code></p></li>
 </ol>

@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3PR0QMTD37"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-3PR0QMTD37');
-</script>
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.2.269">
 
@@ -179,18 +171,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#practice-dataframe-with-real-data" id="toc-practice-dataframe-with-real-data" class="nav-link active" data-scroll-target="#practice-dataframe-with-real-data"><span class="toc-section-number">0.0.1</span>  practice dataframe with real data</a></li>
-  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot"><span class="toc-section-number">0.1</span>  Plot</a>
+  <li><a href="#practice-dataframe-with-real-data" id="toc-practice-dataframe-with-real-data" class="nav-link active" data-scroll-target="#practice-dataframe-with-real-data"><span class="toc-section-number">0.1</span>  practice dataframe with real data</a></li>
+  <li><a href="#dplyr" id="toc-dplyr" class="nav-link" data-scroll-target="#dplyr"><span class="toc-section-number">1</span>  dplyr</a>
   <ul class="collapse">
-  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><span class="toc-section-number">0.1.1</span>  GGplot2</a></li>
+  <li><a href="#subset-rows" id="toc-subset-rows" class="nav-link" data-scroll-target="#subset-rows"><span class="toc-section-number">1.1</span>  Subset row(s)</a></li>
+  <li><a href="#add-columns" id="toc-add-columns" class="nav-link" data-scroll-target="#add-columns"><span class="toc-section-number">1.2</span>  Add column(s)</a></li>
+  <li><a href="#combine-dataframes-by-column." id="toc-combine-dataframes-by-column." class="nav-link" data-scroll-target="#combine-dataframes-by-column."><span class="toc-section-number">1.3</span>  Combine dataframes by column.</a></li>
   </ul></li>
-  <li><a href="#data-format-overview" id="toc-data-format-overview" class="nav-link" data-scroll-target="#data-format-overview"><span class="toc-section-number">0.2</span>  Data format overview</a></li>
-  <li><a href="#check-the-combination-of-the-experimental-design" id="toc-check-the-combination-of-the-experimental-design" class="nav-link" data-scroll-target="#check-the-combination-of-the-experimental-design"><span class="toc-section-number">1</span>  check the combination of the experimental design</a>
+  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><span class="toc-section-number">2</span>  GGplot2</a>
   <ul class="collapse">
-  <li><a href="#classify-spikelet-based-on-position" id="toc-classify-spikelet-based-on-position" class="nav-link" data-scroll-target="#classify-spikelet-based-on-position"><span class="toc-section-number">1.1</span>  classify spikelet based on position</a></li>
-  <li><a href="#lookuptable-of-treatment-not-yet" id="toc-lookuptable-of-treatment-not-yet" class="nav-link" data-scroll-target="#lookuptable-of-treatment-not-yet"><span class="toc-section-number">1.2</span>  lookuptable of treatment (not yet)</a></li>
-  <li><a href="#basic-summary-of-kernel-development-summ-for-single-spike" id="toc-basic-summary-of-kernel-development-summ-for-single-spike" class="nav-link" data-scroll-target="#basic-summary-of-kernel-development-summ-for-single-spike"><span class="toc-section-number">1.3</span>  basic summary of kernel development summ for single spike</a></li>
-  <li><a href="#data-wrangling-and-plot-with-facet" id="toc-data-wrangling-and-plot-with-facet" class="nav-link" data-scroll-target="#data-wrangling-and-plot-with-facet"><span class="toc-section-number">1.4</span>  Data wrangling and plot with facet</a></li>
+  <li><a href="#ggplot-grammar-layer-wise-commands" id="toc-ggplot-grammar-layer-wise-commands" class="nav-link" data-scroll-target="#ggplot-grammar-layer-wise-commands"><span class="toc-section-number">2.1</span>  ggplot grammar: layer-wise commands</a></li>
+  <li><a href="#requirements-of-scientific-plot." id="toc-requirements-of-scientific-plot." class="nav-link" data-scroll-target="#requirements-of-scientific-plot."><span class="toc-section-number">2.2</span>  Requirements of scientific plot.</a></li>
+  </ul></li>
+  <li><a href="#recommendations" id="toc-recommendations" class="nav-link" data-scroll-target="#recommendations"><span class="toc-section-number">3</span>  Recommendations</a>
+  <ul class="collapse">
+  <li><a href="#online-tutorials" id="toc-online-tutorials" class="nav-link" data-scroll-target="#online-tutorials"><span class="toc-section-number">3.1</span>  online tutorials:</a></li>
+  <li><a href="#online-books" id="toc-online-books" class="nav-link" data-scroll-target="#online-books"><span class="toc-section-number">3.2</span>  online books:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -237,59 +233,199 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Note
+Learning goals
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>ggplot2 advance</li>
-<li></li>
+<li>data frame warngling</li>
+<li>ggplot2</li>
 </ol>
 </div>
 </div>
-<div class="page-columns page-full"><p><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> ## Read data and Rproject</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;This is a sidenote that was entered using a footnote.</p></li></div></div>
-<section id="practice-dataframe-with-real-data" class="level3" data-number="0.0.1">
-<h3 data-number="0.0.1" class="anchored" data-anchor-id="practice-dataframe-with-real-data"><span class="header-section-number">0.0.1</span> practice dataframe with real data</h3>
+<section id="practice-dataframe-with-real-data" class="level3 page-columns page-full" data-number="0.1">
+<h3 data-number="0.1" class="anchored" data-anchor-id="practice-dataframe-with-real-data"><span class="header-section-number">0.1</span> practice dataframe with real data</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/ear_summarized.csv"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data %&gt;% str()</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># extract column from dataframe</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>BBCH</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize dataframe</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(data, range)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># turn as data frame</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(data, range) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>()</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time=</span><span class="fu">as.Date</span>(<span class="st">"2023-04-16"</span>,<span class="at">format=</span><span class="st">"%Y-%m-%d"</span>)<span class="sc">+</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>),</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">temp=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">13</span>), </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">thermal_time=</span><span class="fu">cumsum</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">13</span>)))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">glimpse</span>() </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># extract column from dataframe</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>thermal_time</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df[,<span class="dv">3</span>]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df[,<span class="st">'thermal_time'</span>]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'thermal_time'</span>]]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># not work</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>df[thermal_time]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># different error message</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#!! name space conflict</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>df[time]</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>time</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize dataframe</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(df, range)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># turn as data frame</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(df, range) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>()</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned page-columns page-full">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body page-columns page-full">
+<p>Practice with large data set <code>ear_summarized.csv</code> in folder <code>data</code>.</p>
+<ol start="0" type="1">
+<li>read the file with relative path using function <code>read.csv()</code>.</li>
+<li>find the row and column number of data frame by <code>rown</code> and <code>coln</code></li>
+<li>check the range of each column using <code>lapply</code>, how many unique days exist in column <code>date</code></li>
+<li>compare the result of <code>glimpse</code> and <code>str</code></li>
+<li>extract column <code>weight</code> using <code>[]</code>,<code>[[]]</code>and <code>$</code> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>what is the function of <code>head()</code> and <code>tail()</code>?</li>
+<li>how to extract the first three row using <code>[]</code>?</li>
+</ol>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;You can subset <code>dataframe</code> by indexing [<code>row</code>,<code>column</code>] <code>dataframe</code>[,<code>column</code>] select the whole role for selected columnn <code>dataframe</code>[<code>row</code>,] select the whole column of selected rows # <code>{r,eval=FALSE} # data &lt;- read.csv("data/ear_summarized.csv") #</code></p></li></div></div>
 </div>
 </section>
-<section id="plot" class="level2" data-number="0.1">
-<h2 data-number="0.1" class="anchored" data-anchor-id="plot"><span class="header-section-number">0.1</span> Plot</h2>
-<section id="ggplot2" class="level3" data-number="0.1.1">
-<h3 data-number="0.1.1" class="anchored" data-anchor-id="ggplot2"><span class="header-section-number">0.1.1</span> GGplot2</h3>
-<p>Requirements of scientific plot.</p>
-<ol type="1">
-<li><p><code>axis title</code> with unit if there is any.</p></li>
-<li><p><code>legend title</code> full name instead of default abbreviation.</p></li>
-</ol>
-<p>Figure title.</p>
-<p><a href="https://ggplot2.tidyverse.org">ggplot 2</a> <a href="https://r-graph-gallery.com">ggplot gallery</a></p>
+<section id="dplyr" class="level2 page-columns page-full" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="dplyr"><span class="header-section-number">1</span> dplyr</h2>
+<section id="subset-rows" class="level3 page-columns page-full" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="subset-rows"><span class="header-section-number">1.1</span> Subset row(s)</h3>
+<div class="page-columns page-full"><p><code>dplyr::filter()</code>: extract row where the condition matched. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;<code>r_package::function_name</code> specify the function name by package name.<code>::</code> has similar meaning like “from”. It is useful to avoid name space conflict when same function name is used by multiple library that you are using.</p></li></div></div>
+<p>e.g., extract <code>temp</code> where <code>time</code> is <code>2023-04-17</code> in <code>df</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df$time %&gt;% str()</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(time<span class="sc">==</span><span class="st">'2023-04-17'</span>) <span class="sc">%&gt;%</span> .<span class="sc">$</span>temp</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(time<span class="sc">==</span><span class="fu">as.Date</span>(<span class="st">'2023-04-17'</span>)) <span class="sc">%&gt;%</span> .<span class="sc">$</span>temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="add-columns" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="add-columns"><span class="header-section-number">1.2</span> Add column(s)</h3>
+<p><code>dplyr::mutate()</code>: add one or multiple columns to dataframe.</p>
+<p>e.g., add column<code>Year</code> to <code>df</code>, its value is <code>'2023'</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># result is not save</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Year=</span><span class="st">"2023"</span>) </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># result is saved</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Year <span class="ot">&lt;-</span> <span class="st">"2023"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'Year'</span>]] <span class="ot">&lt;-</span> <span class="st">"2023"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How to save result using <code>%&gt;%</code>? Check example with <code>?mutate</code>.</p>
+</div>
+</div>
+</section>
+<section id="combine-dataframes-by-column." class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="combine-dataframes-by-column."><span class="header-section-number">1.3</span> Combine dataframes by column.</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time=</span><span class="fu">as.Date</span>(<span class="st">"2023-04-16"</span>,<span class="at">format=</span><span class="st">"%Y-%m-%d"</span>)<span class="sc">+</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>),</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">temp=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">13</span>), </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">thermal_time=</span><span class="fu">cumsum</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">13</span>)))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># with same length dataframe</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ear_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time=</span><span class="fu">as.Date</span>(<span class="st">"2023-04-16"</span>,<span class="at">format=</span><span class="st">"%Y-%m-%d"</span>)<span class="sc">+</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ear_weight=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">50</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(df,ear_df,<span class="at">by=</span><span class="st">"time"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">left_join</span>(df,ear_df,<span class="at">by=</span><span class="st">"time"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># combind with vector of same length </span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(df, <span class="at">ear_weight=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">50</span>))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>ear_weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">40</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># with differnt length </span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>short_ear_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time=</span><span class="fu">as.Date</span>(<span class="st">"2023-04-16"</span>,<span class="at">format=</span><span class="st">"%Y-%m-%d"</span>)<span class="sc">+</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>),</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                           <span class="at">ear_weight=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">40</span>))</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(df,short_ear_df,<span class="at">by=</span><span class="st">"time"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">left_join</span>(df,short_ear_df,<span class="at">by=</span><span class="st">"time"</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># combind with vector of different length </span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(df, <span class="at">ear_weight=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">40</span>))</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>ear_weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Check description of <code>merge</code> and <code>left_join</code>, how are they different from each other? What happen if you remove the argument <code>by</code>?</p>
+</div>
+</div>
+</section>
+</section>
+<section id="ggplot2" class="level2 page-columns page-full" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="ggplot2"><span class="header-section-number">2</span> GGplot2</h2>
+<section id="ggplot-grammar-layer-wise-commands" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="ggplot-grammar-layer-wise-commands"><span class="header-section-number">2.1</span> ggplot grammar: layer-wise commands</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://api.rpubs.com/NemiVoraR/511391"><img src="Rpubs.png" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">layers of ggplot: click picture for original source</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="GGplot.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">symbol, aes &amp; …</figcaption><p></p>
+</figure>
+</div>
+<p>Top layer <code>ggplot()</code>and sub-layers <code>sublayer_command()</code>, they are separated by <code>+</code>.</p>
+<p>Within each layer, there may be an aesthetic function <code>aes()</code> to set aesthetic setting like <code>x</code>,<code>y</code> and <code>color</code>,<code>fill</code> or <code>shape</code>. Function <code>ggplot()</code> will not generate any graph but used for setting common aesthetic setting across the sub-layer. Plot type are specify in sub-layer with prefix <code>geom_xx</code>.</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+order matters!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If there are conflicts between the sub-layer commands, the latter will overwrite the previous one!</p>
+</div>
+</div>
+</section>
+<section id="requirements-of-scientific-plot." class="level3 page-columns page-full" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="requirements-of-scientific-plot."><span class="header-section-number">2.2</span> Requirements of scientific plot.</h3>
+<ol type="1">
+<li><p>axis title: specify with unit if there is any using <code>xlab()</code> or <code>ylab()</code>.</p></li>
+<li><p>legend title: full name instead of default abbreviation using <code>guides()</code>.</p></li>
+<li><p>other important rules: <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p></li>
+</ol>
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;<a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833">Ten simple rules for better figures</a> <a href="https://www.simplifiedsciencepublishing.com/resources/how-to-make-good-graphs-and-figures-for-scientific-papers">How to Make Good Graphs and Figures for Scientific Papers</a></p></li></div><div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Watch out the names!</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>weight,<span class="at">color=</span>var))<span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>group))<span class="sc">+</span> <span class="co"># link the point by group.</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"date of harvest"</span>)<span class="sc">+</span> <span class="co">#x axis title</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"ear weight(g)"</span>)<span class="sc">+</span>   <span class="co">#y axis title</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Cultivar"</span>)) <span class="co">#change legend title </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>weight,<span class="at">color=</span>var))<span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>group))<span class="sc">+</span> <span class="co"># link the point by group.</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"date of harvest"</span>)<span class="sc">+</span> <span class="co">#x axis title</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"ear weight(g)"</span>)<span class="sc">+</span>   <span class="co">#y axis title</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Cultivar"</span>)) <span class="co">#change legend title </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-growth" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -299,177 +435,43 @@ Note
 </div>
 </div>
 </div>
-<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Challenge
+challenge : use <code>theme_xx()</code> function series to change background of the plot. Click for example.
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>use <code>theme_xx()</code> function series to change background of the plot. Find your favorite one.</p>
-</div>
-</div>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="1152"></p>
 <p></p><figcaption class="figure-caption">dark theme example.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<p>factors, levels, for loop, long to wide, wide to long</p>
 </section>
 </section>
-<section id="data-format-overview" class="level2" data-number="0.2">
-<h2 data-number="0.2" class="anchored" data-anchor-id="data-format-overview"><span class="header-section-number">0.2</span> Data format overview</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># path &lt;- getwd() %&gt;% sub("posts.*","data",.)</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dat &lt;-read.csv(paste0(path,'/kernel_combine.csv'))</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'./data/kernel_combine.csv'</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">header =</span> T,<span class="at">stringsAsFactors =</span> F) <span class="sc">%&gt;%</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(tiller<span class="sc">==</span><span class="st">"M"</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="recommendations" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="recommendations"><span class="header-section-number">3</span> Recommendations</h2>
+<section id="online-tutorials" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="online-tutorials"><span class="header-section-number">3.1</span> online tutorials:</h3>
+<p><a href="https://www.datacamp.com/cheat-sheet/ggplot2-cheat-sheet">ggplot datacamp</a> <a href="https://ggplot2.tidyverse.org">ggplot 2</a> <a href="https://r-graph-gallery.com">ggplot gallery</a></p>
 </section>
-<section id="check-the-combination-of-the-experimental-design" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> check the combination of the experimental design</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(car,var,nitrogen,time,rep) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 227 x 5
-# Groups:   car, var, nitrogen, time [48]
-     car var     nitrogen time    rep
-   &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;
- 1     1 Alves   n3       t1        1
- 2     1 Alves   n3       t1        2
- 3     1 Alves   n3       t1        3
- 4     1 Alves   n3       t1        4
- 5     1 Alves   n3       t1        5
- 6     1 Apertus n3       t1        1
- 7     1 Apertus n3       t1        2
- 8     1 Apertus n3       t1        4
- 9     1 Apertus n3       t1        5
-10     1 Esket   n3       t1        1
-# ... with 217 more rows</code></pre>
-</div>
-</div>
-<section id="classify-spikelet-based-on-position" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="classify-spikelet-based-on-position"><span class="header-section-number">1.1</span> classify spikelet based on position</h2>
-<p>the spike of the main shoot was dissected to count the total number of floret in</p>
-<ul>
-<li><p>basal (third-fifth spikelet from the bottom)</p></li>
-<li><p>central (middle spikelets)</p></li>
-<li><p>apical (third-fifth spikelet from the top) spikelets throughout the spike <a href="https://doi.org/10.1016/j.fcr.2020.107908">reference</a></p></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&lt;&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(car,var,nitrogen,time,rep) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">type=</span><span class="fu">cut</span>(spike,<span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>(),</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">type=</span><span class="fu">case_when</span>(type<span class="sc">==</span><span class="dv">1</span><span class="sc">~</span><span class="st">"basal"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                        type<span class="sc">==</span><span class="dv">2</span><span class="sc">~</span><span class="st">"central"</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                        T<span class="sc">~</span><span class="st">"apical"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(car,var,nitrogen,time,rep,type) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(spike) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Fl=</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="fu">n</span>())) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(var,nitrogen,time,rep,spike)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 4,749
-Columns: 13
-Groups: car, var, nitrogen, time, rep, type [681]
-$ car          &lt;int&gt; 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, ~
-$ nitrogen     &lt;chr&gt; "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1~
-$ time         &lt;chr&gt; "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1~
-$ var          &lt;chr&gt; "Alves", "Alves", "Alves", "Alves", "Alves", "Alves", "Al~
-$ rep          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, ~
-$ tiller       &lt;chr&gt; "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M~
-$ spike        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1,~
-$ flower       &lt;int&gt; 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 2, 2, 2, ~
-$ kernel.full  &lt;int&gt; 0, 0, 1, 2, 3, 2, 2, 3, 3, 3, 2, 3, 2, 2, 1, 2, 0, 0, 0, ~
-$ kernel.half  &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ~
-$ kernel.small &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ~
-$ type         &lt;chr&gt; "basal", "basal", "basal", "basal", "basal", "basal", "ce~
-$ Fl           &lt;int&gt; 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, ~</code></pre>
-</div>
-</div>
-</section>
-<section id="lookuptable-of-treatment-not-yet" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="lookuptable-of-treatment-not-yet"><span class="header-section-number">1.2</span> lookuptable of treatment (not yet)</h2>
-</section>
-<section id="basic-summary-of-kernel-development-summ-for-single-spike" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="basic-summary-of-kernel-development-summ-for-single-spike"><span class="header-section-number">1.3</span> basic summary of kernel development summ for single spike</h2>
-<pre><code>Sp: total spikelet
-Fl: maximum floret 
-sfl: total floret
-kf: total full kernel
-kh: total half kernel
-ks: total small kernel
-kp: potential kernel number 
-fr: filling rate 
-fc: potential filling rate</code></pre>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sum.dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(nitrogen,time,var,rep,tiller,type) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Sp=</span><span class="fu">max</span>(spike),<span class="co">#total spikelet</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Fl=</span><span class="fu">max</span>(flower),<span class="co"># maximum floret </span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sfl=</span><span class="fu">sum</span>(flower),<span class="co"># total floret</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">kf=</span><span class="fu">sum</span>(kernel.full),<span class="co"># total full kernel</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">kh=</span><span class="fu">sum</span>(kernel.half),<span class="co"># total half kernel</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ks=</span><span class="fu">sum</span>(kernel.small),<span class="co"># total small kernel</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">kp=</span>kf<span class="sc">+</span>kh,<span class="co"># potential kernel number </span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">fr=</span>kf<span class="sc">/</span>sfl,<span class="co"># filling rate </span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">fc=</span>kf<span class="sc">/</span>kp)<span class="co">#potential filling rate</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(sum.dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 681
-Columns: 15
-Groups: nitrogen, time, var, rep, tiller [227]
-$ nitrogen &lt;chr&gt; "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1", "~
-$ time     &lt;chr&gt; "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "~
-$ var      &lt;chr&gt; "Alves", "Alves", "Alves", "Alves", "Alves", "Alves", "Alves"~
-$ rep      &lt;int&gt; 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 1, 1, 1, 2, 2, 2~
-$ tiller   &lt;chr&gt; "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "~
-$ type     &lt;chr&gt; "apical", "basal", "central", "apical", "basal", "central", "~
-$ Sp       &lt;int&gt; 16, 6, 11, 19, 7, 13, 17, 6, 11, 19, 7, 13, 19, 7, 13, 16, 6,~
-$ Fl       &lt;int&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 4, 4, 4~
-$ sfl      &lt;int&gt; 19, 18, 20, 21, 21, 24, 22, 20, 20, 21, 22, 24, 18, 21, 24, 1~
-$ kf       &lt;int&gt; 10, 8, 13, 14, 11, 18, 13, 11, 15, 12, 12, 17, 9, 12, 17, 2, ~
-$ kh       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0~
-$ ks       &lt;int&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0~
-$ kp       &lt;int&gt; 10, 8, 13, 14, 11, 18, 13, 11, 15, 12, 12, 17, 9, 12, 17, 2, ~
-$ fr       &lt;dbl&gt; 0.5263158, 0.4444444, 0.6500000, 0.6666667, 0.5238095, 0.7500~
-$ fc       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~</code></pre>
-</div>
-</div>
-</section>
-<section id="data-wrangling-and-plot-with-facet" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="data-wrangling-and-plot-with-facet"><span class="header-section-number">1.4</span> Data wrangling and plot with facet</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>long_format <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(nitrogen,time),</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">names_to =</span> <span class="st">"treatment"</span>,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"levels"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(spike,var,treatment,levels,type,rep) <span class="sc">%&gt;%</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">fertile_flower=</span><span class="fu">max</span>(kernel.full)) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(spike,var,treatment,levels,type) <span class="sc">%&gt;%</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">fertile_flower=</span><span class="fu">mean</span>(fertile_flower))</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>long_format<span class="sc">%&gt;%</span> </span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fertile_flower<span class="sc">&lt;</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(fertile_flower,spike,<span class="at">color=</span>type,<span class="at">shape=</span>levels))<span class="sc">+</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(treatment<span class="sc">~</span>var)<span class="sc">+</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>),<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
+<section id="online-books" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="online-books"><span class="header-section-number">3.2</span> online books:</h3>
+<p><a href="https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf">ggplot cheatsheet</a> <a href="https://rkabacoff.github.io/datavis/">Data visualization with R</a> <a href="https://r4ds.had.co.nz/data-visualisation.html">R for Data Science: Chapter3 Visualization</a></p>
 
 
 </section>
