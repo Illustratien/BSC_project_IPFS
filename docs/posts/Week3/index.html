@@ -182,6 +182,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#ggplot-grammar-layer-wise-commands" id="toc-ggplot-grammar-layer-wise-commands" class="nav-link" data-scroll-target="#ggplot-grammar-layer-wise-commands"><span class="toc-section-number">2.1</span>  ggplot grammar: layer-wise commands</a></li>
   <li><a href="#requirements-of-scientific-plot." id="toc-requirements-of-scientific-plot." class="nav-link" data-scroll-target="#requirements-of-scientific-plot."><span class="toc-section-number">2.2</span>  Requirements of scientific plot.</a></li>
+  <li><a href="#facet-organized-subplot-by-column" id="toc-facet-organized-subplot-by-column" class="nav-link" data-scroll-target="#facet-organized-subplot-by-column"><span class="toc-section-number">2.3</span>  facet: organized subplot by column</a></li>
   </ul></li>
   <li><a href="#recommendations" id="toc-recommendations" class="nav-link" data-scroll-target="#recommendations"><span class="toc-section-number">3</span>  Recommendations</a>
   <ul class="collapse">
@@ -226,7 +227,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>Welcome to the third course! During the following 2 hrs, you will learn <code>ggplot</code> and <code>dataframe</code> wrangling:</p>
+<p>Welcome to the third course! You will learn <code>ggplot</code> and <code>dataframe</code> wrangling:</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -238,11 +239,12 @@ Learning goals
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>data frame warngling</li>
+<li>data frame wrangling</li>
 <li>ggplot2</li>
 </ol>
 </div>
 </div>
+<p><a href="https://kahoot.it/">Review game Kahoot!</a></p>
 <section id="practice-dataframe-with-real-data" class="level3 page-columns page-full" data-number="0.1">
 <h3 data-number="0.1" class="anchored" data-anchor-id="practice-dataframe-with-real-data"><span class="header-section-number">0.1</span> practice dataframe with real data</h3>
 <div class="cell">
@@ -372,11 +374,24 @@ Note
 <p>Check description of <code>merge</code> and <code>left_join</code>, how are they different from each other? What happen if you remove the argument <code>by</code>?</p>
 </div>
 </div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>go to <a href="https://box.hu-berlin.de/d/fc7db144021a4a35a086/">HU-box</a> download <code>phenology_short.csv</code>and put it in folder data. read this file using <code>read.csv</code> with relative path and named it as <code>phenology</code></p>
+</div>
+</div>
 </section>
 </section>
 <section id="ggplot2" class="level2 page-columns page-full" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="ggplot2"><span class="header-section-number">2</span> GGplot2</h2>
-<section id="ggplot-grammar-layer-wise-commands" class="level3" data-number="2.1">
+<section id="ggplot-grammar-layer-wise-commands" class="level3 page-columns page-full" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="ggplot-grammar-layer-wise-commands"><span class="header-section-number">2.1</span> ggplot grammar: layer-wise commands</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -390,7 +405,7 @@ Note
 <p></p><figcaption class="figure-caption">symbol, aes &amp; …</figcaption><p></p>
 </figure>
 </div>
-<p>Top layer <code>ggplot()</code>and sub-layers <code>sublayer_command()</code>, they are separated by <code>+</code>.</p>
+<div class="page-columns page-full"><p>Top layer <code>ggplot()</code>and sub-layers <code>sublayer commands</code> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, they are separated by <code>+</code>.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;see <a href="https://ggplot2.tidyverse.org/reference/">function reference</a> for more!</p></li></div></div>
 <p>Within each layer, there may be an aesthetic function <code>aes()</code> to set aesthetic setting like <code>x</code>,<code>y</code> and <code>color</code>,<code>fill</code> or <code>shape</code>. Function <code>ggplot()</code> will not generate any graph but used for setting common aesthetic setting across the sub-layer. Plot type are specify in sub-layer with prefix <code>geom_xx</code>.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -411,9 +426,9 @@ order matters!
 <ol type="1">
 <li><p>axis title: specify with unit if there is any using <code>xlab()</code> or <code>ylab()</code>.</p></li>
 <li><p>legend title: full name instead of default abbreviation using <code>guides()</code>.</p></li>
-<li><p>other important rules: <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p></li>
+<li><p>other important rules: <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p></li>
 </ol>
-<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;<a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833">Ten simple rules for better figures</a> <a href="https://www.simplifiedsciencepublishing.com/resources/how-to-make-good-graphs-and-figures-for-scientific-papers">How to Make Good Graphs and Figures for Scientific Papers</a></p></li></div><div class="cell">
+<div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;<a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833">Ten simple rules for better figures</a> <a href="https://www.simplifiedsciencepublishing.com/resources/how-to-make-good-graphs-and-figures-for-scientific-papers">How to Make Good Graphs and Figures for Scientific Papers</a></p></li></div><div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Watch out the names!</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -436,7 +451,7 @@ order matters!
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -445,14 +460,14 @@ challenge : use <code>theme_xx()</code> function series to change background of 
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-growthdark" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="1152"></p>
-<p></p><figcaption class="figure-caption">dark theme example.</figcaption><p></p>
+<p><img src="index_files/figure-html/fig-growthdark-1.png" class="img-fluid figure-img" width="1152"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: dark theme example.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -460,7 +475,57 @@ challenge : use <code>theme_xx()</code> function series to change background of 
 </div>
 </div>
 </div>
-<p>factors, levels, for loop, long to wide, wide to long</p>
+</section>
+<section id="facet-organized-subplot-by-column" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="facet-organized-subplot-by-column"><span class="header-section-number">2.3</span> facet: organized subplot by column</h3>
+<p>There are two commonly used function<code>facet_grid</code> and <code>facet_wrap</code>. In side each function, subplots are arranged in the manner of <code>(row ~ column)</code>. There could be multiple column names put in the row or column position.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>phenology <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(.,<span class="fu">aes</span>(<span class="at">x=</span>var,<span class="at">y=</span>value))<span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Year<span class="sc">~</span>stage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-uggly" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-uggly-1.png" class="img-fluid figure-img" width="1152"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: uggly example.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Make this graph more beautiful!
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>How to make each point show in box plot? (search for <code>scatter points in boxplot ggplot2</code>)</p>
+<p>How does <code>color</code> and <code>fill</code> differs? Can you color it by <code>var</code>?</p>
+<p>Could you apply another color scale using <code>viridis</code> package?</p>
+<p>How to remove the background of the facet title with <code>theme()</code>? what does <code>element_blank()</code> do?</p>
+<p>Follow up question, if you also apply <code>theme_test()</code> to it, it should be before or after <code>theme()</code>?</p>
+<p>How to change title size? how does it related to <code>element_text()</code></p>
+<p>Could you change the axis title display angle as 90 degree?</p>
+<p>How do you add title?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-beautiful" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-beautiful-1.png" class="img-fluid figure-img" width="1152"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4: beautiful example.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="recommendations" class="level2" data-number="3">
@@ -472,6 +537,16 @@ challenge : use <code>theme_xx()</code> function series to change background of 
 <section id="online-books" class="level3" data-number="3.2">
 <h3 data-number="3.2" class="anchored" data-anchor-id="online-books"><span class="header-section-number">3.2</span> online books:</h3>
 <p><a href="https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf">ggplot cheatsheet</a> <a href="https://rkabacoff.github.io/datavis/">Data visualization with R</a> <a href="https://r4ds.had.co.nz/data-visualisation.html">R for Data Science: Chapter3 Visualization</a></p>
+<div id="fig-stewiseggplot" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://epirhandbook.com/en/ggplot-basics.html"><img src="ggplot_basics_top.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5: <a href="https://epirhandbook.com/en/ggplot-basics.html">original article</a>.</figcaption><p></p>
+</figure>
+</div>
 
 
 </section>

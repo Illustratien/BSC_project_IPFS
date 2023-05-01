@@ -197,11 +197,11 @@ There are 3 common accessors for `list`: 1. access the list element (`cookie jar
 
 `$` access the content of a list element by name
 
-list_object`$element_name` or list_object`[[element_name]]` 
+list_object`$element_name` or list_object`[[element_name]]`
 
 ![list without name](list_example.png){width="800,height"}
 
-![list with name](list_example2.png){width="800,height"} 
+![list with name](list_example2.png){width="800,height"}
 
 More about the [accessors](https://www.r-bloggers.com/2009/10/r-accessors-explained/)
 
@@ -329,9 +329,9 @@ df[,1] %>% str()
 ```
 
 ::: callout-challenge
-use `df`, 
+use `df`,
 
-1. Access column `thermal_time` as `vector`
+1.  Access column `thermal_time` as `vector`
 
 2.  Extract `temp` when `time` is `2023-04-17`
 
