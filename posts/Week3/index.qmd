@@ -30,7 +30,7 @@ Welcome to the third course! You will learn `ggplot` and `dataframe` wrangling:
 ::: callout-note
 # Learning goals
 
-1.  data frame wrangling
+1.  data frame wrangling with `dplyr`
 2.  ggplot2
 :::
 
@@ -48,7 +48,6 @@ names(df)
 df$thermal_time
 df[,3]
 df[,'thermal_time']
-
 df[['thermal_time']]
 
 # not work
@@ -71,15 +70,15 @@ summary(df)
 Practice with large data set `ear_summarized.csv` in folder `data`.
 
 0.  read the file with relative path using function `read.csv()`.
-1.  find the row and column number of data frame by `rown` and `coln`
-2.  check the range of each column using `lapply`, how many unique days exist in column `date`
-3.  compare the result of `glimpse` and `str`
+1.  find the row and column number of data frame by `nrown()` and `ncol()`
+2.  check the range of each column using `lapply()`, how many unique days exist in column `date`? check `unique()`
+3.  compare the result of `glimpse()` and `str()`
 4.  extract column `weight` using `[]`,`[[]]`and `$` [^1]
 5.  what is the function of `head()` and `tail()`?
 6.  how to extract the first three row using `[]`?
 :::
 
-[^1]: You can subset `dataframe` by indexing \[`row`,`column`\] `dataframe`\[,`column`\] select the whole role for selected columnn `dataframe`\[`row`,\] select the whole column of selected rows \# `{r,eval=FALSE} # data <- read.csv("data/ear_summarized.csv") #`
+[^1]: You can subset `dataframe` by indexing \[`row`,`column`\] `dataframe`\[,`column`\] select the whole role for selected columnn `dataframe`\[`row`,\] select the whole column of selected rows
 
 ## dplyr
 
@@ -306,3 +305,6 @@ phenology %>%
 [original article](https://epirhandbook.com/en/ggplot-basics.html). 
 :::
 
+## Feedback this week 
+
+[Anonymous feedback](https://docs.google.com/document/d/1Eql4MjJEj0qjiVylCTv8WgR58qxsX8DKst_Kkwy2gcU/edit?usp=sharing)

@@ -189,6 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#online-tutorials" id="toc-online-tutorials" class="nav-link" data-scroll-target="#online-tutorials"><span class="toc-section-number">3.1</span>  online tutorials:</a></li>
   <li><a href="#online-books" id="toc-online-books" class="nav-link" data-scroll-target="#online-books"><span class="toc-section-number">3.2</span>  online books:</a></li>
   </ul></li>
+  <li><a href="#feedback-this-week" id="toc-feedback-this-week" class="nav-link" data-scroll-target="#feedback-this-week"><span class="toc-section-number">4</span>  Feedback this week</a></li>
   </ul>
 </nav>
     </div>
@@ -239,7 +240,7 @@ Learning goals
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>data frame wrangling</li>
+<li>data frame wrangling with <code>dplyr</code></li>
 <li>ggplot2</li>
 </ol>
 </div>
@@ -257,22 +258,21 @@ Learning goals
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>thermal_time</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df[,<span class="dv">3</span>]</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df[,<span class="st">'thermal_time'</span>]</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'thermal_time'</span>]]</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># not work</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>df[thermal_time]</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># different error message</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#!! name space conflict</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>df[time]</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>time</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize dataframe</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(df, range)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># turn as data frame</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(df, range) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>()</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'thermal_time'</span>]]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># not work</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>df[thermal_time]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># different error message</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#!! name space conflict</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>df[time]</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>time</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize dataframe</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(df, range)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># turn as data frame</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(df, range) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>()</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned page-columns page-full">
 <div class="callout-header d-flex align-content-center">
@@ -287,14 +287,14 @@ Note
 <p>Practice with large data set <code>ear_summarized.csv</code> in folder <code>data</code>.</p>
 <ol start="0" type="1">
 <li>read the file with relative path using function <code>read.csv()</code>.</li>
-<li>find the row and column number of data frame by <code>rown</code> and <code>coln</code></li>
-<li>check the range of each column using <code>lapply</code>, how many unique days exist in column <code>date</code></li>
-<li>compare the result of <code>glimpse</code> and <code>str</code></li>
+<li>find the row and column number of data frame by <code>nrown()</code> and <code>ncol()</code></li>
+<li>check the range of each column using <code>lapply()</code>, how many unique days exist in column <code>date</code>? check <code>unique()</code></li>
+<li>compare the result of <code>glimpse()</code> and <code>str()</code></li>
 <li>extract column <code>weight</code> using <code>[]</code>,<code>[[]]</code>and <code>$</code> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
 <li>what is the function of <code>head()</code> and <code>tail()</code>?</li>
 <li>how to extract the first three row using <code>[]</code>?</li>
 </ol>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;You can subset <code>dataframe</code> by indexing [<code>row</code>,<code>column</code>] <code>dataframe</code>[,<code>column</code>] select the whole role for selected columnn <code>dataframe</code>[<code>row</code>,] select the whole column of selected rows # <code>{r,eval=FALSE} # data &lt;- read.csv("data/ear_summarized.csv") #</code></p></li></div></div>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;You can subset <code>dataframe</code> by indexing [<code>row</code>,<code>column</code>] <code>dataframe</code>[,<code>column</code>] select the whole role for selected columnn <code>dataframe</code>[<code>row</code>,] select the whole column of selected rows</p></li></div></div>
 </div>
 </section>
 <section id="dplyr" class="level2 page-columns page-full" data-number="1">
@@ -547,9 +547,13 @@ Make this graph more beautiful!
 <p></p><figcaption class="figure-caption">Figure&nbsp;5: <a href="https://epirhandbook.com/en/ggplot-basics.html">original article</a>.</figcaption><p></p>
 </figure>
 </div>
-
-
 </section>
+</section>
+<section id="feedback-this-week" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="feedback-this-week"><span class="header-section-number">4</span> Feedback this week</h2>
+<p><a href="https://docs.google.com/document/d/1Eql4MjJEj0qjiVylCTv8WgR58qxsX8DKst_Kkwy2gcU/edit?usp=sharing">Anonymous feedback</a></p>
+
+
 </section>
 
 

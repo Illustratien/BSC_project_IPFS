@@ -88,7 +88,7 @@ Which one do you prefer? Why do we prefer relative path?
 parent_path <- getwd() 
 paste0(parent_path,"/data") %>% list.files(path=.)
 
-# R project relative path, are they different? 
+# Does this works? 
 ".\data" %>% list.files(path=.)
 "data" %>% list.files(path=.)
 
