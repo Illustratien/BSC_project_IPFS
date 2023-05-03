@@ -1,9 +1,9 @@
 ---
-title: "Week3: Spikelet development"
+title: "Week3: Floret development"
 author: "Tien-Cheng"
 date: "2023-05-02"
 categories: [R-basic]
-toc: true
+toc-location: left
 number-sections: true
 website: 
   sidebar:
@@ -147,11 +147,6 @@ df$ear_weight <- c(20,40)
 Check description of `merge` and `left_join`, how are they different from each other? What happen if you remove the argument `by`?
 :::
 
-::: callout-note
-go to [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/)
-download `phenology_short.csv`and put it in folder data.
-read this file using `read.csv` with relative path and named it as `phenology`
-:::
 
 ## GGplot2
 
@@ -161,11 +156,11 @@ read this file using `read.csv` with relative path and named it as `phenology`
 
 ![symbol, aes & ...](GGplot.png)
 
-Top layer `ggplot()`and sub-layers `sublayer commands` [^longnote], they are separated by `+`.
+Top layer `ggplot()`and sub-layers `sublayer commands` [^3], they are separated by `+`.
+
+[^3]: see [function reference](https://ggplot2.tidyverse.org/reference/) for more!
 
 Within each layer, there may be an aesthetic function `aes()` to set aesthetic setting like `x`,`y` and `color`,`fill` or `shape`. Function `ggplot()` will not generate any graph but used for setting common aesthetic setting across the sub-layer. Plot type are specify in sub-layer with prefix `geom_xx`.
-
-[^longnote]: see [function reference](https://ggplot2.tidyverse.org/reference/) for more!
 
 ::: callout-important
 ## order matters!
@@ -179,15 +174,19 @@ If there are conflicts between the sub-layer commands, the latter will overwrite
 
 2.  legend title: full name instead of default abbreviation using `guides()`.
 
-3.  other important rules: [^3].
+3.  other important rules: [^4].
 
-[^3]: [Ten simple rules for better figures](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833) [How to Make Good Graphs and Figures for Scientific Papers](https://www.simplifiedsciencepublishing.com/resources/how-to-make-good-graphs-and-figures-for-scientific-papers)
+[^4]: [Ten simple rules for better figures](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833) [How to Make Good Graphs and Figures for Scientific Papers](https://www.simplifiedsciencepublishing.com/resources/how-to-make-good-graphs-and-figures-for-scientific-papers)
 
 ```{r,eval=FALSE}
 # Watch out the names!
 library(ggplot)
 library(ggplot2)
 ```
+
+::: callout-note
+go to [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/) download `phenology_short.csv`and put it in folder data. read this file using `read.csv` with relative path and named it as `phenology`
+:::
 
 ```{r}
 #| label: fig-growth
@@ -225,9 +224,8 @@ data %>%
 :::
 
 ### facet: organized subplot by column
-There are two commonly used function`facet_grid` and `facet_wrap`.
-In side each function, subplots are arranged in the manner of `(row ~ column)`.
-There could be multiple column names put in the row or column position.
+
+There are two commonly used function`facet_grid` and `facet_wrap`. In side each function, subplots are arranged in the manner of `(row ~ column)`. There could be multiple column names put in the row or column position.
 
 ```{r,error=TRUE}
 #| label: fig-uggly
@@ -241,6 +239,7 @@ ggplot(.,aes(x=var,y=value))+
   geom_boxplot()+
   facet_grid(Year~stage)
 ```
+
 ::: {.callout-tip collapse="true"}
 ### Make this graph more beautiful!
 
@@ -259,7 +258,6 @@ How to change title size? how does it related to `element_text()`
 Could you change the axis title display angle as 90 degree?
 
 How do you add title?
-
 
 ```{r,echo=FALSE}
 #| label: fig-beautiful
@@ -288,7 +286,6 @@ phenology %>%
 ```
 :::
 
-
 ## Recommendations
 
 ### online tutorials:
@@ -302,9 +299,9 @@ phenology %>%
 ::: {#fig-stewiseggplot}
 [![](ggplot_basics_top.png)](https://epirhandbook.com/en/ggplot-basics.html)
 
-[original article](https://epirhandbook.com/en/ggplot-basics.html). 
+[original article](https://epirhandbook.com/en/ggplot-basics.html).
 :::
 
-## Feedback this week 
+## Feedback this week
 
 [Anonymous feedback](https://docs.google.com/document/d/1Eql4MjJEj0qjiVylCTv8WgR58qxsX8DKst_Kkwy2gcU/edit?usp=sharing)

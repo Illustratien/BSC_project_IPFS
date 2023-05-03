@@ -1,0 +1,45 @@
+---
+title: "Week4: Grain development"
+author: "Tien-Cheng"
+date: "2023-05-09"
+categories: [R-basic]
+
+toc-location: left
+number-sections: true
+website: 
+  sidebar:
+    search: true
+format:
+  # ipynb: default
+  html: 
+    grid:
+      sidebar-width: 300px
+      body-width: 900px
+      margin-width: 300px
+      gutter-width: 1.5rem
+
+reference-location: margin
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(magrittr);suppressWarnings(library(dplyr));
+suppressWarnings(library(ggplot2));library(tidyr);
+library(kableExtra);library(knitr);library(purrr)
+options(dplyr.summarise.inform = FALSE)
+data <- read.csv("../data/ear_summarized.csv")
+phenology <- read.csv('../data/phenology_short.csv')
+```
+
+Welcome to the third course! You will learn `ggplot` and `dataframe` wrangling:
+
+::: callout-note
+# Learning goals
+
+1.  data frame wrangling with `dplyr`
+2.  ggplot2
+:::
+
+[Review game Kahoot!](https://kahoot.it/)
+
+## dd

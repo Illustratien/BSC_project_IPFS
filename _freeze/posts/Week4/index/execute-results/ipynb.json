@@ -1,0 +1,16 @@
+{
+  "hash": "607f92a69d3b091f29c008300767abd2",
+  "result": {
+    "markdown": "---\ntitle: \"Week4: Grain development\"\nauthor: \"Tien-Cheng\"\ndate: \"2023-05-09\"\ncategories: [R-basic]\n\nnumber-sections: true\nwebsite: \n  sidebar:\n    search: true\nformat:\n  ipynb: default\n  html: \n    grid:\n      sidebar-width: 300px\n      body-width: 900px\n      margin-width: 300px\n      gutter-width: 1.5rem\n\nreference-location: margin\n---\n\n\n\n\nWelcome to the third course! You will learn `ggplot` and `dataframe` wrangling:\n\n::: callout-note\n# Learning goals\n\n1.  data frame wrangling with `dplyr`\n2.  ggplot2\n:::\n\n[Review game Kahoot!](https://kahoot.it/)\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}
