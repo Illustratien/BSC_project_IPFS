@@ -147,7 +147,6 @@ df$ear_weight <- c(20,40)
 Check description of `merge` and `left_join`, how are they different from each other? What happen if you remove the argument `by`?
 :::
 
-
 ## GGplot2
 
 ### ggplot grammar: layer-wise commands

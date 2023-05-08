@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -107,7 +170,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#dd" id="toc-dd" class="nav-link active" data-scroll-target="#dd"><span class="toc-section-number">1</span>  dd</a></li>
+  <li><a href="#more-mutate-examples" id="toc-more-mutate-examples" class="nav-link active" data-scroll-target="#more-mutate-examples"><span class="toc-section-number">1</span>  more mutate examples</a>
+  <ul class="collapse">
+  <li><a href="#combine-columns" id="toc-combine-columns" class="nav-link" data-scroll-target="#combine-columns"><span class="toc-section-number">1.1</span>  combine columns</a></li>
+  <li><a href="#add-columns" id="toc-add-columns" class="nav-link" data-scroll-target="#add-columns"><span class="toc-section-number">1.2</span>  add columns</a></li>
+  <li><a href="#replace-column" id="toc-replace-column" class="nav-link" data-scroll-target="#replace-column"><span class="toc-section-number">1.3</span>  replace column</a></li>
+  <li><a href="#advanced-mutate-add-on-across" id="toc-advanced-mutate-add-on-across" class="nav-link" data-scroll-target="#advanced-mutate-add-on-across"><span class="toc-section-number">1.4</span>  advanced mutate add-on :across</a></li>
+  </ul></li>
+  <li><a href="#conclude-your-dataframe-by-groups" id="toc-conclude-your-dataframe-by-groups" class="nav-link" data-scroll-target="#conclude-your-dataframe-by-groups"><span class="toc-section-number">2</span>  Conclude your dataframe by groups</a>
+  <ul class="collapse">
+  <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by"><span class="toc-section-number">2.1</span>  group_by</a></li>
+  <li><a href="#how-to-get-the-minimum-unique-combination-of-dataframe" id="toc-how-to-get-the-minimum-unique-combination-of-dataframe" class="nav-link" data-scroll-target="#how-to-get-the-minimum-unique-combination-of-dataframe"><span class="toc-section-number">2.2</span>  how to get the minimum unique combination of dataframe?</a></li>
+  <li><a href="#wide-to-long" id="toc-wide-to-long" class="nav-link" data-scroll-target="#wide-to-long"><span class="toc-section-number">2.3</span>  wide to long</a></li>
+  <li><a href="#long-to-wide" id="toc-long-to-wide" class="nav-link" data-scroll-target="#long-to-wide"><span class="toc-section-number">2.4</span>  long to wide</a></li>
+  </ul></li>
+  <li><a href="#spikelet-position-practice" id="toc-spikelet-position-practice" class="nav-link" data-scroll-target="#spikelet-position-practice"><span class="toc-section-number">3</span>  Spikelet position practice</a>
+  <ul class="collapse">
+  <li><a href="#classify-spikelet-based-on-position" id="toc-classify-spikelet-based-on-position" class="nav-link" data-scroll-target="#classify-spikelet-based-on-position"><span class="toc-section-number">3.1</span>  classify spikelet based on position</a></li>
+  <li><a href="#basic-summary-of-kernel-development-summ-for-single-spike" id="toc-basic-summary-of-kernel-development-summ-for-single-spike" class="nav-link" data-scroll-target="#basic-summary-of-kernel-development-summ-for-single-spike"><span class="toc-section-number">3.2</span>  basic summary of kernel development summ for single spike</a></li>
+  <li><a href="#data-wrangling-and-plot-with-facet" id="toc-data-wrangling-and-plot-with-facet" class="nav-link" data-scroll-target="#data-wrangling-and-plot-with-facet"><span class="toc-section-number">3.3</span>  Data wrangling and plot with facet</a></li>
+  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -161,16 +243,368 @@ Learning goals
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>data frame wrangling with <code>dplyr</code></li>
-<li>ggplot2</li>
+<li>data frame wrangling with <code>dplyr</code> and <code>tidyr</code></li>
+<li><code>ggplot2</code></li>
+<li>for loop</li>
 </ol>
 </div>
 </div>
-<p><a href="https://kahoot.it/">Review game Kahoot!</a></p>
-<section id="dd" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="dd"><span class="header-section-number">1</span> dd</h2>
+<section id="more-mutate-examples" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="more-mutate-examples"><span class="header-section-number">1</span> more mutate examples</h2>
+<p>Create dataframe</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="combine-columns" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="combine-columns"><span class="header-section-number">1.1</span> combine columns</h3>
+<p><code>paste</code>, <code>interaction</code> , <code>unite</code> Compare the results</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">paste</span>(x,y))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">z=</span><span class="fu">paste</span>(x,y))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">z=</span><span class="fu">paste</span>(x,y,<span class="at">sep =</span> <span class="st">"-"</span>))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> tidyr<span class="sc">::</span><span class="fu">unite</span>(<span class="at">data =</span> .,<span class="at">col =</span> <span class="st">"z"</span>,<span class="fu">c</span>(x,y))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">z=</span><span class="fu">interaction</span>(x,y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="add-columns" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="add-columns"><span class="header-section-number">1.2</span> add columns</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add identifier based on row numbers</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">id=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">id=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(.))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># row names</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(df)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">filter</span>()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(df) <span class="ot">&lt;-</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df)]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+practice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>subset the row where (x equals to “a”, y equals to 1) or (x equals to c, y equals to 2) 1. How many ways to achieve this? 2. Observe the row names, are they the same before and after subseting?</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  x y
+1 a 1
+2 c 2</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="replace-column" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="replace-column"><span class="header-section-number">1.3</span> replace column</h3>
+<p>replace one column based on single condition</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">k=</span><span class="fu">ifelse</span>(x<span class="sc">==</span><span class="st">"a"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  x y k
+1 a 1 A
+2 b 1 B
+3 c 1 B
+4 d 1 B
+5 a 2 A
+6 b 2 B
+7 c 2 B
+8 d 2 B</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">k=</span><span class="fu">ifelse</span>(y<span class="sc">==</span><span class="dv">1</span>,<span class="st">"A"</span>,<span class="st">"B"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  x y k
+1 a 1 A
+2 b 1 A
+3 c 1 A
+4 d 1 A
+5 a 2 B
+6 b 2 B
+7 c 2 B
+8 d 2 B</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">k=</span><span class="fu">case_when</span>(x<span class="sc">==</span><span class="st">"a"</span><span class="sc">~</span><span class="st">"A"</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">TRUE</span><span class="sc">~</span><span class="st">"B"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  x y k
+1 a 1 A
+2 b 1 B
+3 c 1 B
+4 d 1 B
+5 a 2 A
+6 b 2 B
+7 c 2 B
+8 d 2 B</code></pre>
+</div>
+</div>
+<p>replace cases</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">k=</span><span class="fu">case_when</span>(x<span class="sc">==</span><span class="st">"a"</span><span class="sc">~</span><span class="st">"A"</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                          x<span class="sc">==</span><span class="st">"b"</span><span class="sc">~</span><span class="st">"B"</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">TRUE</span><span class="sc">~</span><span class="st">"C"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  x y k
+1 a 1 A
+2 b 1 B
+3 c 1 C
+4 d 1 C
+5 a 2 A
+6 b 2 B
+7 c 2 C
+8 d 2 C</code></pre>
+</div>
+</div>
+<p>too many cases</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>look_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>letters,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">X=</span>LETTERS)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">merge</span>(look_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  x y X
+1 a 1 A
+2 a 2 A
+3 b 1 B
+4 b 2 B
+5 c 1 C
+6 c 2 C
+7 d 1 D
+8 d 2 D</code></pre>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+practice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>merge</code> is not actually replace the orignal column. write a function to replace <code>letters</code> with <code>LETTERS</code> input is a vector of lower case vector <code>vec &lt;- c("c","a","b","d")</code>, output will be the matched upper case vector <code>c("C","A","B","D")</code></p>
+</div>
+</div>
+</section>
+<section id="advanced-mutate-add-on-across" class="level3" data-number="1.4">
+<h3 data-number="1.4" class="anchored" data-anchor-id="advanced-mutate-add-on-across"><span class="header-section-number">1.4</span> advanced mutate add-on :across</h3>
+<p>apply function for multiple columns</p>
+<p>across( <code>column_name</code> or <code>column_position</code>,FUNCTION)</p>
+<p>FUNCTION examples</p>
+<ol type="1">
+<li><p><code>function(x){x +1}</code></p>
+<p>syntax: <code>~{.x+1}</code></p></li>
+<li><p><code>function(x){mean(x, ...)}</code></p>
+<p>syntax: <code>~{mean(.x,...)}</code></p></li>
+</ol>
+<p><code>...</code> means the additional option other than the first input argument.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>climate <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"Temperature"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(.,<span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>climate <span class="sc">%&gt;%</span> </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric),<span class="sc">~</span>{<span class="fu">round</span>(.x, <span class="at">digits =</span> <span class="dv">2</span>)})) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mutate(across(where(is.numeric),function(x){round(x, digits = 2)})) %&gt;%</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"Temperature"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(.,<span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="conclude-your-dataframe-by-groups" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="conclude-your-dataframe-by-groups"><span class="header-section-number">2</span> Conclude your dataframe by groups</h2>
+<p><img src="wrangling.png" class="img-fluid"></p>
+<section id="group_by" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="group_by"><span class="header-section-number">2.1</span> group_by</h3>
+<p>Learn from <a href="https://dplyr.tidyverse.org/reference/group_by.html">examples</a>!</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+practice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>read <code>climate.csv</code> from <code>data</code> folder using relative path</li>
+<li>find the sowing date (i.e., the first date) for each year (<code>DFG_year</code>) and each sowing treatment(<code>sowing_date</code>).</li>
+<li>calculate thermal time based on <code>DailyMean_Temperature</code></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="how-to-get-the-minimum-unique-combination-of-dataframe" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="how-to-get-the-minimum-unique-combination-of-dataframe"><span class="header-section-number">2.2</span> how to get the minimum unique combination of dataframe?</h3>
+<p>how many unique year-months combinations were included in `climate 2019 for early and late sowing?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>climate <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(DFG_year<span class="sc">==</span><span class="st">"DFG2019"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(y,m) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>climate <span class="sc">%&gt;%</span> </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(DFG_year<span class="sc">==</span><span class="st">"DFG2019"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(y,m) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="wide-to-long" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="wide-to-long"><span class="header-section-number">2.3</span> wide to long</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>climate <span class="sc">%&gt;%</span><span class="fu">names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "DayTime"                "y"                      "m"                     
+ [4] "d"                      "DailyMean_Temperature"  "Acc_Temperature"       
+ [7] "Acc_Percipitation"      "Acc_Radiation"          "DailySum_Percipitation"
+[10] "DailySum_Radiation"     "sowing_date"            "DFG_year"              </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>climate_long <span class="ot">&lt;-</span> climate <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"Daily_Terms"</span>,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"Daily_value"</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"Daily"</span>)) </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>climate_long<span class="sc">%&gt;%</span> </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "DayTime"           "y"                 "m"                
+ [4] "d"                 "Acc_Temperature"   "Acc_Percipitation"
+ [7] "Acc_Radiation"     "sowing_date"       "DFG_year"         
+[10] "Daily_Terms"       "Daily_value"      </code></pre>
+</div>
+</div>
+</section>
+<section id="long-to-wide" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="long-to-wide"><span class="header-section-number">2.4</span> long to wide</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>climate <span class="sc">%&gt;%</span><span class="fu">names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "DayTime"                "y"                      "m"                     
+ [4] "d"                      "DailyMean_Temperature"  "Acc_Temperature"       
+ [7] "Acc_Percipitation"      "Acc_Radiation"          "DailySum_Percipitation"
+[10] "DailySum_Radiation"     "sowing_date"            "DFG_year"              </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>climate_long <span class="ot">&lt;-</span> climate <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"Daily_Terms"</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"Daily_value"</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"Daily"</span>))</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>climate_long<span class="sc">%&gt;%</span> </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"Daily_Terms"</span>,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values_from =</span> <span class="st">"Daily_value"</span>)<span class="sc">%&gt;%</span> </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "DayTime"                "y"                      "m"                     
+ [4] "d"                      "Acc_Temperature"        "Acc_Percipitation"     
+ [7] "Acc_Radiation"          "sowing_date"            "DFG_year"              
+[10] "DailyMean_Temperature"  "DailySum_Percipitation" "DailySum_Radiation"    </code></pre>
+</div>
+</div>
+<!-- ### Protocols of making a regression plot -->
+<!-- [![Click to read original article](Protocol.jpg)](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.12577) -->
+</section>
+</section>
+<section id="spikelet-position-practice" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="spikelet-position-practice"><span class="header-section-number">3</span> Spikelet position practice</h2>
+<p>read kernel_combine.csv in folder data using relative path. subset column <code>tiller</code> which match pattern <code>M</code>.</p>
+<p>How can you get the unique combination of <code>car</code>,<code>var</code>,<code>nitrogen</code> and <code>time</code>? Which combinations of functions can you use?</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+challenge
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 48 x 4
+# Groups:   car, var, nitrogen [48]
+     car var       nitrogen time 
+   &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;
+ 1     1 Alves     n3       t1   
+ 2     1 Apertus   n3       t1   
+ 3     1 Esket     n3       t1   
+ 4     1 Pioneer   n3       t1   
+ 5     1 Potential n3       t1   
+ 6     1 Torrid    n3       t1   
+ 7     2 Alves     n4       t1   
+ 8     2 Apertus   n4       t1   
+ 9     2 Esket     n4       t1   
+10     2 Pioneer   n4       t1   
+# i 38 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="classify-spikelet-based-on-position" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="classify-spikelet-based-on-position"><span class="header-section-number">3.1</span> classify spikelet based on position</h3>
+<p>the spike of the main shoot was dissected to count the total number of floret in</p>
+<ul>
+<li><p>basal (third-fifth spikelet from the bottom)</p></li>
+<li><p>central (middle spikelets)</p></li>
+<li><p>apical (third-fifth spikelet from the top) spikelets throughout the spike <a href="https://doi.org/10.1016/j.fcr.2020.107908">reference</a></p></li>
+</ul>
+<div class="cell">
+
+</div>
+</section>
+<section id="basic-summary-of-kernel-development-summ-for-single-spike" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="basic-summary-of-kernel-development-summ-for-single-spike"><span class="header-section-number">3.2</span> basic summary of kernel development summ for single spike</h3>
+<ul>
+<li>Sp: total spikelet</li>
+<li>Fl: maximum floret</li>
+<li>sfl: total floret</li>
+<li>kf: total full kernel</li>
+<li>kh: total half kernel</li>
+<li>ks: total small kernel</li>
+<li>kp: potential kernel number</li>
+<li>fr: filling rate</li>
+<li>fc: potential filling rate</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 681
+Columns: 15
+Groups: nitrogen, time, var, rep, tiller [227]
+$ nitrogen &lt;chr&gt; "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1", "~
+$ time     &lt;chr&gt; "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "~
+$ var      &lt;chr&gt; "Alves", "Alves", "Alves", "Alves", "Alves", "Alves", "Alves"~
+$ rep      &lt;int&gt; 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 1, 1, 1, 2, 2, 2~
+$ tiller   &lt;chr&gt; "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "~
+$ type     &lt;chr&gt; "apical", "basal", "central", "apical", "basal", "central", "~
+$ Sp       &lt;int&gt; 16, 6, 11, 19, 7, 13, 17, 6, 11, 19, 7, 13, 19, 7, 13, 16, 6,~
+$ Fl       &lt;int&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 4, 4, 4~
+$ sfl      &lt;int&gt; 19, 18, 20, 21, 21, 24, 22, 20, 20, 21, 22, 24, 18, 21, 24, 1~
+$ kf       &lt;int&gt; 10, 8, 13, 14, 11, 18, 13, 11, 15, 12, 12, 17, 9, 12, 17, 2, ~
+$ kh       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0~
+$ ks       &lt;int&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0~
+$ kp       &lt;int&gt; 10, 8, 13, 14, 11, 18, 13, 11, 15, 12, 12, 17, 9, 12, 17, 2, ~
+$ fr       &lt;dbl&gt; 0.5263158, 0.4444444, 0.6500000, 0.6666667, 0.5238095, 0.7500~
+$ fc       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~</code></pre>
+</div>
+</div>
+</section>
+<section id="data-wrangling-and-plot-with-facet" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="data-wrangling-and-plot-with-facet"><span class="header-section-number">3.3</span> Data wrangling and plot with facet</h3>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
