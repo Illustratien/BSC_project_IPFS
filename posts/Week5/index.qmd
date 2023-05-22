@@ -41,26 +41,33 @@ Welcome to the fifth course! You will learn more about `dataframe` wrangling:
 # Learning goals
 
 1.  data frame wrangling with `dplyr` and `tidyr`
-2.  for loop
 :::
 
-::: callout-warning
-## Discussion
 
-1. What is the component of `function()`? How could you document them?
-2. What is the characteristics of `dataframe`?
-3. How many ways could you match a cell in `dataframe`? which functions are available?
-4. What is `for` loop?
-5. What `operators` can you use for matching condition?
-6. What is function of `mutate()` and `filter()`?
-7. What is the difference between `"."` and `.`?
-8. What is relative path? 
-9. What is `namespace`?
-:::
+## Today's discussion
+Is it possible to access the elements at different columns and rows?
+```{r,eval=FALSE}
+df <- data.frame(
+  x1=1:3,
+  x2=letters[1:3],
+  x3=c("2a","2b","2c")
+)
+# or condition separate by |
+df$x1==2|df$x3=="2c"
 
+df %>% filter(x1==2|x3=="2c")
+df %>% with(.,x1==2|x3=="2c")
+
+# when not specifying the comma, it will be treated like column
+df %>% with(.,.[x1==2|x3=="2c"])
+# specify the rows
+df %>% with(.,.[x1==2|x3=="2c",])
+
+```
 ## more mutate examples
 
 Last week's practice.
+
 ```{r}
 df <- expand.grid(x=letters[1:4],
                   y=1:2)%>%
@@ -79,17 +86,19 @@ df %>% mutate(k=ifelse(y==1,"A","B"))
 df %>% mutate(k=case_when(x=="a"~"A",
                           TRUE~"B"))
 ```
+
 ::: callout-warning
-## practice 
+## practice
+
 Matching multiple conditions
 
 add column `k` to `df`, when the condition x equals "a" `and` y equals 1.
-
 :::
 
 #### replace one column based on multiple conditions
 
 in `case_when` syntax, `TRUE` before `~` stands for the `else` conditions.
+
 ```{r,eval=FALSE}
 df %>% mutate(k=case_when(x=="a"~"A",
                           x=="b"~"B",
@@ -108,273 +117,11 @@ df %>% merge(look_table)
 ::: callout-warning
 ## practice
 
-`merge` is not actually replace the original column. 
+`merge` is not actually replace the original column.
 
-Write a function to replace `letters` with `LETTERS`.
-The input is a vector of lower case vector `vec <- c("c","a","b","d")`, output will be the matched upper case vector `c("C","A","B","D")`. 
+Write a function to replace `letters` with `LETTERS`. The input is a vector of lower case vector `vec <- c("c","a","b","d")`, output will be the matched upper case vector `c("C","A","B","D")`.
 
+Hint: check function `match()`
 !!Before you start to write the code, please first write down the possible steps in text.!!
 :::
 
-### advanced mutate add-on :across
-
-apply function for multiple columns
-
-across( `column_name (e.g., "y")` or `column_position (e.g., 2)`,FUNCTION)
-
-FUNCTION examples
-
-1.  `function(x){x +1}`
-
-syntax: `~{.x+1}`
-
-2.  `function(x){mean(x, ...)}`
-
-syntax: `~{mean(.x,...)}`
-
-`...` means the additional option other than the first input argument. For example, `...` could be `na.rm=True`.
-
-Now here is one example of applying function to multiple columns  
-```{r,eval=FALSE}
-climate %>% 
-  select(ends_with("Temperature")) %>% 
-  head(.,3) %>%
-  glimpse()
-
-
-climate %>% 
-  mutate(across(where(is.numeric),~{round(.x, digits = 2)})) %>%
-  # mutate(across(where(is.numeric),function(x){round(x, digits = 2)})) %>%
-  select(ends_with("Temperature")) %>% 
-  head(.,3) %>% 
-  glimpse()
-
-# reduce your code chunk by using function
-display <- function(x){
-  # subset dataframe and summarized for displaying purporse
-  # x: input data frame
-  x %>% 
-    dplyr::select(ends_with("Temperature")) %>% 
-    head(.,3) %>% 
-    dplyr::glimpse()
-}
-
-climate %>% 
-  mutate(across(where(is.numeric),~{round(.x, digits = 2)})) %>%
-  display()
-```
-
-## Conclude your dataframe by groups
-
-![](wrangling.png)
-
-### group_by()
-
-Learn from [examples](https://dplyr.tidyverse.org/reference/group_by.html)!
-
-::: callout-warning
-## practice
-
-1.  read `climate.csv` from `data` folder using relative path
-2.  find the sowing date (i.e., the first date) for each year (`DFG_year`) and each sowing treatment(`sowing_date`).
-3.  calculate thermal time based on `DailyMean_Temperature`
-:::
-
-### how to get the minimum unique combination of dataframe?
-
-how many unique year-months combinations were included in \`climate 2019 for early and late sowing?
-
-```{r,eval=FALSE}
-climate %>% 
-  dplyr::filter(DFG_year=="DFG2019") %>% 
-  group_by(y,m) %>% 
-  summarise()
-
-climate %>% 
-  dplyr::filter(DFG_year=="DFG2019") %>% 
-  dplyr::select(y,m) %>% 
-  dplyr::distinct()
-
-```
-
-### wide to long
-
-```{r}
-climate %>%names()
-
-climate_long <- climate %>% 
-  tidyr::pivot_longer(names_to = "Daily_Terms",
-                      values_to = "Daily_value",
-                      cols = contains("Daily")) 
-climate_long%>% 
-  names()
-```
-
-### long to wide
-
-```{r}
-climate %>%names()
-
-climate_long <- climate %>% 
-  tidyr::pivot_longer(names_to = "Daily_Terms",
-                      values_to = "Daily_value",
-                      cols = contains("Daily"))
-climate_long%>% 
-  tidyr::pivot_wider(names_from = "Daily_Terms",
-                     values_from = "Daily_value")%>% 
-  names()
-```
-
-<!-- ### Protocols of making a regression plot -->
-
-<!-- [![Click to read original article](Protocol.jpg)](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.12577) -->
-## For loop
-use for loop for repetitive tasks.
-
-```{r,eval=FALSE}
-filename <- c('grain_counting_practice_studentName1.xlsx',
-              'grain_counting_practice_studentName2.xlsx')
-file_list<- filename %>% strsplit("_")
-# tradition way of for loop
-res <- c()
-for(i in 1:2){
-  res <- c(res,file_list[[i]][4])
-}
-
-# alternative in r package purrr
-# chr stands for the "character" output.
-purrr::map_chr(1:length(file_list),  ~{
-  file_list[[.x]][4]
-})
-
-# notice that the output of map_chr must be 1 element per iteration.
-purrr::map_chr(filename,  ~{
-  .x %>% strsplit("_") %>% unlist()
-})
-
-# equivalent
-purrr::map(filename,  ~{
-  .x %>% strsplit("_") %>% unlist()
-})
-
-lapply(filename,function(x){
-  x %>% strsplit("_") %>% unlist()
-})
-```
-
-::: {.callout-note collapse="true"}
-## challenge
-Using for loop,
-create a vector contained only the student name but replace the `".xlsx"` suffix.
-Search on google. What would be your `keyword`?
-:::
-
-## Spikelet position practice
-
-### read real data
-read kernel_combine.csv in folder data using relative path. subset column `tiller` which match pattern `M`.
-
-How can you get the unique combination of `car`,`var`,`nitrogen` and `time`? Which combinations of functions can you use?
-
-
-::: {.callout-note collapse="true"}
-## challenge
-```{r,eval=FALSE}
-dat %>% 
-  group_by(car,var,nitrogen,time) %>% 
-  summarise()
-```
-:::
-
-### read your own data
-Go to [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/), download the `student` folder. 
-
-::: callout-warning
-### Practice
-1. list the file name in the folder using relative path
-2. read the file based on the name listed.
-3. add a column containing student name information
-4. combined the result in one
-:::
-
-
-::: callout-warning
-### Practice
-1. do data summary for each file, compare the range of three files.
-2. Visualize it with ggplot, differentiate the data from each student by `color`.
-:::
-
-
-### classify spikelet based on position
-
-the spike of the main shoot was dissected to count the total number of floret in
-
--   basal (third-fifth spikelet from the bottom)
-
--   central (middle spikelets)
-
--   apical (third-fifth spikelet from the top) spikelets throughout the spike [reference](https://doi.org/10.1016/j.fcr.2020.107908)
-
-```{r,echo=FALSE}
-dat %<>%
-  group_by(car,var,nitrogen,time,rep) %>% 
-  mutate(type=cut(spike,3) %>% as.numeric(),
-         type=case_when(type==1~"basal",
-                        type==2~"central",
-                        T~"apical")) %>% 
-  group_by(car,var,nitrogen,time,rep,type) %>% 
-  dplyr::arrange(spike) %>% 
-  mutate(Fl=seq(1,n())) %>% 
-  dplyr::arrange(var,nitrogen,time,rep,spike)
-# glimpse(dat)
-```
-
-### basic summary of kernel development summ for single spike
-
--   Sp: total spikelet
--   Fl: maximum floret
--   sfl: total floret
--   kf: total full kernel
--   kh: total half kernel
--   ks: total small kernel
--   kp: potential kernel number
--   fr: filling rate
--   fc: potential filling rate
-
-```{r,echo=FALSE}
-sum.dat <- dat %>% 
-  dplyr::group_by(nitrogen,time,var,rep,tiller,type) %>% 
-  dplyr::summarise(
-    Sp=max(spike),#total spikelet
-    Fl=max(flower),# maximum floret 
-    sfl=sum(flower),# total floret
-    kf=sum(kernel.full),# total full kernel
-    kh=sum(kernel.half),# total half kernel
-    ks=sum(kernel.small),# total small kernel
-    kp=kf+kh,# potential kernel number 
-    fr=kf/sfl,# filling rate 
-    fc=kf/kp)#potential filling rate
-glimpse(sum.dat)
-```
-
-### Data wrangling and plot with facet
-
-```{r ,echo=FALSE}
-long_format <- dat %>% 
-  tidyr::pivot_longer(cols=c(nitrogen,time),
-                      names_to = "treatment",
-                      values_to = "levels") %>% 
-  group_by(spike,var,treatment,levels,type,rep) %>%
-  summarise(fertile_flower=max(kernel.full)) %>% 
-  group_by(spike,var,treatment,levels,type) %>%
-  summarise(fertile_flower=mean(fertile_flower))
-
-long_format%>% 
-  filter(fertile_flower<10) %>% 
-  ggplot(aes(fertile_flower,spike,color=type,shape=levels))+
-  geom_point()+
-  facet_grid(treatment~var)+
-  theme_classic()+
-  scale_x_continuous(limits = c(0,5),breaks=seq(0,4))
-
-```
