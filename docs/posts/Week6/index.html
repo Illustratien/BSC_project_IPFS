@@ -178,15 +178,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#wide-to-long" id="toc-wide-to-long" class="nav-link" data-scroll-target="#wide-to-long">wide to long</a></li>
   <li><a href="#long-to-wide" id="toc-long-to-wide" class="nav-link" data-scroll-target="#long-to-wide">long to wide</a></li>
   </ul></li>
-  <li><a href="#for-loop" id="toc-for-loop" class="nav-link" data-scroll-target="#for-loop">For loop</a></li>
+  <li><a href="#looping-with-for-lapply-and-map" id="toc-looping-with-for-lapply-and-map" class="nav-link" data-scroll-target="#looping-with-for-lapply-and-map">Looping with for(), lapply() and map()</a>
+  <ul class="collapse">
+  <li><a href="#read-your-own-data" id="toc-read-your-own-data" class="nav-link" data-scroll-target="#read-your-own-data">read your own data</a></li>
+  </ul></li>
   <li><a href="#spikelet-position-practice" id="toc-spikelet-position-practice" class="nav-link" data-scroll-target="#spikelet-position-practice">Spikelet position practice</a>
   <ul class="collapse">
   <li><a href="#read-real-data" id="toc-read-real-data" class="nav-link" data-scroll-target="#read-real-data">read real data</a></li>
-  <li><a href="#read-your-own-data" id="toc-read-your-own-data" class="nav-link" data-scroll-target="#read-your-own-data">read your own data</a></li>
   <li><a href="#classify-spikelet-based-on-position" id="toc-classify-spikelet-based-on-position" class="nav-link" data-scroll-target="#classify-spikelet-based-on-position">classify spikelet based on position</a></li>
   <li><a href="#basic-summary-of-kernel-development-summ-for-single-spike" id="toc-basic-summary-of-kernel-development-summ-for-single-spike" class="nav-link" data-scroll-target="#basic-summary-of-kernel-development-summ-for-single-spike">basic summary of kernel development summ for single spike</a></li>
   <li><a href="#data-wrangling-and-plot-with-facet" id="toc-data-wrangling-and-plot-with-facet" class="nav-link" data-scroll-target="#data-wrangling-and-plot-with-facet">Data wrangling and plot with facet</a></li>
   </ul></li>
+  <li><a href="#recommendation" id="toc-recommendation" class="nav-link" data-scroll-target="#recommendation">recommendation</a></li>
   </ul>
 </nav>
 </nav>
@@ -508,9 +511,9 @@ Discussion
 <!-- [![Click to read original article](Protocol.jpg)](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.12577) -->
 </section>
 </section>
-<section id="for-loop" class="level2">
-<h2 class="anchored" data-anchor-id="for-loop">For loop</h2>
-<p>use for loop for repetitive tasks.</p>
+<section id="looping-with-for-lapply-and-map" class="level2">
+<h2 class="anchored" data-anchor-id="looping-with-for-lapply-and-map">Looping with for(), lapply() and map()</h2>
+<p>deal repetitive tasks with loops.[^1] [^1]: <a href="https://nicercode.github.io/guides/repeating-things/">lapply vs for loop</a> <a href="https://stackoverflow.com/questions/45101045/why-use-purrrmap-instead-of-lapply">lapply vs purrr</a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>filename <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'grain_counting_practice_studentName1.xlsx'</span>,</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">'grain_counting_practice_studentName2.xlsx'</span>)</span>
@@ -541,6 +544,9 @@ Discussion
 <span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span> <span class="fu">strsplit</span>(<span class="st">"_"</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()</span>
 <span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="read-your-own-data" class="level3">
+<h3 class="anchored" data-anchor-id="read-your-own-data">read your own data</h3>
+<p>Go to <a href="https://box.hu-berlin.de/d/fc7db144021a4a35a086/">HU-box</a>, download the <code>student</code> folder.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -581,10 +587,21 @@ challenge
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Using <code>map()</code>, read the three files in the folder. 1. list the files of the folder <code>student</code> using <code>list.files()</code> 2. find which function could read <code>.xlsx</code> 3. assign each <code>.xlsx</code> as one list element 4. combine three dataframe using <code>rbind()</code> 5. use for loop to return the column names of three dataframes. 6. visualize it with ggplot:</p>
+<p>Using <code>map_dfr()</code>, read the three files in the folder.</p>
+<ol type="1">
+<li>list the files of the folder <code>student</code> using <code>list.files()</code></li>
+<li>find which function could read <code>.xlsx</code></li>
+<li>read each <code>.xlsx</code> as one list element</li>
+<li>add a column containing student name information</li>
+<li>use for loop to return the column names of three dataframes.</li>
+<li>visualize it with ggplot:</li>
+</ol>
+<p>6.1. do data summary for each file, compare the range of three files.</p>
+<p>6.2. Visualize it with ggplot, differentiate the data from each student by <code>color</code>.</p>
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="spikelet-position-practice" class="level2">
 <h2 class="anchored" data-anchor-id="spikelet-position-practice">Spikelet position practice</h2>
@@ -598,7 +615,7 @@ challenge
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-challenge
+answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -610,44 +627,6 @@ challenge
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-</div>
-</div>
-</section>
-<section id="read-your-own-data" class="level3">
-<h3 class="anchored" data-anchor-id="read-your-own-data">read your own data</h3>
-<p>Go to <a href="https://box.hu-berlin.de/d/fc7db144021a4a35a086/">HU-box</a>, download the <code>student</code> folder.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Practice
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>list the file name in the folder using relative path</li>
-<li>read the file based on the name listed.</li>
-<li>add a column containing student name information</li>
-<li>combined the result in one</li>
-</ol>
-</div>
-</div>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Practice
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>do data summary for each file, compare the range of three files.</li>
-<li>Visualize it with ggplot, differentiate the data from each student by <code>color</code>.</li>
-</ol>
 </div>
 </div>
 </section>
@@ -706,9 +685,13 @@ $ fc       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 <p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="recommendation" class="level2">
+<h2 class="anchored" data-anchor-id="recommendation">recommendation</h2>
+<p><a href="https://www.rebeccabarter.com/blog/2019-08-19_purrr">purrr</a></p>
+
+
 </section>
 
 </main> <!-- /main -->
