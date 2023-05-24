@@ -40,7 +40,7 @@ Welcome to the fifth course! You will learn more about `dataframe` wrangling:
 ::: callout-note
 # Learning goals
 
-1.  data frame wrangling with `dplyr` and `tidyr`
+1.  data frame wrangling with `dplyr`
 2.  `ggplot()`
 :::
 
@@ -50,17 +50,22 @@ Welcome to the fifth course! You will learn more about `dataframe` wrangling:
 1.  What is the component of `function()`? How could you document them?
 2.  How many data type can you remember?
 3.  How many ways could you match a cell in `dataframe`? which functions are available?
-4.  What is the function of `mutate()`, `filter()` and `select()`? (dplyr)
-4.5 If you have multiple options in these function, what operator should you use for separation?
-4.6 what is the meaning of `,` in `filter(condition1, condition2)`?
+4.  What is the function of `mutate()`, `filter()` and `select()`? (dplyr) 4.5 If you have multiple options in these function, what operator should you use for separation? 4.6 what is the meaning of `,` in `filter(condition1, condition2)`?
 5.  What are the elements of `ggplot()`
 6.  What are `|`,`&`,`!`,`==` and `%in%`? When to use them?
-7.  How do you have an overview of a `dataframe`? Which function can you use? 
+7.  How do you have an overview of a `dataframe`? Which function can you use?
 8.  If you want to combine two columns into one, how many ways are available?
-9.  What is `case_when()`? How to write the syntax?
-10. When to use  `match()` and `order()`?
-
 :::
+```{r}
+data.frame(x=letters) %>% 
+  filter(x%in%c('a','b'))
+data.frame(x=letters) %>% 
+  filter(c('a','b')%in%x)
+
+c('a','b')%in%letters
+letters%in%c('a','b')
+```
+
 
 ### advanced mutate add-on :across
 
@@ -159,277 +164,8 @@ merge_thermal_time %>%
 ```
 :::
 
-### how to get the minimum unique combination of dataframe?
-
-how many unique year-months combinations were included in \`climate 2019 for early and late sowing?
-
-```{r,eval=FALSE}
-climate %>% 
-  dplyr::filter(DFG_year=="DFG2019") %>% 
-  group_by(y,m) %>% 
-  summarise()
-
-climate %>% 
-  dplyr::filter(DFG_year=="DFG2019") %>% 
-  dplyr::select(y,m) %>% 
-  dplyr::distinct()
-
-```
-::: {.callout-warning}
-## challenge
-Compare the growing seasons across three years. 
-
-1. check the datatype of `DayTime`, make sure it is `Date`.
-2. `group_by`year and sowing date, `mutate` a new column called `DAS`(Days after sowing).
-3.  use `ggplot` to visualize this dataframe with points and lines:
-
-x is `DAS`, y is `Acc_Temperature`, color is `DFG_year` and the points should be linked of same `DFG_year` and `sowing_date`.
-
-Is there additional columns required?
-```{r,echo=FALSE}
-climate %>% 
-  # dplyr::filter(DFG_year%in%c("DFG2019","DFG2020")) %>% 
-  group_by(DFG_year,sowing_date) %>% 
-  mutate(DayTime=as.Date(DayTime,format="%Y-%m-%d"),
-         DAS=as.numeric(DayTime-min(DayTime))) %>% 
-  ggplot(aes(x=DAS,y=Acc_Temperature,color=DFG_year,
-             group=interaction(sowing_date,DFG_year)))+
-  # geom_point()+
-  geom_line(aes(linetype=sowing_date),linewidth=1)+
-  theme_bw()+
-  theme(legend.position = c(.1,.65))+
-  labs(x="Days after sowing",y= "Thermal sum (°Cd)")+
-  guides(color=guide_legend(title="Year"))
 
 
-```
-::: 
+## recommendation
 
-### wide to long
-
-```{r}
-climate %>%names()
-
-climate_long <- climate %>% 
-  tidyr::pivot_longer(names_to = "Daily_Terms",
-                      values_to = "Daily_value",
-                      cols = contains("Daily")) 
-climate_long%>% 
-  names()
-#select cols by position
-climate_long <- climate %>% 
-  tidyr::pivot_longer(names_to = "Terms",
-                      values_to = "value",
-                      # select both patterns
-                      cols = grep("(Daily|Acc)",names(.)))
-
-grep("(Daily|Acc)",names(climate))
-
-climate_long%>% 
-  names()
-```
-
-### long to wide
-
-```{r}
-climate %>%names()
-
-climate_long <- climate %>% 
-  tidyr::pivot_longer(names_to = "Daily_Terms",
-                      values_to = "Daily_value",
-                      cols = contains("Daily"))
-climate_long%>% 
-  tidyr::pivot_wider(names_from = "Daily_Terms",
-                     values_from = "Daily_value")%>% 
-  names()
-```
-::: callout-warning
-## Discussion
-`wide` refers to one column one trait and `long` denotes the stacked traits in two columns (names and values).
-
-
-1. From `select` and `filter` point of view,
-when is `wide` format useful and when is `long` ideal?
-
-2. If you want to `mutate` a column based on calculation between multiple traits,
-e.g., trait1-trait2/trait3, then which formats is more suitable?
-:::
-<!-- ### Protocols of making a regression plot -->
-
-<!-- [![Click to read original article](Protocol.jpg)](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.12577) -->
-
-## Looping with for(), lapply() and map()
-
-deal repetitive tasks with loops.[^1]
-[^1]:
-[lapply vs for loop](https://nicercode.github.io/guides/repeating-things/)
-[lapply vs purrr](https://stackoverflow.com/questions/45101045/why-use-purrrmap-instead-of-lapply)
-
-```{r,eval=FALSE}
-filename <- c('grain_counting_practice_studentName1.xlsx',
-              'grain_counting_practice_studentName2.xlsx')
-file_list<- filename %>% strsplit("_")
-# tradition way of for loop
-res <- c()
-for(i in 1:2){
-  res <- c(res,file_list[[i]][4])
-}
-
-# alternative in r package purrr
-# chr stands for the "character" output.
-purrr::map_chr(1:length(file_list),  ~{
-  file_list[[.x]][4]
-})
-
-# notice that the output of map_chr must be 1 element per iteration.
-purrr::map_chr(filename,  ~{
-  .x %>% strsplit("_") %>% unlist()
-})
-
-# equivalent
-purrr::map(filename,  ~{
-  .x %>% strsplit("_") %>% unlist()
-})
-
-lapply(filename,function(x){
-  x %>% strsplit("_") %>% unlist()
-})
-```
-
-### read your own data
-
-Go to [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/), download the `student` folder.
-
-
-::: {.callout-note}
-## challenge
-
-using for loop, extract the student name from file name.
-1. list the files of the folder `student` using `list.files()`
-2. write your own for loop.
-```{r,echo=FALSE}
-
-df<- map(list.files("../data/student"),~{
-  xlsx::read.xlsx(paste0("../data/student/",.x),sheetIndex = 1) %>% 
-    names()
-})
-names(df) <-
-  purrr::map(list.files("../data/student"),  ~{
-  .x %>% strsplit("_") %>% unlist()
-}) %>% map_chr(.,~{.x[4] %>% sub(".xlsx","",.)})
-df 
-
-```
-:::
-
-::: {.callout-note collapse="true"}
-## challenge
-
-Using `map_dfr()`, read the three files in the folder.
-
-1. list the files of the folder `student` using `list.files()`
-2. find which function could read `.xlsx`
-3. read each `.xlsx` as one list element
-4. add a column containing student name information
-5. use for loop to return the column names of three dataframes.
-6. visualize it with ggplot: 
-
-6.1.  do data summary for each file, compare the range of three files.
-
-6.2.  Visualize it with ggplot, differentiate the data from each student by `color`.
-:::
-
-## Spikelet position practice
-
-### read real data
-
-read kernel_combine.csv in folder data using relative path. subset column `tiller` which match pattern `M`.
-
-How can you get the unique combination of `car`,`var`,`nitrogen` and `time`? Which combinations of functions can you use?
-
-::: {.callout-note collapse="true"}
-## answer
-
-```{r,eval=FALSE}
-dat %>% 
-  group_by(car,var,nitrogen,time) %>% 
-  summarise()
-```
-:::
-
-### classify spikelet based on position
-
-the spike of the main shoot was dissected to count the total number of floret in
-
--   basal (third-fifth spikelet from the bottom)
-
--   central (middle spikelets)
-
--   apical (third-fifth spikelet from the top) spikelets throughout the spike [reference](https://doi.org/10.1016/j.fcr.2020.107908)
-
-```{r,echo=FALSE}
-dat %<>%
-  group_by(car,var,nitrogen,time,rep) %>% 
-  mutate(type=cut(spike,3) %>% as.numeric(),
-         type=case_when(type==1~"basal",
-                        type==2~"central",
-                        T~"apical")) %>% 
-  group_by(car,var,nitrogen,time,rep,type) %>% 
-  dplyr::arrange(spike) %>% 
-  mutate(Fl=seq(1,n())) %>% 
-  dplyr::arrange(var,nitrogen,time,rep,spike)
-# glimpse(dat)
-```
-
-### basic summary of kernel development summ for single spike
-
--   Sp: total spikelet
--   Fl: maximum floret
--   sfl: total floret
--   kf: total full kernel
--   kh: total half kernel
--   ks: total small kernel
--   kp: potential kernel number
--   fr: filling rate
--   fc: potential filling rate
-
-```{r,echo=FALSE}
-sum.dat <- dat %>% 
-  dplyr::group_by(nitrogen,time,var,rep,tiller,type) %>% 
-  dplyr::summarise(
-    Sp=max(spike),#total spikelet
-    Fl=max(flower),# maximum floret 
-    sfl=sum(flower),# total floret
-    kf=sum(kernel.full),# total full kernel
-    kh=sum(kernel.half),# total half kernel
-    ks=sum(kernel.small),# total small kernel
-    kp=kf+kh,# potential kernel number 
-    fr=kf/sfl,# filling rate 
-    fc=kf/kp)#potential filling rate
-glimpse(sum.dat)
-```
-
-### Data wrangling and plot with facet
-
-```{r ,echo=FALSE}
-long_format <- dat %>% 
-  tidyr::pivot_longer(cols=c(nitrogen,time),
-                      names_to = "treatment",
-                      values_to = "levels") %>% 
-  group_by(spike,var,treatment,levels,type,rep) %>%
-  summarise(fertile_flower=max(kernel.full)) %>% 
-  group_by(spike,var,treatment,levels,type) %>%
-  summarise(fertile_flower=mean(fertile_flower))
-
-long_format%>% 
-  filter(fertile_flower<10) %>% 
-  ggplot(aes(fertile_flower,spike,color=type,shape=levels))+
-  geom_point()+
-  facet_grid(treatment~var)+
-  theme_classic()+
-  scale_x_continuous(limits = c(0,5),breaks=seq(0,4))
-
-```
-
-## recommendation 
 [purrr](https://www.rebeccabarter.com/blog/2019-08-19_purrr)

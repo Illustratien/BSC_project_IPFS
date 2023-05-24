@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "BSC_project_IPFS2023",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n\n\n\n\n  \n\n\n\n\nWeek6: Grain development III\n\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek5: Grain development II\n\n\n\n\n\n\n\n\n\n\n\n\nMay 16, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek4: Grain development I\n\n\n\n\n\n\n\n\n\n\n\n\nMay 9, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n  \n\n\n\n\nWeek3: Floret development\n\n\n\n\n\n\n\n\n\n\n\n\nMay 2, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n  \n\n\n\n\nWeek2: The growth of spike in winter wheat\n\n\n\n\n\n\n\n\n\n\n\n\nApr 25, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n  \n\n\n\n\nWeek1: Phenology and the growth of spike\n\n\n\n\n\n\n\n\n\n\n\n\nApr 18, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n\n\n\n\n  \n\n\n\n\nWeek7: Grain development III\n\n\n\n\n\n\n\n\n\n\n\n\nMay 30, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n  \n\n\n\n\nWeek6: Grain development III\n\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek5: Grain development II\n\n\n\n\n\n\n\n\n\n\n\n\nMay 16, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek4: Grain development I\n\n\n\n\n\n\n\n\n\n\n\n\nMay 9, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n  \n\n\n\n\nWeek3: Floret development\n\n\n\n\n\n\n\n\n\n\n\n\nMay 2, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n  \n\n\n\n\nWeek2: The growth of spike in winter wheat\n\n\n\n\n\n\n\n\n\n\n\n\nApr 25, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\n  \n\n\n\n\nWeek1: Phenology and the growth of spike\n\n\n\n\n\n\n\n\n\n\n\n\nApr 18, 2023\n\n\nTien-Cheng\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -430,6 +430,34 @@
     "objectID": "posts/Week6/index.html#recommendation",
     "href": "posts/Week6/index.html#recommendation",
     "title": "Week6: Grain development III",
+    "section": "recommendation",
+    "text": "recommendation\npurrr"
+  },
+  {
+    "objectID": "posts/Week7/index.html",
+    "href": "posts/Week7/index.html",
+    "title": "Week7: Grain development III",
+    "section": "",
+    "text": "Welcome to the fifth course! You will learn more about dataframe wrangling:"
+  },
+  {
+    "objectID": "posts/Week7/index.html#looping-with-for-lapply-and-map",
+    "href": "posts/Week7/index.html#looping-with-for-lapply-and-map",
+    "title": "Week7: Grain development III",
+    "section": "Looping with for(), lapply() and map()",
+    "text": "Looping with for(), lapply() and map()\ndeal repetitive tasks with loops.[^1] [^1]: lapply vs for loop lapply vs purrr\n\nfilename <- c('grain_counting_practice_studentName1.xlsx',\n              'grain_counting_practice_studentName2.xlsx')\nfile_list<- filename %>% strsplit(\"_\")\n# tradition way of for loop\nres <- c()\nfor(i in 1:2){\n  res <- c(res,file_list[[i]][4])\n}\n\n# alternative in r package purrr\n# chr stands for the \"character\" output.\npurrr::map_chr(1:length(file_list),  ~{\n  file_list[[.x]][4]\n})\n\n# notice that the output of map_chr must be 1 element per iteration.\npurrr::map_chr(filename,  ~{\n  .x %>% strsplit(\"_\") %>% unlist()\n})\n\n# equivalent\npurrr::map(filename,  ~{\n  .x %>% strsplit(\"_\") %>% unlist()\n})\n\nlapply(filename,function(x){\n  x %>% strsplit(\"_\") %>% unlist()\n})\n\n\nread your own data\nGo to HU-box, download the student folder.\n\n\n\n\n\n\nchallenge\n\n\n\nusing for loop, extract the student name from file name. 1. list the files of the folder student using list.files() 2. write your own for loop.\n\n\n$clement\n[1] \"Var\"          \"Plot_Id\"      \"Spikes\"       \"flower\"       \"kernal.full\" \n[6] \"Kernal.half\"  \"kernal.small\"\n\n$hanwenhsu\n[1] \"var\"          \"plot_id\"      \"spike\"        \"flower\"       \"kernel.full\" \n[6] \"kernel.half\"  \"kernel.small\"\n\n$shawon\n[1] \"var\"         \"plot.id\"     \"spike\"       \"flower\"      \"kernel.full\"\n[6] \"kernel.half\" \"NA.\"        \n\n\n\n\n\n\n\n\n\n\nchallenge\n\n\n\n\n\nUsing map_dfr(), read the three files in the folder.\n\nlist the files of the folder student using list.files()\nfind which function could read .xlsx\nread each .xlsx as one list element\nadd a column containing student name information\nuse for loop to return the column names of three dataframes.\nvisualize it with ggplot:\n\n6.1. do data summary for each file, compare the range of three files.\n6.2. Visualize it with ggplot, differentiate the data from each student by color."
+  },
+  {
+    "objectID": "posts/Week7/index.html#spikelet-position-practice",
+    "href": "posts/Week7/index.html#spikelet-position-practice",
+    "title": "Week7: Grain development III",
+    "section": "Spikelet position practice",
+    "text": "Spikelet position practice\n\nread real data\nread kernel_combine.csv in folder data using relative path. subset column tiller which match pattern M.\nHow can you get the unique combination of car,var,nitrogen and time? Which combinations of functions can you use?\n\n\n\n\n\n\nanswer\n\n\n\n\n\n\ndat %>% \n  group_by(car,var,nitrogen,time) %>% \n  summarise()\n\n\n\n\n\n\nclassify spikelet based on position\nthe spike of the main shoot was dissected to count the total number of floret in\n\nbasal (third-fifth spikelet from the bottom)\ncentral (middle spikelets)\napical (third-fifth spikelet from the top) spikelets throughout the spike reference\n\n\n\n\n\n\nbasic summary of kernel development summ for single spike\n\nSp: total spikelet\nFl: maximum floret\nsfl: total floret\nkf: total full kernel\nkh: total half kernel\nks: total small kernel\nkp: potential kernel number\nfr: filling rate\nfc: potential filling rate\n\n\n\nRows: 681\nColumns: 15\nGroups: nitrogen, time, var, rep, tiller [227]\n$ nitrogen <chr> \"n1\", \"n1\", \"n1\", \"n1\", \"n1\", \"n1\", \"n1\", \"n1\", \"n1\", \"n1\", \"~\n$ time     <chr> \"t1\", \"t1\", \"t1\", \"t1\", \"t1\", \"t1\", \"t1\", \"t1\", \"t1\", \"t1\", \"~\n$ var      <chr> \"Alves\", \"Alves\", \"Alves\", \"Alves\", \"Alves\", \"Alves\", \"Alves\"~\n$ rep      <int> 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 1, 1, 1, 2, 2, 2~\n$ tiller   <chr> \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"M\", \"~\n$ type     <chr> \"apical\", \"basal\", \"central\", \"apical\", \"basal\", \"central\", \"~\n$ Sp       <int> 16, 6, 11, 19, 7, 13, 17, 6, 11, 19, 7, 13, 19, 7, 13, 16, 6,~\n$ Fl       <int> 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 4, 4, 4~\n$ sfl      <int> 19, 18, 20, 21, 21, 24, 22, 20, 20, 21, 22, 24, 18, 21, 24, 1~\n$ kf       <int> 10, 8, 13, 14, 11, 18, 13, 11, 15, 12, 12, 17, 9, 12, 17, 2, ~\n$ kh       <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0~\n$ ks       <int> 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0~\n$ kp       <int> 10, 8, 13, 14, 11, 18, 13, 11, 15, 12, 12, 17, 9, 12, 17, 2, ~\n$ fr       <dbl> 0.5263158, 0.4444444, 0.6500000, 0.6666667, 0.5238095, 0.7500~\n$ fc       <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~\n\n\n\n\nData wrangling and plot with facet"
+  },
+  {
+    "objectID": "posts/Week7/index.html#recommendation",
+    "href": "posts/Week7/index.html#recommendation",
+    "title": "Week7: Grain development III",
     "section": "recommendation",
     "text": "recommendation\npurrr"
   }
