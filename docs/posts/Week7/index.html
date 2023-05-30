@@ -184,13 +184,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#read-your-own-data" id="toc-read-your-own-data" class="nav-link" data-scroll-target="#read-your-own-data">read your own data</a></li>
   </ul></li>
-  <li><a href="#spikelet-position-practice" id="toc-spikelet-position-practice" class="nav-link" data-scroll-target="#spikelet-position-practice">Spikelet position practice</a>
-  <ul class="collapse">
-  <li><a href="#read-real-data" id="toc-read-real-data" class="nav-link" data-scroll-target="#read-real-data">read real data</a></li>
-  <li><a href="#classify-spikelet-based-on-position" id="toc-classify-spikelet-based-on-position" class="nav-link" data-scroll-target="#classify-spikelet-based-on-position">classify spikelet based on position</a></li>
-  <li><a href="#basic-summary-of-kernel-development-summ-for-single-spike" id="toc-basic-summary-of-kernel-development-summ-for-single-spike" class="nav-link" data-scroll-target="#basic-summary-of-kernel-development-summ-for-single-spike">basic summary of kernel development summ for single spike</a></li>
-  <li><a href="#data-wrangling-and-plot-with-facet" id="toc-data-wrangling-and-plot-with-facet" class="nav-link" data-scroll-target="#data-wrangling-and-plot-with-facet">Data wrangling and plot with facet</a></li>
-  </ul></li>
   <li><a href="#recommendation" id="toc-recommendation" class="nav-link" data-scroll-target="#recommendation">recommendation</a></li>
   </ul>
 </nav>
@@ -233,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>Welcome to the fifth course! You will learn more about <code>dataframe</code> wrangling:</p>
+<p>Welcome to the seventh course! You will learn more about <code>dataframe</code> wrangling:</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -617,7 +610,7 @@ challenge
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>using for loop, extract the student name from file name. 1. list the files of the folder <code>student</code> using <code>list.files()</code> 2. write your own for loop.</p>
+<p>using for loop, extract the student name from file name. 1. list the files of the folder <code>student</code> using <code>list.files()</code> 2. write your own for loop. <img src="forloop.png" class="img-fluid"></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>$clement
@@ -633,116 +626,6 @@ $shawon
 [6] "kernel.half" "NA."        </code></pre>
 </div>
 </div>
-</div>
-</div>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-challenge
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Using <code>map_dfr()</code>, read the three files in the folder.</p>
-<ol type="1">
-<li>list the files of the folder <code>student</code> using <code>list.files()</code></li>
-<li>find which function could read <code>.xlsx</code></li>
-<li>read each <code>.xlsx</code> as one list element</li>
-<li>add a column containing student name information</li>
-<li>use for loop to return the column names of three dataframes.</li>
-<li>visualize it with ggplot:</li>
-</ol>
-<p>6.1. do data summary for each file, compare the range of three files.</p>
-<p>6.2. Visualize it with ggplot, differentiate the data from each student by <code>color</code>.</p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="spikelet-position-practice" class="level2">
-<h2 class="anchored" data-anchor-id="spikelet-position-practice">Spikelet position practice</h2>
-<section id="read-real-data" class="level3">
-<h3 class="anchored" data-anchor-id="read-real-data">read real data</h3>
-<p>read kernel_combine.csv in folder data using relative path. subset column <code>tiller</code> which match pattern <code>M</code>.</p>
-<p>How can you get the unique combination of <code>car</code>,<code>var</code>,<code>nitrogen</code> and <code>time</code>? Which combinations of functions can you use?</p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(car,var,nitrogen,time) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="classify-spikelet-based-on-position" class="level3">
-<h3 class="anchored" data-anchor-id="classify-spikelet-based-on-position">classify spikelet based on position</h3>
-<p>the spike of the main shoot was dissected to count the total number of floret in</p>
-<ul>
-<li><p>basal (third-fifth spikelet from the bottom)</p></li>
-<li><p>central (middle spikelets)</p></li>
-<li><p>apical (third-fifth spikelet from the top) spikelets throughout the spike <a href="https://doi.org/10.1016/j.fcr.2020.107908">reference</a></p></li>
-</ul>
-<div class="cell">
-
-</div>
-</section>
-<section id="basic-summary-of-kernel-development-summ-for-single-spike" class="level3">
-<h3 class="anchored" data-anchor-id="basic-summary-of-kernel-development-summ-for-single-spike">basic summary of kernel development summ for single spike</h3>
-<ul>
-<li>Sp: total spikelet</li>
-<li>Fl: maximum floret</li>
-<li>sfl: total floret</li>
-<li>kf: total full kernel</li>
-<li>kh: total half kernel</li>
-<li>ks: total small kernel</li>
-<li>kp: potential kernel number</li>
-<li>fr: filling rate</li>
-<li>fc: potential filling rate</li>
-</ul>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 681
-Columns: 15
-Groups: nitrogen, time, var, rep, tiller [227]
-$ nitrogen &lt;chr&gt; "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1", "~
-$ time     &lt;chr&gt; "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "~
-$ var      &lt;chr&gt; "Alves", "Alves", "Alves", "Alves", "Alves", "Alves", "Alves"~
-$ rep      &lt;int&gt; 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 1, 1, 1, 2, 2, 2~
-$ tiller   &lt;chr&gt; "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "~
-$ type     &lt;chr&gt; "apical", "basal", "central", "apical", "basal", "central", "~
-$ Sp       &lt;int&gt; 16, 6, 11, 19, 7, 13, 17, 6, 11, 19, 7, 13, 19, 7, 13, 16, 6,~
-$ Fl       &lt;int&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 4, 4, 4~
-$ sfl      &lt;int&gt; 19, 18, 20, 21, 21, 24, 22, 20, 20, 21, 22, 24, 18, 21, 24, 1~
-$ kf       &lt;int&gt; 10, 8, 13, 14, 11, 18, 13, 11, 15, 12, 12, 17, 9, 12, 17, 2, ~
-$ kh       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0~
-$ ks       &lt;int&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0~
-$ kp       &lt;int&gt; 10, 8, 13, 14, 11, 18, 13, 11, 15, 12, 12, 17, 9, 12, 17, 2, ~
-$ fr       &lt;dbl&gt; 0.5263158, 0.4444444, 0.6500000, 0.6666667, 0.5238095, 0.7500~
-$ fc       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~</code></pre>
-</div>
-</div>
-</section>
-<section id="data-wrangling-and-plot-with-facet" class="level3">
-<h3 class="anchored" data-anchor-id="data-wrangling-and-plot-with-facet">Data wrangling and plot with facet</h3>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>

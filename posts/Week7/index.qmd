@@ -35,7 +35,7 @@ dat <-read.csv('../data/kernel_combine.csv',
 climate <- read.csv("../data/climate.csv")
 ```
 
-Welcome to the fifth course! You will learn more about `dataframe` wrangling:
+Welcome to the seventh course! You will learn more about `dataframe` wrangling:
 
 ::: callout-note
 # Learning goals
@@ -164,14 +164,14 @@ In general, we can describe the shape of dataframe as wide or long.[^1]
 
 `mutate()` is designed for column-wise calculation.
 
-wide format: 
+wide format:
 
-* `across()` provide quick access to multiple columns, could be useful for wide format.
+-   `across()` provide quick access to multiple columns, could be useful for wide format.
 
-long format: 
+long format:
 
-* Since the values are concentrated in one column, this format is suitable for unifying operation. 
-* `facet_grid()` will required a column which stores the grouping information for facet. This is can be achieved via the long format.
+-   Since the values are concentrated in one column, this format is suitable for unifying operation.
+-   `facet_grid()` will required a column which stores the grouping information for facet. This is can be achieved via the long format.
 
 ### wide to long
 
@@ -235,13 +235,12 @@ climate_long %>%
 
 ::: callout-warning
 ## challenge
+
 Analyze the code that generating Fig2.
 
-Figure out how it works by blocking one line at a time.
-add documentation for each line.
+Figure out how it works by blocking one line at a time. add documentation for each line.
 
 Which function need package `scales`?
-
 :::
 
 ### long ↔ wide
@@ -329,8 +328,10 @@ Go to [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/), download the `
 ::: callout-note
 ## challenge
 
-using for loop, extract the student name from file name. 1. list the files of the folder `student` using `list.files()` 2. write your own for loop.
-
+using for loop, extract the student name from file name.
+1. list the files of the folder `student` using `list.files()` 
+2. write your own for loop.
+![](forloop.png)
 ```{r,echo=FALSE}
 
 df<- map(list.files("../data/student"),~{
@@ -345,115 +346,6 @@ df
 
 ```
 :::
-
-::: {.callout-note collapse="true"}
-## challenge
-
-Using `map_dfr()`, read the three files in the folder.
-
-1.  list the files of the folder `student` using `list.files()`
-2.  find which function could read `.xlsx`
-3.  read each `.xlsx` as one list element
-4.  add a column containing student name information
-5.  use for loop to return the column names of three dataframes.
-6.  visualize it with ggplot:
-
-6.1. do data summary for each file, compare the range of three files.
-
-6.2. Visualize it with ggplot, differentiate the data from each student by `color`.
-:::
-
-## Spikelet position practice
-
-### read real data
-
-read kernel_combine.csv in folder data using relative path. subset column `tiller` which match pattern `M`.
-
-How can you get the unique combination of `car`,`var`,`nitrogen` and `time`? Which combinations of functions can you use?
-
-::: {.callout-note collapse="true"}
-## answer
-
-```{r,eval=FALSE}
-dat %>% 
-  group_by(car,var,nitrogen,time) %>% 
-  summarise()
-```
-:::
-
-### classify spikelet based on position
-
-the spike of the main shoot was dissected to count the total number of floret in
-
--   basal (third-fifth spikelet from the bottom)
-
--   central (middle spikelets)
-
--   apical (third-fifth spikelet from the top) spikelets throughout the spike [reference](https://doi.org/10.1016/j.fcr.2020.107908)
-
-```{r,echo=FALSE}
-dat %<>%
-  group_by(car,var,nitrogen,time,rep) %>% 
-  mutate(type=cut(spike,3) %>% as.numeric(),
-         type=case_when(type==1~"basal",
-                        type==2~"central",
-                        T~"apical")) %>% 
-  group_by(car,var,nitrogen,time,rep,type) %>% 
-  dplyr::arrange(spike) %>% 
-  mutate(Fl=seq(1,n())) %>% 
-  dplyr::arrange(var,nitrogen,time,rep,spike)
-# glimpse(dat)
-```
-
-### basic summary of kernel development summ for single spike
-
--   Sp: total spikelet
--   Fl: maximum floret
--   sfl: total floret
--   kf: total full kernel
--   kh: total half kernel
--   ks: total small kernel
--   kp: potential kernel number
--   fr: filling rate
--   fc: potential filling rate
-
-```{r,echo=FALSE}
-sum.dat <- dat %>% 
-  dplyr::group_by(nitrogen,time,var,rep,tiller,type) %>% 
-  dplyr::summarise(
-    Sp=max(spike),#total spikelet
-    Fl=max(flower),# maximum floret 
-    sfl=sum(flower),# total floret
-    kf=sum(kernel.full),# total full kernel
-    kh=sum(kernel.half),# total half kernel
-    ks=sum(kernel.small),# total small kernel
-    kp=kf+kh,# potential kernel number 
-    fr=kf/sfl,# filling rate 
-    fc=kf/kp)#potential filling rate
-glimpse(sum.dat)
-```
-
-### Data wrangling and plot with facet
-
-```{r ,echo=FALSE}
-long_format <- dat %>% 
-  tidyr::pivot_longer(cols=c(nitrogen,time),
-                      names_to = "treatment",
-                      values_to = "levels") %>% 
-  group_by(spike,var,treatment,levels,type,rep) %>%
-  summarise(fertile_flower=max(kernel.full)) %>% 
-  group_by(spike,var,treatment,levels,type) %>%
-  summarise(fertile_flower=mean(fertile_flower))
-
-long_format%>% 
-  filter(fertile_flower<10) %>% 
-  ggplot(aes(fertile_flower,spike,color=type,shape=levels))+
-  geom_point()+
-  facet_grid(treatment~var)+
-  theme_classic()+
-  scale_x_continuous(limits = c(0,5),breaks=seq(0,4))
-
-```
 
 ## recommendation
 
