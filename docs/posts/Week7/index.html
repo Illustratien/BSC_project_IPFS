@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="stylesheet" href="../../morph.scss">
 </head>
 
-<body class="floating nav-fixed">
+<body class="floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -170,9 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-to-get-the-minimum-unique-combination-of-dataframe" id="toc-how-to-get-the-minimum-unique-combination-of-dataframe" class="nav-link active" data-scroll-target="#how-to-get-the-minimum-unique-combination-of-dataframe">how to get the minimum unique combination of dataframe?</a></li>
+  <li><a href="#logic-of-coding" id="toc-logic-of-coding" class="nav-link active" data-scroll-target="#logic-of-coding">Logic of coding</a>
+  <ul class="collapse">
+  <li><a href="#how-to-get-the-minimum-unique-combination-of-dataframe" id="toc-how-to-get-the-minimum-unique-combination-of-dataframe" class="nav-link" data-scroll-target="#how-to-get-the-minimum-unique-combination-of-dataframe">how to get the minimum unique combination of dataframe?</a></li>
+  </ul></li>
+  <li><a href="#shapes-of-dataframe." id="toc-shapes-of-dataframe." class="nav-link" data-scroll-target="#shapes-of-dataframe.">Shapes of dataframe.</a>
+  <ul class="collapse">
+  <li><a href="#relationship-of-shape-of-dataframe-and-data-processing" id="toc-relationship-of-shape-of-dataframe-and-data-processing" class="nav-link" data-scroll-target="#relationship-of-shape-of-dataframe-and-data-processing">Relationship of shape of dataframe and data processing</a></li>
   <li><a href="#wide-to-long" id="toc-wide-to-long" class="nav-link" data-scroll-target="#wide-to-long">wide to long</a></li>
-  <li><a href="#long-to-wide" id="toc-long-to-wide" class="nav-link" data-scroll-target="#long-to-wide">long to wide</a></li>
+  <li><a href="#long-wide" id="toc-long-wide" class="nav-link" data-scroll-target="#long-wide">long ↔︎ wide</a></li>
+  </ul></li>
   <li><a href="#looping-with-for-lapply-and-map" id="toc-looping-with-for-lapply-and-map" class="nav-link" data-scroll-target="#looping-with-for-lapply-and-map">Looping with for(), lapply() and map()</a>
   <ul class="collapse">
   <li><a href="#read-your-own-data" id="toc-read-your-own-data" class="nav-link" data-scroll-target="#read-your-own-data">read your own data</a></li>
@@ -192,7 +199,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -259,19 +266,103 @@ Discussion
 </ol>
 </div>
 </div>
+<section id="logic-of-coding" class="level2">
+<h2 class="anchored" data-anchor-id="logic-of-coding">Logic of coding</h2>
+<p><img src="coding_logic.png" class="img-fluid"></p>
+<ol type="1">
+<li><p>Check: examine the datatype of each column in your dataframe.</p></li>
+<li><p>Drafting: draw the draft of your desired output.</p></li>
+<li><p>Target columns: identify which columns you would need to generate the output.</p></li>
+<li><p>Steps: write down the possible steps which required to generate the target columns.</p></li>
+</ol>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Here is a draft from coding logic step2. Please practice step 1, 3 &amp; 4 with <code>climate.csv</code>. Finally, can you reproduce this figure?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-ACC" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-ACC-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: step2: Draft of target</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+answer for steps
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>check the datatype of <code>DayTime</code>, make sure it is <code>Date</code>.</li>
+<li><code>group_by</code>year and sowing date, <code>mutate</code> a new column called <code>DAS</code>(Days after sowing).</li>
+<li>use <code>ggplot</code> to visualize this dataframe with points and lines:</li>
+</ol>
+<p>x is <code>DAS</code>, y is <code>Acc_Temperature</code>, color is <code>DFG_year</code> and the points should be linked of same <code>DFG_year</code> and <code>sowing_date</code>.</p>
+<p>Is there additional columns required?</p>
+</div>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+answer for code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>climate <span class="sc">%&gt;%</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># dplyr::filter(DFG_year%in%c("DFG2019","DFG2020")) %&gt;% </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DFG_year,sowing_date) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">DayTime=</span><span class="fu">as.Date</span>(DayTime,<span class="at">format=</span><span class="st">"%Y-%m-%d"</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">DAS=</span><span class="fu">as.numeric</span>(DayTime<span class="sc">-</span><span class="fu">min</span>(DayTime))) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>DAS,<span class="at">y=</span>Acc_Temperature,<span class="at">color=</span>DFG_year,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">group=</span><span class="fu">interaction</span>(sowing_date,DFG_year)))<span class="sc">+</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_point()+</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">linetype=</span>sowing_date),<span class="at">linewidth=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(.<span class="dv">1</span>,.<span class="dv">65</span>))<span class="sc">+</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Days after sowing"</span>,<span class="at">y=</span> <span class="st">"Thermal sum (°Cd)"</span>)<span class="sc">+</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Year"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 <section id="how-to-get-the-minimum-unique-combination-of-dataframe" class="level3">
 <h3 class="anchored" data-anchor-id="how-to-get-the-minimum-unique-combination-of-dataframe">how to get the minimum unique combination of dataframe?</h3>
 <p>how many unique year-months combinations were included in `climate 2019 for early and late sowing?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>climate <span class="sc">%&gt;%</span> </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(DFG_year<span class="sc">==</span><span class="st">"DFG2019"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(y,m) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>()</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>climate <span class="sc">%&gt;%</span> </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(DFG_year<span class="sc">==</span><span class="st">"DFG2019"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(y,m) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>climate <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(DFG_year<span class="sc">==</span><span class="st">"DFG2019"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(y,m) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>climate <span class="sc">%&gt;%</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(DFG_year<span class="sc">==</span><span class="st">"DFG2019"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(y,m) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -283,86 +374,179 @@ challenge
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Compare the growing seasons across three years.</p>
-<ol type="1">
-<li>check the datatype of <code>DayTime</code>, make sure it is <code>Date</code>.</li>
-<li><code>group_by</code>year and sowing date, <code>mutate</code> a new column called <code>DAS</code>(Days after sowing).</li>
-<li>use <code>ggplot</code> to visualize this dataframe with points and lines:</li>
-</ol>
-<p>x is <code>DAS</code>, y is <code>Acc_Temperature</code>, color is <code>DFG_year</code> and the points should be linked of same <code>DFG_year</code> and <code>sowing_date</code>.</p>
-<p>Is there additional columns required?</p>
+<p>read <code>ear_summarized.csv</code> and extract the unique combinations of nitrogen, appl and timeid</p>
 <div class="cell">
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div class="cell-output cell-output-stdout">
+<pre><code>  nitrogen     appl timeid
+1      176 Combined  Early
+2      176 Combined   Late
+3      176    Split  Early
+4      176    Split   Late
+5      220 Combined  Early
+6      220 Combined   Late
+7      220    Split  Early
+8      220    Split   Late</code></pre>
 </div>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="shapes-of-dataframe." class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="shapes-of-dataframe.">Shapes of dataframe.</h2>
+<p><img src="wide_long.png" class="img-fluid"></p>
+<div class="page-columns page-full"><p>In general, we can describe the shape of dataframe as wide or long.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;<a href="https://tidyr.tidyverse.org">tidyr cheatsheet</a> <a href="https://tidyr.tidyverse.org/articles/tidy-data.html">tidyr example</a></p></li></div></div>
+<ul>
+<li><p>Wide refers to a dataframe which each column is one trait.</p></li>
+<li><p>Long refers to a dataframe which multiple trait names in one column and multiple trait values in another one.</p></li>
+</ul>
+<section id="relationship-of-shape-of-dataframe-and-data-processing" class="level3">
+<h3 class="anchored" data-anchor-id="relationship-of-shape-of-dataframe-and-data-processing">Relationship of shape of dataframe and data processing</h3>
+<p><code>mutate()</code> is designed for column-wise calculation.</p>
+<p>wide format:</p>
+<ul>
+<li><code>across()</code> provide quick access to multiple columns, could be useful for wide format.</li>
+</ul>
+<p>long format:</p>
+<ul>
+<li>Since the values are concentrated in one column, this format is suitable for unifying operation.</li>
+<li><code>facet_grid()</code> will required a column which stores the grouping information for facet. This is can be achieved via the long format.</li>
+</ul>
 </section>
 <section id="wide-to-long" class="level3">
 <h3 class="anchored" data-anchor-id="wide-to-long">wide to long</h3>
+<p>In the following examples, we want a unifying change</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>climate <span class="sc">%&gt;%</span><span class="fu">names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># climate %&gt;%glimpse()</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>climate_long <span class="ot">&lt;-</span> climate <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"Daily_Terms"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"Daily_value"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"Daily"</span>)) </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># climate_long%&gt;%   names()</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#select cols by position</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># grep("(Daily|Acc)",names(climate))</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>climate_long <span class="ot">&lt;-</span> climate <span class="sc">%&gt;%</span> </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"Terms"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"value"</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># select both patterns</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cols =</span> <span class="fu">grep</span>(<span class="st">"(Daily|Acc)"</span>,<span class="fu">names</span>(.)))</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># climate_long%&gt;% names()</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="do">## data processing example</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>climate_long_subset<span class="ot">&lt;-</span> climate_long <span class="sc">%&gt;%</span> </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Terms<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">'Acc_Temperature'</span>,<span class="st">'Acc_Precipitation'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DFG_year,sowing_date,Terms) <span class="sc">%&gt;%</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Value=</span><span class="fu">mean</span>(value))</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>climate_long_subset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "DayTime"                "y"                      "m"                     
- [4] "d"                      "DailyMean_Temperature"  "Acc_Temperature"       
- [7] "Acc_Percipitation"      "Acc_Radiation"          "DailySum_Percipitation"
-[10] "DailySum_Radiation"     "sowing_date"            "DFG_year"              </code></pre>
+<pre><code># A tibble: 6 x 4
+# Groups:   DFG_year, sowing_date [6]
+  DFG_year sowing_date Terms           Value
+  &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;           &lt;dbl&gt;
+1 DFG2019  Early       Acc_Temperature  923.
+2 DFG2019  Late        Acc_Temperature  856.
+3 DFG2020  Early       Acc_Temperature 1002.
+4 DFG2020  Late        Acc_Temperature  910.
+5 DFG2021  Early       Acc_Temperature  928.
+6 DFG2021  Late        Acc_Temperature  799.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>climate_long <span class="ot">&lt;-</span> climate <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"Daily_Terms"</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"Daily_value"</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"Daily"</span>)) </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>climate_long<span class="sc">%&gt;%</span> </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "DayTime"           "y"                 "m"                
- [4] "d"                 "Acc_Temperature"   "Acc_Percipitation"
- [7] "Acc_Radiation"     "sowing_date"       "DFG_year"         
-[10] "Daily_Terms"       "Daily_value"      </code></pre>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fig 2</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales) <span class="sc">%&gt;%</span> <span class="fu">suppressMessages</span>()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>climate_long <span class="sc">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Terms<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">'Acc_Temperature'</span>,<span class="st">'Acc_Radiation'</span>),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>         sowing_date<span class="sc">==</span><span class="st">'Early'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DFG_year,sowing_date) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">DayTime=</span><span class="fu">as.Date</span>(DayTime,<span class="at">format=</span><span class="st">"%Y-%m-%d"</span>),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">DAS=</span><span class="fu">as.numeric</span>(DayTime<span class="sc">-</span><span class="fu">min</span>(DayTime))) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(DAS,value,<span class="at">color=</span>DFG_year))<span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>Terms)<span class="sc">+</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_test</span>()<span class="sc">+</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">strip.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>),</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>),</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>),</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="fu">c</span>(.<span class="dv">1</span>,.<span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale_cut =</span> <span class="fu">cut_short_scale</span>())</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'Days after sowing'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-facet" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-facet-1.png" class="img-fluid figure-img" width="1152"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: long format and facet</figcaption><p></p>
+</figure>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#select cols by position</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>climate_long <span class="ot">&lt;-</span> climate <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"Terms"</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"value"</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># select both patterns</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cols =</span> <span class="fu">grep</span>(<span class="st">"(Daily|Acc)"</span>,<span class="fu">names</span>(.)))</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"(Daily|Acc)"</span>,<span class="fu">names</span>(climate))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  5  6  7  8  9 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>climate_long<span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "DayTime"     "y"           "m"           "d"           "sowing_date"
-[6] "DFG_year"    "Terms"       "value"      </code></pre>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Analyze the code that generating Fig2.</p>
+<p>Figure out how it works by blocking one line at a time. add documentation for each line.</p>
+<p>Which function need package <code>scales</code>?</p>
 </div>
 </div>
 </section>
-<section id="long-to-wide" class="level3">
-<h3 class="anchored" data-anchor-id="long-to-wide">long to wide</h3>
+<section id="long-wide" class="level3">
+<h3 class="anchored" data-anchor-id="long-wide">long ↔︎ wide</h3>
+<p>Theoretically, we can easzily switch between the forms. Are they really the same after transforming back?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>climate <span class="sc">%&gt;%</span><span class="fu">names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># long</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>climate_long <span class="ot">&lt;-</span> climate <span class="sc">%&gt;%</span> <span class="co"># climate is wide</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"Daily_Terms"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"Daily_value"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"Daily"</span>)) </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># wide again</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>climate_wide<span class="ot">&lt;-</span> climate_long<span class="sc">%&gt;%</span> </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"Daily_Terms"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values_from =</span> <span class="st">"Daily_value"</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># check if they are the same </span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(<span class="fu">names</span>(climate),<span class="fu">names</span>(climate_wide))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "DayTime"                "y"                      "m"                     
- [4] "d"                      "DailyMean_Temperature"  "Acc_Temperature"       
- [7] "Acc_Percipitation"      "Acc_Radiation"          "DailySum_Percipitation"
-[10] "DailySum_Radiation"     "sowing_date"            "DFG_year"              </code></pre>
+<pre><code>character(0)</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>climate_long <span class="ot">&lt;-</span> climate <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"Daily_Terms"</span>,</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"Daily_value"</span>,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"Daily"</span>))</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>climate_long<span class="sc">%&gt;%</span> </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"Daily_Terms"</span>,</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values_from =</span> <span class="st">"Daily_value"</span>)<span class="sc">%&gt;%</span> </span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(climate,climate_wide)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "DayTime"                "y"                      "m"                     
- [4] "d"                      "Acc_Temperature"        "Acc_Percipitation"     
- [7] "Acc_Radiation"          "sowing_date"            "DFG_year"              
-[10] "DailyMean_Temperature"  "DailySum_Percipitation" "DailySum_Radiation"    </code></pre>
+<pre><code> [1] "Names: 8 string mismatches"                                                            
+ [2] "Attributes: &lt; Component \"class\": Lengths (1, 3) differ (string compare on first 1) &gt;"
+ [3] "Attributes: &lt; Component \"class\": 1 string mismatch &gt;"                                
+ [4] "Component 5: Mean relative difference: 96.42546"                                       
+ [5] "Component 6: Mean relative difference: 0.8220306"                                      
+ [6] "Component 7: Mean relative difference: 1534.907"                                       
+ [7] "Component 8: Modes: numeric, character"                                                
+ [8] "Component 8: target is numeric, current is character"                                  
+ [9] "Component 9: Modes: numeric, character"                                                
+[10] "Component 9: target is numeric, current is character"                                  
+[11] "Component 10: Mean relative difference: 0.9968243"                                     
+[12] "Component 11: Modes: character, numeric"                                               
+[13] "Component 11: target is character, current is numeric"                                 
+[14] "Component 12: Modes: character, numeric"                                               
+[15] "Component 12: target is character, current is numeric"                                 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change the order of column</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(climate,climate_wide[,<span class="fu">names</span>(climate)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Attributes: &lt; Component \"class\": Lengths (1, 3) differ (string compare on first 1) &gt;"
+[2] "Attributes: &lt; Component \"class\": 1 string mismatch &gt;"                                </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change the type</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(climate,climate_wide[,<span class="fu">names</span>(climate)]<span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
 </div>
 </div>
 <div class="callout-warning callout callout-style-default callout-captioned">
@@ -378,45 +562,47 @@ Discussion
 <p><code>wide</code> refers to one column one trait and <code>long</code> denotes the stacked traits in two columns (names and values).</p>
 <ol type="1">
 <li><p>From <code>select</code> and <code>filter</code> point of view, when is <code>wide</code> format useful and when is <code>long</code> ideal?</p></li>
-<li><p>If you want to <code>mutate</code> a column based on calculation between multiple traits, e.g., trait1-trait2/trait3, then which formats is more suitable?</p></li>
+<li><p>If you want to <code>mutate</code> a column based on calculation between multiple traits, e.g., <code>DailyMean_Temperature</code>-<code>DailySum_Percipitation</code>/<code>DailySum_Radiation</code>, then which format is more suitable? or is it both possible?</p></li>
 </ol>
 </div>
 </div>
 <!-- ### Protocols of making a regression plot -->
 <!-- [![Click to read original article](Protocol.jpg)](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.12577) -->
 </section>
-<section id="looping-with-for-lapply-and-map" class="level2">
+</section>
+<section id="looping-with-for-lapply-and-map" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="looping-with-for-lapply-and-map">Looping with for(), lapply() and map()</h2>
-<p>deal repetitive tasks with loops.[^1] [^1]: <a href="https://nicercode.github.io/guides/repeating-things/">lapply vs for loop</a> <a href="https://stackoverflow.com/questions/45101045/why-use-purrrmap-instead-of-lapply">lapply vs purrr</a></p>
+<div class="page-columns page-full"><p>deal repetitive tasks with loops.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;<a href="https://nicercode.github.io/guides/repeating-things/">lapply vs for loop</a></p></li></div></div>
+<p><a href="https://stackoverflow.com/questions/45101045/why-use-purrrmap-instead-of-lapply">lapply vs purrr</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>filename <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'grain_counting_practice_studentName1.xlsx'</span>,</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">'grain_counting_practice_studentName2.xlsx'</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>file_list<span class="ot">&lt;-</span> filename <span class="sc">%&gt;%</span> <span class="fu">strsplit</span>(<span class="st">"_"</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tradition way of for loop</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>){</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">c</span>(res,file_list[[i]][<span class="dv">4</span>])</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative in r package purrr</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># chr stands for the "character" output.</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_chr</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(file_list),  <span class="sc">~</span>{</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  file_list[[.x]][<span class="dv">4</span>]</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># notice that the output of map_chr must be 1 element per iteration.</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_chr</span>(filename,  <span class="sc">~</span>{</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  .x <span class="sc">%&gt;%</span> <span class="fu">strsplit</span>(<span class="st">"_"</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent</span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(filename,  <span class="sc">~</span>{</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  .x <span class="sc">%&gt;%</span> <span class="fu">strsplit</span>(<span class="st">"_"</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(filename,<span class="cf">function</span>(x){</span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span> <span class="fu">strsplit</span>(<span class="st">"_"</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()</span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>filename <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'grain_counting_practice_studentName1.xlsx'</span>,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">'grain_counting_practice_studentName2.xlsx'</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>file_list<span class="ot">&lt;-</span> filename <span class="sc">%&gt;%</span> <span class="fu">strsplit</span>(<span class="st">"_"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tradition way of for loop</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>){</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">c</span>(res,file_list[[i]][<span class="dv">4</span>])</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative in r package purrr</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># chr stands for the "character" output.</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_chr</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(file_list),  <span class="sc">~</span>{</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  file_list[[.x]][<span class="dv">4</span>]</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># notice that the output of map_chr must be 1 element per iteration.</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_chr</span>(filename,  <span class="sc">~</span>{</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  .x <span class="sc">%&gt;%</span> <span class="fu">strsplit</span>(<span class="st">"_"</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(filename,  <span class="sc">~</span>{</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  .x <span class="sc">%&gt;%</span> <span class="fu">strsplit</span>(<span class="st">"_"</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(filename,<span class="cf">function</span>(x){</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span> <span class="fu">strsplit</span>(<span class="st">"_"</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>()</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="read-your-own-data" class="level3">
 <h3 class="anchored" data-anchor-id="read-your-own-data">read your own data</h3>
@@ -450,7 +636,7 @@ $shawon
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -459,7 +645,7 @@ challenge
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Using <code>map_dfr()</code>, read the three files in the folder.</p>
 <ol type="1">
@@ -484,7 +670,7 @@ challenge
 <p>read kernel_combine.csv in folder data using relative path. subset column <code>tiller</code> which match pattern <code>M</code>.</p>
 <p>How can you get the unique combination of <code>car</code>,<code>var</code>,<code>nitrogen</code> and <code>time</code>? Which combinations of functions can you use?</p>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -493,12 +679,12 @@ answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(car,var,nitrogen,time) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(car,var,nitrogen,time) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -556,7 +742,7 @@ $ fc       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 <h3 class="anchored" data-anchor-id="data-wrangling-and-plot-with-facet">Data wrangling and plot with facet</h3>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -567,6 +753,7 @@ $ fc       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 
 
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
