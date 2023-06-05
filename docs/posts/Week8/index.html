@@ -173,8 +173,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#students-data" id="toc-students-data" class="nav-link active" data-scroll-target="#students-data"><span class="toc-section-number">1</span>  Student’s data</a>
   <ul class="collapse">
   <li><a href="#how-to-save-the-column-names-of-all-files-in-a-directory-to-a-list-using-for-loop" id="toc-how-to-save-the-column-names-of-all-files-in-a-directory-to-a-list-using-for-loop" class="nav-link" data-scroll-target="#how-to-save-the-column-names-of-all-files-in-a-directory-to-a-list-using-for-loop"><span class="toc-section-number">1.1</span>  How to save the column names of all files in a directory to a list using for loop?</a></li>
-  <li><a href="#challenge-how-to-name-list-elements-based-on-students-name" id="toc-challenge-how-to-name-list-elements-based-on-students-name" class="nav-link" data-scroll-target="#challenge-how-to-name-list-elements-based-on-students-name"><span class="toc-section-number">1.2</span>  Challenge: how to name list elements based on student’s name ?</a></li>
-  <li><a href="#challenge-how-to-combine-all-the-files-row-wise" id="toc-challenge-how-to-combine-all-the-files-row-wise" class="nav-link" data-scroll-target="#challenge-how-to-combine-all-the-files-row-wise"><span class="toc-section-number">1.3</span>  Challenge: how to combine all the files row-wise?</a></li>
+  <li><a href="#how-to-name-list-elements-based-on-students-name" id="toc-how-to-name-list-elements-based-on-students-name" class="nav-link" data-scroll-target="#how-to-name-list-elements-based-on-students-name"><span class="toc-section-number">1.2</span>  How to name list elements based on student’s name ?</a></li>
+  <li><a href="#how-to-combine-all-the-dataframe-by-row" id="toc-how-to-combine-all-the-dataframe-by-row" class="nav-link" data-scroll-target="#how-to-combine-all-the-dataframe-by-row"><span class="toc-section-number">1.3</span>  How to combine all the dataframe by row?</a></li>
   <li><a href="#how-to-visualize-the-result" id="toc-how-to-visualize-the-result" class="nav-link" data-scroll-target="#how-to-visualize-the-result"><span class="toc-section-number">1.4</span>  How to visualize the result?</a></li>
   <li><a href="#how-to-make-it-a-bit-more-beautiful" id="toc-how-to-make-it-a-bit-more-beautiful" class="nav-link" data-scroll-target="#how-to-make-it-a-bit-more-beautiful"><span class="toc-section-number">1.5</span>  How to make it a bit more beautiful?</a></li>
   <li><a href="#how-to-place-kernel-related-traits-in-subplots" id="toc-how-to-place-kernel-related-traits-in-subplots" class="nav-link" data-scroll-target="#how-to-place-kernel-related-traits-in-subplots"><span class="toc-section-number">1.6</span>  How to place kernel-related traits in subplots?</a></li>
@@ -300,8 +300,8 @@ For loop concept
 </div>
 </div>
 </section>
-<section id="challenge-how-to-name-list-elements-based-on-students-name" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="challenge-how-to-name-list-elements-based-on-students-name"><span class="header-section-number">1.2</span> Challenge: how to name list elements based on student’s name ?</h3>
+<section id="how-to-name-list-elements-based-on-students-name" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="how-to-name-list-elements-based-on-students-name"><span class="header-section-number">1.2</span> How to name list elements based on student’s name ?</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>$clement
@@ -341,8 +341,8 @@ click for answer
 </div>
 </div>
 </section>
-<section id="challenge-how-to-combine-all-the-files-row-wise" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="challenge-how-to-combine-all-the-files-row-wise"><span class="header-section-number">1.3</span> Challenge: how to combine all the files row-wise?</h3>
+<section id="how-to-combine-all-the-dataframe-by-row" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="how-to-combine-all-the-dataframe-by-row"><span class="header-section-number">1.3</span> How to combine all the dataframe by row?</h3>
 <p>If you know the column names are different, can you still combine them?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="fu">list.files</span>(<span class="st">"../data/student"</span>),<span class="sc">~</span>{</span>
@@ -372,6 +372,12 @@ $ NA.          &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N
 </div>
 </div>
 <p>Here are possible steps:</p>
+<div class="callout-note callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
 <ul>
 <li>observe the patterns of column names, how to unify the column names?</li>
 <li>replace “kernal” with “kernel”</li>
@@ -381,6 +387,9 @@ $ NA.          &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N
 <li>how to fill the missing cultivar and plot_id?</li>
 <li>remove “na.” column check your loop-body with the first element in your range.</li>
 </ul>
+</div>
+</div>
+</div>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -430,13 +439,14 @@ $ student      &lt;chr&gt; "clement", "clement", "clement", "clement", "clement"
 </section>
 <section id="how-to-visualize-the-result" class="level3" data-number="1.4">
 <h3 data-number="1.4" class="anchored" data-anchor-id="how-to-visualize-the-result"><span class="header-section-number">1.4</span> How to visualize the result?</h3>
-<p>!! practice to make a draft, what will be the <code>x</code> and <code>y</code>, what will be the <code>color</code>?</p>
+<p>Practice to make a draft, what will be the <code>x</code> and <code>y</code>, what will be the <code>color</code>?</p>
+<p>Is there difference between geom_line() and <a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_path()</a>?</p>
 <div class="cell quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Line Plot 1</figcaption><p></p>
 </figure>
 </div>
@@ -444,7 +454,7 @@ $ student      &lt;chr&gt; "clement", "clement", "clement", "clement", "clement"
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Line Plot 2</figcaption><p></p>
 </figure>
 </div>
@@ -486,7 +496,7 @@ click for answer
 <h3 data-number="1.5" class="anchored" data-anchor-id="how-to-make-it-a-bit-more-beautiful"><span class="header-section-number">1.5</span> How to make it a bit more beautiful?</h3>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
@@ -521,7 +531,7 @@ click for answer
 <h3 data-number="1.6" class="anchored" data-anchor-id="how-to-place-kernel-related-traits-in-subplots"><span class="header-section-number">1.6</span> How to place kernel-related traits in subplots?</h3>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <ol type="1">
@@ -623,7 +633,7 @@ click for answer
 <p>go to <a href="#sec-realclass">Section&nbsp;2.2</a> for more practices.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>How to plot this half-box plot?</p>
@@ -640,21 +650,19 @@ click for answer
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'erocoar/ggpol'</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpol)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> df<span class="sc">%&gt;%</span> </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(type,flower,<span class="at">fill=</span>student))<span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxjitter</span>(<span class="fu">aes</span>(<span class="at">color=</span>student),<span class="at">alpha=</span>.<span class="dv">4</span>,</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">jitter.shape =</span> <span class="dv">21</span>, <span class="at">jitter.color =</span> <span class="cn">NA</span>, </span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">jitter.params =</span> <span class="fu">list</span>(<span class="at">height =</span> <span class="dv">0</span>, <span class="at">width =</span> <span class="fl">0.04</span>),</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">outlier.color =</span> <span class="cn">NA</span>, <span class="at">errorbar.draw =</span> <span class="cn">TRUE</span>)<span class="sc">+</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">strip.background =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.major.x =</span> <span class="fu">element_line</span>(),</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>) </span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>(</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(p)</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpol)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> df<span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(type,flower,<span class="at">fill=</span>student))<span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxjitter</span>(<span class="fu">aes</span>(<span class="at">color=</span>student),<span class="at">alpha=</span>.<span class="dv">4</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">jitter.shape =</span> <span class="dv">21</span>, <span class="at">jitter.color =</span> <span class="cn">NA</span>, </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">jitter.params =</span> <span class="fu">list</span>(<span class="at">height =</span> <span class="dv">0</span>, <span class="at">width =</span> <span class="fl">0.04</span>),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">outlier.color =</span> <span class="cn">NA</span>, <span class="at">errorbar.draw =</span> <span class="cn">TRUE</span>)<span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">strip.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.major.x =</span> <span class="fu">element_line</span>(),</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>) </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -665,7 +673,7 @@ click for answer
 <p>set the <code>type</code> as factor and arrange the <code>levels</code> from basal to apical.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -731,7 +739,7 @@ click for answer
 <p>For each spike position, how many maximum full kernels can you have?</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
@@ -766,7 +774,10 @@ click for answer
 </section>
 <section id="practice-on-a-larger-dataset" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="practice-on-a-larger-dataset"><span class="header-section-number">2</span> Practice on a larger dataset</h2>
-<p>read <code>kernel_combine.csv</code> in folder data using relative path. subset column <code>tiller</code> which match pattern <code>M</code>.</p>
+<ol type="1">
+<li>read <code>kernel_combine.csv</code> in folder data using relative path.</li>
+<li>subset column <code>tiller</code> which match the pattern <code>M</code>.</li>
+</ol>
 <section id="how-to-get-overview-of-unique-combinations" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="how-to-get-overview-of-unique-combinations"><span class="header-section-number">2.1</span> how to get overview of unique combinations?</h3>
 <p>How can you get the unique combination of <code>car</code>,<code>var</code>,<code>nitrogen</code> and <code>time</code>? Which combinations of functions can you use?</p>
@@ -878,7 +889,7 @@ $ fc       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>

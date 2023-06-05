@@ -75,7 +75,7 @@ df
 ```
 :::
 
-### Challenge: how to name list elements based on student's name ?
+### How to name list elements based on student's name ?
 ```{r,echo=FALSE}
 
 df<- map(list.files("../data/student"),~{
@@ -101,7 +101,7 @@ df
 ```
 :::
 
-### Challenge: how to combine all the files row-wise?
+### How to combine all the dataframe by row?
 If you know the column names are different, can you still combine them?
 
 ```{r}
@@ -114,6 +114,7 @@ df %>%
 ```
 Here are possible steps:
 
+::: {.callout-note appearance="simple"}
 * observe the patterns of column names, how to unify the column names?
 * replace "kernal" with "kernel"
 * replace "spikes" with "spike"
@@ -122,6 +123,7 @@ Here are possible steps:
 * how to fill the missing cultivar and plot_id?
 * remove "na." column
 check your loop-body with the first element in your range.
+::: 
 
 ::: {.callout-tip collapse="true"}
 # click for answer
@@ -148,7 +150,10 @@ This answer is written in `map_()` series, could you rewrite in for loop?
 ::: 
 
 ### How to visualize the result?
-!! practice to make a draft, what will be the `x` and `y`, what will be the `color`? 
+Practice to make a draft, what will be the `x` and `y`, what will be the `color`? 
+
+Is there difference between geom_line() and [geom_path()](https://ggplot2.tidyverse.org/reference/geom_path.html)?
+
 
 ```{r,echo=FALSE}
 #| layout-ncol: 2
@@ -304,7 +309,7 @@ go to @sec-realclass for more practices.
 
 ```{r,echo=FALSE}
 # devtools::install_github('erocoar/ggpol')
-library(ggpol)
+library(ggpol) %>% suppressWarnings()
 p <- df%>% 
   ggplot(aes(type,flower,fill=student))+
   geom_boxjitter(aes(color=student),alpha=.4,
@@ -324,7 +329,6 @@ How to plot this half-box plot?
 ::: {.callout-tip collapse="true"}
 # click for answer
 ```{r,eval=FALSE}
-devtools::install_github('erocoar/ggpol')
 library(ggpol)
 p <- df%>% 
   ggplot(aes(type,flower,fill=student))+
@@ -336,9 +340,9 @@ p <- df%>%
   theme(strip.background = element_blank(),
         panel.grid.major.x = element_line(),
         legend.position = "bottom") 
-suppressWarnings(
-  print(p)
-)
+
+print(p)
+
 ```
 ::: 
 
@@ -450,7 +454,8 @@ df%>%
 
 ## Practice on a larger dataset
 
-read `kernel_combine.csv` in folder data using relative path. subset column `tiller` which match pattern `M`.
+1. read `kernel_combine.csv` in folder data using relative path. 
+2. subset column `tiller` which match the pattern `M`.
 
 ### how to get overview of unique combinations?
 
