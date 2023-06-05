@@ -35,7 +35,7 @@ dat <-read.csv('../data/kernel_combine.csv',
 climate <- read.csv("../data/climate.csv")
 ```
 
-Welcome to the fifth course! You will learn more about `dataframe` wrangling:
+Welcome to the sixth course! You will learn more about `dataframe` wrangling:
 
 ::: callout-note
 # Learning goals
@@ -56,6 +56,7 @@ Welcome to the fifth course! You will learn more about `dataframe` wrangling:
 7.  How do you have an overview of a `dataframe`? Which function can you use?
 8.  If you want to combine two columns into one, how many ways are available?
 :::
+
 ```{r}
 data.frame(x=letters) %>% 
   filter(x%in%c('a','b'))
@@ -65,7 +66,6 @@ data.frame(x=letters) %>%
 c('a','b')%in%letters
 letters%in%c('a','b')
 ```
-
 
 ### advanced mutate add-on :across
 
@@ -163,8 +163,6 @@ merge_thermal_time %>%
   facet_grid(sowing_date~DFG_year)
 ```
 :::
-
-
 
 ## recommendation
 

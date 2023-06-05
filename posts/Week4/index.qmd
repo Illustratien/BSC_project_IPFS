@@ -38,7 +38,7 @@ Welcome to the fourth course! You will learn `dataframe` wrangling:
 
 ## more mutate examples
 
-Create dataframe
+Create a dataframe
 
 ```{r}
 df <- expand.grid(x=letters[1:4],
