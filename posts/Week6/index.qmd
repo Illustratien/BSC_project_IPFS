@@ -57,7 +57,8 @@ Welcome to the sixth course! You will learn more about `dataframe` wrangling:
 8.  If you want to combine two columns into one, how many ways are available?
 :::
 
-```{r}
+To match the pattern,how the order before or after `%in%` matters?
+```{r,eval=FALSE}
 data.frame(x=letters) %>% 
   filter(x%in%c('a','b'))
 data.frame(x=letters) %>% 

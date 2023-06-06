@@ -1,0 +1,438 @@
+---
+title: "Week9: Grain development v"
+author: "Tien-Cheng"
+date: "2023-06-13"
+categories: [R-intermediate]
+
+toc-location: left
+number-sections: true
+website: 
+  sidebar:
+    search: true
+format:
+  html: 
+    grid:
+      sidebar-width: 300px
+      body-width: 1200px
+      margin-width: 100px
+      gutter-width: 1.5rem
+
+reference-location: margin
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(magrittr);suppressWarnings(library(dplyr));
+suppressWarnings(library(ggplot2));library(tidyr);library(purrr)
+options(dplyr.summarise.inform = FALSE)
+
+dat <-read.csv('../data/kernel_combine.csv',
+               header = T,stringsAsFactors = F) %>%
+  dplyr::filter(tiller=="M")
+```
+
+Welcome to the eighth course! You will learn more about `for-loop` and `data visualization`:
+
+::: callout-note
+# Learning goals
+
+1.  requirements of merging *dataframes*
+2.  *save* or *show* the result of *for loop*
+3.  `ggplot()`
+:::
+
+::: callout-warning
+## Discussion
+
+1.  
+:::
+
+## Student's data
+
+practice with files from `data/student`.
+
+```{r}
+library(magrittr)
+df<- map_dfr(list.files("../data/student"),~{
+  
+  student_name <-  .x %>% strsplit("_") %>% unlist() %>% 
+    .[4] %>% sub(".xlsx","",.)
+  
+  file<- xlsx::read.xlsx(paste0("../data/student/",.x),sheetIndex = 1) %>%  
+    `colnames<-`(stringr::str_to_lower(names(.)))%>% 
+    `colnames<-`(gsub("kernal","kernel",names(.))) %>% 
+    `colnames<-`(gsub("spikes","spike",names(.)))%>%
+    `colnames<-`(gsub("plot.id","plot_id",names(.))) %>% 
+    mutate(student=student_name)
+}) 
+df %<>% mutate(var="Capone",plot_id=159) %>% 
+  .[!grepl("na.",names(.))]
+df %>% glimpse()
+```
+### How to make it a bit more beautiful?
+
+```{r,echo=FALSE}
+# line plot 2
+df %>% 
+  group_by(student,spike) %>% 
+  ggplot(aes(flower,spike,color=student))+
+  geom_point()+
+  geom_path(alpha=.5)+
+  facet_grid(~student)+
+  theme_classic()+
+  theme(strip.background = element_blank(),
+        panel.grid.major.x = element_line(),
+        legend.position = "none")
+```
+
+::: {.callout-tip collapse="true"}
+# click for answer
+
+```{r,eval=FALSE}
+df %>% 
+  group_by(student,spike) %>% 
+  ggplot(aes(flower,spike,color=student))+
+  geom_point()+
+  geom_path(alpha=.5)+
+  facet_grid(~student)+
+  theme_classic()+
+  theme(strip.background = element_blank(),
+        panel.grid.major.x = element_line(),
+        legend.position = "none")
+```
+:::
+
+### How to place kernel-related traits in subplots?
+
+```{r, echo=FALSE}
+df %>% 
+  pivot_longer(starts_with("kernel"),
+               values_to = "kernel",
+               names_to="kerneltype") %>% 
+  na.omit() %>% 
+  group_by(student,spike) %>% 
+  ggplot(aes(kernel,spike,color=student))+
+  geom_point()+
+  geom_path()+
+  facet_grid(kerneltype~student)+
+  theme_classic()+
+  theme(strip.background = element_blank(),
+        panel.grid.major.x = element_line(),
+        legend.position = "none")
+
+```
+
+1.  `pivot_longer()`to collect kernel-related traits
+2.  `facet_grid()`
+
+::: {.callout-tip collapse="true"}
+# click for answer
+
+```{r,eval=FALSE}
+df %>% 
+  pivot_longer(starts_with("kernel"),
+               values_to = "kernel",
+               names_to="kerneltype") %>% 
+  group_by(student,spike) %>% 
+  ggplot(aes(kernel,spike,color=student))+
+  geom_point()+
+  geom_path()+
+  facet_grid(kerneltype~student)+
+  theme_classic()+
+  theme(strip.background = element_blank(),
+        panel.grid.major.x = element_line(),
+        legend.position = "none")
+
+```
+:::
+
+### classify spikelet based on position {#sec-classify}
+
+the spike of the main shoot was dissected to count the total number of floret in
+
+::: {.callout-note appearance="simple"}
+-   basal 1/3 spikelet from the bottom)
+
+-   central (middle 1/3 of spikelets)
+
+-   apical (1/3 spikelets from the top)
+
+[reference](https://doi.org/10.1016/j.fcr.2020.107908)
+:::
+
+try to clssify each spike into three classes based on their position.
+
+::: {.callout-note appearance="simple"}
+# challenge
+
+1.  add new column called `type` using `mutate()`
+2.  `cut()` could be useful, which column you should apply to?
+3.  what will you get when you pass the result of `cut()` to `as.numeric()`?
+4.  use `case_when()` to re-calssify the result of step 3.
+5.  based on which columns should you classify? what are your group columns for `group_by`?
+:::
+
+::: {.callout-tip collapse="true"}
+# click for answer
+
+```{r}
+df %<>% 
+  group_by(student,plot_id,var) %>% 
+  mutate(type=cut(spike,3) %>% as.numeric(),
+         type=case_when(type==1~"basal",
+                        type==2~"central",
+                        T~"apical"))
+
+```
+:::
+
+go to @sec-realclass for more practices.
+
+```{r,echo=FALSE}
+# devtools::install_github('erocoar/ggpol')
+library(ggpol) %>% suppressWarnings()
+p <- df%>% 
+  ggplot(aes(type,flower,fill=student))+
+  geom_boxjitter(aes(color=student),alpha=.4,
+                 jitter.shape = 21, jitter.color = NA, 
+                 jitter.params = list(height = 0, width = 0.04),
+                 outlier.color = NA, errorbar.draw = TRUE)+
+  theme_classic()+
+  theme(strip.background = element_blank(),
+        panel.grid.major.x = element_line(),
+        legend.position = "bottom") 
+suppressWarnings(
+  print(p)
+)
+```
+
+How to plot this half-box plot?
+
+::: {.callout-tip collapse="true"}
+# click for answer
+
+```{r,eval=FALSE}
+library(ggpol)
+p <- df%>% 
+  ggplot(aes(type,flower,fill=student))+
+  geom_boxjitter(aes(color=student),alpha=.4,
+                 jitter.shape = 21, jitter.color = NA, 
+                 jitter.params = list(height = 0, width = 0.04),
+                 outlier.color = NA, errorbar.draw = TRUE)+
+  theme_classic()+
+  theme(strip.background = element_blank(),
+        panel.grid.major.x = element_line(),
+        legend.position = "bottom") 
+
+print(p)
+
+```
+:::
+
+### how to change the order of the box plot?
+
+set the `type` as factor and arrange the `levels` from basal to apical.
+
+```{r,echo=FALSE}
+p <- df%>% 
+  mutate(type=factor(type,levels=c("basal","central","apical"))) %>% 
+  ggplot(aes(type,flower,fill=student))+
+  geom_boxjitter(aes(color=student),alpha=.4,
+                 jitter.shape = 21, jitter.color = NA, 
+                 jitter.params = list(height = 0, width = 0.04),
+                 outlier.color = NA, errorbar.draw = TRUE)+
+  theme_classic()+
+  theme(strip.background = element_blank(),
+        panel.grid.major.x = element_line(),
+        legend.position = "bottom") 
+suppressWarnings(
+  print(p)
+)
+```
+
+### summarize {#sec-summarylist}
+
+::: {.callout-note appearance="simple"}
+basic summary of kernel development summ for single spike
+
+-   Sp: total spikelet
+-   Fl: maximum floret
+-   sfl: total floret
+-   kf: total full kernel
+-   kh: total half kernel
+-   ks: total small kernel
+-   kp: potential kernel number (half+pull)
+-   fr: filling rate (full kernel/ floret number)
+-   fc: potential filling rate (potential kernel number/ floret number)
+:::
+
+see also @sec-application for another example.
+
+```{r,echo=FALSE}
+sum.df <- df %>% 
+  dplyr::group_by(student,var,plot_id,type) %>% 
+  dplyr::summarise(
+    Sp=max(spike),#total spikelet
+    Fl=max(flower),# maximum floret 
+    sfl=sum(flower),# total floret
+    kf=sum(kernel.full,na.rm = T),# total full kernel
+    kh=sum(kernel.half,na.rm = T),# total half kernel
+    ks=sum(kernel.small,na.rm = T),# total small kernel
+    kp=kf+kh,# potential kernel number 
+    fr=kf/sfl,# filling rate 
+    fc=kf/kp)#potential filling rate
+```
+
+::: {.callout-tip collapse="true"}
+# click for answer
+
+```{r,eval=FALSE}
+sum.df <- df %>% 
+  dplyr::group_by(student,var,plot_id,type) %>% 
+  dplyr::summarise(
+    Sp=max(spike),#total spikelet
+    Fl=max(flower),# maximum floret 
+    sfl=sum(flower),# total floret
+    kf=sum(kernel.full,na.rm = T),# total full kernel
+    kh=sum(kernel.half,na.rm = T),# total half kernel
+    ks=sum(kernel.small,na.rm = T),# total small kernel
+    kp=kf+kh,# potential kernel number 
+    fr=kf/sfl,# filling rate 
+    fc=kf/kp)#potential filling rate
+```
+:::
+
+### how to visualize the maximum full kernels per spikelet?
+
+For each spike position, how many maximum full kernels can you have?
+
+```{r,echo=FALSE}
+df%>% 
+  group_by(student,var,plot_id,type,spike) %>% 
+  summarise(fertile_flower=max(kernel.full)) %>% 
+  ggplot(aes(fertile_flower,spike,color=type))+
+  geom_point()+
+  facet_grid(~student)+
+  theme_classic()+
+  theme(strip.background = element_blank(),
+        panel.grid.major.x = element_line(),
+        legend.position = "bottom")+
+  geom_path()
+
+```
+
+::: {.callout-tip collapse="true"}
+# click for answer
+
+```{r,eval=FALSE}
+df%>% 
+  group_by(student,var,plot_id,type,spike) %>% 
+  summarise(fertile_flower=max(kernel.full)) %>% 
+  ggplot(aes(fertile_flower,spike,color=type))+
+  geom_point()+
+  facet_grid(~student)+
+  theme_classic()+
+  theme(strip.background = element_blank(),
+        panel.grid.major.x = element_line(),
+        legend.position = "bottom")+
+  geom_path()
+
+```
+:::
+
+## Practice on a larger dataset
+
+1.  read `kernel_combine.csv` in folder data using relative path.
+2.  subset column `tiller` which match the pattern `M`.
+
+### how to get overview of unique combinations?
+
+How can you get the unique combination of `car`,`var`,`nitrogen` and `time`? Which combinations of functions can you use?
+
+::: {.callout-tip collapse="true"}
+## click for answer
+
+```{r,eval=FALSE}
+dat %>% 
+  group_by(car,var,nitrogen,time) %>% 
+  summarise()
+```
+:::
+
+### classify spikelet based on position {#sec-realclass}
+
+see @sec-classify for definition.
+
+```{r,echo=FALSE}
+dat %<>%
+  group_by(car,var,nitrogen,time,rep) %>% 
+  mutate(type=cut(spike,3) %>% as.numeric(),
+         type=case_when(type==1~"basal",
+                        type==2~"central",
+                        T~"apical")) %>% 
+  group_by(car,var,nitrogen,time,rep,type) %>% 
+  dplyr::arrange(spike) 
+glimpse(dat)
+```
+
+### basic summary of kernel development summ for single spike {#sec-application}
+
+see @sec-summarylist for definition.
+
+```{r,echo=FALSE}
+sum.dat <- dat %>% 
+  dplyr::group_by(nitrogen,time,var,rep,tiller,type) %>% 
+  dplyr::summarise(
+    Sp=max(spike),#total spikelet
+    Fl=max(flower),# maximum floret 
+    sfl=sum(flower),# total floret
+    kf=sum(kernel.full),# total full kernel
+    kh=sum(kernel.half),# total half kernel
+    ks=sum(kernel.small),# total small kernel
+    kp=kf+kh,# potential kernel number 
+    fr=kf/sfl,# filling rate 
+    fc=kf/kp)#potential filling rate
+glimpse(sum.dat)
+```
+
+### Data wrangling and plot with facet
+
+::: {.callout-note appearance="simple"}
+-   step1 create long format
+
+1.  create long format `long_format`, combine nitrogen and time, names to "treatment" values to "levels"
+2.  for each `rep,levels,type,var,spike,treatment` calculate the maximum full kernel and name it `fertile_flower`.
+3.  for each `levels,type,var,spike,treatment` calculate the mean `fertile_flower`.
+:::
+
+::: {.callout-note appearance="simple"}
+-   step2 visualize
+
+1.  subset the value of `fertile_flower`less than 10
+2.  based on this graph, what is `x`, `y`, `color` and `shape`?
+3.  what re the `facet`?
+:::
+
+```{r ,echo=FALSE}
+long_format <- dat %>% 
+  tidyr::pivot_longer(cols=c(nitrogen,time),
+                      names_to = "treatment",
+                      values_to = "levels") %>% 
+  group_by(spike,var,treatment,levels,type,rep) %>%
+  summarise(fertile_flower=max(kernel.full)) %>% 
+  group_by(spike,var,treatment,levels,type) %>%
+  summarise(fertile_flower=mean(fertile_flower))
+
+long_format%>% 
+  filter(fertile_flower<10) %>% 
+  ggplot(aes(fertile_flower,spike,color=type,shape=levels))+
+  geom_point()+
+  facet_grid(treatment~var)+
+  theme_classic()+
+  scale_x_continuous(limits = c(0,5),breaks=seq(0,4))
+
+```
+
+## recommendation
+
+[Advanced R: control flow](https://adv-r.hadley.nz/control-flow.html)
