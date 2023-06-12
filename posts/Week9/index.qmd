@@ -3,7 +3,7 @@ title: "Week9: Grain development v"
 author: "Tien-Cheng"
 date: "2023-06-13"
 categories: [R-intermediate]
-
+image: "poster_big.png"
 toc-location: left
 number-sections: true
 website: 
@@ -31,23 +31,61 @@ dat <-read.csv('../data/kernel_combine.csv',
   dplyr::filter(tiller=="M")
 ```
 
-Welcome to the eighth course! You will learn more about `for-loop` and `data visualization`:
+Welcome to the eighth course! You will learn more about`data visualization`:
 
 ::: callout-note
 # Learning goals
 
-1.  requirements of merging *dataframes*
-2.  *save* or *show* the result of *for loop*
-3.  `ggplot()`
+1. Warm up for final presentation
+2. Data type based story telling
+3. `ggplot()`
 :::
 
 ::: callout-warning
-## Discussion
+## Discussion: Warm up for the final presentation!
 
-1.  
+1.  How the shape of dataframe is linked to data visualization?
+2.  What is the component of for loop? how to examine the function body? Do you need `print()` to see the result?
+```{r}
+range_vector <- 1:10
+for( i in range_vector){
+  i+3
+}
+```
+3. What is important when you want to combine the dataframes row-wise?
+4. What is the format (columns and data type of columns) of self-collected ear data? 
+5. Which plot type could be suitable for visualization?
+6. What are the logic of visualization oriented analysis? Could you list the possible steps? 
+7. What are essential elements for reproducible analysis? For example, you have a r script which read the files in the folder and plot a plot. 
+```{r,eval=FALSE}
+df <- read.csv("example.csv")
+df %>% 
+  ggplot() %>% 
+  geom_point(aes(x=x,y=y))
+```
 :::
 
-## Student's data
+::: callout-warning
+## Excercise: 
+1. share your code on github and share it with others.
+:::
+
+## Story telling: Warm up for final Presentation
+
+![Figure1: Project Plan](Project.png)
+
+![Figure2: Story type](Story_type.png)
+
+![Figure3: Cycle of visualization](Cycle_of_visualization.png)
+
+[![Visualization based on data type: click picture for source](poster_big.png)](https://www.data-to-viz.com)
+
+[^1] [^2]
+
+[^1]: [Ten simple rules for better figures](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833) 
+[^2]:[How to Make Good Graphs and Figures for Scientific Papers](https://www.simplifiedsciencepublishing.com/resources/how-to-make-good-graphs-and-figures-for-scientific-papers)
+
+## Exercise with student's data
 
 practice with files from `data/student`.
 
@@ -69,6 +107,7 @@ df %<>% mutate(var="Capone",plot_id=159) %>%
   .[!grepl("na.",names(.))]
 df %>% glimpse()
 ```
+
 ### How to make it a bit more beautiful?
 
 ```{r,echo=FALSE}
@@ -435,4 +474,5 @@ long_format%>%
 
 ## recommendation
 
-[Advanced R: control flow](https://adv-r.hadley.nz/control-flow.html)
+[Datavisualization](https://www.data-to-viz.com)
+[Scientific story telling](https://academic.oup.com/jxb/article/72/11/3987/6157936)
