@@ -36,9 +36,9 @@ Welcome to the eighth course! You will learn more about`data visualization`:
 ::: callout-note
 # Learning goals
 
-1.  Warm up for final presentation
-2.  Data type based story telling
-3.  `github`
+1. Warm up for final presentation
+2. Data type based story telling
+3. `ggplot()`
 :::
 
 ::: callout-warning
@@ -46,20 +46,17 @@ Welcome to the eighth course! You will learn more about`data visualization`:
 
 1.  How the shape of dataframe is linked to data visualization?
 2.  What is the component of for loop? how to examine the function body? Do you need `print()` to see the result?
-
 ```{r}
 range_vector <- 1:10
 for( i in range_vector){
   i+3
 }
 ```
-
-3.  What is important when you want to combine the dataframes row-wise?
-4.  What is the format (columns and data type of columns) of self-collected ear data?
-5.  Which plot type could be suitable for visualization?
-6.  What are the logic of visualization oriented analysis? Could you list the possible steps?
-7.  What are essential elements for reproducible analysis? For example, you have a r script which read the files in the folder and plot a plot.
-
+3. What is important when you want to combine the dataframes row-wise?
+4. What is the format (columns and data type of columns) of self-collected ear data? 
+5. Which plot type could be suitable for visualization?
+6. What are the logic of visualization oriented analysis? Could you list the possible steps? 
+7. What are essential elements for reproducible analysis? For example, you have a r script which read the files in the folder and plot a plot. 
 ```{r,eval=FALSE}
 df <- read.csv("example.csv")
 df %>% 
@@ -69,9 +66,8 @@ df %>%
 :::
 
 ::: callout-warning
-## Excercise:
-
-1.  share your code on github and share it with others.
+## Excercise: 
+1. share your code on github and share it with others.
 :::
 
 ## Story telling: Warm up for final Presentation
@@ -86,9 +82,8 @@ df %>%
 
 [^1] [^2]
 
-[^1]: [Ten simple rules for better figures](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833)
-
-[^2]: [How to Make Good Graphs and Figures for Scientific Papers](https://www.simplifiedsciencepublishing.com/resources/how-to-make-good-graphs-and-figures-for-scientific-papers)
+[^1]: [Ten simple rules for better figures](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833) 
+[^2]:[How to Make Good Graphs and Figures for Scientific Papers](https://www.simplifiedsciencepublishing.com/resources/how-to-make-good-graphs-and-figures-for-scientific-papers)
 
 ## Exercise with student's data
 
@@ -294,8 +289,190 @@ suppressWarnings(
 )
 ```
 
+### summarize {#sec-summarylist}
 
+::: {.callout-note appearance="simple"}
+basic summary of kernel development summ for single spike
+
+-   Sp: total spikelet
+-   Fl: maximum floret
+-   sfl: total floret
+-   kf: total full kernel
+-   kh: total half kernel
+-   ks: total small kernel
+-   kp: potential kernel number (half+pull)
+-   fr: filling rate (full kernel/ floret number)
+-   fc: potential filling rate (potential kernel number/ floret number)
+:::
+
+see also @sec-application for another example.
+
+```{r,echo=FALSE}
+sum.df <- df %>% 
+  dplyr::group_by(student,var,plot_id,type) %>% 
+  dplyr::summarise(
+    Sp=max(spike),#total spikelet
+    Fl=max(flower),# maximum floret 
+    sfl=sum(flower),# total floret
+    kf=sum(kernel.full,na.rm = T),# total full kernel
+    kh=sum(kernel.half,na.rm = T),# total half kernel
+    ks=sum(kernel.small,na.rm = T),# total small kernel
+    kp=kf+kh,# potential kernel number 
+    fr=kf/sfl,# filling rate 
+    fc=kf/kp)#potential filling rate
+```
+
+::: {.callout-tip collapse="true"}
+# click for answer
+
+```{r,eval=FALSE}
+sum.df <- df %>% 
+  dplyr::group_by(student,var,plot_id,type) %>% 
+  dplyr::summarise(
+    Sp=max(spike),#total spikelet
+    Fl=max(flower),# maximum floret 
+    sfl=sum(flower),# total floret
+    kf=sum(kernel.full,na.rm = T),# total full kernel
+    kh=sum(kernel.half,na.rm = T),# total half kernel
+    ks=sum(kernel.small,na.rm = T),# total small kernel
+    kp=kf+kh,# potential kernel number 
+    fr=kf/sfl,# filling rate 
+    fc=kf/kp)#potential filling rate
+```
+:::
+
+### how to visualize the maximum full kernels per spikelet?
+
+For each spike position, how many maximum full kernels can you have?
+
+```{r,echo=FALSE}
+df%>% 
+  group_by(student,var,plot_id,type,spike) %>% 
+  summarise(fertile_flower=max(kernel.full)) %>% 
+  ggplot(aes(fertile_flower,spike,color=type))+
+  geom_point()+
+  facet_grid(~student)+
+  theme_classic()+
+  theme(strip.background = element_blank(),
+        panel.grid.major.x = element_line(),
+        legend.position = "bottom")+
+  geom_path()
+
+```
+
+::: {.callout-tip collapse="true"}
+# click for answer
+
+```{r,eval=FALSE}
+df%>% 
+  group_by(student,var,plot_id,type,spike) %>% 
+  summarise(fertile_flower=max(kernel.full)) %>% 
+  ggplot(aes(fertile_flower,spike,color=type))+
+  geom_point()+
+  facet_grid(~student)+
+  theme_classic()+
+  theme(strip.background = element_blank(),
+        panel.grid.major.x = element_line(),
+        legend.position = "bottom")+
+  geom_path()
+
+```
+:::
+
+## Practice on a larger dataset
+
+1.  read `kernel_combine.csv` in folder data using relative path.
+2.  subset column `tiller` which match the pattern `M`.
+
+### how to get overview of unique combinations?
+
+How can you get the unique combination of `car`,`var`,`nitrogen` and `time`? Which combinations of functions can you use?
+
+::: {.callout-tip collapse="true"}
+## click for answer
+
+```{r,eval=FALSE}
+dat %>% 
+  group_by(car,var,nitrogen,time) %>% 
+  summarise()
+```
+:::
+
+### classify spikelet based on position {#sec-realclass}
+
+see @sec-classify for definition.
+
+```{r,echo=FALSE}
+dat %<>%
+  group_by(car,var,nitrogen,time,rep) %>% 
+  mutate(type=cut(spike,3) %>% as.numeric(),
+         type=case_when(type==1~"basal",
+                        type==2~"central",
+                        T~"apical")) %>% 
+  group_by(car,var,nitrogen,time,rep,type) %>% 
+  dplyr::arrange(spike) 
+glimpse(dat)
+```
+
+### basic summary of kernel development summ for single spike {#sec-application}
+
+see @sec-summarylist for definition.
+
+```{r,echo=FALSE}
+sum.dat <- dat %>% 
+  dplyr::group_by(nitrogen,time,var,rep,tiller,type) %>% 
+  dplyr::summarise(
+    Sp=max(spike),#total spikelet
+    Fl=max(flower),# maximum floret 
+    sfl=sum(flower),# total floret
+    kf=sum(kernel.full),# total full kernel
+    kh=sum(kernel.half),# total half kernel
+    ks=sum(kernel.small),# total small kernel
+    kp=kf+kh,# potential kernel number 
+    fr=kf/sfl,# filling rate 
+    fc=kf/kp)#potential filling rate
+glimpse(sum.dat)
+```
+
+### Data wrangling and plot with facet
+
+::: {.callout-note appearance="simple"}
+-   step1 create long format
+
+1.  create long format `long_format`, combine nitrogen and time, names to "treatment" values to "levels"
+2.  for each `rep,levels,type,var,spike,treatment` calculate the maximum full kernel and name it `fertile_flower`.
+3.  for each `levels,type,var,spike,treatment` calculate the mean `fertile_flower`.
+:::
+
+::: {.callout-note appearance="simple"}
+-   step2 visualize
+
+1.  subset the value of `fertile_flower`less than 10
+2.  based on this graph, what is `x`, `y`, `color` and `shape`?
+3.  what re the `facet`?
+:::
+
+```{r ,echo=FALSE}
+long_format <- dat %>% 
+  tidyr::pivot_longer(cols=c(nitrogen,time),
+                      names_to = "treatment",
+                      values_to = "levels") %>% 
+  group_by(spike,var,treatment,levels,type,rep) %>%
+  summarise(fertile_flower=max(kernel.full)) %>% 
+  group_by(spike,var,treatment,levels,type) %>%
+  summarise(fertile_flower=mean(fertile_flower))
+
+long_format%>% 
+  filter(fertile_flower<10) %>% 
+  ggplot(aes(fertile_flower,spike,color=type,shape=levels))+
+  geom_point()+
+  facet_grid(treatment~var)+
+  theme_classic()+
+  scale_x_continuous(limits = c(0,5),breaks=seq(0,4))
+
+```
 
 ## recommendation
 
-[Datavisualization](https://www.data-to-viz.com) [Scientific story telling](https://academic.oup.com/jxb/article/72/11/3987/6157936)
+[Datavisualization](https://www.data-to-viz.com)
+[Scientific story telling](https://academic.oup.com/jxb/article/72/11/3987/6157936)

@@ -194,7 +194,7 @@ Learning goals
 <ol type="1">
 <li>Warm up for final presentation</li>
 <li>Data type based story telling</li>
-<li><code>github</code></li>
+<li><code>ggplot()</code></li>
 </ol>
 </div>
 </div>
@@ -447,7 +447,7 @@ click for answer
 </div>
 </div>
 </div>
-<p>go to <strong>?@sec-realclass</strong> for more practices.</p>
+<p>go to <a href="#sec-realclass">Section&nbsp;3.2</a> for more practices.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
@@ -494,9 +494,222 @@ click for answer
 </div>
 </div>
 </section>
+<section id="sec-summarylist" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="sec-summarylist"><span class="header-section-number">2.5</span> summarize</h3>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>basic summary of kernel development summ for single spike</p>
+<ul>
+<li>Sp: total spikelet</li>
+<li>Fl: maximum floret</li>
+<li>sfl: total floret</li>
+<li>kf: total full kernel</li>
+<li>kh: total half kernel</li>
+<li>ks: total small kernel</li>
+<li>kp: potential kernel number (half+pull)</li>
+<li>fr: filling rate (full kernel/ floret number)</li>
+<li>fc: potential filling rate (potential kernel number/ floret number)</li>
+</ul>
+</div>
+</div>
+</div>
+<p>see also <a href="#sec-application">Section&nbsp;3.3</a> for another example.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+click for answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sum.df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(student,var,plot_id,type) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Sp=</span><span class="fu">max</span>(spike),<span class="co">#total spikelet</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Fl=</span><span class="fu">max</span>(flower),<span class="co"># maximum floret </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sfl=</span><span class="fu">sum</span>(flower),<span class="co"># total floret</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">kf=</span><span class="fu">sum</span>(kernel.full,<span class="at">na.rm =</span> T),<span class="co"># total full kernel</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">kh=</span><span class="fu">sum</span>(kernel.half,<span class="at">na.rm =</span> T),<span class="co"># total half kernel</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ks=</span><span class="fu">sum</span>(kernel.small,<span class="at">na.rm =</span> T),<span class="co"># total small kernel</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">kp=</span>kf<span class="sc">+</span>kh,<span class="co"># potential kernel number </span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">fr=</span>kf<span class="sc">/</span>sfl,<span class="co"># filling rate </span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">fc=</span>kf<span class="sc">/</span>kp)<span class="co">#potential filling rate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="recommendation" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="recommendation"><span class="header-section-number">3</span> recommendation</h2>
+<section id="how-to-visualize-the-maximum-full-kernels-per-spikelet" class="level3" data-number="2.6">
+<h3 data-number="2.6" class="anchored" data-anchor-id="how-to-visualize-the-maximum-full-kernels-per-spikelet"><span class="header-section-number">2.6</span> how to visualize the maximum full kernels per spikelet?</h3>
+<p>For each spike position, how many maximum full kernels can you have?</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+click for answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(student,var,plot_id,type,spike) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">fertile_flower=</span><span class="fu">max</span>(kernel.full)) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(fertile_flower,spike,<span class="at">color=</span>type))<span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>student)<span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">strip.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.major.x =</span> <span class="fu">element_line</span>(),</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>)<span class="sc">+</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="practice-on-a-larger-dataset" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="practice-on-a-larger-dataset"><span class="header-section-number">3</span> Practice on a larger dataset</h2>
+<ol type="1">
+<li>read <code>kernel_combine.csv</code> in folder data using relative path.</li>
+<li>subset column <code>tiller</code> which match the pattern <code>M</code>.</li>
+</ol>
+<section id="how-to-get-overview-of-unique-combinations" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="how-to-get-overview-of-unique-combinations"><span class="header-section-number">3.1</span> how to get overview of unique combinations?</h3>
+<p>How can you get the unique combination of <code>car</code>,<code>var</code>,<code>nitrogen</code> and <code>time</code>? Which combinations of functions can you use?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+click for answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(car,var,nitrogen,time) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-realclass" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="sec-realclass"><span class="header-section-number">3.2</span> classify spikelet based on position</h3>
+<p>see <a href="#sec-classify">Section&nbsp;2.3</a> for definition.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 4,749
+Columns: 12
+Groups: car, var, nitrogen, time, rep, type [681]
+$ car          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ~
+$ nitrogen     &lt;chr&gt; "n3", "n3", "n3", "n3", "n3", "n3", "n3", "n3", "n3", "n3~
+$ time         &lt;chr&gt; "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1~
+$ var          &lt;chr&gt; "Pioneer", "Alves", "Potential", "Torrid", "Torrid", "Alv~
+$ rep          &lt;int&gt; 1, 1, 1, 1, 2, 3, 1, 2, 3, 2, 5, 4, 4, 4, 5, 5, 5, 5, 5, ~
+$ tiller       &lt;chr&gt; "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M~
+$ spike        &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ~
+$ flower       &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, ~
+$ kernel.full  &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ~
+$ kernel.half  &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ~
+$ kernel.small &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ~
+$ type         &lt;chr&gt; "basal", "basal", "basal", "basal", "basal", "basal", "ba~</code></pre>
+</div>
+</div>
+</section>
+<section id="sec-application" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="sec-application"><span class="header-section-number">3.3</span> basic summary of kernel development summ for single spike</h3>
+<p>see <a href="#sec-summarylist">Section&nbsp;2.5</a> for definition.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 681
+Columns: 15
+Groups: nitrogen, time, var, rep, tiller [227]
+$ nitrogen &lt;chr&gt; "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1", "n1", "~
+$ time     &lt;chr&gt; "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "t1", "~
+$ var      &lt;chr&gt; "Alves", "Alves", "Alves", "Alves", "Alves", "Alves", "Alves"~
+$ rep      &lt;int&gt; 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 1, 1, 1, 2, 2, 2~
+$ tiller   &lt;chr&gt; "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "M", "~
+$ type     &lt;chr&gt; "apical", "basal", "central", "apical", "basal", "central", "~
+$ Sp       &lt;int&gt; 16, 6, 11, 19, 7, 13, 17, 6, 11, 19, 7, 13, 19, 7, 13, 16, 6,~
+$ Fl       &lt;int&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 4, 4, 4~
+$ sfl      &lt;int&gt; 19, 18, 20, 21, 21, 24, 22, 20, 20, 21, 22, 24, 18, 21, 24, 1~
+$ kf       &lt;int&gt; 10, 8, 13, 14, 11, 18, 13, 11, 15, 12, 12, 17, 9, 12, 17, 2, ~
+$ kh       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0~
+$ ks       &lt;int&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0~
+$ kp       &lt;int&gt; 10, 8, 13, 14, 11, 18, 13, 11, 15, 12, 12, 17, 9, 12, 17, 2, ~
+$ fr       &lt;dbl&gt; 0.5263158, 0.4444444, 0.6500000, 0.6666667, 0.5238095, 0.7500~
+$ fc       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~</code></pre>
+</div>
+</div>
+</section>
+<section id="data-wrangling-and-plot-with-facet" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="data-wrangling-and-plot-with-facet"><span class="header-section-number">3.4</span> Data wrangling and plot with facet</h3>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<ul>
+<li>step1 create long format</li>
+</ul>
+<ol type="1">
+<li>create long format <code>long_format</code>, combine nitrogen and time, names to “treatment” values to “levels”</li>
+<li>for each <code>rep,levels,type,var,spike,treatment</code> calculate the maximum full kernel and name it <code>fertile_flower</code>.</li>
+<li>for each <code>levels,type,var,spike,treatment</code> calculate the mean <code>fertile_flower</code>.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<ul>
+<li>step2 visualize</li>
+</ul>
+<ol type="1">
+<li>subset the value of <code>fertile_flower</code>less than 10</li>
+<li>based on this graph, what is <code>x</code>, <code>y</code>, <code>color</code> and <code>shape</code>?</li>
+<li>what re the <code>facet</code>?</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="recommendation" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="recommendation"><span class="header-section-number">4</span> recommendation</h2>
 <p><a href="https://www.data-to-viz.com">Datavisualization</a> <a href="https://academic.oup.com/jxb/article/72/11/3987/6157936">Scientific story telling</a></p>
 
 
