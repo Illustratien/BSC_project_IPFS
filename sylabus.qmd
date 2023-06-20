@@ -84,6 +84,7 @@ penguin_table <- penguin_counts_wider  %>%
   )  %>%  
   opt_stylize(style = 6, color = 'gray')
 ```
+
 ```{r}
 penguin_table %>% as_raw_html()
 ```

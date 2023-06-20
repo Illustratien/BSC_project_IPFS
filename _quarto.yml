@@ -6,6 +6,7 @@ website:
   title: "BSC_project_IPFS2023"
   navbar:
     right:
+      - phenotyping_rule.qmd
       - about.qmd
       - sylabus.qmd
       - text: Moodle

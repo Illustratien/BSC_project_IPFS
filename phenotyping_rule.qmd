@@ -1,0 +1,83 @@
+---
+title: "Protocol"
+date: "2023-06-20"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(magrittr);suppressWarnings(library(dplyr));
+suppressWarnings(library(ggplot2));library(tidyr);
+library(kableExtra);library(knitr);library(purrr)
+library(ggpol);
+options(dplyr.summarise.inform = FALSE)
+# data <- xlsx::read.xlsx("../data/ear_summarized.csv")
+```
+
+## Goal :
+
+> -   Treatment to compare: early and late\
+> -   Other info (total nitrogen 176 kg/ha, split application of heading fertilizer, replicate 1).
+> -   Cultivar: Hanwen (Capone) Shawon (Patras, Pionier) Nourian (Potenzial)\
+> -   Date: 5 batches from 11.
+
+```{r,echo=FALSE,warning=FALSE,fig.height=4,fig.width=10}
+#| label: fig-1
+#| fig-cap: "Selected treatment and var"
+ear <- read.csv("./posts/data/ear_raw.csv") %>% 
+  mutate(weight=Weight/Ear_numb,
+         date=as.character(date) %>% 
+           as.Date(.,format="%Y%m%d") %>% factor() %>% as.numeric())
+
+ggplot(ear%>% 
+         filter(var%in%c('Potenzial',"Pionier",'Capone','Patras'),
+                nitrogen==176&appl=='Split',
+                # date%in%as.Date(c('2021-06-14','2021-06-21','2021-07-01','2021-07-08','2021-07-19')))
+         ),
+       aes(factor(date),Weight,color=timeid))+
+  geom_boxjitter(alpha=.4,
+                 jitter.shape = 16, 
+                 jitter.params = list(height = 0, width = 0.04),
+                 outlier.color = NA, errorbar.draw = TRUE)+
+  facet_grid(nitrogen+appl~var)+
+  # scale_x_date(labels = 1:11)+
+  theme_bw()+
+  theme(
+    # axis.text.x = element_text(angle=90),
+    strip.background = element_blank(),
+    legend.position =c(.8,.86))+
+  xlab("Batch")
+
+```
+
+## Protocol
+
+1.  Clean up the table. Place one A4 paper on the table.
+2.  Take out ***one ear at a time***.
+3.  download grain_counting_example.xlsx from [HuBox](https://box.hu-berlin.de/d/fc7db144021a4a35a086/?p=%2Fdata&mode=list)
+4.  Copy to your repository under relative path `./data/Grain_Counting/` save it as `gc_plotid_batch.xlsx` (@fig-fig2)
+5.  Enter information of `var`, `plot_id` and `ear number`(from 1 to 10)
+6.  Count total `spikelet number (Nsp)`, record the sequence 1: `Nsp` in column `spike`.
+7.  Count the `floret number (Nf)` based on `Nsp` with ascending order (start from spikelet 1).
+8.  Classify the shape of fully developed kernel into three classes (`L,M,S`), record the position of each class, separate them with comma (`,`). For example: 1,2,3 for class `kernel.L` (@fig-fig2)
+9.  Aborted kernel will not be recorded in column `F:H`. However, if special condition observed, you can record it in column `I` (with column name `note`) and take a picture of it.
+
+![Figure 2](protocol.png){#fig-fig2}
+
+::: callout-warning
+## Challenge: automize reading process
+
+Use the code below to reach the following goals.
+
+1.  Write a `for loop` to read all the files and sheets in the folder 
+2.  add batch information to column 
+```{r,eval=FALSE}
+library(dplyr)
+p <- ".data/Grain_Counting/gc_57_11.xlsx"
+df <- readxl::read_xlsx(p) %>% 
+  mutate(across(starts_with("kernel"),function(x)as.character(x))) %>% 
+  tidyr::pivot_longer(starts_with("kernel"),names_to = "kernel.type",values_to = "floret.pos") %>% 
+  mutate(floret.pos=strsplit(floret.pos,",")) %>% 
+  tidyr::unnest(floret.pos) %>% 
+  mutate(floret.pos=as.numeric(floret.pos) %>%replace(., is.na(.), 0))
+```
+::: 

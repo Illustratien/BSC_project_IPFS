@@ -1,0 +1,16 @@
+{
+  "hash": "8b32a595fcefa1b46e1fc1348cdfdf2b",
+  "result": {
+    "markdown": "---\ntitle: \"Syllabus\"\nfavicon: calendar3\n---\n\n\n\n\nGoal :\n\n> -   Treatment to compare: early and late\\\n> -   Other info (total nitrogen 176 kg/ha, split application of heading fertilizer, replicate 1).\n> -   Cultivar: Hanwen (Capone) Shawon (Patras, Pionier) Nourian (Potenzial)\\\n> -   Date: 5 batches from 11.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](phenotyping_rule_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n\nProtocol\n\n1.  Clean up the table. Place one A4 paper on the table.\n2.  Take out one ear at a time.\n3.  download grain_counting_example.xlsx from [HuBox](https://box.hu-berlin.de/d/fc7db144021a4a35a086/?p=%2Fdata&mode=list)\n4.  Copy to your repository under relative path \"./data/Grain_Counting/\" save it as \"gc_plotid_batch.xlsx\" (see picture)\n5.  Enter information of var, plot_id and ear number(from 1 to 10)\n6.  Count total spikelet number (Nsp), record the sequence 1: Nsp in column \"spike\".\n7.  Count the floret number (Nf) based on Nsp with ascending order (start from spikelet 1).\n8.  Classify the shape of fully developed kernel (L,M,S), record the position of each class, separate them with comma ( \",\"). For example: 1,2,3 for class \"kernel.L\" (see picture)\n9.  Aborted kernel will not be recorded in column F:H. However, if special condition observed, you can record it in column I (with column name \"note\") and take a picture of it.\n\n![](protocol.png)\n\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n",
+    "supporting": [
+      "phenotyping_rule_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

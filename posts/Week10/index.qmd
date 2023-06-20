@@ -1,7 +1,7 @@
 ---
-title: "Week9: Grain development v"
+title: "Week11: Grain development v"
 author: "Tien-Cheng"
-date: "2023-06-13"
+date: "2023-06-27"
 categories: [R-intermediate]
 image: "poster_big.png"
 toc-location: left
@@ -31,7 +31,7 @@ dat <-read.csv('../data/kernel_combine.csv',
   dplyr::filter(tiller=="M")
 ```
 
-Welcome to the eighth course! You will learn more about`data visualization`:
+Welcome to the eleventh course! You will learn more about`data visualization`:
 
 ::: callout-note
 # Learning goals
