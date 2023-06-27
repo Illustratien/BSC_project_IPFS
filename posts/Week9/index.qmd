@@ -31,7 +31,7 @@ dat <-read.csv('../data/kernel_combine.csv',
   dplyr::filter(tiller=="M")
 ```
 
-Welcome to the eighth course! You will learn more about`data visualization`:
+Welcome to the nigth course! You will learn more about`data visualization`:
 
 ::: callout-note
 # Learning goals

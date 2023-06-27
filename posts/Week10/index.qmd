@@ -1,5 +1,5 @@
 ---
-title: "Week11: Grain development v"
+title: "Week11: Grain development vI"
 author: "Tien-Cheng"
 date: "2023-06-27"
 categories: [R-intermediate]
@@ -36,9 +36,9 @@ Welcome to the eleventh course! You will learn more about`data visualization`:
 ::: callout-note
 # Learning goals
 
-1. Warm up for final presentation
-2. Data type based story telling
-3. `ggplot()`
+1.  Warm up for final presentation
+2.  Data type based story telling
+3.  `ggplot()`
 :::
 
 ::: callout-warning
@@ -46,17 +46,20 @@ Welcome to the eleventh course! You will learn more about`data visualization`:
 
 1.  How the shape of dataframe is linked to data visualization?
 2.  What is the component of for loop? how to examine the function body? Do you need `print()` to see the result?
+
 ```{r}
 range_vector <- 1:10
 for( i in range_vector){
   i+3
 }
 ```
-3. What is important when you want to combine the dataframes row-wise?
-4. What is the format (columns and data type of columns) of self-collected ear data? 
-5. Which plot type could be suitable for visualization?
-6. What are the logic of visualization oriented analysis? Could you list the possible steps? 
-7. What are essential elements for reproducible analysis? For example, you have a r script which read the files in the folder and plot a plot. 
+
+3.  What is important when you want to combine the dataframes row-wise?
+4.  What is the format (columns and data type of columns) of self-collected ear data?
+5.  Which plot type could be suitable for visualization?
+6.  What are the logic of visualization oriented analysis? Could you list the possible steps?
+7.  What are essential elements for reproducible analysis? For example, you have a r script which read the files in the folder and plot a plot.
+
 ```{r,eval=FALSE}
 df <- read.csv("example.csv")
 df %>% 
@@ -66,8 +69,9 @@ df %>%
 :::
 
 ::: callout-warning
-## Excercise: 
-1. share your code on github and share it with others.
+## Excercise:
+
+1.  share your code on github and share it with others.
 :::
 
 ## Story telling: Warm up for final Presentation
@@ -82,8 +86,9 @@ df %>%
 
 [^1] [^2]
 
-[^1]: [Ten simple rules for better figures](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833) 
-[^2]:[How to Make Good Graphs and Figures for Scientific Papers](https://www.simplifiedsciencepublishing.com/resources/how-to-make-good-graphs-and-figures-for-scientific-papers)
+[^1]: [Ten simple rules for better figures](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833)
+
+[^2]: [How to Make Good Graphs and Figures for Scientific Papers](https://www.simplifiedsciencepublishing.com/resources/how-to-make-good-graphs-and-figures-for-scientific-papers)
 
 ## Exercise with student's data
 
@@ -474,5 +479,4 @@ long_format%>%
 
 ## recommendation
 
-[Datavisualization](https://www.data-to-viz.com)
-[Scientific story telling](https://academic.oup.com/jxb/article/72/11/3987/6157936)
+[Datavisualization](https://www.data-to-viz.com) [Scientific story telling](https://academic.oup.com/jxb/article/72/11/3987/6157936)
