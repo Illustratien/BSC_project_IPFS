@@ -52,14 +52,17 @@ ggplot(ear%>%
 ## Protocol
 
 1.  Clean up the table. Place one A4 paper on the table.
-2.  Take out ***one ear at a time***.
+2.  Take out ***one ear at a time*** from a bag containing 10 ears.
 3.  download grain_counting_example.xlsx from [HuBox](https://box.hu-berlin.de/d/fc7db144021a4a35a086/?p=%2Fdata&mode=list)
-4.  Copy to your repository under relative path `./data/Grain_Counting/` save it as `gc_plotid_batch.xlsx` (@fig-fig2)
-5.  Enter information of `var`, `plot_id` and `ear number`(from 1 to 10)
+4.  **Copy** to your repository under relative path `./data/Grain_Counting/` **save it as** `gc_plotid_batch.xlsx` (@fig-fig2)
+5.  Enter information of `var`, `plot_id` and `ear number` (from 1 to 10)
 6.  Count total `spikelet number (Nsp)`, record the sequence 1: `Nsp` in column `spike`.
 7.  Count the `floret number (Nf)` based on `Nsp` with ascending order (start from spikelet 1).
 8.  Classify the shape of fully developed kernel into three classes (`L,M,S`), record the position of each class, separate them with comma (`,`). For example: 1,2,3 for class `kernel.L` (@fig-fig2)
 9.  Aborted kernel will not be recorded in column `F:H`. However, if special condition observed, you can record it in column `I` (with column name `note`) and take a picture of it.
+10. **Roll your ear** with another half-A4 paper **like a candy**. Make sure you have the ear number and plotid on the outer side of the paper. And put it back to the bag.
+11. Check the **correctness and completeness** of the data in current sheet**. Save the data, *start another ear in a new sheet*.**
+12. **Get up and take a small break!**
 
 ![Figure 2](protocol.png){#fig-fig2}
 
@@ -68,8 +71,9 @@ ggplot(ear%>%
 
 Use the code below to reach the following goals.
 
-1.  Write a `for loop` to read all the files and sheets in the folder 
-2.  add batch information to column 
+1.  Write a `for loop` to read all the files and sheets in the folder
+2.  add batch information to column
+
 ```{r,eval=FALSE}
 library(dplyr)
 p <- ".data/Grain_Counting/gc_57_11.xlsx"
@@ -80,4 +84,4 @@ df <- readxl::read_xlsx(p) %>%
   tidyr::unnest(floret.pos) %>% 
   mutate(floret.pos=as.numeric(floret.pos) %>%replace(., is.na(.), 0))
 ```
-::: 
+:::
