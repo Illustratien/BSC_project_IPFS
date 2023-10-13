@@ -744,14 +744,14 @@
   {
     "objectID": "course_description.html",
     "href": "course_description.html",
-    "title": "Final project",
+    "title": "Course description",
     "section": "",
-    "text": "The goal of the final project is for you to use scientific analysis to analyze a data set of your own. Be aware the phenotyping takes time, plan your schedule in advance!\nThe goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class and apply them to a data set to analyze it in a meaningful way.\nAll analyses must be done in RStudio, and all components of the project must be reproducible (share it on Github)."
+    "text": "The goal of the final project is for you to use scientific analysis to analyze a data set of your own. Be aware the phenotyping takes time, plan your schedule in advance!\nThe goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class and apply them to a data set to analyze it in a meaningful way.\nAll analyses must be done in RStudio, and all components of the project must be reproducible (share it on Github).\n\n\n\nCourse design"
   },
   {
     "objectID": "course_description.html#presentation-100",
     "href": "course_description.html#presentation-100",
-    "title": "Final project",
+    "title": "Course description",
     "section": "Presentation (100%)",
     "text": "Presentation (100%)\n\nR code reproducibility & documentation on Github repository (50%)\nOral presentation in 15 mins (50%)\n\n\nRequirements for oral presentation:\n\nResearch question, hypothesis\nMethod\nResults\nDiscussion\nfollowing scientific presentation standard."
   },
@@ -786,9 +786,9 @@
   {
     "objectID": "course_description.html#introduction",
     "href": "course_description.html#introduction",
-    "title": "Final project",
+    "title": "Course description",
     "section": "",
-    "text": "The goal of the final project is for you to use scientific analysis to analyze a data set of your own. Be aware the phenotyping takes time, plan your schedule in advance!\nThe goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class and apply them to a data set to analyze it in a meaningful way.\nAll analyses must be done in RStudio, and all components of the project must be reproducible (share it on Github)."
+    "text": "The goal of the final project is for you to use scientific analysis to analyze a data set of your own. Be aware the phenotyping takes time, plan your schedule in advance!\nThe goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class and apply them to a data set to analyze it in a meaningful way.\nAll analyses must be done in RStudio, and all components of the project must be reproducible (share it on Github).\n\n\n\nCourse design"
   },
   {
     "objectID": "posts/Week2/index.html#what-is-working-directory-wd",

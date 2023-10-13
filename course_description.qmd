@@ -1,5 +1,5 @@
 ---
-title: "Final project"
+title: "Course description"
 ---
 ## Introduction
 
@@ -9,7 +9,7 @@ The goal of this project is for you to demonstrate proficiency in the techniques
 
 All analyses must be done in RStudio, and all components of the project **must be reproducible** (share it on Github).
 
-
+![Course design](Images/Triangle.png)
 
 ## Presentation (100%)
 - R code reproducibility & documentation on Github repository (50%)
