@@ -4,7 +4,7 @@ author: "Tien-Cheng"
 date: "2023-05-16"
 categories: [R-intermediate]
 
-toc-location: left
+toc-location: right
 # number-sections: true
 website: 
   sidebar:

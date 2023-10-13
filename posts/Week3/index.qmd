@@ -3,7 +3,7 @@ title: "Week3: Floret development"
 author: "Tien-Cheng"
 date: "2023-05-02"
 categories: [R-basic]
-toc-location: left
+toc-location: right
 number-sections: true
 website: 
   sidebar:

@@ -4,7 +4,7 @@ author: "Tien-Cheng"
 date: "2023-04-25"
 categories: [R-basic]
 image: "growth.png"
-toc-location: left
+toc-location: right
 website: 
   sidebar:
     search: true

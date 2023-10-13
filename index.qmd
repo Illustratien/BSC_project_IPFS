@@ -1,7 +1,8 @@
+
 ---
 listing:
   contents: posts
-  sort: "date desc"
+  sort: "date asc"
   type: default
   categories: false
   sort-ui: true
@@ -10,3 +11,37 @@ search: true
 page-layout: full
 title-block-banner: false
 ---
+
+---
+title: "Student porject: Contribution of Ear Development to Yield Stability in Winter Wheat"
+tbl-colwidths: [3,4,10,15,5,5]
+---
+
+This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.
+
+::: column-screen-inset-right
+| Week | Date        | Topic                                           | R                                                 | HW  |   Project    |
+|:-----:|------------|---------------------------|----------------------------------|:------:|:--------------:|
+|  1   | Tue, Oct 24 | Lecture 1 - General wheat physiology            | [Data type, R Studio](/posts/Week1/index.html)         |     |              |
+|  2   | Tue, Oct 31 | Lecture 2 - Spike physiology                    | [working directory, accessing element from data](/posts/Week2/index.html)   |     |              |
+|  3   | Tue, Nov 7  | Lecture 3 - Spike fertility and floret abortion | [dataframe operation and ggplot](/posts/Week3/index.html)                    |     |              |
+|  4   | Tue, Nov 14 | Lecture 4 - Yield potential and grain filling   | [dataframe operation](/posts/Week4/index.html)                               |     | phenotyping! |
+|  5   | Tue, Nov 21 | Lecture 5 - Yield potential and grain filling   | [column editing and column replacement](/posts/Week5/index.html)          |     |              |
+|  6   | Tue, Nov 28 |                                                 | [applying functions to targeted columns and groups](/posts/Week6/index.html) |     |              |
+|  7   | Tue, Dec 05 |                                                 | [summarize, shape transformation of dataframe](/posts/Week7/index.html)      |     |              |
+|  8   | Tue, Dec 12 |                                                 | [combine files in a loop](/posts/Week8/index.html)                           |     |              |
+|  9   | Tue, Dec 19 |                                                 | [analysis planning and results visualization](/posts/Week9/index.html)       |     |              |
+|  10  | Tue, Dec 26 | No Class                                                                                                                 |
+|  11  | Tue, Jan 02 | No Class                                                                                                                 |
+|  12  | Tue, Jan 09 |                                                 |                                                   |     |              |
+|  13  | Tue, Jan 16 |                                                 |                                                   |     |              |
+|  14  | Tue, Jan 23 |                                                 |                                                   |     |              |
+|  15  | Tue, Jan 30 |                                                 |                                                   |     |              |
+|  16  | Tue, Feb 06 |                                                 |                                                   |     |              |
+|  17  | Tue, Feb 13 | Final presentation                                                                                                       |
+:::
+
+<!-- https://sta210-s22.github.io/website/project-tips-resources.html -->
+```{r echo = FALSE}
+knitr::knit_exit()
+```

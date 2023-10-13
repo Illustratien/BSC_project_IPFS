@@ -3,19 +3,93 @@ project:
   output-dir: docs
 
 website:
+  page-navigation: true
   title: "BSC_project_IPFS2023"
-  navbar:
-    right:
-      - phenotyping_rule.qmd
-      - about.qmd
-      - sylabus.qmd
-      - text: Moodle
+  description: "Homepage for B.Sc Project - Contribution of Ear Development to Yield Stability in Winter Wheat."
+  site-url: "https://illustratien.github.io/BSC_project_IPFS2023"
+  repo-url: https://illustratien.github.io/BSC_project_IPFS2023
+  repo-actions: [edit, issue]
+  
+  open-graph: true
+  
+  # navbar:
+  #   right:
+  #     - phenotyping_rule.qmd
+  #     - about.qmd
+  #     - sylabus.qmd
+  #     - text: Moodle
+  #       href: https://moodle.hu-berlin.de/course/view.php?id=110830
+        
+  page-footer:
+    right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    left: "&copy; Copyright 2023, Tien-Cheng Wang"
+    background: "#D9E3E4"
+    
+  sidebar:
+    background: "#D9E3E4"
+    logo: "logo.png"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/Illustratien/BSC_project_IPFS2023/discussions
+        text: "GitHub discussion"
+      - icon: code-square
         href: https://moodle.hu-berlin.de/course/view.php?id=110830
+        text: "Moodle"
+
+
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - section: "Course information"
+        contents:
+          # - href: course-overview.qmd
+          #   text: Overview
+      - section: "Project"
+        contents:
+          - href: project_description.qmd
+            text: Description
+          - href: phenotyping_rule.qmd
+            text: phenotyping rules
+      - section: "Weekly materials"
+        contents:
+          - href: posts/Week1/index.qmd
+            text: "Week 1"
+          - href: posts/Week2/index.qmd
+            text: "Week 2"
+          - href: posts/Week3/index.qmd
+            text: "Week 3"
+          - href: posts/Week4/index.qmd
+            text: "Week 4"
+          - href: posts/Week5/index.qmd
+            text: "Week 5"
+          - href: posts/Week6/index.qmd
+            text: "Week 6"
+          - href: posts/Week7/index.qmd
+            text: "Week 7"
+          - href: posts/Week8/index.qmd
+            text: "Week 8"
+          - href: posts/Week9/index.qmd
+            text: "Week 9"
+      # - section: "Supplemental notes"
+      #   contents:
+      #     - href: supplemental/slr-derivations.qmd
+      #       text: SLR derivations
+
 format:
   html:
-    theme: minty
-    css: morph.scss
+    theme: 
+        light: [cosmo, theme.scss]
+        dark: [cosmo, theme-dark.scss]
+    mainfont: "Atkinson Hyperlegible"
+    code-copy: true
+    code-overflow: wrap
+    toc: true
     # css: styles.css
+freeze: auto
 
 editor: visual
 
+ 

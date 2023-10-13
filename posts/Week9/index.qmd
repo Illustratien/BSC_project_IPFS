@@ -4,7 +4,7 @@ author: "Tien-Cheng"
 date: "2023-06-13"
 categories: [R-intermediate]
 image: "poster_big.png"
-toc-location: left
+toc-location: right
 number-sections: true
 website: 
   sidebar:
@@ -293,8 +293,6 @@ suppressWarnings(
   print(p)
 )
 ```
-
-
 
 ## recommendation
 
