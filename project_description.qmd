@@ -8,54 +8,27 @@ title: "Project description"
 
 [Proposal](#project-proposal) due Fri, Mar 18
 
-[Draft report](#draft-report) due Fri, Apr 8
-
-<!-- [Peer review](#peer-review) due Fri, Apr 15 -->
-
-[Final report](#written-report) due Mon, Apr 25
-
 Slides presentation and [final GitHub repo](#reproducibility---organization) due Thu, Apr 28
 
 [Presentation comments](#presentation-comments) due Sat, Apr 30
 
-## Introduction
 
-The goal of the final project is for you to use scientific analysis to analyze a data set of your own. Be aware the phenotyping takes time, plan your schedule in advance.!
+### Expectted results
 
-The goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class (and beyond, if you like!) and apply them to a data set to analyze it in a meaningful way.
+The three primary deliverables for the final project are
 
-All analyses must be done in RStudio, and all components of the project **must be reproducible** (with the exception of the presentation).
-
-### Logistics
-
-The four primary deliverables for the final project are
-
+-   A ReadMe about the project
 -   A written, reproducible report detailing your analysis
 -   A GitHub repository corresponding to your report
 -   Slides presentation
 
-## Topic ideas {#topic-ideas}
 
-Identify 2-3 research questions you're interested in potentially using for the final project. If you're unsure where to find data, you can use the list of potential data sources in the [Tips + Resources](#tips--resources) section as a starting point. It may also help to think of topics you're interested in investigating and find other scientific publication on those topics.
+## ReadMe
 
-The purpose of submitting project ideas is to give you time to find data for the project and to make sure you have a data set that can help you be successful in the project. **Therefore, you must use one of the data sets submitted as a topic idea, unless otherwise notified by the teaching team.**
-
-The data sets should meet the following criteria:
-
--   At least one variable that can be identified as a reasonable response variable.
-
-    -   The response variable can be quantitative or categorical.
-
--   A mix of quantitative and categorical variables that can be used as predictors.
-
--   Observations should reasonably meet the independence condition. Therefore, avoid data with repeated measures, data collected over time, etc.
-
-For each data set, include the following:
+For each repo, include the following:
 
 #### Introduction and data
 
--   State the source of the data set.
--   Describe when and how it was originally collected (by the original data curator, not necessarily how you found the data)
 -   Describe the observations and the general characteristics being measured in the data
 
 #### Research question
@@ -66,7 +39,6 @@ For each data set, include the following:
 
 -   Use the `glimpse` function to provide an overview of each data set
 
-Submit the PDF of the topic ideas to Gradescope. Mark all pages associated with each data set.
 
 ## Project proposal {#project-proposal}
 
@@ -140,9 +112,13 @@ This section also includes initial interpretations and conclusions drawn from th
 <!-- Spend \~30 mins to review each team's project. -->
 
 <!-- -   Find your team name on the **Reviewer 1** and **Reviewer 2** columns. -->
+
 <!-- -   For each of the columns, find the name of the team to review in the **Team being reviewed** column. You should already have access to this team's repo. -->
+
 <!-- -   Open the repo of the team you're reviewing, read their project draft, and browser around the rest of their repo. -->
+
 <!-- -   Then, go to the Issues tab in that repo, click on New issue, and click on Get started for the Peer review issue. Fill out this issue, answering the following questions: -->
+
 <!--     -   Peer review by: \[NAME OF TEAM DOING THE REVIEW\] -->
 
 <!--     -   Names of team members that participated in this review: \[FULL NAMES OF TEAM MEMBERS DOING THE REVIEW\] -->
@@ -165,8 +141,6 @@ This section also includes initial interpretations and conclusions drawn from th
 
 ## Written report {#written-report}
 
-
-
 ### Introduction and data
 
 This section includes an introduction to the project motivation, data, and research question. Describe the data and definitions of key variables.
@@ -177,7 +151,7 @@ The research question and motivation are clearly stated in the introduction, inc
 
 ### Methodology
 
-This section includes a brief description of your modeling process. 
+This section includes a brief description of your modeling process.
 
 #### Grading criteria
 
@@ -258,7 +232,11 @@ If you have concerns with the teamwork and/or contribution from any team members
 <!-- Grading of the project will take into account the following: -->
 
 <!-- -   Content - What is the quality of research and/or policy question and relevancy of data to those questions? -->
+
 <!-- -   Correctness - Are statistical procedures carried out and explained correctly? -->
+
 <!-- -   Writing and Presentation - What is the quality of the statistical presentation, writing, and explanations? -->
+
 <!-- -   Creativity and Critical Thought - Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project? -->
+
 <!-- -    -->

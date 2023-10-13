@@ -1,0 +1,24 @@
+---
+title: "Final project"
+---
+## Introduction
+
+The goal of the final project is for you to use scientific analysis to analyze a data set of your own. Be aware the **phenotyping takes time**, plan your schedule in advance!
+
+The goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class and apply them to a data set to analyze it in a meaningful way.
+
+All analyses must be done in RStudio, and all components of the project **must be reproducible** (share it on Github).
+
+
+
+## Presentation (100%)
+- R code reproducibility & documentation on Github repository (50%)
+- Oral presentation in 15 mins (50%)
+
+### Requirements for oral presentation:
+- Research question, hypothesis
+- Method
+- Results
+- Discussion
+
+* following scientific presentation standard. 

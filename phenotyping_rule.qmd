@@ -17,7 +17,7 @@ options(dplyr.summarise.inform = FALSE)
 
 > -   Treatment to compare: early and late\
 > -   Other info (total nitrogen 176 kg/ha, split application of heading fertilizer, replicate 1).
-> -   Cultivar: Hanwen (Capone) Shawon (Patras, Pionier) Nourian (Potenzial)\
+> -   Cultivar: Student A(Capone) Student B (Patras, Pionier) Student C (Potenzial)\
 > -   Date: 5 batches from 11.
 
 ```{r,echo=FALSE,warning=FALSE,fig.height=4,fig.width=10}
@@ -67,7 +67,7 @@ ggplot(ear%>%
 ![Figure 2](protocol.png){#fig-fig2}
 
 ::: callout-warning
-## Challenge: automize reading process
+## Challenge: automatize process of reading files
 
 Use the code below to reach the following goals.
 

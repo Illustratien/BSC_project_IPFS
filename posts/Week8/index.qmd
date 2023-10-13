@@ -12,9 +12,9 @@ website:
 format:
   html: 
     grid:
-      sidebar-width: 300px
-      body-width: 1200px
-      margin-width: 100px
+      # sidebar-width: 300px
+      # body-width: 1200px
+      # margin-width: 100px
       gutter-width: 1.5rem
 
 reference-location: margin

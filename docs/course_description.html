@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Tien-Cheng">
-<meta name="dcterms.date" content="2023-05-16">
 
-<title>BSC_project_IPFS2023 - Week5: Grain development II</title>
+<title>BSC_project_IPFS2023 - Final project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,62 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../posts/Week6/index.html" rel="next">
-<link href="../../posts/Week4/index.html" rel="prev">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./project_description.html" rel="next">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -99,7 +62,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="BSC_project_IPFS2023 - Week5: Grain development II">
+<meta property="og:title" content="BSC_project_IPFS2023 - Final project">
 <meta property="og:description" content="">
 <meta property="og:site-name" content="BSC_project_IPFS2023">
 </head>
@@ -113,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/Week1/index.html">Analysis with R</a></li><li class="breadcrumb-item"><a href="../../posts/Week5/index.html">Week 5</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_description.html">Course information</a></li><li class="breadcrumb-item"><a href="./course_description.html">Grading standard</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -127,8 +90,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../Images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./Images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/Illustratien/BSC_project_IPFS2023/discussions" title="GitHub discussion" class="quarto-navigation-tool px-1" aria-label="GitHub discussion"><i class="bi bi-github"></i></a>
@@ -150,22 +113,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Course information</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../course_description.html" class="sidebar-item-text sidebar-link">
+  <a href="./course_description.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Grading standard</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../project_description.html" class="sidebar-item-text sidebar-link">
+  <a href="./project_description.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Description</span></a>
   </div>
 </li>
@@ -182,7 +145,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../phenotyping_rule.html" class="sidebar-item-text sidebar-link">
+  <a href="./phenotyping_rule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">phenotyping rules</span></a>
   </div>
 </li>
@@ -190,64 +153,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Analysis with R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Week1/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./posts/Week1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Week2/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./posts/Week2/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Week3/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./posts/Week3/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Week4/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./posts/Week4/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 4</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Week5/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./posts/Week5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 5</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Week6/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./posts/Week6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Week7/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./posts/Week7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 7</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Week8/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./posts/Week8/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 8</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Week9/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./posts/Week9/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 9</span></a>
   </div>
 </li>
@@ -263,10 +226,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#todays-discussion" id="toc-todays-discussion" class="nav-link active" data-scroll-target="#todays-discussion">Today’s discussion</a></li>
-  <li><a href="#more-mutate-examples" id="toc-more-mutate-examples" class="nav-link" data-scroll-target="#more-mutate-examples">more mutate examples</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#presentation-100" id="toc-presentation-100" class="nav-link" data-scroll-target="#presentation-100">Presentation (100%)</a>
   <ul class="collapse">
-  <li><a href="#replace-column" id="toc-replace-column" class="nav-link" data-scroll-target="#replace-column">replace column</a></li>
+  <li><a href="#requirements-for-oral-presentation" id="toc-requirements-for-oral-presentation" class="nav-link" data-scroll-target="#requirements-for-oral-presentation">Requirements for oral presentation:</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Illustratien/BSC_project_IPFS2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -276,29 +239,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week5: Grain development II</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">R-intermediate</div>
-  </div>
-  </div>
+<h1 class="title">Final project</h1>
+</div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Tien-Cheng </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 16, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -306,123 +254,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Welcome to the fifth course! You will learn more about <code>dataframe</code> wrangling:</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Learning goals
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>data frame wrangling with <code>dplyr</code> and <code>tidyr</code></li>
-</ol>
-</div>
-</div>
-<section id="todays-discussion" class="level2">
-<h2 class="anchored" data-anchor-id="todays-discussion">Today’s discussion</h2>
-<p>Is it possible to access the elements at different columns and rows?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>],</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x3=</span><span class="fu">c</span>(<span class="st">"2a"</span>,<span class="st">"2b"</span>,<span class="st">"2c"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># or condition separate by |</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>x1<span class="sc">==</span><span class="dv">2</span><span class="sc">|</span>df<span class="sc">$</span>x3<span class="sc">==</span><span class="st">"2c"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(x1<span class="sc">==</span><span class="dv">2</span><span class="sc">|</span>x3<span class="sc">==</span><span class="st">"2c"</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">with</span>(.,x1<span class="sc">==</span><span class="dv">2</span><span class="sc">|</span>x3<span class="sc">==</span><span class="st">"2c"</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># when not specifying the comma, it will be treated like column</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">with</span>(.,.[x1<span class="sc">==</span><span class="dv">2</span><span class="sc">|</span>x3<span class="sc">==</span><span class="st">"2c"</span>])</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the rows</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">with</span>(.,.[x1<span class="sc">==</span><span class="dv">2</span><span class="sc">|</span>x3<span class="sc">==</span><span class="st">"2c"</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>The goal of the final project is for you to use scientific analysis to analyze a data set of your own. Be aware the <strong>phenotyping takes time</strong>, plan your schedule in advance!</p>
+<p>The goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class and apply them to a data set to analyze it in a meaningful way.</p>
+<p>All analyses must be done in RStudio, and all components of the project <strong>must be reproducible</strong> (share it on Github).</p>
 </section>
-<section id="more-mutate-examples" class="level2">
-<h2 class="anchored" data-anchor-id="more-mutate-examples">more mutate examples</h2>
-<p>Last week’s practice.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x=</span>letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># combine columns x and y </span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z=</span><span class="fu">interaction</span>(x,y))</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(df) <span class="ot">&lt;-</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="replace-column" class="level3">
-<h3 class="anchored" data-anchor-id="replace-column">replace column</h3>
-<section id="replace-one-column-based-on-single-condition" class="level4">
-<h4 class="anchored" data-anchor-id="replace-one-column-based-on-single-condition">replace one column based on single condition</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">k=</span><span class="fu">ifelse</span>(x<span class="sc">==</span><span class="st">"a"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>))</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">k=</span><span class="fu">ifelse</span>(y<span class="sc">==</span><span class="dv">1</span>,<span class="st">"A"</span>,<span class="st">"B"</span>))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">k=</span><span class="fu">case_when</span>(x<span class="sc">==</span><span class="st">"a"</span><span class="sc">~</span><span class="st">"A"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">TRUE</span><span class="sc">~</span><span class="st">"B"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-practice
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Matching multiple conditions</p>
-<p>add column <code>k</code> to <code>df</code>, when the condition x equals “a” <code>and</code> y equals 1.</p>
-</div>
-</div>
-</section>
-<section id="replace-one-column-based-on-multiple-conditions" class="level4">
-<h4 class="anchored" data-anchor-id="replace-one-column-based-on-multiple-conditions">replace one column based on multiple conditions</h4>
-<p>in <code>case_when</code> syntax, <code>TRUE</code> before <code>~</code> stands for the <code>else</code> conditions.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">k=</span><span class="fu">case_when</span>(x<span class="sc">==</span><span class="st">"a"</span><span class="sc">~</span><span class="st">"A"</span>,</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                          x<span class="sc">==</span><span class="st">"b"</span><span class="sc">~</span><span class="st">"B"</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">TRUE</span><span class="sc">~</span><span class="st">"C"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="look-up-table" class="level4">
-<h4 class="anchored" data-anchor-id="look-up-table">Look up table</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>look_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>letters,</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">X=</span>LETTERS)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">merge</span>(look_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  x y   z X
-1 a 1 a.1 A
-2 a 2 a.2 A
-3 b 1 b.1 B
-4 b 2 b.2 B
-5 c 1 c.1 C
-6 c 2 c.2 C
-7 d 1 d.1 D
-8 d 2 d.2 D</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-practice
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>merge</code> is not actually replace the original column.</p>
-<p>Write a function to replace <code>letters</code> with <code>LETTERS</code>. The input is a vector of lower case vector <code>vec &lt;- c("c","a","b","d")</code>, output will be the matched upper case vector <code>c("C","A","B","D")</code>.</p>
-<p>Hint: check function <code>match()</code> !!Before you start to write the code, please first write down the possible steps in text.!!</p>
-</div>
-</div>
+<section id="presentation-100" class="level2">
+<h2 class="anchored" data-anchor-id="presentation-100">Presentation (100%)</h2>
+<ul>
+<li>R code reproducibility &amp; documentation on Github repository (50%)</li>
+<li>Oral presentation in 15 mins (50%)</li>
+</ul>
+<section id="requirements-for-oral-presentation" class="level3">
+<h3 class="anchored" data-anchor-id="requirements-for-oral-presentation">Requirements for oral presentation:</h3>
+<ul>
+<li><p>Research question, hypothesis</p></li>
+<li><p>Method</p></li>
+<li><p>Results</p></li>
+<li><p>Discussion</p></li>
+<li><p>following scientific presentation standard.</p></li>
+</ul>
 
 
-</section>
 </section>
 </section>
 
@@ -779,13 +633,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../posts/Week4/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 4</span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../posts/Week6/index.html" class="pagination-link">
-        <span class="nav-page-text">Week 6</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./project_description.html" class="pagination-link">
+        <span class="nav-page-text">Description</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
