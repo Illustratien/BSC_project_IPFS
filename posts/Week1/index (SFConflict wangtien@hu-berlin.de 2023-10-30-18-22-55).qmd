@@ -128,8 +128,7 @@ str(TRUE)
 seq(1,5,1)
 ```
 
-::: {.callout-tip }
-# challenge
+::: callout-challenge
 Since type `Date` is additive, how to create successive `date` vector of length 5? Vector `date` start with "2023-04-17"
 
 Could you do the average of this vector?
@@ -199,8 +198,7 @@ paste0(c("a","1"))
 paste0("a","1")
 ```
 
-::: {.callout-tip }
-# challenge
+::: callout-challenge
 Use `str()` to check the data type of above line.
 
 You have two vectors, `c("a","b")` and `c("1","2")`
@@ -245,8 +243,7 @@ function_name  <-function(input){
 }
 ```
 
-::: {.callout-tip }
-# challenge
+::: callout-challenge
 write a function with documentation: input `vec` is a numeric vector with length 3, return `str` of average value of `vec` ± standard deviation of `vec`.
 
 Visualize the step in your function by first writing your the possible steps in text!
@@ -316,8 +313,7 @@ if(is.character(arg)){
 
 ```
 
-::: {.callout-tip }
-# challenge
+::: callout-challenge
 Inside your `plusone` function, please check first whether input `x` is numeric, then proceed the process.
 
 if not, return with message "wrong input type" using `stop()`

@@ -345,21 +345,8 @@ Note
 <h3 data-number="1.2" class="anchored" data-anchor-id="abbreviation-path-.-for-wd-and-..-for-parent-of-wd"><span class="header-section-number">1.2</span> abbreviation path: “.” for wd and “..” for parent of wd</h3>
 <p><code>"."</code> means the working directory (wd) where this R script exists.</p>
 <p><code>".."</code> means the parent (one level higher) directory of <code>"."</code>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-click for example
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<div class="callout-example" data-collapse="true">
 <p><img src="wdirectory.png" class="img-fluid"></p>
-</div>
-</div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -384,19 +371,9 @@ click for example
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">".."</span> <span class="sc">%&gt;%</span> <span class="fu">list.files</span>(<span class="at">path=</span>.)</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>() <span class="sc">%&gt;%</span> <span class="fu">dirname</span>() <span class="sc">%&gt;%</span> <span class="fu">list.files</span>(<span class="at">path=</span>.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-challenge
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-challenge">
 <p>Although the meaning of <code>.</code> is the same as <code>getwd()</code>, the content is depending on the environment you are working with.</p>
 <p>Right click R studio logo, open a new R studio window, compare the result of <code>getwd()</code> in R project and R</p>
-</div>
 </div>
 </section>
 <section id="accessing-files-and-folder-inside-a-r-project" class="level3" data-number="1.3">
@@ -413,16 +390,7 @@ challenge
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">".\data"</span> <span class="sc">%&gt;%</span> <span class="fu">list.files</span>(<span class="at">path=</span>.)</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="st">"data"</span> <span class="sc">%&gt;%</span> <span class="fu">list.files</span>(<span class="at">path=</span>.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-challenge
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-challenge">
 <p>read from relative path, which one is correct? Assume working directory <code>current_path</code> is <code>"C/users/Wheat_BSC_project/src"</code></p>
 <p><code>Absolute_path = current_path +"/"+relative_path</code> Below are four relative paths. Please rewrite them in absolute (full) path form. What should <code>.</code> be replace? Which two are the same? Based on the figure illustated below, path 1-4 should be A,B,C or D?</p>
 <ol type="1">
@@ -432,7 +400,6 @@ challenge
 <li><p><code>"../data/ear_summarized.csv"</code></p></li>
 </ol>
 <p><img src="wd.png" class="img-fluid"></p>
-</div>
 </div>
 </section>
 </section>
@@ -487,16 +454,7 @@ challenge
 <span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>)</span>
 <span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-challenge
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-challenge">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>logical_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
@@ -508,7 +466,6 @@ challenge
 </div>
 <p>what did you observe? Is there any <a href="https://rpubs.com/vipero7/vector-recycling-in-r">vector recycling</a>?</p>
 <p>What happen when you enter <code>vec[TRUE]</code>?</p>
-</div>
 </div>
 <p>Supplementary information of special datatypes:</p>
 <p>Empty : <a href="https://www.r-bloggers.com/2018/07/r-null-values-null-na-nan-inf/"><code>NULL</code></a></p>
@@ -569,16 +526,7 @@ challenge
 <span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co"># first element of content of first list</span></span>
 <span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>long_list_example[[<span class="dv">1</span>]][<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-challenge
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-challenge">
 <p>can you guess what data type are these?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># non-sense</span></span>
@@ -588,7 +536,6 @@ challenge
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>long_list_example[<span class="dv">2</span>][<span class="dv">2</span>]</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># meaningful</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>long_list_example[[<span class="dv">2</span>]][<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -606,18 +553,8 @@ challenge
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>),<span class="st">"8"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(.,<span class="at">FUN=</span><span class="cf">function</span>(x){x<span class="sc">+</span><span class="dv">3</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-challenge
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-challenge">
 <p>Why you get error in the last line?</p>
-</div>
 </div>
 </section>
 <section id="dataframe-is-a-special-type-of-list" class="level3" data-number="2.3">
@@ -638,21 +575,11 @@ challenge
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">thermal_time=</span><span class="fu">cumsum</span>(temp))</span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-challenge
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-challenge">
 <p>Is it possible to create data frame with vectors of different length?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">time=</span><span class="fu">as.Date</span>(<span class="st">"2023-04-16"</span>,<span class="at">format=</span><span class="st">"%Y-%m-%d"</span>)<span class="sc">+</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>), </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">temp=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">13</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -662,23 +589,13 @@ challenge
 <p><code>dataframe</code>[,<code>column</code>] select the whole role for selected columnn</p>
 <p><code>dataframe</code>[<code>row</code>,] select the whole column of selected rows</p>
 <p>Select multiple row or column by puting logical or numeric vector in the square bracket.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-challenge
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-challenge">
 <p>use <code>df</code>,</p>
 <ol type="1">
 <li><p>Access column <code>thermal_time</code> as <code>vector</code></p></li>
 <li><p>Extract <code>temp</code> when <code>time</code> is <code>2023-04-17</code></p></li>
 <li><p>Extract first row and first column with <code>[1,]</code>and <code>[,1]</code></p></li>
 </ol>
-</div>
 </div>
 <div class="callout-challenge">
 <p>if you want to turn a data frame (<code>df</code>) by 90 degree (“transpose”), which function can you use? Could you find the answer on google or chatGPT?</p>
