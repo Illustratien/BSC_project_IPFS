@@ -1,17 +1,17 @@
 ---
-title: "Week2: The growth of spike in winter wheat"
+title: "Week2: Working directory and accessor"
 author: "Tien-Cheng"
-date: "2023-04-25"
-categories: [R-basic]
+categories: [vector,working directory]
 image: "growth.png"
 toc-location: right
 website: 
   sidebar:
     search: true
-
+number-sections: true
 format:
   html: 
     html-math-method: katex
+reference-location: margin
 ---
 
 ```{r setup, include=FALSE}
@@ -23,28 +23,34 @@ options(dplyr.summarise.inform = FALSE)
 data <- read.csv("../data/ear_summarized.csv")
 ```
 
-# Phenology and the growth of spike
-
 Welcome to the second course! You will learn `working directory`, subset elements from `vector`, `list` and `dataframe`.
 
 ::: callout-note
 1.  What is working directory (wd)?
-2.  How to subset elements from `vector`, `list` and `dataframe`
+2.  How to access elements from `vector`, `list` and `dataframe`
 :::
 
-If you haven't download the data, please go to [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/).
+## Working directory
 
-Open `Ear_development_BSC_project.Rproj`
+### preparation
 
-create Week2.R and save it in folder `src`.
+1.  Open the folder that contain `Wheat_BSC_project.Rproj`
+2.  download the data from [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/), save it in `data`.
+3.  create Week2.R and save it in folder `src`.
 
-## What is working directory (wd)?
+!['folder structure'](folder.PNG){width="800,height"}
+
+What is working directory (wd)?
 
 ### abbreviation path: "." for wd and ".." for parent of wd
 
 `"."` means the working directory (wd) where this R script exists.
 
 `".."` means the parent (one level higher) directory of `"."`.
+
+::: {.callout-example collapse="true"}
+![](wdirectory.png)
+:::
 
 ```{r,error=TRUE,eval=FALSE}
 library(dplyr)
@@ -95,7 +101,7 @@ paste0(parent_path,"/data") %>% list.files(path=.)
 ```
 
 ::: callout-challenge
-read from relative path, which one is correct? Assume working directory `current_path` is `"C/users/BSC_project/src"`
+read from relative path, which one is correct? Assume working directory `current_path` is `"C/users/Wheat_BSC_project/src"`
 
 `Absolute_path = current_path +"/"+relative_path` Below are four relative paths. Please rewrite them in absolute (full) path form. What should `.` be replace? Which two are the same? Based on the figure illustated below, path 1-4 should be A,B,C or D?
 
@@ -110,10 +116,10 @@ read from relative path, which one is correct? Assume working directory `current
 ![](wd.png){width="800,height"}
 :::
 
-## subsetting element from vetor with `accessors []`
+## get element from a vetor with `accessors []`
 
 vector indexing start from 1 to the length of the vector.
-
+![vector and derrivetaives](vectors.png)
 ```{r,eval=FALSE,error=TRUE}
 
 empty_vec <- c()
@@ -203,7 +209,11 @@ list_object`$element_name` or list_object`[[element_name]]`
 
 ![list with name](list_example2.png){width="800,height"}
 
-More about the [accessors](https://www.r-bloggers.com/2009/10/r-accessors-explained/)
+More about the accessors. [^1]
+
+[^1]: [accessors](https://www.r-bloggers.com/2009/10/r-accessors-explained/)
+
+
 
 ```{r,eval=FALSE}
 # create a simple list
@@ -341,5 +351,3 @@ use `df`,
 ::: callout-challenge
 if you want to turn a data frame (`df`) by 90 degree ("transpose"), which function can you use? Could you find the answer on google or chatGPT?
 :::
-
-## Discussion goes here

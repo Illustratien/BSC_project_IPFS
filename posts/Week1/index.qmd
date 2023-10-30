@@ -1,48 +1,17 @@
 ---
-title: "Week1: Phenology and the growth of spike"
+title: "Week1: R studio and vector"
 author: "Tien-Cheng"
-date: "2023-04-18"
-categories: [R-basic]
-image: "growth.png"
+categories: [R-project,data type,vector]
+image: "Assign.png"
 toc-location: right
 website: 
   sidebar:
     search: true
-
+number-sections: true
 format:
   html: 
     html-math-method: katex
 ---
-
-# Phenology and the growth of spike
-
-Welcome to the first course! During the following 2 hrs, you will learn data type of [`vectors`](https://towardsdatascience.com/learning-r-data-types-e698d23f8179#:~:text=First%2C%20R%20doesn%27t%20have,in%20R%20language%20is%20vector.), `function` and `%>%`.
-
-::: callout-note
-1.  4 basic data types: ("chr","numeric","logical","Date")
-2.  functions, documentation and data type check
-3.  meaning of `%>%` and `.`\
-4.  indexing with pattern matching
-:::
-
-Please make sure you have installed [`R & Rstudio`](https://posit.co/download/rstudio-desktop/).
-
-Download the folder from [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/).
-
-Open `Ear_development_BSC_project.Rproj`
-
-## R basic
-
-Press `Ctrl+ Shift +N`to open new script.Save it as `Week1_practice.R` Copy code from this website to your script and press `run`.
-
-Save \### Concept of datatype & case sensitive Rules:
-
-1.  Don't compete your `variable names` with system. (eg., `var`,`mean`,`aov`)
-
-*something that will show in the drop down menu of auto-completion.*
-
-2.  Don't start with number.
-3.  Separate long name with `_`.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -52,18 +21,73 @@ library(kableExtra);library(knitr);library(purrr)
 options(dplyr.summarise.inform = FALSE)
 ```
 
+
+
+Welcome to the first course! During the following 2 hrs, you will learn data type of [`vectors`](https://towardsdatascience.com/learning-r-data-types-e698d23f8179#:~:text=First%2C%20R%20doesn%27t%20have,in%20R%20language%20is%20vector.), `function` and `%>%`.
+
+::: callout-note
+1.  set up working directory and name space
+2.  vector and 4 basic data types: ("chr","numeric","logical","Date")
+3.  functions, documentation and data type check
+4.  meaning of `%>%` and `.`
+5.  indexing with pattern matching
+:::
+
+## Set up your working directory
+
+### preparation
+
+1.  Please make sure you have installed [`R & Rstudio`](https://posit.co/download/rstudio-desktop/).
+
+2.  File -\> New Project -\> `Wheat_BSC_project.Rproj`
+
+![](Rproj.png){width="800,height"}\
+### your first R script
+
+Press `Ctrl+ Shift +N`to open new script.Save it as `Week1_practice.R` Copy code from this website to your script and press `run`.
+
+### Concept of datatype & name space:
+
+1.  Don't overwrite `variable names` in name space (what already exists in system).
+
+    -   eg., `var`,`mean`,`aov`, etc. 
+    
+::: callout-warning
+avoid *something that will show in the drop down menu of auto-completion.*
+
+![Name space](dropdown.PNG){width="800,height"}\
+:::
+
+2.  Separate long `variable names` with `_`.
+
+    -   eg., `thermal_time`,`mean_yield`, etc.
+
+3.  Don't start `variable names` with number.
+
+|     |        Bad        |       Better       |
+|:---:|:-----------------:|:------------------:|
+|     |     `3years`      |   `three_years`    |
+|     | `1225measurement` | `measurement_1225` |
+|     |   `13genotypes`   |   `genotypes_13`   |
+
+![Structure of a vector](vector.png){width="800,height"}
+
+Variable = variable names + object ![Syntax of assigning names to variable](Assign.png){width="800,height"}
+
+## Data type is everything
+
 ```{r,error=TRUE,eval=FALSE}
 variable
 # assignment str"v" to name "variable"
 ## "" and unquote str and variable 
-
 variable <- "v"
 Variable <- 1
+
 variable +1
 Variable +1 
 ```
 
-### Check data type
+### Always check your data type first!
 
 ```{r,error=TRUE,eval=FALSE}
 # str??
@@ -79,21 +103,42 @@ str(c(NA,TRUE))
 str(c(1,"a"))
 ```
 
-### r packages
+### Date
 
-Check this great package [tidyverse](https://dplyr.tidyverse.org/)!
-
--   Note that windows user may need to first download the [Rtools](https://cran.r-project.org/bin/windows/Rtools/) that match your R version.
-
-You can check your R version by typing `version()` in your R console.
-
-```{r,error=TRUE,eval=FALSE}
-install.packages(tidyrverse)
-install.packages("tidyrverse")
-library(dplyr)
+```{r,echo=TRUE,error=TRUE,eval=FALSE}
+as.Date("2023-04-17")
+as.Date("2023-04-17",format="%Y-%m-%d")
+# is ther any error?
+as.Date("20230417")
+as.Date("17042023")
+# additive properties of Date 
+as.Date("2023-04-17")-7
+as.Date("2023-04-17")+2
 ```
 
-### Function: something ends with `()`
+## Function: something ends with `()`
+
+![How function works?](function.png){width="800,height"}
+
+```{r,error=TRUE,eval=FALSE}
+# example: fun(object)
+c(1,2,3)
+mean(c(1,2,3))
+str(TRUE)
+seq(1,5,1)
+```
+
+::: callout-challenge
+Since type `Date` is additive, how to create successive `date` vector of length 5? Vector `date` start with "2023-04-17"
+
+Could you do the average of this vector?
+:::
+
+```{r,echo=FALSE}
+as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,5,1)
+```
+
+### separate individual function from nested functions with `%>%`
 
 Pipe (`%>%`) is available in r-package either `dplyr` or `magrittr`.
 
@@ -106,6 +151,8 @@ For long line code, press `enter` after each `%>%`.
 Select all the codes by `ctrl A`.
 
 Indent the selected codes by `ctrl I`.
+
+Concepts of using pipe
 
 ```{r,error=TRUE,eval=FALSE}
 # syntax of using pipe
@@ -125,6 +172,8 @@ object %>%
   fun2()
 
 ```
+
+Examples of using pipe
 
 ```{r,error=TRUE,eval=FALSE}
 # how many ways of creating a sequence?
@@ -200,30 +249,23 @@ write a function with documentation: input `vec` is a numeric vector with length
 Visualize the step in your function by first writing your the possible steps in text!
 :::
 
-### Date
+## r packages : collection of functions
 
-```{r,echo=TRUE,error=TRUE,eval=FALSE}
-as.Date("2023-04-17")
-as.Date("2023-04-17",format="%Y-%m-%d")
-# is ther any error?
-as.Date("20230417")
-as.Date("17042023")
-# additive properties of Date 
-as.Date("2023-04-17")-7
-as.Date("2023-04-17")+2
+Check this great package [tidyverse](https://dplyr.tidyverse.org/)!
+
+-   Note that windows user may need to first download the [Rtools](https://cran.r-project.org/bin/windows/Rtools/) that match your R version.
+
+You can check your R version by typing `version()` in your R console.
+
+```{r,error=TRUE,eval=FALSE}
+install.packages(tidyrverse)
+install.packages("tidyrverse")
+library(dplyr)
 ```
 
-::: callout-challenge
-Since type `Date` is additive, how to create successive `date` vector of length 5? Vector `date` start with "2023-04-17"
+## Pattern matching: logical vector and its position
 
-Could you do the average of this vector?
-:::
-
-```{r,echo=FALSE}
-as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,5,1)
-```
-
-### Pattern matching: logical vector and its position
+![Logical vector](logical.png)
 
 ```{r,error=TRUE,eval=FALSE}
 # check if pattern exist in vector
@@ -276,5 +318,3 @@ Inside your `plusone` function, please check first whether input `x` is numeric,
 
 if not, return with message "wrong input type" using `stop()`
 :::
-
-## Discussion goes here

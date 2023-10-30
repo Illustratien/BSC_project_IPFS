@@ -2,14 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Tien-Cheng">
-<meta name="dcterms.date" content="2023-04-25">
 
-<title>BSC_project_IPFS2023 - Week2: The growth of spike in winter wheat</title>
+<title>BSC_project_IPFS2023 - Week2: Working directory and accessor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,12 +93,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
 
-<meta property="og:title" content="BSC_project_IPFS2023 - Week2: The growth of spike in winter wheat">
+<meta property="og:title" content="BSC_project_IPFS2023 - Week2: Working directory and accessor">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://illustratien.github.io/BSC_project_IPFS2023/posts/Week2/growth.png">
 <meta property="og:site-name" content="BSC_project_IPFS2023">
@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta property="og:image:width" content="1382">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar docked slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/Week1/index.html">Analysis with R</a></li><li class="breadcrumb-item"><a href="../../posts/Week2/index.html">Week 2</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -134,14 +134,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <img src="../../Images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/Illustratien/BSC_project_IPFS2023/discussions" title="GitHub discussion" class="quarto-navigation-tool px-1" aria-label="GitHub discussion"><i class="bi bi-github"></i></a>
-    <a href="https://moodle.hu-berlin.de/course/view.php?id=110830" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-book"></i></a>
+    <a href="https://github.com/Illustratien/BSC_project_IPFS2023/discussions" rel="" title="GitHub discussion" class="quarto-navigation-tool px-1" aria-label="GitHub discussion"><i class="bi bi-github"></i></a>
+    <a href="https://moodle.hu-berlin.de/course/view.php?id=110830" rel="" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-book"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -266,33 +261,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#phenology-and-the-growth-of-spike" id="toc-phenology-and-the-growth-of-spike" class="nav-link active" data-scroll-target="#phenology-and-the-growth-of-spike">Phenology and the growth of spike</a>
+  <li><a href="#working-directory" id="toc-working-directory" class="nav-link active" data-scroll-target="#working-directory"><span class="header-section-number">1</span> Working directory</a>
   <ul class="collapse">
-  <li><a href="#what-is-working-directory-wd" id="toc-what-is-working-directory-wd" class="nav-link" data-scroll-target="#what-is-working-directory-wd">What is working directory (wd)?</a>
-  <ul class="collapse">
-  <li><a href="#abbreviation-path-.-for-wd-and-..-for-parent-of-wd" id="toc-abbreviation-path-.-for-wd-and-..-for-parent-of-wd" class="nav-link" data-scroll-target="#abbreviation-path-.-for-wd-and-..-for-parent-of-wd">abbreviation path: “.” for wd and “..” for parent of wd</a></li>
-  <li><a href="#accessing-files-and-folder-inside-a-r-project" id="toc-accessing-files-and-folder-inside-a-r-project" class="nav-link" data-scroll-target="#accessing-files-and-folder-inside-a-r-project">accessing files and folder inside a R project</a></li>
+  <li><a href="#preparation" id="toc-preparation" class="nav-link" data-scroll-target="#preparation"><span class="header-section-number">1.1</span> preparation</a></li>
+  <li><a href="#abbreviation-path-.-for-wd-and-..-for-parent-of-wd" id="toc-abbreviation-path-.-for-wd-and-..-for-parent-of-wd" class="nav-link" data-scroll-target="#abbreviation-path-.-for-wd-and-..-for-parent-of-wd"><span class="header-section-number">1.2</span> abbreviation path: “.” for wd and “..” for parent of wd</a></li>
+  <li><a href="#accessing-files-and-folder-inside-a-r-project" id="toc-accessing-files-and-folder-inside-a-r-project" class="nav-link" data-scroll-target="#accessing-files-and-folder-inside-a-r-project"><span class="header-section-number">1.3</span> accessing files and folder inside a R project</a></li>
   </ul></li>
-  <li><a href="#subsetting-element-from-vetor-with-accessors" id="toc-subsetting-element-from-vetor-with-accessors" class="nav-link" data-scroll-target="#subsetting-element-from-vetor-with-accessors">subsetting element from vetor with <code>accessors []</code></a>
+  <li><a href="#get-element-from-a-vetor-with-accessors" id="toc-get-element-from-a-vetor-with-accessors" class="nav-link" data-scroll-target="#get-element-from-a-vetor-with-accessors"><span class="header-section-number">2</span> get element from a vetor with <code>accessors []</code></a>
   <ul class="collapse">
-  <li><a href="#list-keep-the-diversity-of-data-type" id="toc-list-keep-the-diversity-of-data-type" class="nav-link" data-scroll-target="#list-keep-the-diversity-of-data-type">list: keep the diversity of data type</a></li>
-  <li><a href="#lapply-return-as-a-list" id="toc-lapply-return-as-a-list" class="nav-link" data-scroll-target="#lapply-return-as-a-list">lapply: return as a list</a></li>
-  <li><a href="#dataframe-is-a-special-type-of-list" id="toc-dataframe-is-a-special-type-of-list" class="nav-link" data-scroll-target="#dataframe-is-a-special-type-of-list">dataframe is a special type of list</a></li>
-  <li><a href="#extract-columns-from-data-frame" id="toc-extract-columns-from-data-frame" class="nav-link" data-scroll-target="#extract-columns-from-data-frame">extract columns from data frame</a></li>
-  </ul></li>
-  <li><a href="#discussion-goes-here" id="toc-discussion-goes-here" class="nav-link" data-scroll-target="#discussion-goes-here">Discussion goes here</a></li>
+  <li><a href="#list-keep-the-diversity-of-data-type" id="toc-list-keep-the-diversity-of-data-type" class="nav-link" data-scroll-target="#list-keep-the-diversity-of-data-type"><span class="header-section-number">2.1</span> list: keep the diversity of data type</a></li>
+  <li><a href="#lapply-return-as-a-list" id="toc-lapply-return-as-a-list" class="nav-link" data-scroll-target="#lapply-return-as-a-list"><span class="header-section-number">2.2</span> lapply: return as a list</a></li>
+  <li><a href="#dataframe-is-a-special-type-of-list" id="toc-dataframe-is-a-special-type-of-list" class="nav-link" data-scroll-target="#dataframe-is-a-special-type-of-list"><span class="header-section-number">2.3</span> dataframe is a special type of list</a></li>
+  <li><a href="#extract-columns-from-data-frame" id="toc-extract-columns-from-data-frame" class="nav-link" data-scroll-target="#extract-columns-from-data-frame"><span class="header-section-number">2.4</span> extract columns from data frame</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Illustratien/BSC_project_IPFS2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week2: The growth of spike in winter wheat</h1>
+<h1 class="title">Week2: Working directory and accessor</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">R-basic</div>
+    <div class="quarto-category">vector</div>
+    <div class="quarto-category">working directory</div>
   </div>
   </div>
 
@@ -307,12 +300,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div>
   </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 25, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -320,8 +307,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="phenology-and-the-growth-of-spike" class="level1">
-<h1>Phenology and the growth of spike</h1>
 <p>Welcome to the second course! You will learn <code>working directory</code>, subset elements from <code>vector</code>, <code>list</code> and <code>dataframe</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -335,19 +320,34 @@ Note
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>What is working directory (wd)?</li>
-<li>How to subset elements from <code>vector</code>, <code>list</code> and <code>dataframe</code></li>
+<li>How to access elements from <code>vector</code>, <code>list</code> and <code>dataframe</code></li>
 </ol>
 </div>
 </div>
-<p>If you haven’t download the data, please go to <a href="https://box.hu-berlin.de/d/fc7db144021a4a35a086/">HU-box</a>.</p>
-<p>Open <code>Ear_development_BSC_project.Rproj</code></p>
-<p>create Week2.R and save it in folder <code>src</code>.</p>
-<section id="what-is-working-directory-wd" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-working-directory-wd">What is working directory (wd)?</h2>
-<section id="abbreviation-path-.-for-wd-and-..-for-parent-of-wd" class="level3">
-<h3 class="anchored" data-anchor-id="abbreviation-path-.-for-wd-and-..-for-parent-of-wd">abbreviation path: “.” for wd and “..” for parent of wd</h3>
+<section id="working-directory" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="working-directory"><span class="header-section-number">1</span> Working directory</h2>
+<section id="preparation" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="preparation"><span class="header-section-number">1.1</span> preparation</h3>
+<ol type="1">
+<li>Open the folder that contain <code>Wheat_BSC_project.Rproj</code></li>
+<li>download the data from <a href="https://box.hu-berlin.de/d/fc7db144021a4a35a086/">HU-box</a>, save it in <code>data</code>.</li>
+<li>create Week2.R and save it in folder <code>src</code>.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="folder.PNG" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">‘folder structure’</figcaption>
+</figure>
+</div>
+<p>What is working directory (wd)?</p>
+</section>
+<section id="abbreviation-path-.-for-wd-and-..-for-parent-of-wd" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="abbreviation-path-.-for-wd-and-..-for-parent-of-wd"><span class="header-section-number">1.2</span> abbreviation path: “.” for wd and “..” for parent of wd</h3>
 <p><code>"."</code> means the working directory (wd) where this R script exists.</p>
 <p><code>".."</code> means the parent (one level higher) directory of <code>"."</code>.</p>
+<div class="callout-example" data-collapse="true">
+<p><img src="wdirectory.png" class="img-fluid"></p>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -376,8 +376,8 @@ Note
 <p>Right click R studio logo, open a new R studio window, compare the result of <code>getwd()</code> in R project and R</p>
 </div>
 </section>
-<section id="accessing-files-and-folder-inside-a-r-project" class="level3">
-<h3 class="anchored" data-anchor-id="accessing-files-and-folder-inside-a-r-project">accessing files and folder inside a R project</h3>
+<section id="accessing-files-and-folder-inside-a-r-project" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="accessing-files-and-folder-inside-a-r-project"><span class="header-section-number">1.3</span> accessing files and folder inside a R project</h3>
 <p>Which one do you prefer? Why do we prefer relative path?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># absolute path, did you get error?</span></span>
@@ -391,7 +391,7 @@ Note
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="st">"data"</span> <span class="sc">%&gt;%</span> <span class="fu">list.files</span>(<span class="at">path=</span>.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout-challenge">
-<p>read from relative path, which one is correct? Assume working directory <code>current_path</code> is <code>"C/users/BSC_project/src"</code></p>
+<p>read from relative path, which one is correct? Assume working directory <code>current_path</code> is <code>"C/users/Wheat_BSC_project/src"</code></p>
 <p><code>Absolute_path = current_path +"/"+relative_path</code> Below are four relative paths. Please rewrite them in absolute (full) path form. What should <code>.</code> be replace? Which two are the same? Based on the figure illustated below, path 1-4 should be A,B,C or D?</p>
 <ol type="1">
 <li><p><code>"ear_summarized.csv"</code></p></li>
@@ -403,9 +403,9 @@ Note
 </div>
 </section>
 </section>
-<section id="subsetting-element-from-vetor-with-accessors" class="level2">
-<h2 class="anchored" data-anchor-id="subsetting-element-from-vetor-with-accessors">subsetting element from vetor with <code>accessors []</code></h2>
-<p>vector indexing start from 1 to the length of the vector.</p>
+<section id="get-element-from-a-vetor-with-accessors" class="level2 page-columns page-full" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="get-element-from-a-vetor-with-accessors"><span class="header-section-number">2</span> get element from a vetor with <code>accessors []</code></h2>
+<p>vector indexing start from 1 to the length of the vector. <img src="vectors.png" class="img-fluid" alt="vector and derrivetaives"></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>empty_vec <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(empty_vec)</span>
@@ -470,8 +470,8 @@ Note
 <p>Supplementary information of special datatypes:</p>
 <p>Empty : <a href="https://www.r-bloggers.com/2018/07/r-null-values-null-na-nan-inf/"><code>NULL</code></a></p>
 <p>Indexing at zero position:<a href="https://www.programmingr.com/r-error-messages/numeric0-error/"><code>numeric(0)</code></a></p>
-<section id="list-keep-the-diversity-of-data-type" class="level3">
-<h3 class="anchored" data-anchor-id="list-keep-the-diversity-of-data-type">list: keep the diversity of data type</h3>
+<section id="list-keep-the-diversity-of-data-type" class="level3 page-columns page-full" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="list-keep-the-diversity-of-data-type"><span class="header-section-number">2.1</span> list: keep the diversity of data type</h3>
 <p>list_object&lt;- list(<code>element_name</code>=<code>value</code>) Make a list is like put a <code>cookie</code>(content of list element) in the <code>cookie jar</code>(list element).</p>
 <p>There are 3 common accessors for <code>list</code>: 1. access the list element (<code>cookie jar</code>)</p>
 <p><code>[]</code> access the list position</p>
@@ -493,7 +493,7 @@ Note
 <figcaption class="figure-caption">list with name</figcaption>
 </figure>
 </div>
-<p>More about the <a href="https://www.r-bloggers.com/2009/10/r-accessors-explained/">accessors</a></p>
+<div class="page-columns page-full"><p>More about the accessors. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;<a href="https://www.r-bloggers.com/2009/10/r-accessors-explained/">accessors</a></p></li></div></div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a simple list</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="dv">1</span>)</span>
@@ -539,8 +539,8 @@ Note
 </div>
 </div>
 </section>
-<section id="lapply-return-as-a-list" class="level3">
-<h3 class="anchored" data-anchor-id="lapply-return-as-a-list">lapply: return as a list</h3>
+<section id="lapply-return-as-a-list" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="lapply-return-as-a-list"><span class="header-section-number">2.2</span> lapply: return as a list</h3>
 <p>lapply(vector, function) ?lapply</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># input is vector</span></span>
@@ -557,8 +557,8 @@ Note
 <p>Why you get error in the last line?</p>
 </div>
 </section>
-<section id="dataframe-is-a-special-type-of-list" class="level3">
-<h3 class="anchored" data-anchor-id="dataframe-is-a-special-type-of-list">dataframe is a special type of list</h3>
+<section id="dataframe-is-a-special-type-of-list" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="dataframe-is-a-special-type-of-list"><span class="header-section-number">2.3</span> dataframe is a special type of list</h3>
 <p>each column has one data type</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a dataframe </span></span>
@@ -583,8 +583,8 @@ Note
 </div>
 </div>
 </section>
-<section id="extract-columns-from-data-frame" class="level3">
-<h3 class="anchored" data-anchor-id="extract-columns-from-data-frame">extract columns from data frame</h3>
+<section id="extract-columns-from-data-frame" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="extract-columns-from-data-frame"><span class="header-section-number">2.4</span> extract columns from data frame</h3>
 <p>You can subset <code>dataframe</code> by indexing [<code>row</code>,<code>column</code>]</p>
 <p><code>dataframe</code>[,<code>column</code>] select the whole role for selected columnn</p>
 <p><code>dataframe</code>[<code>row</code>,] select the whole column of selected rows</p>
@@ -600,14 +600,11 @@ Note
 <div class="callout-challenge">
 <p>if you want to turn a data frame (<code>df</code>) by 90 degree (“transpose”), which function can you use? Could you find the answer on google or chatGPT?</p>
 </div>
-</section>
-</section>
-<section id="discussion-goes-here" class="level2">
-<h2 class="anchored" data-anchor-id="discussion-goes-here">Discussion goes here</h2>
 
 
 </section>
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
