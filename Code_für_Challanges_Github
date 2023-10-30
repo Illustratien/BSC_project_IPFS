@@ -1,0 +1,8 @@
+start_date <- as.Date("2023-04-17")
+date_vector <- seq(start_date, by="1 day", length.out=5)
+average_date<-mean(date_vector)
+print(date_vector)
+print(average_date)
+
+
+
