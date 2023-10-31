@@ -1,7 +1,7 @@
 ---
 title: "Week2: Working directory and accessor"
 author: "Tien-Cheng"
-categories: [vector,working directory]
+categories: [accessor,working directory]
 image: "growth.png"
 toc-location: right
 website: 
@@ -23,28 +23,94 @@ options(dplyr.summarise.inform = FALSE)
 data <- read.csv("../data/ear_summarized.csv")
 ```
 
-Welcome to the second course! You will learn `working directory`, subset elements from `vector`, `list` and `dataframe`.
+Welcome to the second course! 
+
+You will learn `working directory`, subset elements from `vector`, `list` and `dataframe`.
 
 ::: callout-note
-1.  What is working directory (wd)?
-2.  How to access elements from `vector`, `list` and `dataframe`
+1. data type `logical` and `operator`
+2. accessor `[]`
+3. What is working directory (wd)?
+4.  How to access elements from `vector`, `list` and `dataframe`
 :::
 
-## Working directory
 
-### preparation
+## Conditions: logical operators and vectors
 
-1.  Open the folder that contain `Wheat_BSC_project.Rproj`
-2.  download the data from [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/), save it in `data`.
-3.  create Week2.R and save it in folder `src`.
+![Logical vector](logical.png)
+Logical operators [^3]
 
-!['folder structure'](folder.PNG){width="800,height"}
+[^3]:(https://www.statmethods.net/management/operators.html)
 
-What is working directory (wd)?
+* `L==R`: direction doesn't matters.
+* `L%in%R`: one sided, check if object `L` is presence in `R`.
+* `!`: negate the logical vector.
 
-### abbreviation path: "." for wd and ".." for parent of wd
+```{r,error=TRUE,eval=FALSE}
+# check if pattern exist in vector
+3%in%c(1,3)
+# what is the difference?
+c(1,3)%in%3
 
-`"."` means the working directory (wd) where this R script exists.
+2%in%c(1,3) 
+
+1==2 
+1==c(2,1) 
+# elementwise check whether L equals
+c(2,1)==1
+# check identity pairwise
+c(1,2)==c(2,4)
+
+# is '!' reverse the logical vector?
+!1==2 
+1!=2 
+c(1,3)==2
+# what does which() returns?
+which(c(1,3)==3) 
+
+# what will be the data type? check with str()
+c(1,2,NA) %>% is.na() 
+c(1,2,NA) %>% is.na() %>% which() 
+c(1,2,NA) %>% is.na() %>% !.
+c(1,2,NA) %>% !is.na() 
+!is.na(c(1,2,NA))
+```
+
+Preconditions examples inside a function
+```{r,error=TRUE,eval=FALSE}
+# check if data type match
+arg <- ""
+is.character(arg)
+if(is.character(arg)){
+  print("character")
+}
+
+if(is.character(arg)){
+  print("character")
+}else{
+  error("type other than character")
+}
+
+if(is.character(arg)){
+  warning("wrong")
+}
+
+if(is.character(arg)){
+  stop("wrong")
+}
+```
+
+::: {.callout-tip }
+# challenge
+Inside your `plusone` function, please check first whether input `x` is numeric, then proceed the process.
+
+if not, return with message "wrong input type" using `stop()`
+:::
+
+
+## Working directory (wd)
+
+`"."` means the working directory (wd), the path in which `R.project` exists.
 
 `".."` means the parent (one level higher) directory of `"."`.
 
@@ -116,10 +182,11 @@ read from relative path, which one is correct? Assume working directory `current
 
 4.  `"../data/ear_summarized.csv"`
 
-![](wd.png){width="800,height"}
+![](wd.png){}
 :::
 
 ## get element from a vetor with `accessors []`
+![accessor](accessor.PNG)
 
 vector indexing start from 1 to the length of the vector.
 ![vector and derrivetaives](vectors.png)
@@ -171,6 +238,10 @@ letters %>% .[c(F)]
 vec
 vec <- c(2,1,3)
 vec
+
+# what will be the difference?
+order(c(3,1,2)) 
+c(3,1,2) %>% .[order(.)]
 ```
 
 ::: {.callout-tip }
@@ -187,10 +258,9 @@ what did you observe? Is there any [vector recycling](https://rpubs.com/vipero7/
 What happen when you enter `vec[TRUE]`?
 :::
 
-Supplementary information of special datatypes:
+Supplementary information of special datatypes:[^1]
 
-Empty : [`NULL`](https://www.r-bloggers.com/2018/07/r-null-values-null-na-nan-inf/)
-
+[^1]: Empty : [`NULL`](https://www.r-bloggers.com/2018/07/r-null-values-null-na-nan-inf/)\
 Indexing at zero position:[`numeric(0)`](https://www.programmingr.com/r-error-messages/numeric0-error/)
 
 ### list: keep the diversity of data type
@@ -213,9 +283,9 @@ list_object`$element_name` or list_object`[[element_name]]`
 
 ![list with name](list_example2.png){width="800,height"}
 
-More about the accessors. [^1]
+More about the accessors. [^2]
 
-[^1]: [accessors](https://www.r-bloggers.com/2009/10/r-accessors-explained/)
+[^2]: [accessors](https://www.r-bloggers.com/2009/10/r-accessors-explained/)
 
 
 

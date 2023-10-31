@@ -8,7 +8,7 @@
 
 <meta name="author" content="Tien-Cheng">
 
-<title>BSC_project_IPFS2023 - Week1: R studio, vector and function</title>
+<title>BSC_project_IPFS2023 - Week1: R studio and vector</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../posts/Week2/index.html" rel="next">
-<link href="../../phenotyping_rule.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -99,7 +97,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="BSC_project_IPFS2023 - Week1: R studio, vector and function">
+<meta property="og:title" content="BSC_project_IPFS2023 - Week1: R studio and vector">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://illustratien.github.io/BSC_project_IPFS2023/posts/Week1/Assign.png">
 <meta property="og:site-name" content="BSC_project_IPFS2023">
@@ -116,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/Week1/index.html">Analysis with R</a></li><li class="breadcrumb-item"><a href="../../posts/Week1/index.html">Week 1</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week1: R studio and vector</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -188,16 +186,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Analysis with R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Week1/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/Week1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1</span></a>
   </div>
 </li>
@@ -269,14 +267,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#data-type-is-everything" id="toc-data-type-is-everything" class="nav-link" data-scroll-target="#data-type-is-everything"><span class="header-section-number">2</span> Data type is everything</a>
   <ul class="collapse">
   <li><a href="#always-check-your-data-type-first" id="toc-always-check-your-data-type-first" class="nav-link" data-scroll-target="#always-check-your-data-type-first"><span class="header-section-number">2.1</span> Always check your data type first!</a></li>
-  <li><a href="#sec-date" id="toc-sec-date" class="nav-link" data-scroll-target="#sec-date"><span class="header-section-number">2.2</span> Date</a></li>
+  <li><a href="#date" id="toc-date" class="nav-link" data-scroll-target="#date"><span class="header-section-number">2.2</span> Date</a></li>
   </ul></li>
   <li><a href="#function-something-ends-with" id="toc-function-something-ends-with" class="nav-link" data-scroll-target="#function-something-ends-with"><span class="header-section-number">3</span> Function: something ends with <code>()</code></a>
   <ul class="collapse">
-  <li><a href="#r-packages-collection-of-functions" id="toc-r-packages-collection-of-functions" class="nav-link" data-scroll-target="#r-packages-collection-of-functions"><span class="header-section-number">3.1</span> r packages : collection of functions</a></li>
-  <li><a href="#separate-individual-function-from-nested-functions-with" id="toc-separate-individual-function-from-nested-functions-with" class="nav-link" data-scroll-target="#separate-individual-function-from-nested-functions-with"><span class="header-section-number">3.2</span> separate individual function from nested functions with <code>%&gt;%</code></a></li>
-  <li><a href="#write-your-first-function" id="toc-write-your-first-function" class="nav-link" data-scroll-target="#write-your-first-function"><span class="header-section-number">3.3</span> write your first function</a></li>
+  <li><a href="#separate-individual-function-from-nested-functions-with" id="toc-separate-individual-function-from-nested-functions-with" class="nav-link" data-scroll-target="#separate-individual-function-from-nested-functions-with"><span class="header-section-number">3.1</span> separate individual function from nested functions with <code>%&gt;%</code></a></li>
+  <li><a href="#write-your-first-function" id="toc-write-your-first-function" class="nav-link" data-scroll-target="#write-your-first-function"><span class="header-section-number">3.2</span> write your first function</a></li>
   </ul></li>
+  <li><a href="#r-packages-collection-of-functions" id="toc-r-packages-collection-of-functions" class="nav-link" data-scroll-target="#r-packages-collection-of-functions"><span class="header-section-number">4</span> r packages : collection of functions</a></li>
+  <li><a href="#pattern-matching-logical-vector-and-its-position" id="toc-pattern-matching-logical-vector-and-its-position" class="nav-link" data-scroll-target="#pattern-matching-logical-vector-and-its-position"><span class="header-section-number">5</span> Pattern matching: logical vector and its position</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Illustratien/BSC_project_IPFS2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -285,13 +284,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week1: R studio, vector and function</h1>
+<h1 class="title">Week1: R studio and vector</h1>
   <div class="quarto-categories">
     <div class="quarto-category">R-project</div>
     <div class="quarto-category">data type</div>
     <div class="quarto-category">vector</div>
-    <div class="quarto-category">Github</div>
-    <div class="quarto-category">function</div>
   </div>
   </div>
 
@@ -325,10 +322,11 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>set up Rstudio, Github, and name space</li>
-<li>vector and 3 basic data types: (“chr”,“numeric”,“Date”)</li>
+<li>set up working directory and name space</li>
+<li>vector and 4 basic data types: (“chr”,“numeric”,“logical”,“Date”)</li>
 <li>functions, documentation and data type check</li>
 <li>meaning of <code>%&gt;%</code> and <code>.</code></li>
+<li>indexing with pattern matching</li>
 </ol>
 </div>
 </div>
@@ -337,32 +335,12 @@ Note
 <section id="preparation" class="level3" data-number="1.1">
 <h3 data-number="1.1" class="anchored" data-anchor-id="preparation"><span class="header-section-number">1.1</span> preparation</h3>
 <ol type="1">
-<li>Please make sure you have installed <a href="https://posit.co/download/rstudio-desktop/"><code>R &amp; Rstudio</code></a>.</li>
+<li><p>Please make sure you have installed <a href="https://posit.co/download/rstudio-desktop/"><code>R &amp; Rstudio</code></a>.</p></li>
+<li><p>File -&gt; New Project -&gt; <code>Wheat_BSC_project.Rproj</code></p></li>
 </ol>
-<p><img src="Rproj.png" class="img-fluid" width="400"></p>
-<ol start="2" type="1">
-<li>Open Rstudio, File -&gt; New Project -&gt; <code>Wheat_BSC_project</code>, click <code>create a git repository</code></li>
-<li>download the data from <a href="https://box.hu-berlin.de/d/fc7db144021a4a35a086/">HU-box</a>, save it in <code>data</code>.</li>
-<li>create Week1.R and save it in folder <code>src</code>.</li>
-<li>Open <code>github desktop</code></li>
-</ol>
-<!-- ::: {layout-ncol=2} -->
-<p><img src="../localrepo.PNG" class="img-fluid" width="350"> <img src="../selectpath.PNG" class="img-fluid" width="350"></p>
-<!-- ::: -->
-<ol start="6" type="1">
-<li>comment&amp;commit &amp; push</li>
-</ol>
-<p><img src="../commit.PNG" class="img-fluid" width="400"></p>
-<ol start="7" type="1">
-<li>Press <code>Ctrl+ Shift +N</code>to open new script.</li>
-<li>Save it as <code>Week1.R</code> Copy code from this website to your script and press <code>run</code>.</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../Week2/folder.PNG" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">‘folder structure’</figcaption>
-</figure>
-</div>
+<p><img src="Rproj.png" class="img-fluid"><br>
+### your first R script</p>
+<p>Press <code>Ctrl+ Shift +N</code>to open new script.Save it as <code>Week1_practice.R</code> Copy code from this website to your script and press <code>run</code>.</p>
 </section>
 <section id="concept-of-datatype-name-space" class="level3" data-number="1.2">
 <h3 data-number="1.2" class="anchored" data-anchor-id="concept-of-datatype-name-space"><span class="header-section-number">1.2</span> Concept of datatype &amp; name space:</h3>
@@ -457,8 +435,8 @@ Warning
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="st">"a"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="sec-date" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="sec-date"><span class="header-section-number">2.2</span> Date</h3>
+<section id="date" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="date"><span class="header-section-number">2.2</span> Date</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2023-04-17"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">"2023-04-17"</span>,<span class="at">format=</span><span class="st">"%Y-%m-%d"</span>)</span>
@@ -482,26 +460,21 @@ Warning
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example: fun(object)</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="r-packages-collection-of-functions" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="r-packages-collection-of-functions"><span class="header-section-number">3.1</span> r packages : collection of functions</h3>
-<p>Check this great package <a href="https://dplyr.tidyverse.org/">tidyverse</a>!</p>
-<ul>
-<li>Note that windows user may need to first download the <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a> that match your R version.</li>
-</ul>
-<p>You can check your R version by typing <code>version()</code> in your R console.</p>
+<div class="callout-challenge">
+<p>Since type <code>Date</code> is additive, how to create successive <code>date</code> vector of length 5? Vector <code>date</code> start with “2023-04-17”</p>
+<p>Could you do the average of this vector?</p>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(dplyr)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2023-04-17" "2023-04-18" "2023-04-19" "2023-04-20" "2023-04-21"</code></pre>
 </div>
-</section>
-<section id="separate-individual-function-from-nested-functions-with" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="separate-individual-function-from-nested-functions-with"><span class="header-section-number">3.2</span> separate individual function from nested functions with <code>%&gt;%</code></h3>
+</div>
+<section id="separate-individual-function-from-nested-functions-with" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="separate-individual-function-from-nested-functions-with"><span class="header-section-number">3.1</span> separate individual function from nested functions with <code>%&gt;%</code></h3>
 <p>Pipe (<code>%&gt;%</code>) is available in r-package either <code>dplyr</code> or <code>magrittr</code>.</p>
 <p>Please use <code>%&gt;%</code> to avoid embedded functions.</p>
 <p><code>.</code>stands for the result from the left side of the pipe.</p>
@@ -511,24 +484,20 @@ Warning
 <p>Concepts of using pipe</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># syntax of using pipe</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fun1</span>(object)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># .= object</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>object <span class="sc">%&gt;%</span> <span class="fu">fun1</span>(.)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># . could be also skipped</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>object <span class="sc">%&gt;%</span> <span class="fu">fun1</span>()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fun1</span>(object)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>object <span class="sc">%&gt;%</span> <span class="fu">fun1</span>(.)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>object <span class="sc">%&gt;%</span> <span class="fu">fun1</span>()</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>object <span class="sc">%&gt;%</span> <span class="fu">fun1</span>() <span class="sc">%&gt;%</span> .</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>object <span class="sc">%&gt;%</span> <span class="fu">fun1</span>(.) <span class="sc">%&gt;%</span> .</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># . = fun1(object)</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>object <span class="sc">%&gt;%</span> <span class="fu">fun1</span>() <span class="sc">%&gt;%</span> .</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>object <span class="sc">%&gt;%</span> <span class="fu">fun1</span>(.) <span class="sc">%&gt;%</span> .</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#embedded functions</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">fun2</span>(<span class="fu">fun1</span>(object))</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># .=fun2(fun1(object))</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>object <span class="sc">%&gt;%</span> </span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fun1</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fun2</span>() <span class="sc">%&gt;%</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#embedded functions</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">fun2</span>(<span class="fu">fun1</span>(object))</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># pipe</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>object <span class="sc">%&gt;%</span> </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fun1</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fun2</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Examples of using pipe</p>
 <div class="cell">
@@ -553,50 +522,14 @@ Warning
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="fu">c</span>(<span class="st">"a"</span>,<span class="st">"1"</span>))</span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">"a"</span>,<span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-challenge
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We introduced data type <code>Date</code> in <a href="#sec-date">Section&nbsp;2.2</a>, It actually behave like numeric sequence. You have Vector of type <code>date</code>, length is 1, value is “2023-04-17”.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>date_element <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">'2023-04-17'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol type="1">
-<li>How to create <code>date</code> vector of length 5?</li>
-</ol>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "2023-04-17" "2023-04-18" "2023-04-19" "2023-04-20" "2023-04-21"</code></pre>
-</div>
-</div>
-<ol start="2" type="1">
-<li>Could you do the average of this vector?</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-challenge
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Use <code>str()</code> to check the data type of variable in your environment.</p>
-<p>You have two vectors,</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>vec1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"a"</span>,<span class="st">"b"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>vec2<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"1"</span>,<span class="st">"2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="callout-challenge">
+<p>Use <code>str()</code> to check the data type of above line.</p>
+<p>You have two vectors, <code>c("a","b")</code> and <code>c("1","2")</code></p>
 <p>How to use <code>paste</code> and <code>rep</code>to create sequence of <code>char</code> vector shown below?</p>
+<p>Check the arguments of <code>rep</code> to get more hints. e.g.,</p>
+<p><code>rep(c("a","b"),each=2)</code></p>
+<p><code>rep(c("a","b"),times=2)</code></p>
+</div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a1" "a2" "b1" "b2"</code></pre>
@@ -605,57 +538,106 @@ challenge
 <pre><code>[1] "a1" "b1" "a2" "b2"</code></pre>
 </div>
 </div>
-<p>Check the arguments of <code>rep</code> to get more hints.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>?rep</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>e.g.,</p>
-<ul>
-<li><p><code>rep(c("a","b"),each=2)</code></p></li>
-<li><p><code>rep(c("a","b"),times=2)</code></p></li>
-</ul>
-</div>
-</div>
 </section>
-<section id="write-your-first-function" class="level3" data-number="3.3">
-<h3 data-number="3.3" class="anchored" data-anchor-id="write-your-first-function"><span class="header-section-number">3.3</span> write your first function</h3>
+<section id="write-your-first-function" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="write-your-first-function"><span class="header-section-number">3.2</span> write your first function</h3>
 <p>format: <code>function_name</code>(<code>argument1</code>, <code>argument2</code>) {<code>code</code>} example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plusone <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># is function data type sensitive?</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plusone</span>(variable)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plusone</span>(Variable) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plusone <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># is function data type sensitive?</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plusone</span>(variable)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plusone</span>(Variable) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>function with good documentation example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>function_name  <span class="ot">&lt;-</span><span class="cf">function</span>(input){</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># input: datatype, length, meaning.</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># output: datatype, length, meaning.</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># action1: intermediate_variable &lt;- input %&gt;% fun1()</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># action2: output &lt;-intermediate_variable%&gt;% fun2()</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  ...</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>function_name  <span class="ot">&lt;-</span><span class="cf">function</span>(input){</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># input: datatype, length, meaning.</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># output: datatype, length, meaning.</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># action1: intermediate_variable &lt;- input %&gt;% fun1()</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># action2: output &lt;-intermediate_variable%&gt;% fun2()</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-challenge
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-challenge">
 <p>write a function with documentation: input <code>vec</code> is a numeric vector with length 3, return <code>str</code> of average value of <code>vec</code> ± standard deviation of <code>vec</code>.</p>
 <p>Visualize the step in your function by first writing your the possible steps in text!</p>
 </div>
+</section>
+</section>
+<section id="r-packages-collection-of-functions" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="r-packages-collection-of-functions"><span class="header-section-number">4</span> r packages : collection of functions</h2>
+<p>Check this great package <a href="https://dplyr.tidyverse.org/">tidyverse</a>!</p>
+<ul>
+<li>Note that windows user may need to first download the <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a> that match your R version.</li>
+</ul>
+<p>You can check your R version by typing <code>version()</code> in your R console.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(tidyrverse)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyrverse"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="pattern-matching-logical-vector-and-its-position" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="pattern-matching-logical-vector-and-its-position"><span class="header-section-number">5</span> Pattern matching: logical vector and its position</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="logical.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Logical vector</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check if pattern exist in vector</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>) </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>) </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">==</span><span class="dv">2</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="dv">1</span><span class="sc">==</span><span class="dv">2</span> </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">!=</span><span class="dv">2</span> </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)<span class="sc">==</span><span class="dv">2</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)<span class="sc">==</span><span class="dv">3</span>) </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># what will be the difference?</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu">order</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)) </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>) <span class="sc">%&gt;%</span> .[<span class="fu">order</span>(.)]</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># what will be the data type? check with str()</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>) <span class="sc">%&gt;%</span> <span class="fu">is.na</span>() </span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>) <span class="sc">%&gt;%</span> <span class="fu">is.na</span>() <span class="sc">%&gt;%</span> <span class="fu">which</span>() </span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>) <span class="sc">%&gt;%</span> <span class="fu">is.na</span>() <span class="sc">%&gt;%</span> <span class="sc">!</span>.</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>) <span class="sc">%&gt;%</span> <span class="sc">!</span><span class="fu">is.na</span>() </span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>))</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co"># check if data type match</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>arg <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(arg)</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.character</span>(arg)){</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"character"</span>)</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.character</span>(arg)){</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"character"</span>)</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">error</span>(<span class="st">"type other than character"</span>)</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.character</span>(arg)){</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">warning</span>(<span class="st">"wrong"</span>)</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.character</span>(arg)){</span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"wrong"</span>)</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-challenge">
+<p>Inside your <code>plusone</code> function, please check first whether input <code>x</code> is numeric, then proceed the process.</p>
+<p>if not, return with message “wrong input type” using <code>stop()</code></p>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1009,18 +991,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <script src="https://giscus.app/client.js" data-repo="Illustratien/BSC_project_IPFS2023" data-repo-id="R_kgDOJXRJ5Q" data-category="General" data-category-id="DIC_kwDOJXRJ5c4CV5K1" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../phenotyping_rule.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">phenotyping rules</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../posts/Week2/index.html" class="pagination-link">
-        <span class="nav-page-text">Week 2</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
