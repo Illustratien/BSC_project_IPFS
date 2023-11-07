@@ -1,8 +1,8 @@
 ---
 title: "Week2: Working directory and accessor"
 author: "Tien-Cheng"
-categories: [accessor,working directory]
-image: "growth.png"
+categories: [vector,working directory]
+image: 'vectors.png'
 toc-location: right
 website: 
   sidebar:
@@ -23,9 +23,7 @@ options(dplyr.summarise.inform = FALSE)
 data <- read.csv("../data/ear_summarized.csv")
 ```
 
-Welcome to the second course! 
-
-You will learn `working directory`, subset elements from `vector`, `list` and `dataframe`.
+Welcome to the second course! You will learn `working directory`, subset elements from `vector`, `list` and `dataframe`.
 
 ::: callout-note
 1. data type `logical` and `operator`
@@ -35,39 +33,33 @@ You will learn `working directory`, subset elements from `vector`, `list` and `d
 :::
 
 
-## Conditions: logical operators and vectors
-
+# Conditions: logical operators and vectors
 ![Logical vector](logical.png)
-Logical operators [^3]
+Logical operators [^1]
 
-[^3]:(https://www.statmethods.net/management/operators.html)
+[^1]:[logical operators](https://www.statmethods.net/management/operators.html)
 
 * `L==R`: direction doesn't matters.
 * `L%in%R`: one sided, check if object `L` is presence in `R`.
 * `!`: negate the logical vector.
-
 ```{r,error=TRUE,eval=FALSE}
 # check if pattern exist in vector
 3%in%c(1,3)
 # what is the difference?
 c(1,3)%in%3
-
 2%in%c(1,3) 
-
 1==2 
 1==c(2,1) 
 # elementwise check whether L equals
 c(2,1)==1
 # check identity pairwise
 c(1,2)==c(2,4)
-
 # is '!' reverse the logical vector?
 !1==2 
 1!=2 
 c(1,3)==2
 # what does which() returns?
 which(c(1,3)==3) 
-
 # what will be the data type? check with str()
 c(1,2,NA) %>% is.na() 
 c(1,2,NA) %>% is.na() %>% which() 
@@ -84,33 +76,39 @@ is.character(arg)
 if(is.character(arg)){
   print("character")
 }
-
 if(is.character(arg)){
   print("character")
 }else{
   error("type other than character")
 }
-
 if(is.character(arg)){
   warning("wrong")
 }
-
 if(is.character(arg)){
   stop("wrong")
 }
 ```
-
 ::: {.callout-tip }
 # challenge
 Inside your `plusone` function, please check first whether input `x` is numeric, then proceed the process.
-
 if not, return with message "wrong input type" using `stop()`
 :::
 
+# Working directory
 
-## Working directory (wd)
+## preparation
 
-`"."` means the working directory (wd), the path in which `R.project` exists.
+1.  Open the folder that contain `Wheat_BSC_project.Rproj`
+2.  download the data from [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/), save it in `data`.
+3.  create Week2.R and save it in folder `src`.
+
+!['folder structure'](folder.PNG){width=400}
+
+What is working directory (wd)?
+
+## abbreviation path: "." for wd and ".." for parent of wd
+
+`"."` means the working directory (wd) where this R script exists.
 
 `".."` means the parent (one level higher) directory of `"."`.
 
@@ -151,7 +149,7 @@ Although the meaning of `.` is the same as `getwd()`, the content is depending o
 Right click R studio logo, open a new R studio window, compare the result of `getwd()` in R project and R
 :::
 
-### accessing files and folder inside a R project
+## accessing files and folder inside a R project
 
 Which one do you prefer? Why do we prefer relative path?
 
@@ -168,11 +166,20 @@ paste0(parent_path,"/data") %>% list.files(path=.)
 
 ```
 
-::: {.callout-tip }
-# challenge
-read from relative path, which one is correct? Assume working directory `current_path` is `"C/users/Wheat_BSC_project/src"`
+::: {.callout-tip collapse="true"}
+# click for example
 
-`Absolute_path = current_path +"/"+relative_path` Below are four relative paths. Please rewrite them in absolute (full) path form. What should `.` be replace? Which two are the same? Based on the figure illustated below, path 1-4 should be A,B,C or D?
+|   symbol  |  Absolute path  | relative path   |color|
+|:---:|:-----------------:|:------------------:|:------------------:|
+| A    |    `C/users/Wheat_BSC_project`    |   `..`    | black|
+| B   | `C/users/Wheat_BSC_project/data` |?|blue|
+| C    |  `C/users/Wheat_BSC_project/src`   |   `.`    |red|
+| D    |  `C/users/Wheat_BSC_project/src/data`  |   ?   |blue|
+
+
+
+Below are four relative paths. Please rewrite them in absolute (full) path form. 
+Which two are the same? Based on the figure illustated below, path 1-4 should be A,B,C or D?
 
 1.  `"ear_summarized.csv"`
 
@@ -182,14 +189,14 @@ read from relative path, which one is correct? Assume working directory `current
 
 4.  `"../data/ear_summarized.csv"`
 
-![](wd.png){}
+![](wd.PNG){width="800,height"}
 :::
 
-## get element from a vetor with `accessors []`
-![accessor](accessor.PNG)
+# get element from a vetor with `accessors []`
+![accessor](accessor.PNG){width=400}
 
 vector indexing start from 1 to the length of the vector.
-![vector and derrivetaives](vectors.png)
+
 ```{r,eval=FALSE,error=TRUE}
 
 empty_vec <- c()
@@ -206,6 +213,11 @@ vec <- c(1,3,5)
 vec[1]
 #reorder the vector 
 vec[c(2,1,3)]
+```
+
+![](order.PNG){width=400}
+
+```{r,eval=FALSE,error=TRUE}
 # removing the indexed elements
 vec[-1]
 vec[-2]
@@ -238,10 +250,6 @@ letters %>% .[c(F)]
 vec
 vec <- c(2,1,3)
 vec
-
-# what will be the difference?
-order(c(3,1,2)) 
-c(3,1,2) %>% .[order(.)]
 ```
 
 ::: {.callout-tip }
@@ -258,35 +266,67 @@ what did you observe? Is there any [vector recycling](https://rpubs.com/vipero7/
 What happen when you enter `vec[TRUE]`?
 :::
 
-Supplementary information of special datatypes:[^1]
+Supplementary information of special datatypes:[^2]
 
-[^1]: Empty : [`NULL`](https://www.r-bloggers.com/2018/07/r-null-values-null-na-nan-inf/)\
-Indexing at zero position:[`numeric(0)`](https://www.programmingr.com/r-error-messages/numeric0-error/)
+[^2]: Data type emplty: [NULL](https://www.r-bloggers.com/2018/07/r-null-values-null-na-nan-inf/)\nIndexing at zero position: [numeric(0)](https://www.programmingr.com/r-error-messages/numeric0-error/)
 
-### list: keep the diversity of data type
+# list: keep the diversity of data type
 
-list_object\<- list(`element_name`=`value`) Make a list is like put a `cookie`(content of list element) in the `cookie jar`(list element).
-
-There are 3 common accessors for `list`: 1. access the list element (`cookie jar`)
-
-`[]` access the list position
-
-2.  acess the content of list element (`cookie`)
-
-`[[]]` access the content of a list element by position or name
-
-`$` access the content of a list element by name
-
-list_object`$element_name` or list_object`[[element_name]]`
+Make a list is like put a `cookie`(content of list element) in the `cookie jar`(list element).
+```{r,eval=FALSE}
+# list without element name
+list_a <- list(c(1,2))
+```
 
 ![list without name](list_example.png){width="800,height"}
+There are 3 common accessors for `list`:
 
+1. access the list element (`cookie jar`)
+* `[]` access the list position
+
+2.  access the content of list element (`all cookies in jar`)
+* `[[]]` access the content of a list element by position  or name
+
+3. access the *specific* content of list element (`selected cookie(s)`)
+
+* `[[]][]`, position of logical vector
+
+
+
+
+::: {.callout-tip collapse="true"}
+# click for example
+```{r,eval=FALSE}
+vec_obj <- c(1,2,4,5)
+# position vector
+pos_vec <- c(2,3,1)
+list_obj <- list(vec_obj)
+# element id
+ele_ind <- 1
+```
+
+|action  |vector|list|
+|:--------:|:-----------:|:------------------:|
+| extract from content| `vec_obj[pos_vec]`|  `list_obj[[ele_ind]][pos_vec]`|
+|refer to content (data type:list)|`vec_obj`|`list_obj[[ele_ind]]`|
+|refer to position (data type:list) | |`list_obj[ele_ind]`|
+
+* `pos_vec` or `ele_ind` could also be either numeric or logical
+:::
+
+## access content by name
+`$` access the content of a list element by name
+list_object`$element_name` or list_object`[[element_name]]`
+
+```{r,eval=FALSE}
+# list without element name
+list_b <- list(nam=c(1,2))
+```
 ![list with name](list_example2.png){width="800,height"}
 
-More about the accessors. [^2]
+More about the accessors. [^1]
 
-[^2]: [accessors](https://www.r-bloggers.com/2009/10/r-accessors-explained/)
-
+[^1]: [accessors](https://www.r-bloggers.com/2009/10/r-accessors-explained/)
 
 
 ```{r,eval=FALSE}
@@ -310,6 +350,8 @@ long_list_example <- list(1,c(1,2),
                           "str",c("a","b"),
                           list(1),
                           mean,data.frame())
+# check the content
+long_list_example
 # check structure of this list 
 # list_complex_example %>% str()
 # list_complex_example %>% glimpse()
@@ -338,7 +380,7 @@ long_list_example[[2]][2]
 ```
 :::
 
-### lapply: return as a list
+## lapply: apply functions and return `list`
 
 lapply(vector, function) ?lapply
 
@@ -360,7 +402,7 @@ list(2,4,c(1,4),"8") %>%
 Why you get error in the last line?
 :::
 
-### dataframe is a special type of list
+# dataframe is a special type of list
 
 each column has one data type
 
@@ -391,7 +433,7 @@ data.frame(time=as.Date("2023-04-16",format="%Y-%m-%d")+seq(1,3,1),
 ```
 :::
 
-### extract columns from data frame
+## extract columns from data frame
 
 You can subset `dataframe` by indexing \[`row`,`column`\]
 
