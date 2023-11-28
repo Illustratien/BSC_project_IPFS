@@ -655,14 +655,14 @@
     "href": "project_description.html",
     "title": "Project description",
     "section": "",
-    "text": "Topic ideas due Fri, Feb 18\nProposal due Fri, Mar 18\nSlides presentation and final GitHub repo due Thu, Apr 28\nPresentation comments due Sat, Apr 30\n\n\nThe three primary deliverables for the final project are\n\nA ReadMe about the project\nA written, reproducible report detailing your analysis\nA GitHub repository corresponding to your report\nSlides presentation"
+    "text": "Project draft due Tue, 12 Dec, week8\nSlides presentation and final GitHub repo due Tue, Feb 13\n\n\n\n\n\n\n\nExpectted results\n\n\n\nThe three primary deliverables for the final project are\n\nA GitHub repository\nA Slides presentation\nA ReadMe\nA written, reproducible report in Markdown"
   },
   {
     "objectID": "project_description.html#timeline",
     "href": "project_description.html#timeline",
     "title": "Project description",
     "section": "",
-    "text": "Topic ideas due Fri, Feb 18\nProposal due Fri, Mar 18\nSlides presentation and final GitHub repo due Thu, Apr 28\nPresentation comments due Sat, Apr 30\n\n\nThe three primary deliverables for the final project are\n\nA ReadMe about the project\nA written, reproducible report detailing your analysis\nA GitHub repository corresponding to your report\nSlides presentation"
+    "text": "Project draft due Tue, 12 Dec, week8\nSlides presentation and final GitHub repo due Tue, Feb 13\n\n\n\n\n\n\n\nExpectted results\n\n\n\nThe three primary deliverables for the final project are\n\nA GitHub repository\nA Slides presentation\nA ReadMe\nA written, reproducible report in Markdown"
   },
   {
     "objectID": "project_description.html#introduction",
@@ -682,15 +682,15 @@
     "objectID": "project_description.html#project-proposal",
     "href": "project_description.html#project-proposal",
     "title": "Project description",
-    "section": "Project proposal",
-    "text": "Project proposal\nThe purpose of the project proposal is to help you think about your analysis strategy early.\nInclude the following in the proposal:\n\nSection 1 - Introduction\nThe introduction section includes\n\nan introduction to the subject matter you’re investigating\nthe motivation for your research question (citing any relevant literature)\nthe general research question you wish to explore\nyour hypotheses regarding the research question of interest.\n\n\n\nSection 2 - Data description\nIn this section, you will describe the data set you wish to explore. This includes\n\ndescription of the observations in the data set,\ndescription of how the data was originally collected (not how you found the data but how the original curator of the data collected it).\n\n\n\nSection 3 - Analysis approach\nIn this section, you will provide a brief overview of your analysis approach. This includes:\n\nDescription of the response variable.\nVisualization and summary statistics for the response variable.\nList of variables that will be considered as predictors\nRegression model technique (multiple linear regression and logistic regression)\n\n\n\nData dictionary (aka code book)\nSubmit a data dictionary for all the variables in your data set in the README of your project repo, in the data folder. Link to this file from your proposal writeup.\n\n\nSubmission\nPush all of your final changes to the GitHub repo, and submit the PDF of your proposal to Moodle."
+    "section": "2 Project draft",
+    "text": "2 Project draft\nThe purpose of writing the draft at the early stage is to help you think about your analysis strategy. Your presentation could also be prepared based on this structure.\nIn your draft, you should have:\n\n2.1 Section 1 - Introduction\nThe introduction section includes\n\nan introduction to the subject matter you’re investigating\nthe motivation for your research question (citing any relevant literature)\nthe general research question you wish to explore\nyour hypotheses regarding the research question of interest.\n\n\n\n2.2 Section 2 - Data description\nIn this section, you will describe the data set you wish to explore. This includes\n\ndescription of the observations in the data set,\ndescription of how the data was originally collected (not how you found the data but how the original curator of the data collected it).\n\n\n\n2.3 Section 3 - Analysis approach\nIn this section, you will provide a brief overview of your analysis approach. This includes:\n\nDescription of the response variable.\nVisualization and summary statistics for the response variable.\nList of variables that will be considered as predictors\n\n\n\n2.4 Data dictionary (aka code book)\nSubmit a data dictionary for all the variables in your data set in the README of your project repo, in the data folder. Link to this file from your proposal.\n\n\n2.5 Submission\nPush all of your final changes to the GitHub repo, and submit the PDF of your proposal to Moodle."
   },
   {
     "objectID": "project_description.html#draft-report",
     "href": "project_description.html#draft-report",
     "title": "Project description",
-    "section": "Draft report",
-    "text": "Draft report\nThe purpose of the draft and peer review is to give you an opportunity to get early feedback on your analysis. Therefore, the draft and peer review will focus primarily on the exploratory data analysis, modeling, and initial interpretations.\nWrite the draft in the written-report.qmd file in your project repo. You do not need to submit the draft\nBelow is a brief description of the sections to focus on in the draft:\n\nIntroduction and data\nThis section includes an introduction to the project motivation, data, and research question. Describe the data and definitions of key variables. It should also include some exploratory data analysis. All of the EDA won’t fit in the paper, so focus on the EDA for the response variable and a few other interesting variables and relationships.\n\n\nMethodology\nThis section includes a brief description of your modeling process. Explain the reasoning for the type of model you’re fitting, predictor variables considered for the model including any interactions. Additionally, show how you arrived at the final model by describing the model selection process, any variable transformations (if needed), and any other relevant considerations that were part of the model fitting process.\n\n\nResults\nIn this section, you will output the final model and include a brief discussion of the model assumptions, diagnostics, and any relevant model fit statistics.\nThis section also includes initial interpretations and conclusions drawn from the model."
+    "section": "5 Project report",
+    "text": "5 Project report\nThe purpose of the draft and peer review is to give you an opportunity to get early feedback on your analysis. Therefore, the draft and peer review will focus primarily on the exploratory data analysis, modeling, and initial interpretations.\nWrite the draft in the written-report.qmd file in your project repo. You do not need to submit the draft\nBelow is a brief description of the sections to focus on in the draft:\n\n5.1 Introduction and data\nThis section includes an introduction to the project motivation, data, and research question. Describe the data and definitions of key variables. It should also include some exploratory data analysis. All of the EDA won’t fit in the paper, so focus on the EDA for the response variable and a few other interesting variables and relationships.\n\n\n5.2 Methodology\nThis section includes a brief description of your modeling process. Explain the reasoning for the type of model you’re fitting, predictor variables considered for the model including any interactions. Additionally, show how you arrived at the final model by describing the model selection process, any variable transformations (if needed), and any other relevant considerations that were part of the model fitting process.\n\n\n5.3 Results\nIn this section, you will output the final model and include a brief discussion of the model assumptions, diagnostics, and any relevant model fit statistics.\nThis section also includes initial interpretations and conclusions drawn from the model."
   },
   {
     "objectID": "project_description.html#peer-review",
@@ -781,7 +781,7 @@
     "href": "project_description.html#readme",
     "title": "Project description",
     "section": "ReadMe",
-    "text": "ReadMe\nFor each repo, include the following:\n\nIntroduction and data\n\nDescribe the observations and the general characteristics being measured in the data\n\n\n\nResearch question\n\nDescribe a research question you’re interested in answering using this data.\n\n\n\nGlimpse of data\n\nUse the glimpse function to provide an overview of each data set"
+    "text": "ReadMe\nFor each repo, include the following:\n\nIntroduction and data\n\nDescribe the observations and the general characteristics being measured in the data\n\n\n\nResearch question\n\nDescribe a research question you’re interested in answering using this data.\n\n\n\nGlimpse of data\n\nUse the glimpse function to provide an overview of each data set Example dataset code repo"
   },
   {
     "objectID": "course_description.html#introduction",
@@ -1027,5 +1027,33 @@
     "title": "Week2: Working directory and accessor",
     "section": "4.2 lapply: apply functions and return list",
     "text": "4.2 lapply: apply functions and return list\nlapply(vector, function) ?lapply\n\n# input is vector\nc(1,4) %&gt;% \n  lapply(.,FUN=function(x){x+3})\n# input is list\nlist(2,4,c(1,4)) %&gt;% \n  lapply(.,FUN=function(x){x+3})\n# input has differnt type\nlist(2,4,c(1,4),\"8\") %&gt;% \n  lapply(.,FUN=function(x){x+3})\n\n\n\n\n\n\n\nchallenge\n\n\n\nWhy you get error in the last line?"
+  },
+  {
+    "objectID": "project_description.html#slides-prsentation",
+    "href": "project_description.html#slides-prsentation",
+    "title": "Project description",
+    "section": "Slides prsentation",
+    "text": "Slides prsentation\n\npage number\nunit of each axis in each figure\ntext size &gt; 20\n15 min not more than 15 slides"
+  },
+  {
+    "objectID": "project_description.html#github",
+    "href": "project_description.html#github",
+    "title": "Project description",
+    "section": "3 Reproducibility of your repo",
+    "text": "3 Reproducibility of your repo\nThe GitHub repo should have the following structure:\n\nREADME: Short project description and data dictionary\nwritten-report.qmd & written-report.pdf: Final written report\n/data: Folder that contains the data set for the final project.\n/previous-work: Folder that contains the topic-ideas and project-proposal files.\n/presentation: Folder with the presentation slides.\n\nIf your presentation slides are online, you can put a link to the slides in a README.md file in the presentation folder.\n\n\nEvaluation will be based on the reproducibility of the written report and the organization of the project GitHub repo. The repo should be neatly organized as described above, there should be no extraneous files, all text in the README should be easily readable.\nexample\n\n3.1 ReadMe\nFor each repo, include the following:\n\n3.1.1 Introduction and data\n\nDescribe the observations and the general characteristics being measured in the data\n\n\n\n3.1.2 Research question\n\nDescribe a research question you’re interested in answering using this data.\n\n\n\n3.1.3 Glimpse of data\n\nUse the glimpse function to provide an overview of each data set Example dataset code repo"
+  },
+  {
+    "objectID": "project_description.html#slides",
+    "href": "project_description.html#slides",
+    "title": "Project description",
+    "section": "4 Final prsentation",
+    "text": "4 Final prsentation\n\n4.1 sturcture\nThe presentation neatly prepared and organized with clear section headers and appropriately sized figures with informative labels. Numerical results are displayed with a reasonable number of digits, and all visualizations are neatly formatted. All citations and links are properly formatted. All code, warnings, and messages are suppressed. Presentation is in time.\nYou need to create presentation slides and showcase your project. Introduce your research question and data set, showcase visualizations, and discuss the primary conclusions. These slides should serve as a brief visual addition to your written report and will be graded for content and quality.\nThe slide deck should have no more than 6 content slides + 1 title slide. Here is a suggested outline as you think through the slides; you do not have to use this exact format for the 6 slides.\n\nTitle Slide\nSlide 1: Introduce the topic and motivation\nSlide 2: Previous research that relevant to your hypothess\nSlide 3: Hypotheses Research questions\nSlide 4: Introduce the data\nSlide 5: Calculation\nSlide n: Conclustions= 3 take home messages\n\n\n\n4.2 reminder\n\npage number\nunit of each axis in each figure\ntext size &gt; 20\n15 min not more than 15 slides\n3 take home messages in the last slide as conclusion"
+  },
+  {
+    "objectID": "project_description.html#grading",
+    "href": "project_description.html#grading",
+    "title": "Project description",
+    "section": "6 Grading criteria",
+    "text": "6 Grading criteria\nThe research question and motivation are clearly stated in the introduction, including citations for the data source and any external research. The data are clearly described, including a description about how the data were originally collected and a concise definition of the variables relevant to understanding the report. The data cleaning process is clearly described, including any decisions made in the process (e.g., creating new variables, removing observations, etc.) The explanatory data analysis helps the reader better understand the observations in the data along with interesting and relevant relationships between the variables. It incorporates appropriate visualizations and summary statistics.\n\n6.1 Methodology\nThis section includes a brief description of your modeling process.\n\n6.1.1 Grading criteria\nThe analysis steps are appropriate for the data and research question.\n\n\n\n6.2 Results\nDescribe the key results from the graph. Focus on the variables that help you answer the research question and that provide relevant context for the reader.\n\n6.2.1 Grading criteria\nThe visualization is clearly assessed, and interesting findings are clearly described. Interpretations of statistical test are used to support the key findings and conclusions, rather than merely visual comparison.\n\n\n\n6.3 Discussion + Conclusion\nIn this section you’ll include a summary of what you have learned about your research question along with statistical arguments supporting your conclusions. In addition, discuss the limitations of your analysis and provide suggestions on ways the analysis could be improved. Any potential issues pertaining to the reliability and validity of your data and appropriateness of the statistical analysis should also be discussed here. Lastly, this section will include ideas for future work.\n\n6.3.1 Grading criteria\nOverall conclusions from analysis are clearly described, and the statistical results are put into the larger context of the subject matter and original research question. There is thoughtful consideration of potential limitations of the data and/or analysis, and ideas for future work are clearly described.\n\n\n\n6.4 Organization + formatting\nThis is an assessment of the overall presentation and formatting of the written report."
   }
 ]

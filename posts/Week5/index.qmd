@@ -1,7 +1,6 @@
 ---
-title: "Week5: Grain development II"
+title: "Week5: pattern matching in dataframe"
 author: "Tien-Cheng"
-date: "2023-05-16"
 categories: [R-intermediate]
 
 toc-location: right

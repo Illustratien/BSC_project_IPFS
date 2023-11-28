@@ -1,50 +1,31 @@
 ---
 title: "Project description"
+number-sections: true
 ---
 
 ## Timeline
 
-[Topic ideas](#topic-ideas) due Fri, Feb 18
+* [Project draft](#project-proposal) due Tue, 12 Dec, week8
 
-[Proposal](#project-proposal) due Fri, Mar 18
+* [Slides presentation](#slides) and final [GitHub repo](#github) due Tue, Feb 13
 
-Slides presentation and [final GitHub repo](#reproducibility---organization) due Thu, Apr 28
-
-[Presentation comments](#presentation-comments) due Sat, Apr 30
-
-
-### Expectted results
+::: {.callout-tip }
+# Expectted results
 
 The three primary deliverables for the final project are
 
--   A ReadMe about the project
--   A written, reproducible report detailing your analysis
--   A GitHub repository corresponding to your report
--   Slides presentation
+-   A [GitHub repository](#github) 
+-   A [Slides presentation](#slides)
+-   A [ReadMe](#readme) 
+-   A written, reproducible [report](#draft-report) in Markdown
+:::
 
+## Project draft {#project-proposal}
 
-## ReadMe
+The purpose of writing the draft at the early stage is to help you think about your analysis strategy.
+Your presentation could also be prepared based on this structure.
 
-For each repo, include the following:
-
-#### Introduction and data
-
--   Describe the observations and the general characteristics being measured in the data
-
-#### Research question
-
--   Describe a research question you're interested in answering using this data.
-
-#### Glimpse of data
-
--   Use the `glimpse` function to provide an overview of each data set
-
-
-## Project proposal {#project-proposal}
-
-The purpose of the project proposal is to help you think about your analysis strategy early.
-
-Include the following in the proposal:
+In your draft, you should have:
 
 ### Section 1 - Introduction
 
@@ -69,17 +50,81 @@ In this section, you will provide a brief overview of your analysis approach. Th
 -   Description of the response variable.
 -   Visualization and summary statistics for the response variable.
 -   List of variables that will be considered as predictors
--   Regression model technique (multiple linear regression and logistic regression)
+
 
 ### Data dictionary (aka code book)
 
-Submit a data dictionary for all the variables in your data set in the `README` of your project repo, in the `data` folder. Link to this file from your proposal writeup.
+Submit a data dictionary for all the variables in your data set in the `README` of your project repo, in the `data` folder. Link to this file from your proposal.
 
 ### Submission
 
 Push all of your final changes to the GitHub repo, and submit the PDF of your proposal to **Moodle**.
 
-## Draft report {#draft-report}
+## Reproducibility of your repo  {#github}
+
+The GitHub repo should have the following structure:
+
+-   `README`: Short project description and data dictionary
+
+-   `written-report.qmd` & `written-report.pdf`: Final written report
+
+-   `/data`: Folder that contains the data set for the final project.
+
+-   `/previous-work`: Folder that contains the `topic-ideas` and `project-proposal` files.
+
+-   `/presentation`: Folder with the presentation slides.
+
+    -   If your presentation slides are online, you can put a link to the slides in a `README.md` file in the `presentation` folder.
+
+Evaluation will be based on the reproducibility of the written report and the organization of the project GitHub repo. The repo should be neatly organized as described above, there should be no extraneous files, all text in the README should be easily readable.
+
+[example](https://github.com/hanwenhsu/Ear_development_BSC_project_hwh)
+
+### ReadMe {#readme}
+
+For each repo, include the following:
+
+#### Introduction and data
+
+-   Describe the observations and the general characteristics being measured in the data
+
+#### Research question
+
+-   Describe a research question you're interested in answering using this data.
+
+#### Glimpse of data
+
+-   Use the `glimpse` function to provide an overview of each data set
+Example 
+[dataset](https://zenodo.org/records/7569104)
+[code repo](https://github.com/Illustratien/Wang_2023_TAAG)
+
+
+## Final prsentation {#slides}
+### sturcture 
+The presentation neatly prepared and organized with clear section headers and appropriately sized figures with informative labels. Numerical results are displayed with a reasonable number of digits, and all visualizations are neatly formatted. All citations and links are properly formatted. All code, warnings, and messages are suppressed. Presentation is in time.
+
+You need to create presentation slides and showcase your project. Introduce your research question and data set, showcase visualizations, and discuss the primary conclusions. These slides should serve as a brief visual addition to your written report and will be graded for content and quality.
+
+The slide deck should have no more than 6 content slides + 1 title slide. Here is a *suggested* outline as you think through the slides; you [**do not**]{.underline} have to use this exact format for the 6 slides.
+
+-   Title Slide
+-   Slide 1: Introduce the topic and motivation
+-   Slide 2: Previous research that relevant to your hypothess
+-   Slide 3: Hypotheses Research questions
+-   Slide 4: Introduce the data
+-   Slide 5: Calculation
+-   Slide n: Conclustions= 3 take home messages
+
+### reminder
+1. page number 
+2. unit of each axis in each figure
+3. text size > 20
+4. 15 min not more than 15 slides
+5. 3 take home messages in the last slide as conclusion
+
+
+## Project report {#draft-report}
 
 The purpose of the draft and peer review is to give you an opportunity to get early feedback on your analysis. Therefore, the draft and peer review will focus primarily on the exploratory data analysis, modeling, and initial interpretations.
 
@@ -139,13 +184,8 @@ This section also includes initial interpretations and conclusions drawn from th
 
 <!--     -   (Optional) Any further comments or feedback? -->
 
-## Written report {#written-report}
 
-### Introduction and data
-
-This section includes an introduction to the project motivation, data, and research question. Describe the data and definitions of key variables.
-
-#### Grading criteria
+## Grading criteria {#grading}
 
 The research question and motivation are clearly stated in the introduction, including citations for the data source and any external research. The data are clearly described, including a description about how the data were originally collected and a concise definition of the variables relevant to understanding the report. The data cleaning process is clearly described, including any decisions made in the process (e.g., creating new variables, removing observations, etc.) The explanatory data analysis helps the reader better understand the observations in the data along with interesting and relevant relationships between the variables. It incorporates appropriate visualizations and summary statistics.
 
@@ -177,55 +217,12 @@ Overall conclusions from analysis are clearly described, and the statistical res
 
 This is an assessment of the overall presentation and formatting of the written report.
 
-#### Grading criteria
 
-The presentation neatly prepared and organized with clear section headers and appropriately sized figures with informative labels. Numerical results are displayed with a reasonable number of digits, and all visualizations are neatly formatted. All citations and links are properly formatted. All code, warnings, and messages are suppressed. Presentation is in time.
+<!-- ## Peer teamwork evaluation -->
 
-### Slides
+<!-- You will be asked to fill out a survey where you rate the contribution and teamwork of each team member by assigning a contribution percentage for each team member. Filling out the survey is a prerequisite for getting credit on the team member evaluation. If you are suggesting that an individual did less than half the expected contribution given your team size (e.g., for a team of four students, if a student contributed less than 12.5% of the total effort), please provide some explanation. If any individual gets an average peer score indicating that this was the case, their grade will be assessed accordingly. -->
 
-You need to create presentation slides and record a video presentation that summarize and showcase your project. Introduce your research question and data set, showcase visualizations, and discuss the primary conclusions. These slides should serve as a brief visual addition to your written report and will be graded for content and quality.
-
-The slide deck should have no more than 6 content slides + 1 title slide. Here is a *suggested* outline as you think through the slides; you [**do not**]{.underline} have to use this exact format for the 6 slides.
-
--   Title Slide
--   Slide 1: Introduce the topic and motivation
--   Slide 2: Previous research that relevant to your hypothess
--   Slide 3: Hypotheses Research questions
--   Slide 4: Introduce the data
--   Slide 5: Calculation
--   Slide 6: Conclusions + future work
-
-## Presentation comments {#presentation-comments}
-
-Each student will be assigned 2 presentations to watch. Your viewing assignments will be posted later in the semester.
-
-Watch the group's video, then click "Reply" to post a question for the group. You may not post a question that's already been asked on the discussion thread. Additionally, the question should be (i) substantive (i.e. it shouldn't be "Why did you use a bar plot instead of a pie chart"?), (ii) demonstrate your understanding of the content from the course, and (iii) relevant to that group's specific presentation, i.e demonstrating that you've watched the presentation.
-
-## Reproducibility + organization
-
-All written work (with exception of presentation slides) should be reproducible, and the GitHub repo should be neatly organized.
-
-The GitHub repo should have the following structure:
-
--   `README`: Short project description and data dictionary
-
--   `written-report.qmd` & `written-report.pdf`: Final written report
-
--   `/data`: Folder that contains the data set for the final project.
-
--   `/previous-work`: Folder that contains the `topic-ideas` and `project-proposal` files.
-
--   `/presentation`: Folder with the presentation slides.
-
-    -   If your presentation slides are online, you can put a link to the slides in a `README.md` file in the `presentation` folder.
-
-Points for reproducibility + organization will be based on the reproducibility of the written report and the organization of the project GitHub repo. The repo should be neatly organized as described above, there should be no extraneous files, all text in the README should be easily readable.
-
-## Peer teamwork evaluation
-
-You will be asked to fill out a survey where you rate the contribution and teamwork of each team member by assigning a contribution percentage for each team member. Filling out the survey is a prerequisite for getting credit on the team member evaluation. If you are suggesting that an individual did less than half the expected contribution given your team size (e.g., for a team of four students, if a student contributed less than 12.5% of the total effort), please provide some explanation. If any individual gets an average peer score indicating that this was the case, their grade will be assessed accordingly.
-
-If you have concerns with the teamwork and/or contribution from any team members, please email me by the project video deadline. **You only need to email me if you have concerns**. Otherwise, I will assume everyone on the team equally contributed and will receive full credit for the teamwork portion of the grade.
+<!-- If you have concerns with the teamwork and/or contribution from any team members, please email me by the project video deadline. **You only need to email me if you have concerns**. Otherwise, I will assume everyone on the team equally contributed and will receive full credit for the teamwork portion of the grade. -->
 
 <!-- ### Grading summary -->
 

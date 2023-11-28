@@ -1,7 +1,6 @@
 ---
-title: "Week3: Floret development"
+title: "Week3: dataframe and ggplot2"
 author: "Tien-Cheng"
-date: "2023-05-02"
 categories: [R-basic]
 toc-location: right
 number-sections: true

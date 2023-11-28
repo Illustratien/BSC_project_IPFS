@@ -1,7 +1,6 @@
 ---
-title: "Week6: Grain development III"
+title: "Week6: function and groups"
 author: "Tien-Cheng"
-date: "2023-05-23"
 categories: [R-intermediate]
 
 toc-location: right

@@ -1,7 +1,6 @@
 ---
-title: "Week4: Grain development I"
+title: "Week4: column and row operations in dataframe"
 author: "Tien-Cheng"
-date: "2023-05-09"
 categories: [R-basic]
 
 toc-location: right
