@@ -4,7 +4,7 @@ author: "Tien-Cheng"
 categories: [R-intermediate]
 
 toc-location: right
-# number-sections: true
+number-sections: true
 website: 
   sidebar:
     search: true
@@ -93,7 +93,10 @@ df %>% mutate(k=case_when(x=="a"~"A",
 
 Matching multiple conditions
 
-add column `k` to `df`, when the condition x equals "a" `and` y equals 1.
+add column `k` to `df`,
+when the condition x equals "a" `and` y equals 1.
+if `TRUE` return 'A', else return 'B'.
+
 :::
 
 #### replace one column based on multiple conditions

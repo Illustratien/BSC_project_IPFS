@@ -68,15 +68,16 @@ rownames(df) <- LETTERS[1:nrow(df)]
 rownames(df)
 ```
 
-::: callout-warning
-## practice
+#### practice
 
 subset the row where (x equals to "a", y equals to 1) or (x equals to "c", y equals to 2)
 
 1.  How many ways to achieve this? you can use `dplyr::filter` or `[]`.
 2.  Observe the row names, are they the same before and after subseting?
 
-```{r,eval=FALSE}
+::: {.callout-warning collapse="true"}
+# answer
+```{r,eval=FALSE,collapse=T}
 df %>% filter(z%in%c("a.1","c.2"))
 df %>% filter((x=="a"&y==1)|(x=="c"&y==2))
 df %>% .[rownames(.)%in%c("A","G"),]

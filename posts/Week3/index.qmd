@@ -183,7 +183,7 @@ library(ggplot2)
 ```
 
 ::: callout-note
-go to [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/) download `phenology_short.csv`and put it in folder data. read this file using `read.csv` with relative path and named it as `phenology`
+go to [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/) download `ear_summarized.csv`and put it in folder data. read this file using `read.csv` with relative path and named it as `data`
 :::
 
 ```{r}
@@ -225,6 +225,9 @@ data %>%
 
 There are two commonly used function`facet_grid` and `facet_wrap`. In side each function, subplots are arranged in the manner of `(row ~ column)`. There could be multiple column names put in the row or column position.
 
+::: callout-note
+go to [HU-box](https://box.hu-berlin.de/d/fc7db144021a4a35a086/) download `phenology_short.csv`and put it in folder data. read this file using `read.csv` with relative path and named it as `phenology`
+:::
 ```{r,error=TRUE}
 #| label: fig-uggly
 #| fig-cap: "uggly example."
