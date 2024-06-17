@@ -1,0 +1,15 @@
+{
+  "hash": "5ffff604ee0f81a4a18d35d1ebdee0fa",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week: Stomata\"\nauthor: \"Tien-Cheng\"\ncategories: [R-intermediate]\n# image: \"poster_big.png\"\ntoc-location: right\nnumber-sections: true\nwebsite: \n  sidebar:\n    search: true\nformat:\n  html: \n    grid:\n      sidebar-width: 300px\n      body-width: 1200px\n      margin-width: 100px\n      gutter-width: 1.5rem\n\nreference-location: margin\n---\n\n\n\n\n::: callout-note\n# Learning goals\n1.  read xml file\n:::\n\n# download data and functions\n\n1. download scripts from [link](), put scripts in `src`\n2. download pictures from [link](), put folder in `data`\n2. apply function \n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nconda create --name stomaenv python=3.10.0 jupyter pandas\nconda activate stomaenv\nconda install conda-forge::ultralytics\nconda install anaconda::dill\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nsource(\"src/modules/processing_fun.R\")\nsource()\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

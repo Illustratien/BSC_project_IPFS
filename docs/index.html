@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -48,7 +48,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -57,6 +63,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -95,14 +102,38 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <meta property="og:title" content="BSC_project_IPFS2023 - 20503C Studienprojekt: stomata distribution in cereal and other species">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://illustratien.github.io/BSC_project_IPFS2023/posts/Week9/poster_big.png">
-<meta property="og:site-name" content="BSC_project_IPFS2023">
-<meta property="og:image:height" content="3543">
-<meta property="og:image:width" content="4724">
+<meta property="og:description" content="Homepage for B.Sc Project - Contribution of Ear Development to Yield Stability in Winter Wheat.">
+<meta property="og:site_name" content="BSC_project_IPFS2023">
 <meta name="twitter:title" content="BSC_project_IPFS2023 - 20503C Studienprojekt: stomata distribution in cereal and other species">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Homepage for B.Sc Project - Contribution of Ear Development to Yield Stability in Winter Wheat.">
 <meta name="twitter:image" content="https://illustratien.github.io/BSC_project_IPFS2023/Images/logo.png">
 <meta name="twitter:image-height" content="782">
 <meta name="twitter:image-width" content="675">
@@ -115,12 +146,12 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">20503C Studienprojekt: stomata distribution in cereal and other species</li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">20503C Studienprojekt: stomata distribution in cereal and other species</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -130,14 +161,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./Images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/Illustratien/BSC_project_IPFS2023/discussions" rel="" title="GitHub discussion" class="quarto-navigation-tool px-1" aria-label="GitHub discussion"><i class="bi bi-github"></i></a>
-    <a href="https://moodle.hu-berlin.de/course/view.php?id=110830" rel="" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-book"></i></a>
+    <a href="https://github.com/Illustratien/BSC_project_IPFS2023/discussions" title="GitHub discussion" class="quarto-navigation-tool px-1" aria-label="GitHub discussion"><i class="bi bi-github"></i></a>
+    <a href="https://moodle.hu-berlin.de/course/view.php?id=110830" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-book"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div>
@@ -256,7 +287,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
@@ -271,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -279,144 +310,13 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <p>This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.</p>
 <div class="column-screen-inset-right">
-<table class="table">
-<colgroup>
-<col style="width: 1%">
-<col style="width: 2%">
-<col style="width: 5%">
-<col style="width: 7%">
-<col style="width: 5%">
-<col style="width: 3%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Week</th>
-<th>Date</th>
-<th>Topic</th>
-<th>R</th>
-<th style="text-align: center;">HW</th>
-<th style="text-align: center;">Practical</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td>Tue, Apr 16</td>
-<td>General introduction</td>
-<td><a href="./posts/Week1/index.html">Data type, R Studio</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td>Tue, Apr 23</td>
-<td>Lecture 1 - Physiological role of Stomata</td>
-<td><a href="./posts/Week2/index.html">working directory, accessing element from data</a></td>
-<td style="text-align: center;"><a href="https://www.codecademy.com/article/what-is-git-and-github-desktop">Github</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td>Tue, Apr 30</td>
-<td>Lecture 2 - Physiological role of Stomata</td>
-<td><a href="./posts/Week3/index.html">dataframe operation and ggplot</a></td>
-<td style="text-align: center;"><a href="https://swcarpentry.github.io/r-novice-gapminder/04-data-structures-part1/index.html">data structure</a> <a href="https://r4ds.had.co.nz/transform.html">dplyr and more</a> <a href="https://r4ds.had.co.nz/data-visualisation.html">ggplot</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td>Tue, May 07</td>
-<td>Scientific presentation</td>
-<td><a href="./posts/Week4/index.html">dataframe operation</a></td>
-<td style="text-align: center;"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a> <a href="https://dplyr.tidyverse.org/reference/across.html">across</a></td>
-<td style="text-align: center;">first experience</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td>Tue, May 14</td>
-<td></td>
-<td><a href="./posts/Week5/index.html">column editing and column replacement</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">phenotyping start!</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
-<td>Tue, May 21</td>
-<td></td>
-<td><a href="./posts/Week6/index.html">applying functions to targeted columns and groups</a></td>
-<td style="text-align: center;"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a> <a href="https://dplyr.tidyverse.org/articles/grouping.html?q=filter#group_by">group_by</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
-<td>Tue, May 28</td>
-<td></td>
-<td><a href="./posts/Week7/index.html">summarize, shape transformation of dataframe</a></td>
-<td style="text-align: center;"><a href="https://statisticsglobe.com/for-loop-in-r">for loop1</a> <a href="https://www.w3schools.com/r/r_for_loop.asp">for loop2</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">8</td>
-<td>Tue, Jun 04</td>
-<td></td>
-<td><a href="./posts/Week8/index.html">combine files in a loop</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">9</td>
-<td>Tue, Jun 11</td>
-<td></td>
-<td><a href="./posts/Week9/index.html">analysis planning and results visualization</a></td>
-<td style="text-align: center;"><a href="https://www.data-to-viz.com/">Data visualization</a> <a href="https://academic.oup.com/jxb/article/72/11/3987/6157936?login=true">manuscript</a> <a href="http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/">arrange plots</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">10</td>
-<td>Tue, Jun 18</td>
-<td></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">11</td>
-<td>Tue, Jun 25</td>
-<td></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">12</td>
-<td>Tue, Jul 02</td>
-<td></td>
-<td>Statistic analysis</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">13</td>
-<td>Tue, Jul 09</td>
-<td></td>
-<td><a href="https://ucsb-meds.github.io/creating-quarto-websites/">Reporting with quarto</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">14</td>
-<td>Tue, Jul 16</td>
-<td>Final oral presentation</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
+<p>tbl %&gt;% kbl() <!-- | Week | Date | Topic  | R |   HW |  Practical  | --> <!-- |:------:|------|----|-----|:-------:|:-----:| --> <!-- |  1   | Tue, Apr 16 |  General introduction   | [Data type, R Studio](/posts/Week1/index.html)                                    |   |  | --> <!-- |  2   | Tue, Apr 23 | Lecture 1 - Physiological role of Stomata    | [working directory, accessing element from data](/posts/Week2/index.html)         |        [Github](https://www.codecademy.com/article/what-is-git-and-github-desktop)                           |                    | --> <!-- |  3   | Tue, Apr 30  | Lecture 2 - Physiological role of Stomata | [dataframe operation and ggplot](/posts/Week3/index.html)                         |          [data structure](https://swcarpentry.github.io/r-novice-gapminder/04-data-structures-part1/index.html)         [dplyr and more](https://r4ds.had.co.nz/transform.html) [ggplot](https://r4ds.had.co.nz/data-visualisation.html)                    |                    | --> <!-- |  4   | Tue, May 07 |  Scientific presentation     | [dataframe operation](/posts/Week4/index.html)                                    |                [mutate](https://dplyr.tidyverse.org/reference/mutate.html) [across](https://dplyr.tidyverse.org/reference/across.html)                |  first experience  | --> <!-- |  5   | Tue, May 14 |           | [column editing and column replacement](/posts/Week5/index.html)                  |                                                                                                                                                       | phenotyping start! | --> <!-- |  6   | Tue, May 21 |                                                 | [applying functions to targeted columns and groups](/posts/Week6/index.html)      |  [summarise](https://dplyr.tidyverse.org/reference/summarise.html) [group_by](https://dplyr.tidyverse.org/articles/grouping.html?q=filter#group_by)   |                    | --> <!-- |  7   | Tue, May 28 |                                                 | [summarize, shape transformation of dataframe](/posts/Week7/index.html)           |                    [for loop1](https://statisticsglobe.com/for-loop-in-r) [for loop2](https://www.w3schools.com/r/r_for_loop.asp)                     |                    | --> <!-- |  8   | Tue, Jun 04 |                                                 | [combine files in a loop](/posts/Week8/index.html)                                |                                                                          |                    | --> <!-- |  9   | Tue, Jun 11 |                        | [analysis planning and results visualization](/posts/Week9/index.html)            |          [Data visualization](https://www.data-to-viz.com/) [manuscript](https://academic.oup.com/jxb/article/72/11/3987/6157936?login=true) [arrange plots](http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/)         |                    | --> <!-- |  10  | Tue, Jun 18 |                                         |                                                                                   |                                                                                                                                                       |                    | --> <!-- |  11  | Tue, Jun 25 |                                         |                                                                                   |                                                                                                                                                       |                    | --> <!-- |  12  | Tue, Jul 02 |                                                 | Statistic analysis                                                                |  |                    | --> <!-- |  13  | Tue, Jul 09 |                                                 | [Reporting with quarto ](https://ucsb-meds.github.io/creating-quarto-websites/) |                                                                                                                                                       |                    | --> <!-- |  14  | Tue, Jul 16 |  Final oral presentation                                  |                                                                                   |                                                                                                                                                       |                    | --></p>
 </div>
 <!-- https://sta210-s22.github.io/website/project-tips-resources.html -->
 
@@ -446,81 +346,25 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="R-intermediate" data-listing-date-sort="1685397600000" data-listing-file-modified-sort="1697204287852" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
+<div class="quarto-post image-right" data-index="0" data-categories="R-intermediate" data-listing-date-sort="1686607200000" data-listing-file-modified-sort="1718652722287" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1131">
 <div class="thumbnail">
-<p><a href="./posts/Week7/index.html"> <p class="card-img-top"><img src="posts\Week7\coding_logic.png"  class="thumbnail-image card-img"/></p> </a></p>
+<p><a href="./posts/Week9/index.html" class="no-external"></a></p><a href="./posts/Week9/index.html" class="no-external">
+<p><img src="./posts/Week9/poster_big.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/Week9/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/Week7/index.html">
 <h3 class="no-anchor listing-title">
-Week7: Grain development III
+<a href="./posts/Week9/index.html" class="no-external">Week9: Grain development v</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/Week9/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Welcome to the seventh course! You will learn more about <code>dataframe</code> wrangling:
+<a href="./posts/Week9/index.html" class="no-external">Welcome to the nigth course! You will learn more about<code>data visualization</code>:</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/Week7/index.html">
-<div class="listing-date">
-May 30, 2023
-</div>
-<div class="listing-author">
-Tien-Cheng
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="R-intermediate" data-listing-date-sort="1686002400000" data-listing-file-modified-sort="1697226996000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/Week8/index.html"> <p class="card-img-top"><img src="posts\Week8\forloop1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Week8/index.html">
-<h3 class="no-anchor listing-title">
-Week8: Grain development Iv
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-Welcome to the eighth course! You will learn more about <code>for-loop</code> and <code>data visualization</code>:
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Week8/index.html">
-<div class="listing-date">
-Jun 6, 2023
-</div>
-<div class="listing-author">
-Tien-Cheng
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="R-intermediate" data-listing-date-sort="1686607200000" data-listing-file-modified-sort="1697204299118" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
-<div class="thumbnail">
-<p><a href="./posts/Week9/index.html"> <img src="./posts/Week9/poster_big.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Week9/index.html">
-<h3 class="no-anchor listing-title">
-Week9: Grain development v
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-Welcome to the nigth course! You will learn more about<code>data visualization</code>:
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Week9/index.html">
+<a href="./posts/Week9/index.html" class="no-external">
 <div class="listing-date">
 Jun 13, 2023
 </div>
@@ -530,175 +374,264 @@ Tien-Cheng
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="R-project,data type,vector" data-listing-file-modified-sort="1698686560000" data-listing-reading-time-sort="4">
+<div class="quarto-post image-right" data-index="1" data-categories="R-project,data type,vector" data-listing-file-modified-sort="1698686560928" data-listing-reading-time-sort="4" data-listing-word-count-sort="742">
 <div class="thumbnail">
-<p><a href="./posts/Week1/index (SFConflict wangtien@hu-berlin.de 2023-10-30-18-22-55).html"> <img src="./posts/Week1/Assign.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/Week1/index (SFConflict wangtien@hu-berlin.de 2023-10-30-18-22-55).html" class="no-external"></a></p><a href="./posts/Week1/index (SFConflict wangtien@hu-berlin.de 2023-10-30-18-22-55).html" class="no-external">
+<p><img src="./posts/Week1/Assign.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/Week1/index (SFConflict wangtien@hu-berlin.de 2023-10-30-18-22-55).html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/Week1/index (SFConflict wangtien@hu-berlin.de 2023-10-30-18-22-55).html">
 <h3 class="no-anchor listing-title">
-Week1: R studio and vector
+<a href="./posts/Week1/index (SFConflict wangtien@hu-berlin.de 2023-10-30-18-22-55).html" class="no-external">Week1: R studio and vector</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/Week1/index (SFConflict wangtien@hu-berlin.de 2023-10-30-18-22-55).html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Welcome to the first course! During the following 2 hrs, you will learn data type of <code>vectors</code>, <code>function</code> and <code>%&gt;%</code>.
+<a href="./posts/Week1/index (SFConflict wangtien@hu-berlin.de 2023-10-30-18-22-55).html" class="no-external">Welcome to the first course! During the following 2 hrs, you will learn data type of <code>vectors</code>, <code>function</code> and <code>%&gt;%</code>.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/Week1/index (SFConflict wangtien@hu-berlin.de 2023-10-30-18-22-55).html">
+<p><a href="./posts/Week1/index (SFConflict wangtien@hu-berlin.de 2023-10-30-18-22-55).html" class="no-external"></a></p><a href="./posts/Week1/index (SFConflict wangtien@hu-berlin.de 2023-10-30-18-22-55).html" class="no-external">
 <div class="listing-author">
 Tien-Cheng
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="R-project,data type,vector,Github,function" data-listing-file-modified-sort="1698767679528" data-listing-reading-time-sort="4">
+<div class="quarto-post image-right" data-index="2" data-categories="R-project,data type,vector,Github,function" data-listing-file-modified-sort="1698767679000" data-listing-reading-time-sort="4" data-listing-word-count-sort="722">
 <div class="thumbnail">
-<p><a href="./posts/Week1/index.html"> <img src="./posts/Week1/Assign.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/Week1/index.html" class="no-external"></a></p><a href="./posts/Week1/index.html" class="no-external">
+<p><img src="./posts/Week1/Assign.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/Week1/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/Week1/index.html">
 <h3 class="no-anchor listing-title">
-Week1: R studio, vector and function
+<a href="./posts/Week1/index.html" class="no-external">Week1: R studio, vector and function</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/Week1/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Welcome to the first course! During the following 2 hrs, you will learn data type of <code>vectors</code>, <code>function</code> and <code>%&gt;%</code>.
+<a href="./posts/Week1/index.html" class="no-external">Welcome to the first course! During the following 2 hrs, you will learn data type of <code>vectors</code>, <code>function</code> and <code>%&gt;%</code>.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/Week1/index.html">
+<p><a href="./posts/Week1/index.html" class="no-external"></a></p><a href="./posts/Week1/index.html" class="no-external">
 <div class="listing-author">
 Tien-Cheng
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="vector,working directory" data-listing-file-modified-sort="1699958678343" data-listing-reading-time-sort="7">
+<div class="quarto-post image-right" data-index="3" data-categories="vector,working directory" data-listing-file-modified-sort="1699958678000" data-listing-reading-time-sort="7" data-listing-word-count-sort="1228">
 <div class="thumbnail">
-<p><a href="./posts/Week2/index.html"> <img src="./posts/Week2/vectors.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/Week2/index.html" class="no-external"></a></p><a href="./posts/Week2/index.html" class="no-external">
+<p><img src="./posts/Week2/vectors.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/Week2/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/Week2/index.html">
 <h3 class="no-anchor listing-title">
-Week2: Working directory and accessor
+<a href="./posts/Week2/index.html" class="no-external">Week2: Working directory and accessor</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/Week2/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Welcome to the second course! You will learn <code>working directory</code>, subset elements from <code>vector</code>, <code>list</code> and <code>dataframe</code>.
+<a href="./posts/Week2/index.html" class="no-external">Welcome to the second course! You will learn <code>working directory</code>, subset elements from <code>vector</code>, <code>list</code> and <code>dataframe</code>.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/Week2/index.html">
+<p><a href="./posts/Week2/index.html" class="no-external"></a></p><a href="./posts/Week2/index.html" class="no-external">
 <div class="listing-author">
 Tien-Cheng
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="R-basic" data-listing-file-modified-sort="1702373742077" data-listing-reading-time-sort="6">
+<div class="quarto-post image-right" data-index="4" data-categories="R-basic" data-listing-file-modified-sort="1702373742000" data-listing-reading-time-sort="6" data-listing-word-count-sort="1041">
 <div class="thumbnail">
-<p><a href="./posts/Week3/index.html"> <p class="card-img-top"><img src="posts\Week3\Rpubs.png"  class="thumbnail-image card-img"/></p> </a></p>
+<p><a href="./posts/Week3/index.html" class="no-external"></a></p><a href="./posts/Week3/index.html" class="no-external">
+<p class="card-img-top"><img src="posts\Week3\Rpubs.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./posts/Week3/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/Week3/index.html">
 <h3 class="no-anchor listing-title">
-Week3: dataframe and ggplot2
+<a href="./posts/Week3/index.html" class="no-external">Week3: dataframe and ggplot2</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/Week3/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Welcome to the third course! You will learn <code>ggplot</code> and <code>dataframe</code> wrangling:
+<a href="./posts/Week3/index.html" class="no-external">Welcome to the third course! You will learn <code>ggplot</code> and <code>dataframe</code> wrangling:</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/Week3/index.html">
+<p><a href="./posts/Week3/index.html" class="no-external"></a></p><a href="./posts/Week3/index.html" class="no-external">
 <div class="listing-author">
 Tien-Cheng
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="R-basic" data-listing-file-modified-sort="1702376901063" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="5" data-categories="R-basic" data-listing-file-modified-sort="1702376901000" data-listing-reading-time-sort="1" data-listing-word-count-sort="147">
 <div class="thumbnail">
-<p><a href="./posts/Week4/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
+<p><a href="./posts/Week4/index.html" class="no-external"></a></p><a href="./posts/Week4/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/Week4/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/Week4/index.html">
 <h3 class="no-anchor listing-title">
-Week4: column and row operations in dataframe
+<a href="./posts/Week4/index.html" class="no-external">Week4: column and row operations in dataframe</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/Week4/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Welcome to the fourth course! You will learn <code>dataframe</code> wrangling:
+<a href="./posts/Week4/index.html" class="no-external">Welcome to the fourth course! You will learn <code>dataframe</code> wrangling:</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/Week4/index.html">
+<p><a href="./posts/Week4/index.html" class="no-external"></a></p><a href="./posts/Week4/index.html" class="no-external">
 <div class="listing-author">
 Tien-Cheng
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="R-intermediate" data-listing-file-modified-sort="1702378476230" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="6" data-categories="R-intermediate" data-listing-file-modified-sort="1702378476000" data-listing-reading-time-sort="2" data-listing-word-count-sort="364">
 <div class="thumbnail">
-<p><a href="./posts/Week5/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
+<p><a href="./posts/Week5/index.html" class="no-external"></a></p><a href="./posts/Week5/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/Week5/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/Week5/index.html">
 <h3 class="no-anchor listing-title">
-Week5: pattern matching in dataframe
+<a href="./posts/Week5/index.html" class="no-external">Week5: pattern matching in dataframe</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/Week5/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Welcome to the fifth course! You will learn more about <code>dataframe</code> wrangling:
+<a href="./posts/Week5/index.html" class="no-external">Welcome to the fifth course! You will learn more about <code>dataframe</code> wrangling:</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/Week5/index.html">
+<p><a href="./posts/Week5/index.html" class="no-external"></a></p><a href="./posts/Week5/index.html" class="no-external">
 <div class="listing-author">
 Tien-Cheng
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="R-intermediate" data-listing-file-modified-sort="1701180750000" data-listing-reading-time-sort="3">
+<div class="quarto-post image-right" data-index="7" data-categories="R-intermediate" data-listing-file-modified-sort="1701180750821" data-listing-reading-time-sort="3" data-listing-word-count-sort="445">
 <div class="thumbnail">
-<p><a href="./posts/Week6/index.html"> <p class="card-img-top"><img src="posts\Week6\wrangling.png"  class="thumbnail-image card-img"/></p> </a></p>
+<p><a href="./posts/Week6/index.html" class="no-external"></a></p><a href="./posts/Week6/index.html" class="no-external">
+<p class="card-img-top"><img src="posts\Week6\wrangling.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./posts/Week6/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/Week6/index.html">
 <h3 class="no-anchor listing-title">
-Week6: function and groups
+<a href="./posts/Week6/index.html" class="no-external">Week6: function and groups</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/Week6/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Welcome to the sixth course! You will learn more about <code>dataframe</code> wrangling:
+<a href="./posts/Week6/index.html" class="no-external">Welcome to the sixth course! You will learn more about <code>dataframe</code> wrangling:</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./posts/Week6/index.html" class="no-external"></a></p><a href="./posts/Week6/index.html" class="no-external">
+<div class="listing-author">
+Tien-Cheng
 </div>
 </a>
 </div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-categories="R-intermediate" data-listing-file-modified-sort="1718652250105" data-listing-reading-time-sort="7" data-listing-word-count-sort="1221">
+<div class="thumbnail">
+<p><a href="./posts/Week7/index.html" class="no-external"></a></p><a href="./posts/Week7/index.html" class="no-external">
+<p class="card-img-top"><img src="posts\Week7\coding_logic.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./posts/Week7/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/Week7/index.html" class="no-external">Week7: Shape of dataframe</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/Week7/index.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./posts/Week7/index.html" class="no-external">Welcome to the seventh course! You will learn more about <code>dataframe</code> wrangling:</a>
+</div>
+</div>
 <div class="metadata">
-<a href="./posts/Week6/index.html">
+<p><a href="./posts/Week7/index.html" class="no-external"></a></p><a href="./posts/Week7/index.html" class="no-external">
+<div class="listing-author">
+Tien-Cheng
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-categories="R-intermediate" data-listing-file-modified-sort="1718652529821" data-listing-reading-time-sort="4" data-listing-word-count-sort="616">
+<div class="thumbnail">
+<p><a href="./posts/Week8/index.html" class="no-external"></a></p><a href="./posts/Week8/index.html" class="no-external">
+<p class="card-img-top"><img src="posts\Week8\forloop1.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./posts/Week8/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/Week8/index.html" class="no-external">Week8: Loops</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/Week8/index.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./posts/Week8/index.html" class="no-external">Welcome to the eighth course! You will learn more about <code>for-loop</code> and <code>data visualization</code>:</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./posts/Week8/index.html" class="no-external"></a></p><a href="./posts/Week8/index.html" class="no-external">
+<div class="listing-author">
+Tien-Cheng
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10" data-categories="R-intermediate" data-listing-file-modified-sort="1717487631846" data-listing-reading-time-sort="1" data-listing-word-count-sort="51">
+<div class="thumbnail">
+<p><a href="./posts/Weekstoma/index.html" class="no-external"></a></p><a href="./posts/Weekstoma/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/Weekstoma/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/Weekstoma/index.html" class="no-external">Week: Stomata</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/Weekstoma/index.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./posts/Weekstoma/index.html" class="no-external">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning goals
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>read xml file</li>
+</ol>
+</div>
+</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./posts/Weekstoma/index.html" class="no-external"></a></p><a href="./posts/Weekstoma/index.html" class="no-external">
 <div class="listing-author">
 Tien-Cheng
 </div>
@@ -751,6 +684,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -819,13 +779,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -904,10 +866,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/illustratien\.github\.io\/BSC_project_IPFS2023");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -917,8 +896,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -930,7 +918,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -974,6 +1085,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -999,6 +1111,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1060,16 +1198,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <script src="https://giscus.app/client.js" data-repo="Illustratien/BSC_project_IPFS2023" data-repo-id="R_kgDOJXRJ5Q" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
 </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">© Copyright 2023, Tien-Cheng Wang</div>   
+    <div class="nav-footer-left">
+<p>© Copyright 2023, Tien-Cheng Wang</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Illustratien/BSC_project_IPFS2023/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
-    <div class="nav-footer-right">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/Illustratien/BSC_project_IPFS2023/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
   </div>
 </footer>
+
 
 
 

@@ -1,7 +1,6 @@
 ---
-title: "Week8: Grain development Iv"
+title: "Week8: Loops"
 author: "Tien-Cheng"
-date: "2023-06-06"
 categories: [R-intermediate]
 
 toc-location: right
@@ -109,9 +108,9 @@ df
 If you know the column names are different, can you still combine them?
 
 ```{r}
-df<- map_dfr(list.files("../data/student"),~{
+df<- map_dfr(list.files("./data/student"),~{
   
-  file<- xlsx::read.xlsx(paste0("../data/student/",.x),sheetIndex = 1)
+  file<- xlsx::read.xlsx(paste0("./data/student/",.x),sheetIndex = 1)
 })
 df %>% 
   glimpse()
@@ -131,8 +130,7 @@ Here are possible steps:
 
 ::: {.callout-tip collapse="true"}
 # click for answer
-
-```{r}
+```{r,echo=F}
 library(magrittr)
 df<- map_dfr(list.files("../data/student"),~{
   
@@ -140,6 +138,24 @@ df<- map_dfr(list.files("../data/student"),~{
     .[4] %>% sub(".xlsx","",.)
   
   file<- xlsx::read.xlsx(paste0("../data/student/",.x),sheetIndex = 1) %>%  
+    `colnames<-`(stringr::str_to_lower(names(.)))%>% 
+    `colnames<-`(gsub("kernal","kernel",names(.))) %>% 
+    `colnames<-`(gsub("spikes","spike",names(.)))%>%
+    `colnames<-`(gsub("plot.id","plot_id",names(.))) %>% 
+    mutate(student=student_name)
+}) 
+df %<>% mutate(var="Capone",plot_id=159) %>% 
+  .[!grepl("na.",names(.))]
+df %>% glimpse()
+```
+```{r,eval=F}
+library(magrittr)
+df<- map_dfr(list.files("./data/student"),~{
+  
+  student_name <-  .x %>% strsplit("_") %>% unlist() %>% 
+    .[4] %>% sub(".xlsx","",.)
+  
+  file<- xlsx::read.xlsx(paste0("./data/student/",.x),sheetIndex = 1) %>%  
     `colnames<-`(stringr::str_to_lower(names(.)))%>% 
     `colnames<-`(gsub("kernal","kernel",names(.))) %>% 
     `colnames<-`(gsub("spikes","spike",names(.)))%>%
