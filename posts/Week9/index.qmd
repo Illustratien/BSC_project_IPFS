@@ -1,7 +1,6 @@
 ---
-title: "Week9: Grain development v"
+title: "Week9: Stomata_data"
 author: "Tien-Cheng"
-date: "2023-06-13"
 categories: [R-intermediate]
 image: "poster_big.png"
 toc-location: right
@@ -38,7 +37,7 @@ Welcome to the nigth course! You will learn more about`data visualization`:
 
 1.  Warm up for final presentation
 2.  Data type based story telling
-3.  `github`
+
 :::
 
 ::: callout-warning
