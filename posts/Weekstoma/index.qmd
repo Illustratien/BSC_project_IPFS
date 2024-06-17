@@ -2,7 +2,6 @@
 title: "Week: Stomata"
 author: "Tien-Cheng"
 categories: [R-intermediate]
-# image: "poster_big.png"
 toc-location: right
 number-sections: true
 website: 
@@ -24,31 +23,32 @@ knitr::opts_chunk$set(echo = TRUE)
 library(magrittr);suppressWarnings(library(dplyr));
 suppressWarnings(library(ggplot2));library(tidyr);library(purrr)
 options(dplyr.summarise.inform = FALSE)
-# source("../fun/modules/processing_fun.R")
-# source("../src/modules/read_xml.R")
 ```
 
 ::: callout-note
-# Learning goals
-1.  read xml file
+#  Learning goals
+1. read xml file
 :::
 
-# download data and functions
+# Protocols
 
-1. download scripts from [link](), put scripts in `src`
-2. download pictures from [link](), put folder in `data`
-2. apply function 
+[Rapid method](https://docs.google.com/document/d/1rwAyLrTVaunUpwdEJodymL2MVmkb-eYOKcjrBP6AHMs/edit?usp=sharing)
+
+[NTU github](https://github.com/Illustratien/Stomata)
 
 
+::: {#fig-elephants layout-ncol=2}
+![Rapid method](../data/stomata/rapid_method/WheatAnalysedImages/T16L600_W1_GC1_R2_P92_g12_6.jpg)
 
-```{r, eval=FALSE}
-conda create --name stomaenv python=3.10.0 jupyter pandas
-conda activate stomaenv
-conda install conda-forge::ultralytics
-conda install anaconda::dill
+![NTU detection](../data/stomata/ntu_github/T16L600_W1_GC1_R2_P92_g12_6.jpg)
+:::
+
+[obb format](https://docs.ultralytics.com/datasets/obb/)
+```{r}
+read.csv("../data/stomata/ntu_github/labels/T16L600_W1_GC1_R2_P92_g12_6.txt",header=F,sep=" ") %>%  
+head()
 ```
-```{r,eval=FALSE}
-source("src/modules/processing_fun.R")
-source()
-```
+```{r}
 
+
+```
