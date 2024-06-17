@@ -1,7 +1,6 @@
 ---
-title: "Week7: Grain development III"
+title: "Week7: Shape of dataframe"
 author: "Tien-Cheng"
-date: "2023-05-30"
 categories: [R-intermediate]
 
 toc-location: right
@@ -334,12 +333,12 @@ using for loop, extract the student name from file name.
 ![](forloop.png)
 ```{r,echo=FALSE}
 
-df<- map(list.files("../data/student"),~{
-  xlsx::read.xlsx(paste0("../data/student/",.x),sheetIndex = 1) %>% 
+df<- map(list.files("./data/student"),~{
+  xlsx::read.xlsx(paste0("./data/student/",.x),sheetIndex = 1) %>% 
     names()
 })
 names(df) <-
-  purrr::map(list.files("../data/student"),  ~{
+  purrr::map(list.files("./data/student"),  ~{
     .x %>% strsplit("_") %>% unlist()
   }) %>% map_chr(.,~{.x[4] %>% sub(".xlsx","",.)})
 df 

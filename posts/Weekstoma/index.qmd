@@ -1,0 +1,54 @@
+---
+title: "Week: Stomata"
+author: "Tien-Cheng"
+categories: [R-intermediate]
+# image: "poster_big.png"
+toc-location: right
+number-sections: true
+website: 
+  sidebar:
+    search: true
+format:
+  html: 
+    grid:
+      sidebar-width: 300px
+      body-width: 1200px
+      margin-width: 100px
+      gutter-width: 1.5rem
+
+reference-location: margin
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(magrittr);suppressWarnings(library(dplyr));
+suppressWarnings(library(ggplot2));library(tidyr);library(purrr)
+options(dplyr.summarise.inform = FALSE)
+# source("../fun/modules/processing_fun.R")
+# source("../src/modules/read_xml.R")
+```
+
+::: callout-note
+# Learning goals
+1.  read xml file
+:::
+
+# download data and functions
+
+1. download scripts from [link](), put scripts in `src`
+2. download pictures from [link](), put folder in `data`
+2. apply function 
+
+
+
+```{r, eval=FALSE}
+conda create --name stomaenv python=3.10.0 jupyter pandas
+conda activate stomaenv
+conda install conda-forge::ultralytics
+conda install anaconda::dill
+```
+```{r,eval=FALSE}
+source("src/modules/processing_fun.R")
+source()
+```
+

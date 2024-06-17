@@ -8,7 +8,7 @@
 
 <meta name="author" content="Tien-Cheng">
 
-<title>BSC_project_IPFS2023 - Week8: Loops</title>
+<title>BSC_project_IPFS2023 - Week: Stomata</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../posts/Week9/index.html" rel="next">
-<link href="../../posts/Week7/index.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -106,8 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="BSC_project_IPFS2023 - Week8: Loops">
-<meta property="og:description" content="Homepage for B.Sc Project - Contribution of Ear Development to Yield Stability in Winter Wheat.">
+<meta property="og:title" content="BSC_project_IPFS2023 - Week: Stomata">
 <meta property="og:site_name" content="BSC_project_IPFS2023">
 </head>
 
@@ -120,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/Week1/index.html">Analysis with R</a></li><li class="breadcrumb-item"><a href="../../posts/Week8/index.html">Week 8</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week: Stomata</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -192,13 +189,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Analysis with R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/Week1/index.html" class="sidebar-item-text sidebar-link">
@@ -243,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Week8/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/Week8/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 8</span></a>
   </div>
 </li>
@@ -265,23 +262,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#students-data" id="toc-students-data" class="nav-link active" data-scroll-target="#students-data"><span class="header-section-number">1</span> Student’s data</a>
-  <ul class="collapse">
-  <li><a href="#how-to-save-the-column-names-of-all-files-in-a-directory-to-a-list-using-for-loop" id="toc-how-to-save-the-column-names-of-all-files-in-a-directory-to-a-list-using-for-loop" class="nav-link" data-scroll-target="#how-to-save-the-column-names-of-all-files-in-a-directory-to-a-list-using-for-loop"><span class="header-section-number">1.1</span> How to save the column names of all files in a directory to a list using for loop?</a></li>
-  <li><a href="#how-to-name-list-elements-based-on-students-name" id="toc-how-to-name-list-elements-based-on-students-name" class="nav-link" data-scroll-target="#how-to-name-list-elements-based-on-students-name"><span class="header-section-number">1.2</span> How to name list elements based on student’s name ?</a></li>
-  <li><a href="#how-to-combine-all-the-dataframe-by-row" id="toc-how-to-combine-all-the-dataframe-by-row" class="nav-link" data-scroll-target="#how-to-combine-all-the-dataframe-by-row"><span class="header-section-number">1.3</span> How to combine all the dataframe by row?</a></li>
-  <li><a href="#how-to-visualize-the-result" id="toc-how-to-visualize-the-result" class="nav-link" data-scroll-target="#how-to-visualize-the-result"><span class="header-section-number">1.4</span> How to visualize the result?</a></li>
-  </ul></li>
-  <li><a href="#recommendation" id="toc-recommendation" class="nav-link" data-scroll-target="#recommendation"><span class="header-section-number">2</span> recommendation</a></li>
+  <li><a href="#download-data-and-functions" id="toc-download-data-and-functions" class="nav-link active" data-scroll-target="#download-data-and-functions"><span class="header-section-number">1</span> download data and functions</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Illustratien/BSC_project_IPFS2023/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/Week1/index.html">Analysis with R</a></li><li class="breadcrumb-item"><a href="../../posts/Week8/index.html">Week 8</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week8: Loops</h1>
+<h1 class="title">Week: Stomata</h1>
   <div class="quarto-categories">
     <div class="quarto-category">R-intermediate</div>
   </div>
@@ -307,7 +297,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Welcome to the eighth course! You will learn more about <code>for-loop</code> and <code>data visualization</code>:</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -319,248 +308,27 @@ Learning goals
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>requirements of merging <em>dataframes</em></li>
-<li><em>save</em> or <em>show</em> the result of <em>for loop</em></li>
-<li><code>ggplot()</code></li>
+<li>read xml file</li>
 </ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Discussion
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<section id="download-data-and-functions" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> download data and functions</h1>
 <ol type="1">
-<li>What is the component for-loop? How to check if it works for each element?</li>
-<li>what are <code>long</code> and <code>wide</code>? when to use what?</li>
+<li>download scripts from <a href="">link</a>, put scripts in <code>src</code></li>
+<li>download pictures from <a href="">link</a>, put folder in <code>data</code></li>
+<li>apply function</li>
 </ol>
-</div>
-</div>
-<section id="students-data" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="students-data"><span class="header-section-number">1</span> Student’s data</h2>
-<p>practice with files from <code>data/student</code>.</p>
-<section id="how-to-save-the-column-names-of-all-files-in-a-directory-to-a-list-using-for-loop" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="how-to-save-the-column-names-of-all-files-in-a-directory-to-a-list-using-for-loop"><span class="header-section-number">1.1</span> How to save the column names of all files in a directory to a list using for loop?</h3>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-For loop concept
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><img src="forloop1.png" class="img-fluid"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">"./data/student/"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>filenames <span class="ot">&lt;-</span> <span class="fu">list.files</span>(path,<span class="at">pattern=</span><span class="st">".xlsx"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#create empty list</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode=</span><span class="st">"list"</span>,<span class="at">length=</span><span class="fu">length</span>(filenames))</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(filenames)){</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  fullpath <span class="ot">&lt;-</span> <span class="fu">paste0</span>(path,filenames[i])</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  df[[i]] <span class="ot">&lt;-</span> xlsx<span class="sc">::</span><span class="fu">read.xlsx</span>(fullpath,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                             <span class="at">sheetIndex =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>()</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>df </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="how-to-name-list-elements-based-on-students-name" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="how-to-name-list-elements-based-on-students-name"><span class="header-section-number">1.2</span> How to name list elements based on student’s name ?</h3>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>$clement
-[1] "Var"          "Plot_Id"      "Spikes"       "flower"       "kernal.full" 
-[6] "Kernal.half"  "kernal.small"
-
-$hanwenhsu
-[1] "var"          "plot_id"      "spike"        "flower"       "kernel.full" 
-[6] "kernel.half"  "kernel.small"
-
-$shawon
-[1] "var"         "plot.id"     "spike"       "flower"      "kernel.full"
-[6] "kernel.half" "NA."        </code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-click for answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>student_name <span class="ot">&lt;-</span>   purrr<span class="sc">::</span><span class="fu">map_chr</span>(filenames,  <span class="sc">~</span>{</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  .x <span class="sc">%&gt;%</span> <span class="fu">strsplit</span>(<span class="st">"_"</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    .[<span class="dv">4</span>] <span class="sc">%&gt;%</span> <span class="fu">sub</span>(<span class="st">".xlsx"</span>,<span class="st">""</span>,.)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}) </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df) <span class="ot">&lt;-</span>student_name</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="how-to-combine-all-the-dataframe-by-row" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="how-to-combine-all-the-dataframe-by-row"><span class="header-section-number">1.3</span> How to combine all the dataframe by row?</h3>
-<p>If you know the column names are different, can you still combine them?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="fu">list.files</span>(<span class="st">"./data/student"</span>),<span class="sc">~</span>{</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  file<span class="ot">&lt;-</span> xlsx<span class="sc">::</span><span class="fu">read.xlsx</span>(<span class="fu">paste0</span>(<span class="st">"./data/student/"</span>,.x),<span class="at">sheetIndex =</span> <span class="dv">1</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 0
-Columns: 0</code></pre>
-</div>
-</div>
-<p>Here are possible steps:</p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<ul>
-<li>observe the patterns of column names, how to unify the column names?</li>
-<li>replace “kernal” with “kernel”</li>
-<li>replace “spikes” with “spike”</li>
-<li>replace “plot.id” with “plot_id”</li>
-<li>how to add the student’s name as a column? where should you put it in the for-loop body?</li>
-<li>how to fill the missing cultivar and plot_id?</li>
-<li>remove “na.” column check your loop-body with the first element in your range.</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-click for answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 57
-Columns: 8
-$ var          &lt;chr&gt; "Capone", "Capone", "Capone", "Capone", "Capone", "Capone…
-$ plot_id      &lt;dbl&gt; 159, 159, 159, 159, 159, 159, 159, 159, 159, 159, 159, 15…
-$ spike        &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
-$ flower       &lt;dbl&gt; 1, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, …
-$ kernel.full  &lt;dbl&gt; 0, 2, 2, 2, 3, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 2, 1, …
-$ kernel.half  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-$ kernel.small &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-$ student      &lt;chr&gt; "clement", "clement", "clement", "clement", "clement", "c…</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>conda create <span class="sc">--</span>name stomaenv python<span class="ot">=</span><span class="dv">3</span>.<span class="fl">10.0</span> jupyter pandas</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>conda activate stomaenv</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>conda install conda<span class="sc">-</span>forge<span class="sc">::</span>ultralytics</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>conda install anaconda<span class="sc">::</span>dill</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="fu">list.files</span>(<span class="st">"./data/student"</span>),<span class="sc">~</span>{</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  student_name <span class="ot">&lt;-</span>  .x <span class="sc">%&gt;%</span> <span class="fu">strsplit</span>(<span class="st">"_"</span>) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    .[<span class="dv">4</span>] <span class="sc">%&gt;%</span> <span class="fu">sub</span>(<span class="st">".xlsx"</span>,<span class="st">""</span>,.)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  file<span class="ot">&lt;-</span> xlsx<span class="sc">::</span><span class="fu">read.xlsx</span>(<span class="fu">paste0</span>(<span class="st">"./data/student/"</span>,.x),<span class="at">sheetIndex =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">colnames&lt;-</span><span class="st">`</span>(stringr<span class="sc">::</span><span class="fu">str_to_lower</span>(<span class="fu">names</span>(.)))<span class="sc">%&gt;%</span> </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">colnames&lt;-</span><span class="st">`</span>(<span class="fu">gsub</span>(<span class="st">"kernal"</span>,<span class="st">"kernel"</span>,<span class="fu">names</span>(.))) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">colnames&lt;-</span><span class="st">`</span>(<span class="fu">gsub</span>(<span class="st">"spikes"</span>,<span class="st">"spike"</span>,<span class="fu">names</span>(.)))<span class="sc">%&gt;%</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">colnames&lt;-</span><span class="st">`</span>(<span class="fu">gsub</span>(<span class="st">"plot.id"</span>,<span class="st">"plot_id"</span>,<span class="fu">names</span>(.))) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">student=</span>student_name)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>}) </span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&lt;&gt;%</span> <span class="fu">mutate</span>(<span class="at">var=</span><span class="st">"Capone"</span>,<span class="at">plot_id=</span><span class="dv">159</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  .[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">"na."</span>,<span class="fu">names</span>(.))]</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"src/modules/processing_fun.R"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This answer is written in <code>map_()</code> series, could you rewrite in for loop?</p>
-</div>
-</div>
-</div>
-</section>
-<section id="how-to-visualize-the-result" class="level3" data-number="1.4">
-<h3 data-number="1.4" class="anchored" data-anchor-id="how-to-visualize-the-result"><span class="header-section-number">1.4</span> How to visualize the result?</h3>
-<p>Practice to make a draft, what will be the <code>x</code> and <code>y</code>, what will be the <code>color</code>?</p>
-<p>Is there difference between geom_line() and <a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_path()</a>?</p>
-<div>
-
-</div>
-<div class="cell quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Line Plot 1</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Line Plot 2</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-click for answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># line plot 1</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(student,spike) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(flower,spike,<span class="at">color=</span>student))<span class="sc">+</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha=</span>.<span class="dv">5</span>)<span class="sc">+</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># line plot 2</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(student,spike) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(flower,spike,<span class="at">color=</span>student))<span class="sc">+</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="at">alpha=</span>.<span class="dv">5</span>)<span class="sc">+</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="recommendation" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="recommendation"><span class="header-section-number">2</span> recommendation</h2>
-<p><a href="https://adv-r.hadley.nz/control-flow.html">Advanced R: control flow</a></p>
 
 
 </section>
@@ -1123,18 +891,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <input type="hidden" id="giscus-base-theme" value="light">
 <input type="hidden" id="giscus-alt-theme" value="dark">
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../posts/Week7/index.html" class="pagination-link" aria-label="Week 7">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 7</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../posts/Week9/index.html" class="pagination-link" aria-label="Week 9">
-        <span class="nav-page-text">Week 9</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

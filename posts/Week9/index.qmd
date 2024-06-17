@@ -230,7 +230,7 @@ df %<>%
 ```
 :::
 
-go to @sec-realclass for more practices.
+
 
 ```{r,echo=FALSE}
 # devtools::install_github('erocoar/ggpol')
