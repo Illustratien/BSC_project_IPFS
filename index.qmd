@@ -24,8 +24,9 @@ options(dplyr.summarise.inform = FALSE)
 tbl<-xlsx::read.xlsx("./Syllabus.xlsx",sheetIndex = 1)
 ```
 ::: column-screen-inset-right
-
+```{r}
 tbl %>% kbl()
+```
 <!-- | Week | Date | Topic  | R |   HW |  Practical  | -->
 <!-- |:------:|------|----|-----|:-------:|:-----:| -->
 <!-- |  1   | Tue, Apr 16 |  General introduction   | [Data type, R Studio](/posts/Week1/index.html)                                    |   |  | -->

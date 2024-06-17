@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -98,6 +132,10 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -316,7 +354,142 @@ window.Quarto = {
 
 <p>This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here.</p>
 <div class="column-screen-inset-right">
-<p>tbl %&gt;% kbl() <!-- | Week | Date | Topic  | R |   HW |  Practical  | --> <!-- |:------:|------|----|-----|:-------:|:-----:| --> <!-- |  1   | Tue, Apr 16 |  General introduction   | [Data type, R Studio](/posts/Week1/index.html)                                    |   |  | --> <!-- |  2   | Tue, Apr 23 | Lecture 1 - Physiological role of Stomata    | [working directory, accessing element from data](/posts/Week2/index.html)         |        [Github](https://www.codecademy.com/article/what-is-git-and-github-desktop)                           |                    | --> <!-- |  3   | Tue, Apr 30  | Lecture 2 - Physiological role of Stomata | [dataframe operation and ggplot](/posts/Week3/index.html)                         |          [data structure](https://swcarpentry.github.io/r-novice-gapminder/04-data-structures-part1/index.html)         [dplyr and more](https://r4ds.had.co.nz/transform.html) [ggplot](https://r4ds.had.co.nz/data-visualisation.html)                    |                    | --> <!-- |  4   | Tue, May 07 |  Scientific presentation     | [dataframe operation](/posts/Week4/index.html)                                    |                [mutate](https://dplyr.tidyverse.org/reference/mutate.html) [across](https://dplyr.tidyverse.org/reference/across.html)                |  first experience  | --> <!-- |  5   | Tue, May 14 |           | [column editing and column replacement](/posts/Week5/index.html)                  |                                                                                                                                                       | phenotyping start! | --> <!-- |  6   | Tue, May 21 |                                                 | [applying functions to targeted columns and groups](/posts/Week6/index.html)      |  [summarise](https://dplyr.tidyverse.org/reference/summarise.html) [group_by](https://dplyr.tidyverse.org/articles/grouping.html?q=filter#group_by)   |                    | --> <!-- |  7   | Tue, May 28 |                                                 | [summarize, shape transformation of dataframe](/posts/Week7/index.html)           |                    [for loop1](https://statisticsglobe.com/for-loop-in-r) [for loop2](https://www.w3schools.com/r/r_for_loop.asp)                     |                    | --> <!-- |  8   | Tue, Jun 04 |                                                 | [combine files in a loop](/posts/Week8/index.html)                                |                                                                          |                    | --> <!-- |  9   | Tue, Jun 11 |                        | [analysis planning and results visualization](/posts/Week9/index.html)            |          [Data visualization](https://www.data-to-viz.com/) [manuscript](https://academic.oup.com/jxb/article/72/11/3987/6157936?login=true) [arrange plots](http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/)         |                    | --> <!-- |  10  | Tue, Jun 18 |                                         |                                                                                   |                                                                                                                                                       |                    | --> <!-- |  11  | Tue, Jun 25 |                                         |                                                                                   |                                                                                                                                                       |                    | --> <!-- |  12  | Tue, Jul 02 |                                                 | Statistic analysis                                                                |  |                    | --> <!-- |  13  | Tue, Jul 09 |                                                 | [Reporting with quarto ](https://ucsb-meds.github.io/creating-quarto-websites/) |                                                                                                                                                       |                    | --> <!-- |  14  | Tue, Jul 16 |  Final oral presentation                                  |                                                                                   |                                                                                                                                                       |                    | --></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tbl <span class="sc">%&gt;%</span> <span class="fu">kbl</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Week</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Date</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">R</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">HW</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Practical</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Tue, Apr 16</td>
+<td style="text-align: left;">Data type, R Studio</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Tue, Apr 23</td>
+<td style="text-align: left;">working directory, accessing element from data</td>
+<td style="text-align: left;">Github</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Tue, Apr 30</td>
+<td style="text-align: left;">dataframe operation and ggplot</td>
+<td style="text-align: left;">data structure&nbsp;dplyr and more&nbsp;ggplot</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Tue, May 07</td>
+<td style="text-align: left;">dataframe operation</td>
+<td style="text-align: left;">mutate&nbsp;across</td>
+<td style="text-align: left;">first experience</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Tue, May 14</td>
+<td style="text-align: left;">column editing and column replacement</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">phenotyping start!</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Tue, May 21</td>
+<td style="text-align: left;">applying functions to targeted columns and groups</td>
+<td style="text-align: left;">summarise&nbsp;group_by</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Tue, May 28</td>
+<td style="text-align: left;">summarize, shape transformation of dataframe</td>
+<td style="text-align: left;">for loop1&nbsp;for loop2</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Tue, Jun 04</td>
+<td style="text-align: left;">combine files in a loop</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">Tue, Jun 11</td>
+<td style="text-align: left;">analysis planning and results visualization</td>
+<td style="text-align: left;">Data visualization&nbsp;manuscript&nbsp;arrange plots</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">Tue, Jun 18</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">Tue, Jun 25</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">Tue, Jul 02</td>
+<td style="text-align: left;">Statistic analysis</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: left;">Tue, Jul 09</td>
+<td style="text-align: left;">Reporting with quarto</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">Tue, Jul 16</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div>
+<!-- | Week | Date | Topic  | R |   HW |  Practical  | -->
+<!-- |:------:|------|----|-----|:-------:|:-----:| -->
+<!-- |  1   | Tue, Apr 16 |  General introduction   | [Data type, R Studio](/posts/Week1/index.html)                                    |   |  | -->
+<!-- |  2   | Tue, Apr 23 | Lecture 1 - Physiological role of Stomata    | [working directory, accessing element from data](/posts/Week2/index.html)         |        [Github](https://www.codecademy.com/article/what-is-git-and-github-desktop)                           |                    | -->
+<!-- |  3   | Tue, Apr 30  | Lecture 2 - Physiological role of Stomata | [dataframe operation and ggplot](/posts/Week3/index.html)                         |          [data structure](https://swcarpentry.github.io/r-novice-gapminder/04-data-structures-part1/index.html)         [dplyr and more](https://r4ds.had.co.nz/transform.html) [ggplot](https://r4ds.had.co.nz/data-visualisation.html)                    |                    | -->
+<!-- |  4   | Tue, May 07 |  Scientific presentation     | [dataframe operation](/posts/Week4/index.html)                                    |                [mutate](https://dplyr.tidyverse.org/reference/mutate.html) [across](https://dplyr.tidyverse.org/reference/across.html)                |  first experience  | -->
+<!-- |  5   | Tue, May 14 |           | [column editing and column replacement](/posts/Week5/index.html)                  |                                                                                                                                                       | phenotyping start! | -->
+<!-- |  6   | Tue, May 21 |                                                 | [applying functions to targeted columns and groups](/posts/Week6/index.html)      |  [summarise](https://dplyr.tidyverse.org/reference/summarise.html) [group_by](https://dplyr.tidyverse.org/articles/grouping.html?q=filter#group_by)   |                    | -->
+<!-- |  7   | Tue, May 28 |                                                 | [summarize, shape transformation of dataframe](/posts/Week7/index.html)           |                    [for loop1](https://statisticsglobe.com/for-loop-in-r) [for loop2](https://www.w3schools.com/r/r_for_loop.asp)                     |                    | -->
+<!-- |  8   | Tue, Jun 04 |                                                 | [combine files in a loop](/posts/Week8/index.html)                                |                                                                          |                    | -->
+<!-- |  9   | Tue, Jun 11 |                        | [analysis planning and results visualization](/posts/Week9/index.html)            |          [Data visualization](https://www.data-to-viz.com/) [manuscript](https://academic.oup.com/jxb/article/72/11/3987/6157936?login=true) [arrange plots](http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/)         |                    | -->
+<!-- |  10  | Tue, Jun 18 |                                         |                                                                                   |                                                                                                                                                       |                    | -->
+<!-- |  11  | Tue, Jun 25 |                                         |                                                                                   |                                                                                                                                                       |                    | -->
+<!-- |  12  | Tue, Jul 02 |                                                 | Statistic analysis                                                                |  |                    | -->
+<!-- |  13  | Tue, Jul 09 |                                                 | [Reporting with quarto ](https://ucsb-meds.github.io/creating-quarto-websites/) |                                                                                                                                                       |                    | -->
+<!-- |  14  | Tue, Jul 16 |  Final oral presentation                                  |                                                                                   |                                                                                                                                                       |                    | -->
 </div>
 <!-- https://sta210-s22.github.io/website/project-tips-resources.html -->
 
