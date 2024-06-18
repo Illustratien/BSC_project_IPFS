@@ -24,7 +24,7 @@ options(dplyr.summarise.inform = FALSE)
 tbl<-xlsx::read.xlsx("./Syllabus.xlsx",sheetIndex = 1)
 ```
 ::: column-screen-inset-right
-```{r}
+```{r,echo=FALSE}
 tbl %>% kbl()
 ```
 <!-- | Week | Date | Topic  | R |   HW |  Practical  | -->

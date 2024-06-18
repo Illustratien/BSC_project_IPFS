@@ -77,7 +77,10 @@ website:
             text: "Week 8"
           - href: posts/Weekstoma/index.qmd
             text: "Week 9"
-
+      - section: "Stomata"
+        contents:	
+          - href: posts/Weekstoma/index.qmd
+            text: "automatic detection"
 format:
   html:
     theme: 

@@ -48,7 +48,3 @@ options(dplyr.summarise.inform = FALSE)
 read.csv("../data/stomata/ntu_github/labels/T16L600_W1_GC1_R2_P92_g12_6.txt",header=F,sep=" ") %>%  
 head()
 ```
-```{r}
-
-
-```
